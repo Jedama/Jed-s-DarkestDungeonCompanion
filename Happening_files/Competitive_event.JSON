@@ -1,7 +1,7 @@
 {
     "title": "Competitive Event",
     "num_characters": 2,
-    "summary": "[Character 1] and [Character 2] compete in a local competition.",
+    "summary": "[Character 1] and [Character 2] compete in a personal competition.",
     "outcome": [3, 5, 2, 4, 1],
     "relevant_fields": [],
     "length": 2

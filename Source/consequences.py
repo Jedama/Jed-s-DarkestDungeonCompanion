@@ -27,7 +27,14 @@ def update_stat(character_title, field, change):
 
     # Find the character with the specified title
     character = find_character(character_title)
-    character.stats[field] += change
+
+    # If field is 'mental' or 'physical', update the character's status instead
+    if field == 'mental':
+        update_mental_state(character_title, change)
+    elif field == 'physical':
+        update_physical_state(character_title, change)
+    else:
+        character.stats[field] += change
 
     save_character(character)
 
@@ -151,7 +158,7 @@ def update_relationship_description(character_title, relationship_title, descrip
 
     # Find the character with the specified title
     character = find_character(character_title)
-    character.relationships_description[relationship_title] = description
+    character.relationships[relationship_title]['description'] = description
 
     save_character(character)
 

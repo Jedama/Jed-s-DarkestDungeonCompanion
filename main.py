@@ -11,5 +11,3 @@ story, consequences = craft_happening_story(characters)
 print(story, '\n', consequences)
 
 characters = load_data(Character)
-
-print(characters)

@@ -15,6 +15,8 @@ def craft_happening_story(characters, happening=None):
         # Pick a random happening from the list of happenings
         happening = random.choice(list(happenings.values()))
 
+    print(happening.title)
+
     num_characters = happening.num_characters
 
     # Initialize the scene_characters list      
@@ -30,6 +32,8 @@ def craft_happening_story(characters, happening=None):
     # Pick random outcome from distribution and translate to defined states
     outcome = pick_outcome(happening.outcome)
 
+    print(outcome)
+
     # Load the keywords
     keywords_file_path = 'Keywords/keywords.txt'
     keywords = load_txt(keywords_file_path)
@@ -38,11 +42,13 @@ def craft_happening_story(characters, happening=None):
     num_keywords = random.randint(1, 5)
     chosen_keywords = random.sample(keywords, num_keywords)
 
+    print(chosen_keywords)
+
     user_prompt_happening_story = createprompt_user_happening_story(happening, scene_characters, outcome, chosen_keywords)
     system_prompt_happening_story = createprompt_system_happening_story(happening)
     assistant_prompt_happening_story = "Here is the story:"
 
-    happening_story = prompt_claude(user_prompt_happening_story, system_prompt_happening_story, assistant_prompt_happening_story, 400)
+    happening_story = prompt_claude(user_prompt_happening_story, system_prompt_happening_story, assistant_prompt_happening_story, 300 + 100 * happening.length)
     extracted_story = extract_text_from_response_claude(happening_story)
 
     user_prompt_happening_consequences = f'{user_prompt_happening_story}\n\n{extracted_story}'
@@ -113,7 +119,7 @@ def createprompt_system_happening_story(happening):
 
 def createprompt_system_happening_consequences(happening, scene_characters, outcome):
 
-    system_prompt = f'''Pick {random.randint(1, happening.length + 1)} consequences for each character from the list below, and output only the commands to update them. The characters faced a {outcome} outcome, reward or punish them appropriately. If multiple characters are present, include at least one relationship update. Example:\nFor Pandora Dantill (Ancestor)\nupdate_stat('Ancestor', 'strength', -1)\nadd_trait('Ancestor', 'Maniacal')\nupdate_relationship_affinity('Ancestor', 'Miller', -3)\n'''
+    system_prompt = f'''Pick {random.randint(1, happening.length + 1)} consequences for each character from the list below, and output only the commands to update them. The characters faced a {outcome} outcome, reward or punish them appropriately. If multiple characters are present, include at least one relationship update. Example:\nFor Pandora Dantill (Ancestor)\nupdate_stat('Ancestor', 'strength', -1)\ngain_trait('Ancestor', 'Maniacal')\nupdate_relationship_affinity('Ancestor', 'Miller', -3)\n'''
     
     # Load consequences
     consequences = load_data(Consequences)

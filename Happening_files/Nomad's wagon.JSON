@@ -1,0 +1,8 @@
+{
+    "title": "Nomad's wagon",
+    "num_characters": 2,
+    "summary": "[Character 1] and [character 2] haggle with the trinket merchant.",
+    "outcome": [1, 1, 3, 3, 2],
+    "relevant_fields": ["appearance"],
+    "length": 1
+}

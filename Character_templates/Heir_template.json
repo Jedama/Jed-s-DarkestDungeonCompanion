@@ -23,7 +23,7 @@
     "agility": 2,
     "intelligence": 9,
     "authority": 7,
-    "sociability ": 8
+    "sociability": 8
   },
   "equipment": [
     "Letter opener",
@@ -34,7 +34,7 @@
   ],
   "appearance": {
     "gender": "Male",
-    "height": "Below average",
+    "height": "Short",
     "build": "Chubby",
     "skin_tone": "Fair",
     "hair_color": "Blond",
