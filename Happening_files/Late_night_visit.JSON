@@ -1,0 +1,8 @@
+{
+    "title": "Late night visit",
+    "num_characters": 2,
+    "summary": "[Character 1] shows up at [character 2]'s room late at night.",
+    "outcome": [4, 2, 1, 2, 4],
+    "relevant_fields": ["appearance"],
+    "length": 1
+}

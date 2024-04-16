@@ -1,0 +1,8 @@
+{
+    "title": "Joint Mission Briefing",
+    "num_characters": 2,
+    "summary": "[Character 1] and [Character 2] take part in an important mission briefing.",
+    "outcome": [3, 4, 5, 2, 1],
+    "relevant_fields": [],
+    "length": 1
+}

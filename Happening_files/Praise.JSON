@@ -1,0 +1,8 @@
+{
+    "title": "Praise",
+    "num_characters": 2,
+    "summary": "[Character 1] praises the best aspects of [character 2].",
+    "outcome": [0, 1, 2, 4, 2],
+    "relevant_fields": ["appearance", "fighting_style"],
+    "length": 1
+}

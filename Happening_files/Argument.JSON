@@ -1,0 +1,8 @@
+{
+    "title": "Argument",
+    "num_characters": 2,
+    "summary": "[Character 1] has a fierce argument with [character 2].",
+    "outcome": [4, 3, 2, 1, 1],
+    "relevant_fields": ["fighting_style"],
+    "length": 1
+}
