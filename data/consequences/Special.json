@@ -1,0 +1,10 @@
+{   
+    "title": "Special",
+    "consequences": [
+        {"command": "move_money", "params": {"title": "target title", "change": "±x"}, "text": "Move specified amount of money to target."},
+        {"command": "gain_disease", "params": {"disease": "new disease"}, "text": "Add new disease to the character."},
+        {"command": "lose_disease", "params": {"disease": "specific disease"}, "text": "Remove an existing disease from the character."},
+        {"command": "gain_wound", "params": {"wound": "new wound"}, "text": "Add new wound to the character."},
+        {"command": "lose_wound", "params": {"wound": "specific wound"}, "text": "Remove an existing wound from the character."}
+    ]
+}

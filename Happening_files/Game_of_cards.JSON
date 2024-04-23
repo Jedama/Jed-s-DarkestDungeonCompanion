@@ -1,8 +1,0 @@
-{
-    "title": "Game of cards",
-    "num_characters": 4,
-    "summary": "After a grueling day, [Character 1], [Character 2], [Character 3], and [Character 4] settle down for a game of cards. The stakes are light, but the competition is fierce.",
-    "outcome": [1, 5, 4, 5, 1],
-    "relevant_fields": [],
-    "length": 1
-}

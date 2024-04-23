@@ -1,0 +1,37 @@
+[
+  {
+    "title": "The Nomad",
+    "name": "Naima",
+    "summary": "The Nomad, the enigmatic merchant of the mystic, weaves through the hamlet with her wagon of wonders. She peddles not merely trinkets but promises of protection and fortune, her wares coveted by superstitious hearts and skeptical minds alike.",
+    "history": "With origins as mysterious as the artifacts she sells, The Nomad's past is a tapestry of tales from distant lands. Her travels have brought her to the hamlet, where she finds a steady demand for her peculiar collection amidst the encroaching darkness.",
+    "traits": [
+      "Mystical",
+      "Wanderlust",
+      "Insightful"
+    ],
+    "appearance": {
+      "gender": "Female",
+      "height": "Medium",
+      "build": "Slender",
+      "skin_tone": "Olive",
+      "hair_color": "Raven black",
+      "hairstyle": "Long and wavy",
+      "facial_hair": "None",
+      "accessories": "Earrings, bracelets, and necklaces",
+      "distinguishing_marks": "None",
+      "other_notes": "None",
+      "clothing": {
+          "headwear": "Red headscarf",
+          "top": "Richly embroidered vest",
+          "pants": "Loose, flowing skirt",
+          "outerwear": "Decorated shawl draped over shoulders",
+          "footwear": "Leather sandals"
+      }
+    },
+    "other_notes": [
+      "Her voice carries the lilt of a far-off place, often accompanied by a knowing smile",
+      "The scent of exotic spices and incense lingers around her wagon"
+    ],
+    "relationships": {}
+  }
+]

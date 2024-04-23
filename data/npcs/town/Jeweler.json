@@ -1,0 +1,37 @@
+[
+  {
+    "title": "The Jeweler",
+    "name": "Caspian",
+    "summary": "The Jeweler, with his keen eye for the lustrous and the rare, operates from the shadows of his modest stall. Twitchy and eager, he seeks more fragments of the cosmic stones that plague the farmstead.",
+    "history": "A craftsman of once-renowned fame, the Jeweler's life took a stark turn when he unearthed a cosmic stone of undescribale allure, now he sells his hard-collected wares for more.",
+    "traits": [
+      "Perceptive",
+      "Meticulous",
+      "Twitchy",
+      "Eager"
+    ],
+    "appearance": {
+      "gender": "Male",
+      "height": "Average",
+      "build": "Lean",
+      "skin_tone": "Weathered",
+      "hair_color": "Silvering",
+      "hairstyle": "Pulled back",
+      "facial_hair": "Trimmed beard",
+      "accessories": "None",
+      "distinguishing_marks": "None",
+      "other_notes": "None",
+      "clothing": {
+          "headwear": "Blue cap",
+          "top": "Dark purple jacket with deep pockets",
+          "pants": "Simple, functional trousers",
+          "outerwear": "Leather apron",
+          "footwear": "Sturdy shoes, practical for work"
+      }
+    },
+    "other_notes": [
+        "The Jeweler is always on the lookout for more cosmic stones, and will pay handsomely for any that are brought to him."
+    ],
+    "relationships": {}
+  }
+]

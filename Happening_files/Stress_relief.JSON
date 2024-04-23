@@ -1,8 +1,0 @@
-{
-    "title": "Stress relief",
-    "num_characters": 1,
-    "summary": "[Character 1] relieves their stress in whatever manner suits them.",
-    "outcome": [2, 6, 8, 4, 1],
-    "relevant_fields": ["fighting_style"],
-    "length": 1
-}

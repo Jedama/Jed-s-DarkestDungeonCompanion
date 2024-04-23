@@ -1,0 +1,36 @@
+[
+  {
+    "title": "The Nurse",
+    "name": "Daphne",
+    "summary": "The Nurse is a somber figure who runs the hamlet's sanitarium, providing care to the afflicted. Her touch is as comforting as her presence is haunting, carrying an aura of melancholy and perseverance.",
+    "history": "Once a cheerful healer from a distant land, the Nurse's spirit was dampened by the unceasing tide of illness and calamity that befell the hamlet. Despite the inevitable cycle of disease and death, she remains steadfast, finding purpose in each life she can ease, if not save.",
+    "traits": [
+      "Compassionate",
+      "Resolute",
+      "Melancholic"
+    ],
+    "appearance": {
+      "gender": "Female",
+      "height": "Average",
+      "build": "Slim",
+      "skin_tone": "Fair",
+      "hair_color": "Dark",
+      "hairstyle": "Long, straight, tucked beneath headwear",
+      "facial_hair": "None",
+      "accessories": "Medallion",
+      "distinguishing_marks": "None",
+      "other_notes": "None",
+      "clothing": {
+          "headwear": "Tall, white conical hat",
+          "top": "Loose-fitting, dark blue tunic",
+          "pants": "Matching dark skirt",
+          "outerwear": "None",
+          "footwear": "Sturdy, practical boots"
+      }
+    },
+    "other_notes": [
+      "Carries an air of quiet dignity amidst the despair that surrounds her"
+    ],
+    "relationships": {}
+  }
+]

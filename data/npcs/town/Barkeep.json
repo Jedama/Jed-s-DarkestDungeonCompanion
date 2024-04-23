@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Barkeep",
+    "name": "Bram",
+    "summary": "The Barkeep, the stalwart guardian of spirits both liquid and ethereal, keeps the tavern's hearth warm and the ale flowing. His boisterous laugh and tall tales are as much a comfort to the troubled souls of the hamlet as his strong brews.",
+    "history": "With a history marred by battles both on the field and across bar tops, Bram turned his brawn to the business of mending spirits rather than clashing swords. Each scar tells a story, and his presence in the tavern is a tale of redemption and resilience.",
+    "traits": [
+      "Hearty",
+      "Observant"
+    ],
+    "appearance": {
+      "gender": "Male",
+      "height": "Burly",
+      "build": "Muscular",
+      "skin_tone": "Rugged tan",
+      "hair_color": "Salt and pepper",
+      "hairstyle": "Short, braided",
+      "facial_hair": "Thick beard",
+      "accessories": "Golden earrings in both ears",
+      "distinguishing_marks": "Battle scars across arms and face",
+      "other_notes": "None",
+      "clothing": {
+          "headwear": "None",
+          "top": "Leather vest over a white linen shirt",
+          "pants": "Sturdy brown trousers",
+          "outerwear": "Green barkeep's apron",
+          "footwear": "Heavy leather boots"
+      }
+    },
+    "other_notes": [
+      "Has a deep, rumbling laugh that echoes through the tavern"
+    ],
+    "relationships": {}
+  }
+]

@@ -1,0 +1,13 @@
+[
+    {
+        "title": "Shared Cooking",
+        "num_characters": 3,
+        "summary": "[character 1] cooks and shares a meal with [character 2] and [character 3]. ",
+        "outcome": [2, 3, 6, 2, 1],
+        "relevant_fields": [],
+        "length": 2,
+        "npcs": [],
+        "glossary": [],
+        "special_consequences": ["gain_disease"]
+    }
+]

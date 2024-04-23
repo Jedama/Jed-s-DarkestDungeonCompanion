@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Ancestor",
+    "name": "Pandora Dantill",
+    "summary": "The Ancestor, the forebearer of ruin, whose insatiable curiosity and hubris tore asunder the veil of reality, beckoning forth the Darkest Dungeon. He gambled his legacy and the safety of the realm on forbidden occult practices, only to doom his lineage and land. He sent the letter recieved by the Heir and Heiress to reclaim the estate and restore the family name.",
+    "history": "Once a respected noble, the Ancestor's insatiable curiosity for the occult and the cosmic unknown drove him to delve into the eldritch depths beneath the manor. His tireless search for power and his insidious dealings brought forth a maelstrom of madness and death, a legacy he left for his descendants to deal with.",
+    "traits": [
+      "Aristocratic",
+      "Intelligent",
+      "Hubristic",
+      "Machiavellian",
+      "Ruthless",
+      "Manipulative"
+    ],
+    "appearance": {
+      "gender": "Male",
+      "height": "Tall",
+      "build": "Gaunt",
+      "skin_tone": "Pallid",
+      "hair_color": "Salt and pepper",
+      "hairstyle": "Well-kept",
+      "facial_hair": "Styled beard and mustache",
+      "accessories": "None",
+      "distinguishing_marks": "None",
+      "clothing": {
+          "top": "Refined jacket",
+          "pants": "Tailored trousers",
+          "outerwear": "Luxurious red mantle",
+          "footwear": "Polished shoes"
+      }
+    },
+    "other_notes": [
+      "The echoes of his voice narrate the struggle against the darkness he unleashed."
+    ],
+    "relationships": {
+      "Persephone Dantill": {
+        "affinity": 0,
+        "relationship_type": "Ancestral",
+        "description": "The Ancestor views the Heiress' with a detached curiosity, wondering if she will succumb to the same fate he did or rise above it.",
+        "other_notes": "None."
+      },
+      "Percival Dantill": {
+        "affinity": 0,
+        "relationship_type": "Ancestral",
+        "description": "The Ancestor views the Heir's with a detached curiosity, wondering if he will succumb to the same fate he did or rise above it.",
+        "other_notes": "None."
+      }
+    }
+  }
+]

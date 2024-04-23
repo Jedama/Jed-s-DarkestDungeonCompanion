@@ -1,13 +1,8 @@
-from Source.storage import load_data
-from Source.logic import reset
-from Source.happening import craft_happening_story
-from Source.model import Character
+from classes import Estate
 
-characters = reset()
+estate = Estate('Dantill')
+estate.start_campaign()
 
-# Generate the prompt
-story, consequences = craft_happening_story(characters)
+estate.start_event()
 
-print(story, '\n', consequences)
-
-characters = load_data(Character)
+print(estate.characters['Crusader'].stats)

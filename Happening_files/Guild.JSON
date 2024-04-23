@@ -1,8 +1,0 @@
-{
-    "title": "Guild",
-    "num_characters": 1,
-    "summary": "[character 1] finds themselves at the guild's training hall.",
-    "outcome": [1, 2, 7, 3, 1],
-    "relevant_fields": [],
-    "length": 1
-}

@@ -1,0 +1,93 @@
+{
+    "title": "Heiress",
+    "name": "Persephone Dantill",
+    "level": 0,
+    "summary": "The Heiress to the accursed Dantill estate wields a strong air of authority as she commands the daunting task of reclaiming her ancestral home. Armed with intelligence and strategic insight, she also manages the nearby hamlet, serving as a pillar of strength in a community plagued by supernatural horrors. Despite her capabilities, her dismissive and stubborn traits often surface, especially when her methods or authority are challenged.",
+    "history": "Upon receiving a chilling letter from her late ancestor, the Heiress left her academic pursuits to take up her role as the heiress of the estate. She found herself thrust into a nightmarish reality where her ancestral home was not only physically deteriorated but also infested with the horrors summoned by her ancestor's dark rituals.",
+    "religion": "None",
+    "traits": [
+        "Determined",
+        "Resourceful",
+        "Strategic",
+        "Intelligent",
+        "Stubborn",
+        "Authoritative",
+        "Dismissive"
+    ],
+    "status": {
+        "physical": 10,
+        "mental": 9,
+        "description": "In good health and high spirits"
+    },
+    "stats": {
+        "strength": 3,
+        "agility": 5,
+        "intelligence": 8,
+        "authority": 10,
+        "sociability": 9
+    },
+    "equipment": [
+        "Derringer pistol",
+        "wine bottle"
+    ],
+    "trinkets": [
+        "None"
+    ],
+    "appearance": {
+        "gender": "Female",
+        "height": "Average",
+        "build": "Average",
+        "skin_tone": "Fair",
+        "hair_color": "Blond",
+        "hairstyle": "Curled and styled to shoulder length",
+        "facial_hair": "None",
+        "accessories": "None",
+        "distinguishing_marks": "None",
+        "clothing": {
+            "top": "White ruffled shirt",
+            "pants": "Mustard yellow breeches",
+            "outerwear": "Blue double-breasted tailcoat with gold buttons",
+            "footwear": "Brown boots"
+        }
+    },
+    "fighting_style": {
+        "preferred_range": "Mid-range",
+        "preferred_weapon": "Derringer pistol",
+        "strengths": [
+            "Quick reflexes",
+            "Sharpshooting",
+            "Strategic thinking"
+        ],
+        "weaknesses": [
+            "Close combat",
+            "Physical strength"
+        ]
+    },
+    "magic": "None",
+    "other_notes": [
+        "Has a wine addiction."
+    ],
+    "relationships": {
+        "Crusader": {
+            "affinity": 5,
+            "relationship_type": "Professional",
+            "description": "The Heiress is cautiously assessing the Crusader's capabilities as her new hire.",
+            "history": "The Crusader has recently joined the Heiress's guard on probationary terms.",
+            "other_notes": "None."
+        },
+        "Highwayman": {
+            "affinity": 3,
+            "relationship_type": "Cautious",
+            "description": "The Heiress remains wary of the Highwayman, given his dubious past and rough demeanor.",
+            "history": "The Highwayman has recently joined the Heiress's guard on probationary terms.",
+            "other_notes": "None."
+        },
+        "Heir": {
+            "affinity": 8,
+            "relationship_type": "Familial",
+            "description": "Despite a cold exterior and lifetime of bickering, the Heiress loves and will not let harm come upon the Heir.",
+            "history": "The Heir is the Heiress's brother, and they grew up together.",
+            "other_notes": "None."
+        }
+    }
+}

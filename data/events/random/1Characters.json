@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Bar visit",
+        "num_characters": 1,
+        "summary": "[Character 1] visits the tavern.",
+        "outcome": [2, 6, 8, 4, 1],
+        "relevant_fields": ["fighting_style"],
+        "length": 1,
+        "npcs": ["Barkeep"],
+        "glossary": ["Tavern"]
+    },
+    {
+        "title": "Dream",
+        "num_characters": 1,
+        "summary": "[Character 1] wakes up, mind racing with the vivid details of a dream.",
+        "outcome": [1, 4, 4, 4, 1],
+        "length": 1
+    },
+    {
+        "title": "Guild",
+        "num_characters": 1,
+        "summary": "[character 1] finds themselves at the guild's training hall.",
+        "outcome": [1, 3, 6, 4, 2],
+        "relevant_fields": ["fighting_style"],
+        "length": 1,
+        "npcs": ["Guildmaster"],
+        "glossary": ["Guild"],
+        "special_consequences": []
+    },
+    {
+        "title": "Stress Relief",
+        "num_characters": 1,
+        "summary": "[Character 1] relieves their stress in whatever manner suits them.",
+        "outcome": [1, 3, 4, 7, 3],
+        "relevant_fields": ["fighting_style"],
+        "length": 1,
+        "npcs": [],
+        "glossary": [],
+        "special_consequences": []
+    }
+    
+]
