@@ -64,11 +64,10 @@ class Character:
         }
     
     def nothing(self):
-        """ Do nothing. This method exists just to handle the 'nothing' command gracefully. """
+        # Do nothing. This method exists just to handle the 'nothing' command gracefully.
         pass
 
     def update_stat(self, field, change):
-        """ Update a specific stat by a given amount. """
 
         # If change is str +x change to int x
         if isinstance(change, str):
@@ -79,8 +78,7 @@ class Character:
         else:
             print(f"Stat {field} does not exist.")
 
-    def update_physical_state(self, change):
-        """ Update the physical state of the character. """
+    def update_status_physical(self, change):
 
         # If change is str +x change to int x
         if isinstance(change, str):
@@ -88,75 +86,87 @@ class Character:
 
         self.status['physical'] += change
 
-    def update_mental_state(self, change):
+    def update_status_mental(self, change):
 
-        # If change is str +x change to int x
-        if isinstance(change, str):
-            change = int(change.replace('+', ''))
-
-        """ Update the mental state of the character. """
         self.status['mental'] += change
 
     def update_status_description(self, description):
-        """ Update the overall status description of the character. """
         self.status['description'] = description
 
     def update_appearance_description(self, field, description):
-        """ Update a specific feature of the character's appearance. """
         if field in self.appearance:
             self.appearance[field] = description
         else:
             print(f"Appearance attribute {field} does not exist.")
 
     def update_clothing_description(self, field, description):
-        """ Update a specific piece of clothing's description. """
         if field in self.appearance['clothing']:
             self.appearance['clothing'][field] = description
         else:
             print(f"Clothing attribute {field} does not exist.")
 
     def gain_trait(self, trait):
-        """ Add a new trait to the character. """
         if trait not in self.traits:
             self.traits.append(trait)
 
     def lose_trait(self, trait):
-        """ Remove a trait from the character. """
         if trait in self.traits:
             self.traits.remove(trait)
 
     def gain_note(self, note):
-        """ Add a note to the character's profile. """
         self.other_notes.append(note)
 
     def lose_note(self, note):
-        """ Remove a note from the character's profile. """
         if note in self.other_notes:
             self.other_notes.remove(note)
 
     def gain_equipment(self, equipment):
-        """ Add a piece of equipment to the character. """
         self.equipment.append(equipment)
 
     def lose_equipment(self, equipment):
-        """ Remove a piece of equipment from the character. """
         if equipment in self.equipment:
             self.equipment.remove(equipment)
 
     def lose_trinket(self, trinket):
-        """ Remove a trinket from the character. """
         if trinket in self.trinkets:
             self.trinkets.remove(trinket)
 
+    def update_summary(self, new_summary):
+        self.summary = new_summary
+
+    def update_history(self, new_history):
+        self.history = new_history
+
+    def update_religion(self, new_religion):
+        self.religion = new_religion
+
+    def gain_fighting_strength(self, strength):
+        if strength not in self.fighting_style['strengths']:
+            self.fighting_style['strengths'].append(strength)
+
+    def lose_fighting_strength(self, strength):
+        if strength in self.fighting_style['strengths']:
+            self.fighting_style['strengths'].remove(strength)
+
+    def gain_fighting_weakness(self, weakness):
+        if weakness not in self.fighting_style['weaknesses']:
+            self.fighting_style['weaknesses'].append(weakness)
+
+    def lose_fighting_weakness(self, weakness):
+        if weakness in self.fighting_style['weaknesses']:
+            self.fighting_style['weaknesses'].remove(weakness)
+
     def update_relationship_affinity(self, title, change):
-        """ Update the affinity level within the relationship with another character. """
+        # If change is str +x change to int x
+        if isinstance(change, str):
+            change = int(change.replace('+', ''))
+
         if title in self.relationships:
             self.relationships[title]['affinity'] += change
         else:
             print(f"No relationship with {title} exists to update affinity.")
 
     def update_relationship_description(self, title, description):
-        """ Update the description within the relationship with another character. """
         if title in self.relationships:
             self.relationships[title]['description'] = description
         else:

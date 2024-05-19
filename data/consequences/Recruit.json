@@ -1,0 +1,13 @@
+{   
+    "title": "Recruit",
+    "consequences": [
+        {"command": "update_summary", "params": {"summary": "updated summary"}, "text": "Modify the summary of a character, keeping most of the original content."},
+        {"command": "update_history", "params": {"history": "updated history"}, "text": "Modify the history of a character, keeping most of the original content."},
+        {"command": "gain_fighting_strength", "params": {"strength": "new strength"}, "text": "Gain a new fighting strength for the character"},
+        {"command": "lose_fighting_strength", "params": {"strength": "existing strength"}, "text": "Lose an existing fighting strength from the character"},
+        {"command": "gain_fighting_weakness", "params": {"weakness": "new weakness"}, "text": "Gain a new fighting weakness for the character"},
+        {"command": "lose_fighting_weakness", "params": {"weakness": "existing weakness"}, "text": "Lose an existing fighting weakness from the character"},
+        {"command": "update_religion", "params": {"religion": "new religion"}, "text": "Set the character's religion to a new religion."},
+        {"command": "assign_job", "params": {"job": "new job"}, "text": "Assign the character to a new job."}
+    ]
+}

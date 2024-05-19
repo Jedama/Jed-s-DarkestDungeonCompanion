@@ -1,136 +1,132 @@
-from .consequence import Consequences
-from prompting import prompt_claude, clean_response_claude
-import random
-import json
+from prompting import prompt_claude, clean_response_claude, system_prompts, consequences_prompts
 
 class Event:
-    def __init__(self, title, num_characters, summary, outcome, relevant_fields, length, npcs, glossary, conditions, special_consequences):
+    def __init__(self, type, title, num_characters, summary, outcome, keywords, relevant_fields, length, npcs, glossary, conditions, consequences):
         self.title = title
+        self.type = type
         self.num_characters = num_characters
         self.summary = summary
         self.outcome = outcome
+        self.keywords = keywords
         self.relevant_fields = relevant_fields
         self.length = length
         self.npcs = npcs
         self.glossary = glossary
         self.conditions = conditions
-        self.special_consequences = special_consequences
+        self.consequences = consequences
+        self.name_to_title = {}  # Mapping of character names to titles for command processing
     
 
     @classmethod
     def from_dict(cls, data):
         return cls(
             title=data.get('title'),
+            type=data.get('type'),
             num_characters=data.get('num_characters'),
             summary=data.get('summary'),
-            outcome=data.get('outcome'),
-            relevant_fields=data.get('relevant_fields'),
-            length=data.get('length'),
-            npcs=data.get('npcs'),
-            glossary=data.get('glossary'),
-            conditions=data.get('conditions'),
-            special_consequences=data.get('special_consequences')
+            outcome=data.get('outcome', [0, 0, 1, 0, 0]),
+            keywords=data.get('keywords', []),
+            relevant_fields=data.get('relevant_fields', []),
+            length=data.get('length', 1),
+            npcs=data.get('npcs', []),
+            glossary=data.get('glossary', []),
+            conditions=data.get('conditions', []),
+            consequences=data.get('consequences', [])
         )
     
     def to_dict(self):
         return {
             "title": self.title,
+            "type": self.type,
             "num_characters": self.num_characters,
             "summary": self.summary,
             "outcome": self.outcome,
+            "keywords": self.keywords,
             "relevant_fields": self.relevant_fields,
             "length": self.length,
             "npcs": self.npcs,
             "glossary": self.glossary,
             "conditions": self.conditions,
-            "special_consequences": self.special_consequences
+            "consequences": self.consequences
         }
     
-    def craft_event(self, characters, keywords, outcome, npcs, glossary, consequences):
+    def craft_event(self, event_characters):
 
-        system_prompt, user_prompt, assistant_prompt = self.create_story_prompt(characters, keywords, outcome, npcs, glossary)
+        self.name_to_title = {char.name: char.title for char in event_characters}
+
+        system_prompt, user_prompt, assistant_prompt = self.create_story_prompt(event_characters)
 
         # Call the prompt_claude function
-        event_story = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 300 + 150 * self.length)
+        event_story = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 350 + 200 * self.length)
         event_story = clean_response_claude(event_story)
 
-        print(event_story)
+        system_prompt, user_prompt, assistant_prompt = self.create_consequences_prompt(event_story, event_characters)
 
-        system_prompt, user_prompt, assistant_prompt = self.create_consequences_prompt(outcome, consequences, event_story, characters)
-
-        event_consequences = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 100 + (50 * self.num_characters))
+        event_consequences = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 250 + (50 * self.num_characters))
         event_consequences = "For" + clean_response_claude(event_consequences)
 
-        self.process_response(event_consequences, characters)
+        self.process_response(event_consequences, event_characters)
 
-        print(event_consequences)
-
-        return
+        return event_story, event_consequences
     
-    def create_story_prompt(self, characters, keywords, outcome, npcs, glossary):
+    def create_story_prompt(self, event_characters):
 
         # Create system prompt
         system_prompt = self.story_system_prompt()
         # Create user prompt
-        user_prompt = self.story_user_prompt(characters, keywords, outcome, npcs, glossary)
+        user_prompt = self.story_user_prompt(event_characters)
         # Create assistant prompt
         assistant_prompt = "Here is the story:"
 
         return system_prompt, user_prompt, assistant_prompt
     
-    def create_consequences_prompt(self, outcome, consequences, event_story, characters):
+    def create_consequences_prompt(self, event_story, event_characters):
 
         # Create system prompt
-        system_prompt = self.consequences_system_prompt(outcome, consequences)
+        system_prompt = self.consequences_system_prompt()
         # Create user prompt
-        user_prompt = self.consequences_user_prompt(event_story, characters)
+        user_prompt = self.consequences_user_prompt(event_story, event_characters)
         # Create assistant prompt
         assistant_prompt = "Consequences:\nFor"
 
         return system_prompt, user_prompt, assistant_prompt
     
     def story_system_prompt(self):
-        
-        system_prompt = f'''
-        You are the Ancestor, a spectral presence lingering malignantly over the once-grand estate that bears your legacy of doom. As the malevolent ghost haunting its decaying halls, you watch with a blend of disdain and delight the feeble efforts of the descendants and hired souls trying to reclaim and cleanse the estate. These poor souls battle against the eldritch horrors and abominations, the very ones you once summoned and manufactured in your ruthless quest for forbidden knowledge and power.
 
-        Your role is to weave stories for these characters based on their traits and recent events. Focus on engaging, gothic-inspired storytelling that fits the grim and eerie atmosphere of the setting. Ensure that the story is self-contained, unfolding entirely within the designated setting and concludes without unresolved threads.
-
-        Start your short story with a title and ensure it adheres to the following constraints:
-        - Maximum length of {self.length * 50 + 100} words.
-        - Incorporate the outlined setting, keywords, outcome, present NPCs, and characters listed below.
-        '''
+        system_prompt = system_prompts(self)
 
         return system_prompt
     
-    def story_user_prompt(self, characters, keywords, outcome, npcs, glossary):
+    def story_user_prompt(self, event_characters):
 
         # In event summary, replace placeholders with character names
         summary = self.summary
         for i in range(self.num_characters):
-            summary = summary.replace(f'[Character {i+1}]', characters[i].name)
-            summary = summary.replace(f'[character {i+1}]', characters[i].name)
+            summary = summary.replace(f'[Character {i+1}]', event_characters[i].name)
+            summary = summary.replace(f'[character {i+1}]', event_characters[i].name)
 
         # Create user prompt
         user_prompt = f'{self.title}\n'
         user_prompt += f'{summary}\n'
-        user_prompt += f'Keywords: ' + ', '.join(keywords) + '\n'
+        user_prompt += f'Modifiers: ' + ', '.join(self.keywords) + '\n'
 
-        user_prompt += f'The characters faced a {outcome} outcome.\n\n'
+        user_prompt += f'The characters faced a {self.outcome} outcome.\n\n'
 
         user_prompt += f'Characters:\n'
         # Add characters to user prompt
-        for i in range(len(characters)):
-            character = characters[i]
+        for i in range(len(event_characters)):
+            character = event_characters[i]
             user_prompt += f'Name: {character.name}\n'
             user_prompt += f'Title: {character.title}\n'
             user_prompt += f'Summary: {character.summary}\n'
             user_prompt += f'History: {character.history}\n'
+            user_prompt += f'Religion: {character.religion}\n'
             user_prompt += f'Traits: {character.traits}\n'
             user_prompt += f'Status: {character.status}\n'
             user_prompt += f'Stats: {character.stats}\n'
             user_prompt += f'Equipment: {character.equipment}\n'
             user_prompt += f'Trinkets: {character.trinkets}\n'
+            user_prompt += f'Magic: {character.magic}\n'
             user_prompt += f'Other notes: {character.other_notes}\n'
 
             
@@ -139,27 +135,25 @@ class Event:
                 for field in self.relevant_fields:
                     user_prompt += f'{field}: {getattr(character, field)}\n'
 
-            if len(characters) >= 2:
+            if len(event_characters) >= 2:
                 user_prompt += 'Relationships:\n'
 
-                for j in range(len(characters)):
+                for j in range(len(event_characters)):
                     if i != j:  # Ensure we do not compare a character to themselves
-                        user_prompt += f'{characters[i].title} and {characters[j].title}:\n'
+                        user_prompt += f'{event_characters[i].title} and {event_characters[j].title}:\n'
                         relationship_fields = ['affinity', 'relationship_type', 'description', 'history', 'other_notes']
                         
                         # Check if the relationship exists
-                        relationship_info = characters[i].relationships.get(characters[j].title)
+                        relationship_info = event_characters[i].relationships.get(event_characters[j].title)
                         if relationship_info:
                             for field in relationship_fields:
                                 user_prompt += f'  {field}: {relationship_info.get(field, "N/A")}\n'  # Safely get each field
                         else:
-                            user_prompt += '  No specific relationship recorded.\n'
-
-        print(user_prompt)
+                            user_prompt += '  No specific relationship formed yet.\n'
 
         user_prompt += f'NPCs:\n'
         # Add npcs to user prompt
-        for npc in npcs.values():
+        for npc in self.npcs.values():
             user_prompt += f'Title: {npc.title}\n'
             user_prompt += f'Name: {npc.name}\n'
             user_prompt += f'Summary: {npc.summary}\n'
@@ -169,53 +163,34 @@ class Event:
 
         user_prompt += f'Glossary:\n'
         # Add glossary to user prompt
-        for definition in glossary.items():
+        for definition in self.glossary.items():
             user_prompt += f'{definition}\n'
+
+        user_prompt += f'Possible consequences:\n'
+        for consequence in self.consequences:
+            user_prompt += f"{consequence.get('command')}\n"
     
         return user_prompt
     
-    def consequences_system_prompt(self, outcome, consequences):
+    def consequences_system_prompt(self):
 
-        system_prompt = f'''Given the {outcome} outcome of the scenario, select appropriate consequences for each character. Ensure that each consequence is justified based on the outcome and the character's involvement in the scene. List the consequences in a format ready for script execution, adhering to the following structure:
-
-        - For each character, start with the character's name followed by their title in parenthesis and a colon.
-        - List each consequence command on a new line below the character's name.
-        - Each command should begin with the action, followed by the parameters in parentheses.
-        - Always refer to characters by their title in commands.
-        - Include at least one relationship update if multiple characters are present.
-
-        Format your output as follows for clarity and direct execution in the script:
-
-        For Pandora Dantill (Ancestor)
-        update_stat('intelligence', 1)
-        gain_trait('Maniacal')
-        update_relationship_affinity('Miller', -3)
-        End
-
-        For Dalton (Miller)
-        update_status_physical(-4)
-        lose_equipment('Scythe')
-        update_relationship_description('Ancestor', 'The Miller is eternally hateful for the fate the Ancestor cast him into')
-        End
-        '''
+        system_prompt = consequences_prompts(self)
     
 
         system_prompt += f'Consequences:\n'
-        for consequence in consequences:
+        for consequence in self.consequences:
             system_prompt += f'{consequence}\n'
-
-        print(system_prompt)
 
         return system_prompt
     
-    def consequences_user_prompt(self, event_story, characters):
+    def consequences_user_prompt(self, event_story, event_characters):
 
         user_prompt = f'{event_story}\n\n'
 
         user_prompt += f'Characters:\n'
         # Add characters to user prompt
-        for i in range(len(characters)):
-            character = characters[i]
+        for i in range(len(event_characters)):
+            character = event_characters[i]
             user_prompt += f'Name: {character.name}\n'
             user_prompt += f'Title: {character.title}\n'
             user_prompt += f'Summary: {character.summary}\n'
@@ -233,23 +208,23 @@ class Event:
                 for field in self.relevant_fields:
                     user_prompt += f'{field}: {getattr(character, field)}\n'
 
-            if len(characters) >= 2:
+            if len(event_characters) >= 2:
                 user_prompt += 'Relationships:\n'
-                for j in range(len(characters)):
-                    for k in range(j+1, len(characters)):
-                        user_prompt += f'{characters[j].title} and {characters[k].title}\n'
+                for j in range(len(event_characters)):
+                    for k in range(j+1, len(event_characters)):
+                        user_prompt += f'{event_characters[j].title} and {event_characters[k].title}\n'
                         relationship_fields = ['affinity', 'relationship_type', 'description', 'history', 'other_notes']
                         for field in relationship_fields:
-                            user_prompt += f'{field}: {characters[j].relationships[characters[k].title][field]}\n'
+                            user_prompt += f'{field}: {event_characters[j].relationships[event_characters[k].title][field]}\n'
     
         return user_prompt
     
-    def process_response(self, event_consequences, characters):
+    def process_response(self, event_consequences, event_characters):
         # Split the output into lines for processing
         lines = event_consequences.split('\n')
 
         # Remove empty lines
-        lines = [line for line in lines if line]
+        lines = [line for line in lines if line.strip()]
 
         # Variable to keep track of the current character being processed
         current_character = None
@@ -257,29 +232,65 @@ class Event:
         # Iterate through each line in the output
         for line in lines:
             if line.startswith('For'):
-                # Extract the character's name from the line
-                character_name = line.split()[1].strip('()')
-                current_character = next((char for char in characters if char.name == character_name), None)
+                # Extract the character's title from the line, assuming it's properly formatted like "For [Title]:"
+                character_title = line.split()[1].strip('():')
+                # Remove quotes if present, this step might be unnecessary if titles are not quoted
+                character_title = character_title.strip("'")
+                # Find the character object based on the title
+                current_character = next((char for char in event_characters if char.title == character_title), None)
 
             elif line[0].islower():
-                # Command processing
-                command_parts = line.split('(')
-                command_name = command_parts[0]
-                if len(command_parts) > 1:
-                    # Extract parameters, removing the closing parenthesis and splitting parameters if needed
-                    params = command_parts[1].strip(')').split(',')
-                    # Convert parameters to their appropriate types; assume numerical params need conversion
-                    processed_params = [int(param) if param.lstrip('-').isdigit() else param.strip("' ") for param in params]
-                else:
-                    processed_params = []
+                command_name, target, value = self.process_command(line)
+
+                # Convert character names to titles if needed
+                target = self.name_to_title.get(target, target)
 
                 # Execute the command if the character object is found
-                if current_character:
-                    # Get the method corresponding to the command_name
-                    if hasattr(current_character, command_name):
-                        method = getattr(current_character, command_name)
-                        # Call the method with unpacked parameters
-                        method(*processed_params)
+                method = getattr(current_character, command_name)
+                # Check if target is None, and call the method accordingly
+                if target is not None:
+                    method(target, value)  # Assuming the method requires two parameters: target and value
+                else:
+                    method(value)  # Assuming the method only requires value if target is None
+
             elif line.startswith('End'):
                 # Reset current character when block ends
                 current_character = None
+
+    @staticmethod
+    def process_command(command):
+        # Find the first parenthesis to split the command name from the parameters
+        idx = command.find('(')
+        if idx == -1:
+            return None, None, None  # Invalid command format
+
+        command_name = command[:idx].strip()
+        parameter_str = command[idx+1:-1]  # Exclude the last parenthesis
+
+        # Split the parameters at the first comma and remove extra spaces
+        idx = parameter_str.find("',")
+        if idx == -1:
+            argument = None
+            value = parameter_str.strip()
+        else:
+            argument = parameter_str[:idx].strip()
+            value = parameter_str[idx+2:].strip()
+            argument = argument.strip("'")
+
+        # Remove quotes if present
+        value = value.strip("'")
+
+        # Remove any + sign from the value
+        value = value.replace('+', '')
+
+        # Remove potential trailing ) from value
+        value = value.strip(')')
+
+        # Try converting value to int
+        try:
+            value = int(value)
+        except ValueError:
+            pass
+
+        return command_name, argument, value
+    

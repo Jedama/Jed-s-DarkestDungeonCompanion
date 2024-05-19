@@ -1,0 +1,105 @@
+{
+  "title": "Plague Doctor",
+  "name": "Paracelsus",
+  "level": 0,
+  "money": 0,
+  "summary": "The Plague Doctor, is primarily driven by her fervor to practice medicine and unlock the secrets of life and death. Ostracized for her radical methods, she now makes use of the Heirs' resources, offering her medical expertise on missions in return for the freedom to conduct her experiments at the hamlet.",
+  "history": "Once a top student embroiled in scandal due to her unconventional theories, the Plague Doctor's intense curiosity pushed her beyond academic boundaries. Her breakthrough came when she revived the cadaver of her deceased professor during an unauthorized experiment. Haunted by the consequences of her actions, she was compelled to leave her former life behind, seeking refuge and opportunity in the shadows of the hamlet's resources.",
+  "religion": "Agnostic",
+  "traits": [
+      "Innovative",
+      "Obsessive",
+      "Paranoid",
+      "Isolated"
+  ],
+  "status": {
+      "physical": 10,
+      "mental": 9,
+      "description": "In good health and decent spirits",
+      "wounds": [],
+      "diseases": []
+  },
+  "stats": {
+      "strength": 3,
+      "agility": 5,
+      "intelligence": 9,
+      "authority": 3,
+      "sociability": 2
+  },
+  "equipment": [
+      "Incicion knife",
+      "Sachets",
+      "Toxic flasks"
+  ],
+  "trinkets": [
+  ],
+  "appearance": {
+      "gender": "Female",
+      "height": "Average",
+      "build": "Slim",
+      "skin_tone": "Pale",
+      "hair_color": "Hidden under hood",
+      "hairstyle": "Short brown and unkempt",
+      "facial_hair": "None",
+      "accessories": ["Plague mask"],
+      "distinguishing_marks": ["None"],
+      "other_notes": ["Wears glasses when not wearing her mask"],
+      "clothing": {
+          "headwear": "Iconic Plague Doctor mask",
+          "top": "Dark leather coat",
+          "pants": "None",
+          "outerwear": "Hooded cloak",
+          "footwear": "High leather boots"
+      }
+  },
+  "fighting_style": {
+      "preferred_range": "Mid-range",
+      "preferred_weapon": "Alchemy and thrown weapons",
+      "strengths": [
+          "Chemical warfare",
+          "Medical knowledge",
+          "Blinding"
+      ],
+      "weaknesses": [
+          "Physical combat",
+          "Social interactions",
+          "Agility",
+          "Dodging"
+      ]
+  },
+  "magic": "None.",
+  "other_notes": [
+      "Struggles with ethical boundaries in her pursuit of knowledge"
+  ],
+  "relationships": {
+    "Heiress": {
+        "affinity": 3,
+        "relationship_type": "Utilitarian",
+        "description": "The Plague Doctor views the Heiress as a facilitator for acquiring the resources necessary for her experiments. She is indifferent to the Heiress's overarching goals and is often frustrated by the Heiress's scrutiny over her expenditures.",
+        "history": "Their relationship is strained by the Plague Doctor's single-minded focus on her research, which clashes with the Heiress's careful management of the estate's resources.",
+        "other_notes": "None"
+    },
+    "Heir": {
+        "affinity": 5,
+        "relationship_type": "Convenient",
+        "description": "The Plague Doctor appreciates the Heir's disinterest in micromanaging how she uses the estate's resources, allowing her greater freedom to pursue her medical experiments. She values this relationship as it minimally interferes with her work and maximizes her access to needed materials.",
+        "history": "She finds the Heir's hands-off approach conducive to her research, making him a preferred ally despite her general disinterest in the estate's broader quest.",
+        "other_notes": "None"
+    },
+    "Crusader": {
+        "affinity": 3,
+        "relationship_type": "Dislike",
+        "description": "The Plague Doctor dislikes the Crusader's religious fervor, which contrasts sharply with her scientific approach.",
+        "history": "Their alliance is strictly professional, born of necessity rather than choice.",
+        "other_notes": "None"
+    },
+    "Highwayman": {
+        "affinity": 4,
+        "relationship_type": "Dislike",
+        "description": "The Plague Doctor dislikes the Crusader's religious fervor, which contrasts sharply with her scientific approach.",
+        "history": "Their alliance is strictly professional, born of necessity rather than choice.",
+        "other_notes": "None"
+    }
+      
+  }
+}

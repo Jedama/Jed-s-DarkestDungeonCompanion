@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for
-from model import Estate
+from classes import Estate
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
     return render_template('home.html')
+
+def event():
+    return render_template('event.html')
 
 @app.route('/start', methods=['POST'])
 def start():

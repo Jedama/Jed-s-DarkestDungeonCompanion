@@ -40,7 +40,27 @@ class EventHandler:
             consequence_type = filename[:-5]
             self.consequences_by_type[consequence_type] =  Consequences.from_dict(read_json(full_path))
 
-    def craft_event(self, characters, event_type='random', event_title=None):
+    def craft_event(self, characters, event_type='random', event_title=None, titles=[], keywords=[]):
+        
+        def craft_event_with_characters(event):
+            # Ensure that the number of specified titles does not exceed the number of characters required by the event
+            if len(titles) > event.num_characters:
+                print(f"Too many titles specified for event '{event.title}'. Expected {event.num_characters} or fewer.")
+                return None, None
+            
+            event_characters = self.choose_characters(event, characters, titles)
+            if event_characters:
+                event.type = event_type
+                self.choose_keywords(event, keywords)
+                self.choose_outcome(event) 
+                self.get_event_npcs(event)
+                self.get_event_glossary(event)
+                self.compile_consequences(event)
+                return event.craft_event(event_characters)
+            else:
+                print(f"No valid characters found for event '{event.title}'")
+                return None, None
+        
         events = self.events_by_type.get(event_type, {})
         if not events:
             print(f"No events available for type '{event_type}'")
@@ -51,56 +71,56 @@ class EventHandler:
             if not event:
                 print(f"No event found with title '{event_title}'")
                 return
+
+            event_story, event_consequences = craft_event_with_characters(event)
+            if event_story and event_consequences:
+                return event_story, event_consequences
+        else:
+            while True:
+                event = random.choice(list(events.values()))
+                if event.num_characters >= len(titles):
+                    event_story, event_consequences = craft_event_with_characters(event)
+                    if event_story and event_consequences:
+                        return event_story, event_consequences
+                print(f"No valid characters found for event '{event.title}' or event invalid for specified characters. Trying another event...")
+
+    def choose_keywords(self, event, keywords=None):
+        # Fetch keyword range from the event, default to [1, 5] if not present
+        keyword_range = getattr(event, 'keyword_range', [1, 5])
+        min_keywords, max_keywords = keyword_range
+
+        if keywords is None:
+            # Determine the number of keywords to choose
+            num_keywords = random.randint(min_keywords, max_keywords)
             
-            # Try to select characters based on the event's requirements
-            event_characters = self.choose_characters(characters, event.num_characters, getattr(event, 'conditions', None))
-            # Get npcs in event
+            # Pick a random sample of keywords
+            picked_keywords = random.sample(self.keywords, num_keywords)
+        else:
+            picked_keywords = keywords
 
-            if event_characters:
-                # If characters are found that meet the conditions, craft the event
-                event.craft_event(event_characters, self.choose_keywords(), self.choose_outcome(event.outcome), self.get_event_npcs(event), self.get_event_glossary(event), self.compile_consequences(event.num_characters, event.special_consequences))
-                return
-            else:
-                print(f"No valid characters found for event '{event.title}'")
-                return
-            
-        # Loop until a suitable event is found
-        while True:
-            
-            event = random.choice(list(events.values()))
+        # Get existing keywords from the event
+        event_keywords = getattr(event, 'keywords', [])
 
-            # Try to select characters based on the event's requirements
-            event_characters = self.choose_characters(characters, event.num_characters, getattr(event, 'conditions', None))
-
-            if event_characters:
-                # If characters are found that meet the conditions, craft the event
-                event.craft_event(event_characters, self.choose_keywords(), self.choose_outcome(event.outcome), self.get_event_npcs(event), self.get_event_glossary(event), self.compile_consequences(event.num_characters, event.special_consequences))
-                
-                return  # Successful crafting of the event, exit the function
-            else:
-                # If no valid characters were found, log the issue and try a new event (if not fixed to a specific title)
-                print(f"No valid characters found for event '{event.title}'. Trying another event...")
-                event_title = None  # Reset event title if trying again
-
+        # Combine event keywords with picked keywords
+        event.keywords = event_keywords + picked_keywords
     
-    def choose_keywords(self, num_keywords=None):
-        if num_keywords is None:
-            num_keywords = random.randint(1, 5)
-        return random.sample(self.keywords, num_keywords)
-    
-    def choose_outcome(self, distribution):
+    def choose_outcome(self, event):
+        # Default distribution with 'neutral' being the most probable
+        distribution = getattr(event, 'outcome', [0, 0, 1, 0, 0])
+        
         # Calculate the total sum of the distribution
         total_sum = sum(distribution)
         
         # Generate a random number between 1 and the total sum
         random_number = random.randint(1, total_sum)
         
-        # Iterate through the distribution and find the corresponding outcome
+        # Find the corresponding outcome based on the random number
         cumulative_sum = 0
+        outcomes = ['horrible', 'bad', 'neutral', 'good', 'excellent']
         for i, count in enumerate(distribution):
             cumulative_sum += count
             if random_number <= cumulative_sum:
-                return ['horrible', 'bad', 'neutral', 'good', 'excellent'][i]
+                event.outcome = outcomes[i]
             
     def get_event_npcs(self, event):
         # Fetch npc titles from the event, default to empty list if none exist
@@ -120,7 +140,7 @@ class EventHandler:
             # Update the event_npcs dict with the NPCs found in this category
             event_npcs.update(found_npcs)
 
-        return event_npcs
+        event.npcs = event_npcs
     
     def get_event_glossary(self, event):
         # Fetch glossary terms from the event, default to empty list if none exist
@@ -130,63 +150,88 @@ class EventHandler:
 
         # Create a new dictionary containing the relevant glossary terms
         event_glossary = {term: self.glossary[term] for term in event_glossary_terms if term in self.glossary}
-        return event_glossary
+        event.glossary = event_glossary
             
-    def choose_characters(self, characters_dict, num_characters, conditions=None):
+    def choose_characters(self, event, characters_dict, titles=[]):
+        def meets_conditions(character, condition):
+            method_name = condition['method']
+            args = condition.get('args', [])
+            method = getattr(character, method_name)
+            return method(*args)
 
-        # Initialise event titles list
-        selected_titles = []
+        selected_titles = [None] * event.num_characters  # Initialize list with placeholders
 
-        # Check for conditions
-        if not conditions:
-            # If no conditions, pick num_characters random characters
-            selected_titles = random.sample(list(characters_dict.keys()), num_characters)
-            return [characters_dict[title] for title in selected_titles]
-        
-        # If conditions, loop over conditions
-        for condition in conditions:
+        conditions = getattr(event, 'conditions', None)
 
-            # Add all characters to candidates list
-            candidates = list(characters_dict.keys())
-            # Remove characters that are already in event_titles
-            candidates = [candidate for candidate in candidates if candidate not in selected_titles]
-            # Randomise candidates order
-            random.shuffle(candidates)
+        if conditions:
+            # If conditions are provided, process each condition
+            for condition in conditions:
+                character_index = condition['character'] - 1  # Convert 1-based to 0-based index
 
-            character_found = False
+                # Prepare a list of candidates with title characters at the front
+                candidates = [title for title in titles if title in characters_dict] + \
+                            [title for title in characters_dict.keys() if title not in titles]
+                random.shuffle(candidates)  # Shuffle to randomize the selection order
 
-            for candidate in candidates:
-                
-                if eval(condition, {}, {"character_1": characters_dict[candidate], "character_2": characters_dict[candidate]}):
-                    selected_titles.append(candidate)
-                    character_found = True
-                    print(f'Character found for condition: {condition}, {candidate}')
-                    break
-            
-            if not character_found:
-                print(f'No character found for condition: {condition}')
-                return None
-            
-        # If all conditions are met, return the characters
+                character_found = False
+                # Go through all candidates until one meets the conditions
+                for candidate in candidates:
+                    character = characters_dict[candidate]
+                    if meets_conditions(character, condition):
+                        selected_titles[character_index] = candidate
+                        character_found = True
+                        print(f'Character found for condition: {condition}, {candidate}')
+                        break
+
+                # If no character is found, return None
+                if not character_found:
+                    print(f'No character found for condition: {condition}')
+                    return None
+
+        # Ensure all title characters can still fit in the selected titles
+        for i, title in enumerate(titles):
+            if title not in selected_titles:
+                for j in range(event.num_characters):
+                    if selected_titles[j] is None:
+                        selected_titles[j] = title
+                        break
+                else:
+                    print(f"Not enough slots for title '{title}'.")
+                    return
+
+        # Fill in remaining positions with random characters
+        remaining_characters = [title for title in characters_dict.keys() if title not in selected_titles]
+        random.shuffle(remaining_characters)
+        for i in range(event.num_characters):
+            if selected_titles[i] is None:
+                if not remaining_characters:
+                    print("Not enough characters to fill the event.")
+                    return
+                selected_titles[i] = remaining_characters.pop()
+
         return [characters_dict[title] for title in selected_titles]
     
-    def compile_consequences(self, num_characters, special_consequences):
+    
+    def compile_consequences(self, event):
         compiled_consequences = self.consequences_by_type['Default'].consequences
 
-        if num_characters > 2:
+        if event.num_characters > 2:
             compiled_consequences += self.consequences_by_type['MultipleCharacters'].consequences
 
-        if special_consequences:
+        if event.title == "Recruit":
+            compiled_consequences += self.consequences_by_type['Recruit'].consequences
+
+        if getattr(event, 'consequences', None):
             compiled_special_consequences = self.consequences_by_type['Special'].consequences
 
-            for consequence_command in special_consequences:
+            for consequence_command in event.consequences:
 
                 for special_consequence in compiled_special_consequences:
 
                     if special_consequence['command'] == consequence_command:
                         compiled_consequences.append(special_consequence)
 
-        return compiled_consequences
+        event.consequences = compiled_consequences
 
 
         

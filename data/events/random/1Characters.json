@@ -24,8 +24,7 @@
         "relevant_fields": ["fighting_style"],
         "length": 1,
         "npcs": ["Guildmaster"],
-        "glossary": ["Guild"],
-        "special_consequences": []
+        "glossary": ["Guild"]
     },
     {
         "title": "Stress Relief",
@@ -36,7 +35,7 @@
         "length": 1,
         "npcs": [],
         "glossary": [],
-        "special_consequences": []
+        "consequences": []
     }
     
 ]

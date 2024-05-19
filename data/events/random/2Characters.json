@@ -75,7 +75,13 @@
         "npcs": ["Trinket Merchant"],
         "glossary": ["Nomads wagon"],
         "special_consequences": ["buy_trinket"],
-        "conditions": ["character_1.has_money(1000)"]
+        "conditions": [
+            {
+                "character": "character_1",
+                "method": "has_money",
+                "args": [1000]
+            }
+        ]
     },
     {
         "title": "Praise",

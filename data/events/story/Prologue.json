@@ -1,0 +1,21 @@
+[
+    {
+        "title": "The Old Road",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] sit inside the stagecoach, travelling down the old road towards the Hamlet for the first time, about to start their long quest. This is the prologue, and the characters aren't yet fully aware of the horrors that await them.",
+        "outcome": [0, 2, 8, 3, 0],
+        "length": 1,
+        "npcs": ["Caretaker"],
+        "glossary": ["Stagecoach", "The Old Road", "Hamlet", "Estate"]
+    },
+    {
+        "title": "Crash",
+        "num_characters": 4,
+        "summary": "Travelling down the old road, about to begin their gruelling quest, the stagecoach crashes and the Caretaker disappears. [Character 1], [Character 2], [Character 3], and [Character 4] assess their injuries and begin making their way to the Hamlet by foot. This is the prologue, and the characters aren't yet fully aware of the horrors that await them.",
+        "outcome": [0, 5, 7, 2, 0],
+        "length": 1,
+        "npcs": ["Caretaker"],
+        "glossary": ["Stagecoach", "The Old Road", "Hamlet", "Estate"],
+        "special_consequences": ["gain_wound"]
+    }    
+]
