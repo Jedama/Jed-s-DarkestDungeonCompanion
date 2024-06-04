@@ -1,0 +1,109 @@
+{
+    "title": "Vestal",
+    "name": "Junia",
+    "level": 0,
+    "summary": "The Vestal, upheld her sacred duties with pious rigor within the Abbey's sheltered confines. Her life, once marked by the tranquility of clerical discipline, was disrupted by forbidden desires and the harsh admonitions of her superiors. She now seeks redemption and freedom from her past torments through divine service in battle.",
+    "history": "Raised within the Abbey's austere walls, the Vestal was the epitome of monastic discipline until a momentary lapse led to her unjust punishment. Imprisoned and tormented, she received a divine revelation that her captors had strayed from the true path. Rescued by radiant light, she now channels her zeal into protecting others, believing fervently in the Light's guidance and her role as its martial emissary.",
+    "race": null,
+    "gender": null,
+    "religion": "The Light",
+    "traits": [
+        "Devoted",
+        "Righteous",
+        "Compassionate",
+        "Vindictive",
+        "Temperamental",
+        "Salacious",
+        "Horny"
+    ],
+    "status": {
+        "physical": 10,
+        "mental": 8,
+        "description": "In good health and decent spirits",
+        "wounds": [],
+        "diseases": []
+    },
+    "stats": {
+        "strength": 4,
+        "agility": 3,
+        "intelligence": 6,
+        "authority": 6,
+        "sociability": 3
+    },
+    "equipment": [
+        "Sacred Mace",
+        "Divine Tome"
+    ],
+    "trinkets": [],
+    "appearance": {
+        "gender": "Female",
+        "height": "Average",
+        "build": "Sturdy",
+        "skin_tone": "Pale",
+        "hair_color": "Hidden under hood",
+        "hairstyle": "Hidden under hood",
+        "facial_hair": "None",
+        "accessories": [],
+        "distinguishing_marks": [],
+        "notes": "None",
+        "clothing": {
+            "headwear": "Hooded robe",
+            "top": "Robe",
+            "pants": "Robe",
+            "outerwear": "Steel breastplate",
+            "footwear": "Leather boots"
+        }
+    },
+    "clothing": null,
+    "combat": {
+        "range": "Mid-range",
+        "weapon": "Mace and divine spells",
+        "strengths": [
+            "Healing abilities",
+            "Divine magic"
+        ],
+        "weaknesses": [
+            "Physical confrontations",
+            "Endurance"
+        ]
+    },
+    "magic": "Powerful healing and protection spells as well as the ability to smite enemies with holy light.",
+    "notes": [],
+    "relationships": {
+        "Crusader": {
+            "affinity": 8,
+            "dynamic": "Spiritual Kinship",
+            "description": "The Vestal sees the Crusader as a brother in arms, bound by their shared devotion to The Light. She respects his martial prowess and relies on his protection in battle.",
+            "history": "Their mutual understanding of divine duty and shared hardships have forged a deep bond of trust and respect. The Crusader's stoic nature complements the Vestal's compassionate but firm approach to their mission.",
+            "notes": "None"
+        },
+        "Heir": {
+            "affinity": 2,
+            "dynamic": "Disdain",
+            "description": "The Vestal is appalled by the Heir's drunken and lascivious behavior, which she sees as a desecration of the sacred grounds she holds dear. She views him with utter disdain and a firm resolve to correct his impious conduct.",
+            "history": "The Vestal caught the Heir drunkenly intruding upon her devotions in the chapel, making lewd comments and disrespecting the sanctity of the holy site, prompting her to forcefully rebuke him with a blast of divine light.",
+            "notes": "None"
+        },
+        "Heiress": {
+            "affinity": 4,
+            "dynamic": "Reverent Skepticism",
+            "description": "The Vestal respects the Heiress's resolute leadership but worries her secular mindset may undermine their holy mission. She hopes to temper the Heiress's pragmatism with spiritual guidance.'",
+            "history": "The Vestal has been summoned by the Heiress to lend divine strength in cleansing the Dantill estate of its unholy taint. Despite their differing beliefs, she sees potential for a productive partnership.",
+            "notes": "None"
+        },
+        "Highwayman": {
+            "affinity": 4,
+            "dynamic": "Wary Sympathy",
+            "description": "The Vestal sees the Highwayman as a troubled soul in need of guidance, sympathizing with his struggles while remaining cautious of his roguish ways.",
+            "history": "The Vestal encountered the Highwayman in a humble hamlet, recognizing his cynical demeanor as a front for deeper spiritual pain. She pledged to aid his path to redemption despite his initial mockery.",
+            "notes": "None"
+        },
+        "Plague Doctor": {
+            "affinity": 3,
+            "dynamic": "Guarded Intrigue",
+            "description": "The Vestal senses a clash between her sacred calling and the Plague Doctor's unconventional methods, but is intrigued by the potential insights the Doctor's knowledge could offer.",
+            "history": "The Vestal crossed paths with the Plague Doctor during her initial tour of the estate, their contrasting philosophies creating an air of tension, yet also a sense of intrigue about their respective roles.",
+            "notes": ""
+        }
+    }
+}

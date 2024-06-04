@@ -3,11 +3,24 @@
         "title": "Shared Cooking",
         "num_characters": 3,
         "summary": "[character 1] cooks and shares a meal with [character 2] and [character 3]. ",
-        "outcome": [2, 3, 6, 2, 1],
-        "relevant_fields": [],
+        "outcomes": [2, 3, 6, 2, 1],
         "length": 2,
-        "npcs": [],
-        "glossary": [],
         "special_consequences": ["gain_disease"]
+    },
+    {
+        "title": "Caught",
+        "num_characters": 3,
+        "summary": "[character 1] is caught doing something private and embarrassing by [character 2] and [character 3]. ",
+        "outcomes": [2, 4, 4, 3, 1],
+        "fields": [],
+        "length": 4        
+    },
+    {
+        "title": "Caught2",
+        "num_characters": 3,
+        "summary": "[character 1] and [character 2] are caught doing something private and embarrassing by [character 3]. ",
+        "outcomes": [2, 4, 4, 3, 1],
+        "fields": [],
+        "length": 4        
     }
 ]

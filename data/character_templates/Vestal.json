@@ -3,8 +3,10 @@
   "name": "Junia",
   "level": 0,
   "money": 0,
-  "summary": "The Vestal, upheld her sacred duties with pious rigor within the Abbey's sheltered confines. Her life, once marked by the tranquility of clerical discipline, was disrupted by forbidden desires and the harsh admonitions of her superiors. She now seeks redemption and freedom from her past torments through divine service in battle.",
+  "summary": "The Vestal, upheld her sacred duties with pious rigor within the Abbey's sheltered confines. Her life, once marked by the tranquility of clerical discipline, was disrupted when her neglect and daydreaming of forbidden desires caused the monastery's eternal light to fade, and she suffered under the harsh admonitions of her superiors. She now seeks redemption and freedom from her past torments through divine service in battle.",
   "history": "Raised within the Abbey's austere walls, the Vestal was the epitome of monastic discipline until a momentary lapse led to her unjust punishment. Imprisoned and tormented, she received a divine revelation that her captors had strayed from the true path. Rescued by radiant light, she now channels her zeal into protecting others, believing fervently in the Light's guidance and her role as its martial emissary.",
+  "race": "Human",
+  "gender": "Female",
   "religion": "The Light",
   "traits": [
       "Devoted",
@@ -18,6 +20,7 @@
   "status": {
       "physical": 10,
       "mental": 8,
+      "affliction": "",
       "description": "In good health and decent spirits",
       "wounds": [],
       "diseases": []
@@ -39,23 +42,24 @@
       "height": "Average",
       "build": "Sturdy",
       "skin_tone": "Pale",
-      "hair_color": "Hidden under hood",
+      "hair_color": "Blonde",
       "hairstyle": "Hidden under hood",
       "facial_hair": "None",
-      "accessories": [],
-      "distinguishing_marks": [],
-      "other_notes": "None",
-      "clothing": {
-          "headwear": "Hooded robe",
-          "top": "Robe",
-          "pants": "Robe",
-          "outerwear": "Steel breastplate",
-          "footwear": "Leather boots"
-      }
+      "accessories": "None",
+      "distinguishing_marks": "None",
+      "notes": "None"
   },
-  "fighting_style": {
-      "preferred_range": "Mid-range",
-      "preferred_weapon": "Mace and divine spells",
+  "clothing": {
+    "headwear": "Hooded robe",
+    "top": "Sacred robe",
+    "pants": "None",
+    "outerwear": "Steel breastplate",
+    "footwear": "Leather boots",
+    "notes": "Thick gloves"
+  },
+  "combat": {
+      "range": "Mid-range",
+      "weapon": "Mace and divine spells",
       "strengths": [
           "Healing abilities",
           "Divine magic"
@@ -66,36 +70,7 @@
       ]
   },
   "magic": "Powerful healing and protection spells as well as the ability to smite enemies with holy light.",
-  "other_notes": [
+  "notes": [
   ],
-  "relationships": {
-    "Crusader": {
-      "affinity": 8,
-      "relationship_type": "Spiritual Kinship",
-      "description": "The Vestal sees the Crusader as a brother in arms, bound by their shared devotion to The Light. She respects his martial prowess and relies on his protection in battle.",
-      "history": "Their mutual understanding of divine duty and shared hardships have forged a deep bond of trust and respect. The Crusader's stoic nature complements the Vestal's compassionate but firm approach to their mission.",
-      "other_notes": "None"
-    },
-    "Heir": {
-      "affinity": 6,
-      "relationship_type": "Guarded Respect",
-      "description": "The Vestal respects the Heir's intelligence and strategic mind but is often frustrated by his lack of physical and moral fortitude. She acts as a moral and spiritual guide to him, urging him to find courage.",
-      "history": "Though she initially doubted his capability to lead, the Vestal has grown to appreciate the Heir's efforts to overcome his fears and limitations, recognizing his crucial role in their quest.",
-      "other_notes": "None"
-    },
-    "Heiress": {
-      "affinity": 6,
-      "relationship_type": "Respectful Challenge",
-      "description": "The Vestal admires the Heiress's strength and decisive nature but is often at odds with her dismissive attitude towards religious aspects of their quest. She strives to remind the Heiress of the spiritual stakes at hand.",
-      "history": "Despite their occasional clashes, the Vestal recognizes the Heiress's leadership as vital and works to support her, hoping to imbue her decisions with a measure of divine wisdom.",
-      "other_notes": "None"
-    },
-    "Highwayman": {
-      "affinity": 5,
-      "relationship_type": "Cautious Empathy",
-      "description": "The Vestal is wary of the Highwayman due to his past but empathizes with his struggle for redemption. She sees in him a soul worth saving and often offers counsel and support.",
-      "history": "Their paths crossed under the dark circumstances of their quest, and while she distrusts his methods, she acknowledges his skills and essential contributions to their survival.",
-      "other_notes": "None"
-    }
-  }
+  "relationships": {}
 }

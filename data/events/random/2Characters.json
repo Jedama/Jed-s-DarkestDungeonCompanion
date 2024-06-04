@@ -3,8 +3,8 @@
         "title": "Argument",
         "num_characters": 2,
         "summary": "[Character 1] has a fierce argument with [Character 2].",
-        "outcome": [4, 3, 2, 1, 1],
-        "relevant_fields": ["fighting_style"],
+        "outcomes": [4, 3, 2, 1, 1],
+        "fields": ["combat"],
         "length": 1,
         "special_consequences": ["gain_wound"]
     },
@@ -12,11 +12,10 @@
         "title": "Sick visit",
         "num_characters": 2,
         "summary": "[Character 1] visits [Character 2] at the treatment ward.",
-        "outcome": [2, 2, 5, 3, 1],
-        "relevant_fields": ["appearance"],
+        "outcomes": [2, 2, 5, 3, 1],
         "length": 1,
         "npcs": ["Nurse"],
-        "glossary": ["Sanitarium"],
+        "location": ["Sanitarium"],
         "special_consequences": ["gain_disease"],
         "conditions": ["character_2.has_disease()"]
     },
@@ -24,29 +23,27 @@
         "title": "Butcher's circus",
         "num_characters": 2,
         "summary": "[Character 1] fights [Character 2] in the butcher's circus.",
-        "outcome": [4, 3, 2, 1, 1],
-        "relevant_fields": ["fighting_style"],
+        "outcomes": [4, 3, 2, 1, 1],
+        "fields": ["combat"],
         "length": 1,
-        "npcs": [],
-        "glossary": ["Butcher's circus"],
+        "location": ["Butcher's circus"],
         "special_consequences": ["gain_wound"]
     },
     {
         "title": "Bar Encounter",
         "num_characters": 2,
         "summary": "[Character 1] and [Character 2] unexpectedly meet at the local tavern.",
-        "outcome": [1, 3, 5, 2, 4],
-        "relevant_fields": [],
+        "outcomes": [1, 3, 5, 2, 4],
         "length": 1,
         "npcs": ["Barkeep"],
-        "glossary": ["Tavern"]
+        "location": ["Tavern"]
     },
     {
         "title": "Competitive Event",
         "num_characters": 2,
         "summary": "[Character 1] and [Character 2] compete in a personal competition.",
-        "outcome": [3, 5, 2, 4, 1],
-        "relevant_fields": ["money", "fighting_style"],
+        "outcomes": [3, 5, 2, 4, 1],
+        "fields": ["money", "combat"],
         "length": 2,
         "special_consequences": ["move_money", "gain_wound"]
     },
@@ -54,26 +51,25 @@
         "title": "Joint Mission Briefing",
         "num_characters": 2,
         "summary": "[Character 1] and [Character 2] take part in an important mission briefing.",
-        "outcome": [0, 2, 5, 2, 0],
+        "outcomes": [0, 2, 5, 2, 0],
         "length": 1
     },
     {
         "title": "Late night visit",
         "num_characters": 2,
         "summary": "[Character 1] shows up at [character 2]'s room late at night.",
-        "outcome": [2, 3, 1, 2, 4],
-        "relevant_fields": ["appearance"],
+        "outcomes": [2, 3, 1, 2, 4],
         "length": 2
     },
     {
         "title": "Nomads Wagon",
         "num_characters": 2,
         "summary": "[Character 1] and [character 2] haggle with the trinket merchant.",
-        "outcome": [1, 1, 3, 3, 2],
-        "relevant_fields": ["appearance", "money"],
+        "outcomes": [1, 1, 3, 3, 2],
+        "fields": ["money"],
         "length": 1,
         "npcs": ["Trinket Merchant"],
-        "glossary": ["Nomads wagon"],
+        "locations": ["Nomads wagon"],
         "special_consequences": ["buy_trinket"],
         "conditions": [
             {
@@ -87,31 +83,32 @@
         "title": "Praise",
         "num_characters": 2,
         "summary": "[Character 1] praises the best aspects of [character 2].",
-        "outcome": [0, 1, 2, 4, 2],
-        "relevant_fields": ["appearance", "fighting_style"],
-        "length": 1,
-        "npcs": [],
-        "glossary": [],
-        "special_consequences": []
+        "outcomes": [0, 1, 2, 4, 2],
+        "fields": ["combat"],
+        "length": 1
     },
     {
         "title": "Secret Revealed",
         "num_characters": 2,
         "summary": "[Character 1] accidentally reveals a personal secret to [Character 2].",
-        "outcome": [1, 3, 3, 2, 4],
-        "relevant_fields": ["appearance"],
-        "length": 1,
-        "npcs": [],
-        "glossary": [],
-        "special_consequences": []
+        "outcomes": [1, 3, 3, 2, 4],
+        "length": 1
     },
     {
         "title": "Greed",
         "num_characters": 2,
         "summary": "[Character 1] tries to get money from [Character 2].",
-        "outcome": [2, 2, 0, 2, 1],
-        "relevant_fields": ["money", "fighting_style"],
+        "outcomes": [2, 2, 0, 2, 1],
+        "fields": ["money", "combat"],
         "length": 1,
         "special_consequences": ["move_money", "gain_wound"]
+    },
+    {
+        "title": "Sexual Activities",
+        "num_characters": 2,
+        "summary": "Domineering, awkward, or passionate, [Character 1] and [character 2] have engage in erotic, sexual activities.",
+        "outcomes": [2, 1, 0, 4, 2],
+        "fields": ["combat"],
+        "length": 2
     }
 ]

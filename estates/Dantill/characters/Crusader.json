@@ -4,6 +4,8 @@
     "level": 0,
     "summary": "The Crusader, a stoic warrior, reluctantly left his family to join the holy war, finding unexpected solace and divine purpose in the midst of battle. His formidable presence on the battlefield left behind, he realises he can never return to the life or family he once knew. As a way to atone for his past, he seeks and has found a new cause under the Heir and Heiress.",
     "history": "From tilling the land to relishing the fervor of the Crusade, the Crusader's life is marked by the weight of martial glory and the stark absence of domestic warmth. Having once sought to prevent famine by his departure, he now recognizes the battlefield as his true home, forsaking the hearth for the harsh camaraderie of war.",
+    "race": null,
+    "gender": null,
     "religion": "The Light",
     "traits": [
         "Stoic",
@@ -16,7 +18,9 @@
     "status": {
         "physical": 10,
         "mental": 9,
-        "description": "In good health and high spirits"
+        "description": "In good health and high spirits",
+        "wounds": [],
+        "diseases": []
     },
     "stats": {
         "strength": 8,
@@ -40,17 +44,20 @@
         "hairstyle": "Concealed by helm",
         "facial_hair": "Short beard",
         "accessories": "Crusader's tabard",
-        "distinguishing_marks": "None visible",
+        "distinguishing_marks": "None",
+        "notes": "None",
         "clothing": {
+            "headwear": "Steel helm",
             "top": "Chainmail hauberk",
             "pants": "Mail chausses",
             "outerwear": "Surcoat",
             "footwear": "Steel sabatons"
         }
     },
-    "fighting_style": {
-        "preferred_range": "Close combat",
-        "preferred_weapon": "Broadsword",
+    "clothing": null,
+    "combat": {
+        "range": "Close combat",
+        "weapon": "Broadsword",
         "strengths": [
             "Discipline",
             "Endurance",
@@ -64,30 +71,44 @@
         ]
     },
     "magic": "The light, a divine power that lets him smite foes and heal allies.",
-    "other_notes": [
+    "notes": [
         "Has an irresistible kleptomania."
     ],
     "relationships": {
         "Heiress": {
             "affinity": 5,
-            "relationship_type": "Professional",
+            "dynamic": "Professional",
             "description": "Reynauld maintains a professional relationship with the Heiress, focusing on fulfilling his role as her protector with a devout sense of duty.",
             "history": "Despite the Heiress's guarded approach, he commits to her cause, considering it a righteous path that will lead to personal salvation.",
-            "other_notes": "None."
+            "notes": "None."
         },
         "Heir": {
             "affinity": 4,
-            "relationship_type": "Skeptical",
+            "dynamic": "Skeptical",
             "description": "While Reynauld intends to uphold his duty with silent diligence, the realises the meek Heir is unfit to lead.",
             "history": "Having joined the their, he endures the Heir\u2019s skepticism as another trial on his path to redemption.",
-            "other_notes": "None."
+            "notes": "None."
         },
         "Highwayman": {
             "affinity": 7,
-            "relationship_type": "Comrade",
+            "dynamic": "Comrade",
             "description": "The Crusader sees in the Highwayman a kindred spirit; both men with troubled pasts seeking to carve out a purpose through the quest they now share.",
             "history": "Both have found themselves in the employ of the Heir and Heiress, their unlikely bond formed through a shared understanding of redemption and repentance.",
-            "other_notes": "None."
+            "notes": "None."
+        },
+        "Vestal": {
+            "affinity": 8,
+            "dynamic": "Spiritual Kinship'",
+            "description": "The Crusader recognizes the Vestal as a kindred spirit in their sacred mission against the forces of darkness. He admires her spiritual fortitude and looks to her for guidance in matters of faith.",
+            "history": "Though their paths seldom crossed before arriving at the Hamlet, the Crusader and Vestal share an instant rapport born of their mutual devotion to the Light. He finds solace in her compassionate presence amidst the brutal realities of their quest.",
+            "notes": ""
+        },
+        "Plague Doctor": {
+            "affinity": 3,
+            "dynamic": "Cautious Skepticism",
+            "description": "The Crusader regards the Plague Doctor with a measure of skepticism, uncertain about her unorthodox ways yet acknowledging her innovative reputation. He remains guarded but open-minded, determined to judge her methods fairly.",
+            "history": "Reynauld has been warned about the Plague Doctor's radical practices, fostering an initial skepticism toward her. However, their recent encounter has piqued his curiosity, and he is willing to reserve judgment until he witnesses her methods firsthand.",
+            "notes": ""
         }
     }
 }

@@ -18,7 +18,7 @@
       "facial_hair": "Thick beard",
       "accessories": "Golden earrings in both ears",
       "distinguishing_marks": "Battle scars across arms and face",
-      "other_notes": "None",
+      "notes": "None",
       "clothing": {
           "headwear": "None",
           "top": "Leather vest over a white linen shirt",
@@ -27,7 +27,7 @@
           "footwear": "Heavy leather boots"
       }
     },
-    "other_notes": [
+    "notes": [
       "Has a deep, rumbling laugh that echoes through the tavern"
     ],
     "relationships": {}

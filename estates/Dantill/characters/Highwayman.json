@@ -4,6 +4,8 @@
     "level": 0,
     "summary": "Once a prisoner, the Highwayman is now a haunted fugitive, living off the squalor of the city's canals and the meager pickings from vermin. His vision of freedom has been replaced by a reality of degradation, driving him to reluctantly offer his services for a final, desperate heist. Now, his path has unexpectedly converged with that of the Heiress and the Heir, offering a precarious chance at redemption through service.",
     "history": "The Highwayman's tale is one of escape and survival, painted with strokes of desperation and grim resolve. Escaping from incarceration during a prison riot, he sought refuge in the underbelly of the city, subsisting in conditions that stripped away his illusions of freedom. A final job, taken out of sheer necessity, ended in tragedy, leaving him with a burden of guilt that no distance can alleviate.",
+    "race": null,
+    "gender": null,
     "religion": "None",
     "traits": [
         "Rugged",
@@ -17,7 +19,9 @@
     "status": {
         "physical": 10,
         "mental": 7,
-        "description": "In good health and in decent spirits"
+        "description": "In good health and in decent spirits",
+        "wounds": [],
+        "diseases": []
     },
     "stats": {
         "strength": 6,
@@ -40,17 +44,20 @@
         "hairstyle": "Short, practical",
         "facial_hair": "Stubble",
         "accessories": "Tattered red scarf",
-        "distinguishing_marks": "Scar across the left cheek",
+        "distinguishing_marks": "None",
+        "notes": "None",
         "clothing": {
+            "headwear": "Red scarf",
             "top": "Rugged grey coat with fur collar",
             "pants": "Dark trousers",
             "outerwear": "Leather belt with pouches",
             "footwear": "Worn boots"
         }
     },
-    "fighting_style": {
-        "preferred_range": "Mid-range to close combat",
-        "preferred_weapon": "Flintlock pistol",
+    "clothing": null,
+    "combat": {
+        "range": "Mid-range to close combat",
+        "weapon": "Flintlock pistol",
         "strengths": [
             "Quick reflexes",
             "Stealth",
@@ -62,31 +69,45 @@
         ]
     },
     "magic": "None",
-    "other_notes": [
+    "notes": [
         "Known to cheat at cards",
         "Has a gallows sense of humor"
     ],
     "relationships": {
         "Heiress": {
             "affinity": 4,
-            "relationship_type": "Guardian",
+            "dynamic": "Guardian",
             "description": "The Highwayman is determined to prove himself to the Heiress and to assist in her quest despite her warranted distrust.",
             "history": "Aware of his sullied past, the Heiress accepted the Highwayman into her guard under strict watch, offering him a chance at redemption.",
-            "other_notes": "None"
+            "notes": "None"
         },
         "Heir": {
             "affinity": 3,
-            "relationship_type": "Guardian",
+            "dynamic": "Guardian",
             "description": "Despite the Heir's distrust, the Highwayman is resolute in his role as a guard, seeing their safety as his path to absolution.",
             "history": "The Heir\u2019s suspicion of the Highwayman does not deter him; he recognizes the need to demonstrate his determination through action.",
-            "other_notes": "None"
+            "notes": "None"
         },
         "Crusader": {
             "affinity": 7,
-            "relationship_type": "Comrade",
+            "dynamic": "Comrade",
             "description": "Despite their outwardly differences, the Highwayman and Crusader swiftly bonded over the mistakes of their respective pasts and quest for redemption.",
             "history": "Both the Highwayman and Crusader were hired to protect the Heir and Heiress, and shared their painful told with one another.",
-            "other_notes": "None"
+            "notes": "None"
+        },
+        "Vestal": {
+            "affinity": 3,
+            "dynamic": "Amused Skepticism",
+            "description": "The Highwayman regards the Vestal with a mix of amusement and skepticism, finding her pious ways naive but intriguing nonetheless.",
+            "history": "The Highwayman met the Vestal in a crowded hamlet, initially mocking her sacred garb before sensing a hint of sincere compassion beneath her stern demeanor.",
+            "notes": ""
+        },
+        "Plague Doctor": {
+            "affinity": 2,
+            "dynamic": "Wary Skepticism'",
+            "description": "The Highwayman regards the Plague Doctor with a mixture of suspicion and guarded fascination, put off by her unsettling demeanor yet drawn to her unconventional ways.",
+            "history": "Having led a life on the fringes, the Highwayman found the Plague Doctor's presence equal parts unnerving and intriguing, her obsessive pursuit of knowledge reminding him of the depths to which desperation could drive a person.",
+            "notes": ""
         }
     }
 }

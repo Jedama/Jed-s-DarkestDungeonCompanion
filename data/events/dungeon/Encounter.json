@@ -1,0 +1,9 @@
+[
+    {
+        "title": "Encounter Start",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] encounter [Enemies] and prepare for attack. Set the stage for the battle, but don't start it yet.",
+        "outcomes": [0, 2, 5, 1, 0],
+        "length": 1
+    }
+]

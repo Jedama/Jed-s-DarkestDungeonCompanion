@@ -2,6 +2,7 @@
     "title": "MultipleCharacters",
     "consequences": [
         {"command": "update_relationship_affinity", "params": {"title": "target title", "change": "±x"}, "text": "Update the affinity in a character's relationship."},
+        {"command": "update_relationship_dynamic", "params": {"title": "target title", "description": "new dynamic"}, "text": "Update the dynamic in a character's relationship."},
         {"command": "update_relationship_description", "params": {"title": "target title", "description": "new description"}, "text": "Update the description in a character's relationship."},
         {"command": "update_relationship_history", "params": {"title": "target title", "history": "new history"}, "text": "Update the history in a character's relationship."},
         {"command": "update_relationship_notes", "params": {"title": "target title", "notes": "new notes"}, "text": "Update the notes in a character's relationship."}

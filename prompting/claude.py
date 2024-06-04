@@ -5,7 +5,7 @@ class TextBlock:
         self.text = text
         self.type = type
 
-def prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens=350):
+def prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens=350, temperature=0.75):
     client = anthropic.Anthropic(
         # defaults to os.environ.get("ANTHROPIC_API_KEY")
     )
@@ -13,7 +13,7 @@ def prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens=350):
     message = client.messages.create(
         model="claude-3-sonnet-20240229",
         max_tokens=max_tokens,
-        temperature=0.5,
+        temperature=temperature,
         system=system_prompt,
         messages=[
             {"role": "user", "content": user_prompt},

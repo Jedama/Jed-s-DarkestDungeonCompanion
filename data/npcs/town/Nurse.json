@@ -19,7 +19,7 @@
       "facial_hair": "None",
       "accessories": "Medallion",
       "distinguishing_marks": "None",
-      "other_notes": "None",
+      "notes": "None",
       "clothing": {
           "headwear": "Tall, white conical hat",
           "top": "Loose-fitting, dark blue tunic",
@@ -28,7 +28,7 @@
           "footwear": "Sturdy, practical boots"
       }
     },
-    "other_notes": [
+    "notes": [
       "Carries an air of quiet dignity amidst the despair that surrounds her"
     ],
     "relationships": {}

@@ -1,16 +1,15 @@
-from classes import Estate, Event
+from classes import Estate
 
 estate = Estate('Dantill')
 estate.start_campaign()
 
-event_story, event_consequences = estate.recruit('Vestal', ['Irrepressible', 'Musical', 'Anemic', 'Fear of Beasts'])
+# estate.start_event('story', 'The Old Road')
+# estate.start_event('story', 'Crash')
 
-# event_story, event_consequences = estate.start_event('story', 'The Old Road')
-
-# print(event_story)
-# print(event_consequences)
-
-# event_story, event_consequences = estate.start_event('story', 'Crash')
-
-# print(event_story)
-# print(event_consequences)
+# estate.encounter(event_type = 'story', event_title='Vermin', enemies=['Brigand Cutthroat'])
+estate.characters['Highwayman'].fast_status_description(3, 8, 'Irrational')
+estate.characters['Heir'].fast_status_description(2, 10, 'Selfish')
+estate.characters['Heiress'].fast_status_description(4, 10, 'Paranoid')
+estate.characters['Crusader'].fast_status_description(5, 5, 'Hopeless')
+estate.start_event(titles=['Heir', 'Heiress'])
+estate.encounter(event_type = 'story', event_title='Vanquished', enemies=['Brigand Cutthroat', 'Brigand Bloodletter', 'Brigand Fusilier', 'Brigand Fusilier'])

@@ -20,7 +20,7 @@
       "facial_hair": "Trimmed beard",
       "accessories": "None",
       "distinguishing_marks": "None",
-      "other_notes": "None",
+      "notes": "None",
       "clothing": {
           "headwear": "Blue cap",
           "top": "Dark purple jacket with deep pockets",
@@ -29,7 +29,7 @@
           "footwear": "Sturdy shoes, practical for work"
       }
     },
-    "other_notes": [
+    "notes": [
         "The Jeweler is always on the lookout for more cosmic stones, and will pay handsomely for any that are brought to him."
     ],
     "relationships": {}

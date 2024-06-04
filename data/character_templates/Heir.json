@@ -4,7 +4,9 @@
   "level": 0,
   "money": 0,
   "summary": "The Heir to the estate is a meek and cowardly man who relies on the authority of his name to maintain a semblance of control in the chaotic surroundings of his ancestral home. Although his intentions are generally good, his tendency to leverage his position often undermines his credibility among those he tries to lead. With high intelligence but low physical capabilities, Percival struggles to assert himself, instead relying heavily on strategic thinking and logistical planning to navigate the challenges posed by the estate's dark legacy.",
-  "history": "A reluctant participant in the quest to restore the estate, Percival was coaxed into action by his sister, the determined Heiress. While he lacks her physical courage and commanding presence, Percival brings his own unique strengths to the fore. Highly educated and obsessively detailed-oriented, he immerses himself in the logistical challenges of managing the estate’s resources and orchestrating the efforts needed to support the hamlet and its frightened inhabitants.",
+  "history": "A reluctant participant in the quest to restore the estate, Percival was coaxed into action by his sister. While he lacks her physical courage and commanding presence, Percival brings his own unique strengths to the fore. Highly educated and obsessively detailed-oriented, he immerses himself in the logistical challenges of managing the estate’s resources and orchestrating the efforts needed to support the hamlet and its frightened inhabitants.",
+  "race": "Human",
+  "gender": "Male",
   "religion": "None",
   "traits": [
     "Meek",
@@ -17,6 +19,7 @@
   "status": {
     "physical": 10,
     "mental": 8,
+    "affliction": "",
     "description": "In good health and high spirits",
     "wounds": [],
     "diseases": []
@@ -43,20 +46,18 @@
     "hair_color": "Blond",
     "hairstyle": "Curled and styled",
     "facial_hair": "None",
-    "accessories": "Bowtie",
-    "distinguishing_marks": "None",
-    "other_notes": "None",
-    "clothing": {
-        "headwear": "None",
-        "top": "Newly ironed white shirt",
-        "pants": "Mustard yellow breeches",
-        "outerwear": "Blue double-breasted tailcoat with gold buttons",
-        "footwear": "Brown boots"
-    }
+    "accessories": "Bowtie"
   },
-  "fighting_style": {
-    "preferred_range": "Backline",
-    "preferred_weapon": "Letter opener",
+  "clothing": {
+    "headwear": "None",
+    "top": "Newly ironed white shirt",
+    "pants": "Mustard yellow breeches",
+    "outerwear": "Blue double-breasted tailcoat with gold buttons",
+    "footwear": "Brown boots"
+  },
+  "combat": {
+    "range": "Backline",
+    "weapon": "Letter opener",
     "strengths": [
       "Hiding behind others",
       "Strategic thinking"
@@ -69,30 +70,30 @@
     ]
   },
   "magic": "None",
-  "other_notes": [
+  "notes": [
     "Has a wine addiction."
   ],
   "relationships": {
     "Heiress": {
       "affinity": 8,
-      "relationship_type": "Familial",
-      "description": "The heir, while jealous of, does love his sister, the Heir.",
-      "history": "The heir is brother to the Heiress, and they grew up together.",
-      "other_notes": "None."
+      "dynamic": "Familial",
+      "description": "The Heir, while jealous of, does love his sister, the Heiress.",
+      "history": "The Heir is brother to the Heiress, and they grew up together.",
+      "notes": "None."
     },   
     "Crusader": {
       "affinity": 4,
-      "relationship_type": "Skeptical",
-      "description": "The heir is dubious over the trustworthiness of his new guard, the Crusader.",
+      "dynamic": "Skeptical",
+      "description": "The Heir is dubious over the trustworthiness of his new guard, the Crusader.",
       "history": "The Crusader has recently joined the heirs' guard on probationary terms.",
-      "other_notes": "None."
+      "notes": "None."
     },    
     "Highwayman": {
       "affinity": 2,
-      "relationship_type": "Distrustful",
+      "dynamic": "Distrustful",
       "description": "The Heir is distrusting towards the Highwayman, scared that he'll steal his fancy possessions.",
       "history": "The Highwayman has recently joined the heirs' guard on probationary terms.",
-      "other_notes": "None."
+      "notes": "None."
     } 
   }
 }

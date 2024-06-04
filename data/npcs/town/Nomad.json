@@ -19,7 +19,7 @@
       "facial_hair": "None",
       "accessories": "Earrings, bracelets, and necklaces",
       "distinguishing_marks": "None",
-      "other_notes": "None",
+      "notes": "None",
       "clothing": {
           "headwear": "Red headscarf",
           "top": "Richly embroidered vest",
@@ -28,7 +28,7 @@
           "footwear": "Leather sandals"
       }
     },
-    "other_notes": [
+    "notes": [
       "Her voice carries the lilt of a far-off place, often accompanied by a knowing smile",
       "The scent of exotic spices and incense lingers around her wagon"
     ],

@@ -19,7 +19,7 @@
       "facial_hair": "Beard",
       "accessories": "Spectacles",
       "distinguishing_marks": "Permanent grin",
-      "other_notes": "None",
+      "notes": "None",
       "clothing": {
           "headwear": "None",
           "top": "Tattered overcoat with fitted sleeves",
@@ -28,7 +28,7 @@
           "footwear": "Worn boots"
       }
     },
-    "other_notes": [
+    "notes": [
       "Prone to fits of maniacal laughter",
       "Often found mumbling to himself"
     ],

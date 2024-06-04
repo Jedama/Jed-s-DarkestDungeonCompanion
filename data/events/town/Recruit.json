@@ -4,12 +4,12 @@
         "type": "Town",
         "num_characters": 1,
         "summary": "[Character 1] steps off the stagecoach and arrives in the hamlet.",
-        "outcome": [0, 0, 1, 0, 0],
-        "relevant_fields": ["appearance", "fighting_style"],
+        "outcomes": [0, 0, 1, 0, 0],
+        "fields": ["combat"],
         "length": 1,
         "npcs": ["Caretaker"],
         "roles": ["Welcomer"],
-        "glossary": ["Stagecoach"],
+        "fields": ["Stagecoach"],
         "keyword_range": [0, 0]
     }
 ]

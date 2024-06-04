@@ -5,6 +5,8 @@
   "money": 0,
   "summary": "Once a prisoner, the Highwayman is now a haunted fugitive, living off the squalor of the city's canals and the meager pickings from vermin. His vision of freedom has been replaced by a reality of degradation, driving him to reluctantly offer his services for a final, desperate heist. Now, his path has unexpectedly converged with that of the Heiress and the Heir, offering a precarious chance at redemption through service.",
   "history": "The Highwayman's tale is one of escape and survival, painted with strokes of desperation and grim resolve. Escaping from incarceration during a prison riot, he sought refuge in the underbelly of the city, subsisting in conditions that stripped away his illusions of freedom. A final job, taken out of sheer necessity, ended in tragedy, leaving him with a burden of guilt that no distance can alleviate.",
+  "race": "Human",
+  "gender": "Male",
   "religion": "None",
   "traits": [
     "Rugged",
@@ -18,6 +20,7 @@
   "status": {
     "physical": 10,
     "mental": 7,
+    "affliction": "",
     "description": "In good health and in decent spirits",
     "wounds": [],
     "diseases": []
@@ -33,8 +36,7 @@
     "Flintlock pistol",
     "Dagger"
   ],
-  "trinkets": [
-  ],
+  "trinkets": [],
   "appearance": {
     "gender": "Male",
     "height": "Average",
@@ -43,20 +45,18 @@
     "hair_color": "Dark",
     "hairstyle": "Short, practical",
     "facial_hair": "Stubble",
-    "accessories": "Tattered red scarf",
-    "distinguishing_marks": "None",
-    "other_notes": "None",
-    "clothing": {
-        "headwear": "Red scarf",
-        "top": "Rugged grey coat with fur collar",
-        "pants": "Dark trousers",
-        "outerwear": "Leather belt with pouches",
-        "footwear": "Worn boots"
-    }
+    "accessories": "Tattered red scarf"
   },
-  "fighting_style": {
-    "preferred_range": "Mid-range to close combat",
-    "preferred_weapon": "Flintlock pistol",
+  "clothing": {
+    "headwear": "Red scarf",
+    "top": "Rugged grey coat with fur collar",
+    "pants": "Dark trousers",
+    "outerwear": "Leather belt with pouches",
+    "footwear": "Worn boots"
+  },
+  "combat": {
+    "range": "Mid-range to close combat",
+    "weapon": "Flintlock pistol",
     "strengths": [
       "Quick reflexes",
       "Stealth",
@@ -68,31 +68,31 @@
     ]
   },
   "magic": "None",
-  "other_notes": [
+  "notes": [
     "Known to cheat at cards",
     "Has a gallows sense of humor"
   ],
   "relationships": {
     "Heiress": {
       "affinity": 4,
-      "relationship_type": "Guardian",
+      "dynamic": "Guardian",
       "description": "The Highwayman is determined to prove himself to the Heiress and to assist in her quest despite her warranted distrust.",
       "history": "Aware of his sullied past, the Heiress accepted the Highwayman into her guard under strict watch, offering him a chance at redemption.",
-      "other_notes": "None"
+      "notes": "None"
     },
     "Heir": {
       "affinity": 3,
-      "relationship_type": "Guardian",
+      "dynamic": "Guardian",
       "description": "Despite the Heir's distrust, the Highwayman is resolute in his role as a guard, seeing their safety as his path to absolution.",
       "history": "The Heir’s suspicion of the Highwayman does not deter him; he recognizes the need to demonstrate his determination through action.",
-      "other_notes": "None"
+      "notes": "None"
     },
     "Crusader": {
       "affinity": 7,
-      "relationship_type": "Comrade",
+      "dynamic": "Comrade",
       "description": "Despite their outwardly differences, the Highwayman and Crusader swiftly bonded over the mistakes of their respective pasts and quest for redemption.",
       "history": "Both the Highwayman and Crusader were hired to protect the Heir and Heiress, and shared their painful told with one another.",
-      "other_notes": "None"
+      "notes": "None"
     }
   }
 }

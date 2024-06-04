@@ -3,8 +3,10 @@
     "name": "Reynauld",
     "level": 0,
     "money": 0,
-    "summary": "The Crusader, a stoic warrior, reluctantly left his family to join the holy war, finding unexpected solace and divine purpose in the midst of battle. His formidable presence on the battlefield left behind, he realises he can never return to the life or family he once knew. As a way to atone for his past, he seeks and has found a new cause under the Heir and Heiress.",
-    "history": "From tilling the land to relishing the fervor of the Crusade, the Crusader's life is marked by the weight of martial glory and the stark absence of domestic warmth. Having once sought to prevent famine by his departure, he now recognizes the battlefield as his true home, forsaking the hearth for the harsh camaraderie of war.",
+    "summary": "The Crusader, a stoic warrior, reluctantly left his family to join the holy war, finding unexpected solace and divine purpose in the midst of battle. Upon returning, he found a loving wife and child, but abandons them once more, choosing his life as a soldier over that of a father, a decision that still haunts him. As a way to atone for his past, he seeks and has found a new cause under the Heir and Heiress.",
+    "history": "From tilling the land to relishing the fervor of the Crusade, the Crusader's life is marked by the weight of martial glory and the stark absence of domestic warmth. Having once sought to prevent famine by his departure, he now recognizes the battlefield as his true home, forsaking the hearth for the harsh camaraderie of war. The memory of the family he abandoned haunts him, driving him to seek redemption through his new cause.",
+    "race": "Human",
+    "gender": "Male",
     "religion": "The Light",
     "traits": [
       "Stoic",
@@ -17,6 +19,7 @@
     "status": {
       "physical": 10,
       "mental": 9,
+      "affliction": "", 
       "description": "In good health and high spirits",
       "wounds": [],
       "diseases": []
@@ -42,20 +45,18 @@
     "hair_color": "Dark",
     "hairstyle": "Concealed by helm",
     "facial_hair": "Short beard",
-    "accessories": "Crusader's tabard",
-    "distinguishing_marks": "None",
-    "other_notes": "None",
-    "clothing": {
-        "headwear": "Steel helm",
-        "top": "Chainmail hauberk",
-        "pants": "Mail chausses",
-        "outerwear": "Surcoat",
-        "footwear": "Steel sabatons"
-    }
+    "accessories": "Crusader's tabard"
   },
-  "fighting_style": {
-    "preferred_range": "Close combat",
-    "preferred_weapon": "Broadsword",
+  "clothing": {
+    "headwear": "Steel helm",
+    "top": "Chainmail hauberk",
+    "pants": "Mail chausses",
+    "outerwear": "Surcoat",
+    "footwear": "Steel sabatons"
+  },
+  "combat": {
+    "range": "Close combat",
+    "weapon": "Broadsword",
     "strengths": [
       "Discipline",
       "Endurance",
@@ -69,30 +70,30 @@
     ]
   },
   "magic": "The light, a divine power that lets him smite foes and heal allies.",
-  "other_notes": [
+  "notes": [
     "Has an irresistible kleptomania."
   ],
   "relationships": {
     "Heiress": {
       "affinity": 5,
-      "relationship_type": "Professional",
+      "dynamic": "Professional",
       "description": "Reynauld maintains a professional relationship with the Heiress, focusing on fulfilling his role as her protector with a devout sense of duty.",
       "history": "Despite the Heiress's guarded approach, he commits to her cause, considering it a righteous path that will lead to personal salvation.",
-      "other_notes": "None."
+      "notes": "None."
     },
     "Heir": {
       "affinity": 4,
-      "relationship_type": "Skeptical",
+      "dynamic": "Skeptical",
       "description": "While Reynauld intends to uphold his duty with silent diligence, the realises the meek Heir is unfit to lead.",
       "history": "Having joined the their, he endures the Heir’s skepticism as another trial on his path to redemption.",
-      "other_notes": "None."
+      "notes": "None."
     },
     "Highwayman": {
       "affinity": 7,
-      "relationship_type": "Comrade",
+      "dynamic": "Comrade",
       "description": "The Crusader sees in the Highwayman a kindred spirit; both men with troubled pasts seeking to carve out a purpose through the quest they now share.",
       "history": "Both have found themselves in the employ of the Heir and Heiress, their unlikely bond formed through a shared understanding of redemption and repentance.",
-      "other_notes": "None."
+      "notes": "None."
     }      
   }
 }

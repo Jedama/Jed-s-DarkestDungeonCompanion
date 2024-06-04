@@ -229,7 +229,6 @@ haunt
 harrow
 cryptic
 barren
-hairy
 eerie
 triumph
 prevail
@@ -242,3 +241,9 @@ dictate
 eye
 humor
 jealous
+bath
+spar
+amused
+skeptical
+lewd
+guide

@@ -3,8 +3,10 @@
   "name": "Persephone Dantill",
   "level": 0,
   "money": 0,
-  "summary": "The Heiress to the accursed Dantill estate wields a strong air of authority as she commands the daunting task of reclaiming her ancestral home. Armed with intelligence and strategic insight, she also manages the nearby hamlet, serving as a pillar of strength in a community plagued by supernatural horrors. Despite her capabilities, her dismissive and stubborn traits often surface, especially when her methods or authority are challenged.",
+  "summary": "The Heiress to the accursed Dantill estate wields a strong air of authority as she commands the daunting task of reclaiming her ancestral home. Armed with intelligence and strategic insight, she also manages the nearby hamlet, serving as a pillar of support and strength in a community plagued by supernatural horrors. She is grateful to those brave or mad enough to join her quest. However, when her methods or authority are challenged, she shows hardheaded stubbornness.",
   "history": "Upon receiving a chilling letter from her late ancestor, the Heiress left her academic pursuits to take up her role as the heiress of the estate. She found herself thrust into a nightmarish reality where her ancestral home was not only physically deteriorated but also infested with the horrors summoned by her ancestor's dark rituals.",
+  "race": "Human",
+  "gender": "Female",
   "religion": "None",
   "traits": [
     "Determined",
@@ -12,12 +14,12 @@
     "Strategic",
     "Intelligent",
     "Stubborn",
-    "Authoritative",
-    "Dismissive"
+    "Authoritative"
   ],
   "status": {
     "physical": 10,
     "mental": 9,
+    "affliction": "",
     "description": "In good health and high spirits",
     "wounds": [],
     "diseases": []
@@ -33,31 +35,25 @@
     "Derringer pistol",
     "wine bottle"
   ],
-  "trinkets": [
-    "None"
-  ],
+  "trinkets": [],
   "appearance": {
     "gender": "Female",
     "height": "Average",
     "build": "Average",
     "skin_tone": "Fair",
     "hair_color": "Blond",
-    "hairstyle": "Curled and styled to shoulder length",
-    "facial_hair": "None",
-    "accessories": "None",
-    "distinguishing_marks": "None",
-    "other_notes": "None",
-    "clothing": {
-        "headwear": "None",
-        "top": "White ruffled shirt",
-        "pants": "Mustard yellow breeches",
-        "outerwear": "Blue double-breasted tailcoat with gold buttons",
-        "footwear": "Brown boots"
-    }
+    "hairstyle": "Curled and styled to shoulder length"
   },
-  "fighting_style": {
-    "preferred_range": "Mid-range",
-    "preferred_weapon": "Derringer pistol",
+  "clothing": {
+    "headwear": "None",
+    "top": "White ruffled shirt",
+    "pants": "Mustard yellow breeches",
+    "outerwear": "Blue double-breasted tailcoat with gold buttons",
+    "footwear": "Brown boots"
+  },
+  "combat": {
+    "range": "Mid-range",
+    "weapon": "Derringer pistol",
     "strengths": [
       "Quick reflexes",
       "Sharpshooting",
@@ -69,30 +65,30 @@
     ]
   },
   "magic": "None",
-  "other_notes": [
+  "notes": [
     "Has a wine addiction."
   ],
   "relationships": {
     "Heir": {
       "affinity": 8,
-      "relationship_type": "Familial",
+      "dynamic": "Familial",
       "description": "Despite a cold exterior and lifetime of bickering, the Heiress loves and will not let harm come upon the Heir.",
       "history": "The Heir is the Heiress's brother, and they grew up together.",
-      "other_notes": "None."
+      "notes": "None."
     },
     "Crusader": {
       "affinity": 5,
-      "relationship_type": "Professional",
+      "dynamic": "Professional",
       "description": "The Heiress is cautiously assessing the Crusader's capabilities as her new hire.",
       "history": "The Crusader has recently joined the Heiress's guard on probationary terms.",
-      "other_notes": "None."
+      "notes": "None."
     },    
     "Highwayman": {
       "affinity": 3,
-      "relationship_type": "Cautious",
+      "dynamic": "Cautious",
       "description": "The Heiress remains wary of the Highwayman, given his dubious past and rough demeanor.",
       "history": "The Highwayman has recently joined the Heiress's guard on probationary terms.",
-      "other_notes": "None."
+      "notes": "None."
     }    
   }
 }

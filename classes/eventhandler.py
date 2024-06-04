@@ -1,10 +1,13 @@
 from .consequence import Consequences
-from .events import Event
-from .glossary import GlossaryEntry
+from .enemy import Enemy
+from .events import InputEvent, OutputEvent
+from .faction import Faction
+from .location import Location
 from .npc import NPC
 
 from storage import load_json, read_json, read_txt_all
 
+import copy
 import os
 import random
 
@@ -12,19 +15,23 @@ class EventHandler:
     def __init__(self):
         self.events_by_type = {}                                # Dictionary to store events by type
         self.consequences_by_type = {}                          # Dictionary to store consequences by type
-        self.npcs_by_type = {}                                   # Dictionary to store NPCs
+        self.npcs_by_type = {}                                  # Dictionary to store NPCs
+        self.enemies_by_type = {}                               # Dictionary to store enemies by faction
         self.keywords = read_txt_all('data/keywords')  
-        self.glossary = load_json('data/glossary', GlossaryEntry.from_dict)   
+        self.locations = load_json('data/locations', Location.from_dict)  
+        self.factions =  load_json('data/factions', Faction.from_dict)  
         self.load_all_consequences()                            # Load all consequences at initialization
         self.load_all_events()                                  # Load all events at initialization
         self.load_all_npcs()
+        self.load_all_enemies()
+
 
     def load_all_events(self):
         directory = ('data/events')
         for event_type in os.listdir(directory):
             full_path = os.path.join(directory, event_type)
             if os.path.isdir(full_path):
-                self.events_by_type[event_type] = load_json(full_path, Event.from_dict)
+                self.events_by_type[event_type] = load_json(full_path, InputEvent.from_dict)
 
     def load_all_npcs(self):
         directory = ('data/npcs')
@@ -33,6 +40,13 @@ class EventHandler:
             if os.path.isdir(full_path):
                 self.npcs_by_type[npc_type] = load_json(full_path, NPC.from_dict)
 
+    def load_all_enemies(self):
+        directory = ('data/enemies')
+        for enemy_type in os.listdir(directory):
+            full_path = os.path.join(directory, enemy_type)
+            if os.path.isdir(full_path):
+                self.enemies_by_type[enemy_type] = load_json(full_path, Enemy.from_dict)
+
     def load_all_consequences(self):
         directory = ('data/consequences')
         for filename in os.listdir(directory):
@@ -40,7 +54,7 @@ class EventHandler:
             consequence_type = filename[:-5]
             self.consequences_by_type[consequence_type] =  Consequences.from_dict(read_json(full_path))
 
-    def craft_event(self, characters, event_type='random', event_title=None, titles=[], keywords=[]):
+    def craft_event(self, characters, event_type='random', event_title=None, titles=[], keywords=[], enemies=[], region=''):
         
         def craft_event_with_characters(event):
             # Ensure that the number of specified titles does not exceed the number of characters required by the event
@@ -48,15 +62,21 @@ class EventHandler:
                 print(f"Too many titles specified for event '{event.title}'. Expected {event.num_characters} or fewer.")
                 return None, None
             
-            event_characters = self.choose_characters(event, characters, titles)
+            event_characters = self.process_characters(input_event, characters, titles)
             if event_characters:
-                event.type = event_type
-                self.choose_keywords(event, keywords)
-                self.choose_outcome(event) 
-                self.get_event_npcs(event)
-                self.get_event_glossary(event)
-                self.compile_consequences(event)
-                return event.craft_event(event_characters)
+                # Create output event
+                output_event = OutputEvent(title = event.title, type = event.type, characters = event_characters, fields = event.fields, length = event.length)
+
+                self.process_summary(event, output_event, event_characters, enemies)
+                self.process_keywords(event, output_event, keywords)
+                self.process_outcome(event, output_event) 
+                self.process_location(event, output_event, region)
+                self.process_npcs(event, output_event)
+                self.process_consequences(event, output_event)
+                self.process_enemies(output_event, enemies)
+
+                return output_event.craft_event()
+                # self.process_enemies()
             else:
                 print(f"No valid characters found for event '{event.title}'")
                 return None, None
@@ -67,29 +87,51 @@ class EventHandler:
             return
         
         if event_title:
-            event = events.get(event_title)
-            if not event:
+            event_instance = events.get(event_title)
+            input_event = copy.deepcopy(event_instance)
+            if not input_event:
                 print(f"No event found with title '{event_title}'")
                 return
 
-            event_story, event_consequences = craft_event_with_characters(event)
+            event_story, event_consequences = craft_event_with_characters(input_event)
             if event_story and event_consequences:
                 return event_story, event_consequences
         else:
             while True:
-                event = random.choice(list(events.values()))
-                if event.num_characters >= len(titles):
-                    event_story, event_consequences = craft_event_with_characters(event)
+                input_event = random.choice(list(events.values()))
+                if input_event.num_characters >= len(titles):
+                    event_story, event_consequences = craft_event_with_characters(input_event)
                     if event_story and event_consequences:
                         return event_story, event_consequences
-                print(f"No valid characters found for event '{event.title}' or event invalid for specified characters. Trying another event...")
+                print(f"No valid characters found for event '{input_event.title}' or event invalid for specified characters. Trying another event...")
 
-    def choose_keywords(self, event, keywords=None):
+    def process_summary(self, input_event, output_event, characters, enemies):
+        # In event summary, replace placeholders with character names
+        summary = input_event.summary
+        for i in range(len(characters)):
+            summary = summary.replace(f'[Character {i+1}]', characters[i].name)
+            summary = summary.replace(f'[character {i+1}]', characters[i].name)
+
+        # Format the enemy list into a grammatically correct string
+        if enemies:
+            if len(enemies) == 1:
+                enemies_str = f'a single {enemies[0]}'
+            else:
+                enemies_str = ', '.join(enemies[:-1]) + ', and ' + enemies[-1]
+
+            # Replace the enemies placeholder with the formatted enemy string
+            summary = summary.replace('[Enemies]', enemies_str)
+
+        output_event.summary = summary
+
+
+
+    def process_keywords(self, input_event, output_event, keywords=None):
         # Fetch keyword range from the event, default to [1, 5] if not present
-        keyword_range = getattr(event, 'keyword_range', [1, 5])
+        keyword_range = getattr(input_event, 'keyword_range', [1, 5])
         min_keywords, max_keywords = keyword_range
 
-        if keywords is None:
+        if not keywords:
             # Determine the number of keywords to choose
             num_keywords = random.randint(min_keywords, max_keywords)
             
@@ -99,17 +141,22 @@ class EventHandler:
             picked_keywords = keywords
 
         # Get existing keywords from the event
-        event_keywords = getattr(event, 'keywords', [])
+        event_keywords = getattr(input_event, 'keywords', [])
 
         # Combine event keywords with picked keywords
-        event.keywords = event_keywords + picked_keywords
+        output_event.keywords = event_keywords + picked_keywords
     
-    def choose_outcome(self, event):
+    def process_outcome(self, input_event, output_event):
         # Default distribution with 'neutral' being the most probable
-        distribution = getattr(event, 'outcome', [0, 0, 1, 0, 0])
+        distribution = getattr(input_event, 'outcomes', [0, 0, 1, 0, 0])
         
         # Calculate the total sum of the distribution
         total_sum = sum(distribution)
+
+        # If [0, 0, 0, 0, 0] is provided, the outcome is based on user input
+        if total_sum == 0:
+            output_event.outcome = "Contextual"
+            return
         
         # Generate a random number between 1 and the total sum
         random_number = random.randint(1, total_sum)
@@ -120,11 +167,75 @@ class EventHandler:
         for i, count in enumerate(distribution):
             cumulative_sum += count
             if random_number <= cumulative_sum:
-                event.outcome = outcomes[i]
+                output_event.outcome = outcomes[i]
+                return
             
-    def get_event_npcs(self, event):
+    def process_location(self, input_event, output_event, region):
+        # Fetch location terms from the event, default to empty list if none exist
+        event_locations = getattr(input_event, 'locations', [])
+
+        # Check if a region is provided and if it's not already included in the locations
+        if region and region not in event_locations:
+            event_locations.append(region)
+
+        if not event_locations:
+            return {}
+
+        # Create a new dictionary containing the relevant location terms (title and description only)
+        location_dict = {}
+        for term in event_locations:
+            if term in self.locations:
+                location_details = self.locations[term]
+                location_dict[term] = {
+                    "title": location_details.title,
+                    "description": location_details.description
+                }
+
+        # Get NPCs from locations and append to event.npcs
+        event_npcs = getattr(input_event, 'npcs', [])
+        for term in event_locations:
+            if term in self.locations:
+                location_entry = self.locations[term]
+                if location_entry.npcs:
+                    # Ensure npcs is treated as a list
+                    event_npcs.append(location_entry.npcs)
+
+        # Remove duplicates and update input_event NPCs (as they will be processed next)
+        input_event.npcs = list(set(event_npcs))
+
+        # Update event location
+        output_event.locations = location_dict
+
+    def process_enemies(self, output_event, enemies=[]):
+        
+        unique_enemies = list(set(enemies))  # Remove duplicates to get unique enemy types
+        processed_enemies = {}  # To store processed enemy data
+        processed_factions = {} # To store processed factions
+
+        # Get all enemies
+        for enemy in unique_enemies:
+        # Check if the enemy exists in the categorization and hasn't been processed yet
+            for category in self.enemies_by_type:
+                category_enemies = self.enemies_by_type[category]
+                if enemy in category_enemies:
+                    processed_enemies[enemy] = category_enemies[enemy]
+
+                    # Get faction for enemy
+                    faction = processed_enemies[enemy].faction
+                    # Check if all unique enemies have been processed
+                    if faction and faction not in processed_factions:
+                        processed_factions[faction] = self.factions.get(faction, {})
+                    
+                    if len(processed_enemies) == len(unique_enemies):
+                        break  # Exit the loop early if all have been processed
+
+        output_event.enemies = processed_enemies
+        output_event.factions = processed_factions
+
+            
+    def process_npcs(self, input_event, output_event):
         # Fetch npc titles from the event, default to empty list if none exist
-        event_npc_titles = getattr(event, 'npcs', [])
+        event_npc_titles = getattr(input_event, 'npcs', [])
         if not event_npc_titles:
             return {}
 
@@ -140,19 +251,9 @@ class EventHandler:
             # Update the event_npcs dict with the NPCs found in this category
             event_npcs.update(found_npcs)
 
-        event.npcs = event_npcs
-    
-    def get_event_glossary(self, event):
-        # Fetch glossary terms from the event, default to empty list if none exist
-        event_glossary_terms = getattr(event, 'glossary', [])
-        if not event_glossary_terms:
-            return {}
-
-        # Create a new dictionary containing the relevant glossary terms
-        event_glossary = {term: self.glossary[term] for term in event_glossary_terms if term in self.glossary}
-        event.glossary = event_glossary
+        output_event.npcs = event_npcs
             
-    def choose_characters(self, event, characters_dict, titles=[]):
+    def process_characters(self, event, characters_dict, titles=[]):
         def meets_conditions(character, condition):
             method_name = condition['method']
             args = condition.get('args', [])
@@ -212,26 +313,30 @@ class EventHandler:
         return [characters_dict[title] for title in selected_titles]
     
     
-    def compile_consequences(self, event):
-        compiled_consequences = self.consequences_by_type['Default'].consequences
+    def process_consequences(self, input_event, output_event):
+        compiled_consequences = []
 
-        if event.num_characters > 2:
+        if input_event.type in ['random', 'story', 'dungeon']:
+            compiled_consequences = self.consequences_by_type['Default'].consequences
+        elif input_event.type == "town":
+            if input_event.title == "Recruit":
+                compiled_consequences = self.consequences_by_type['Default'].consequences
+                compiled_consequences += self.consequences_by_type['Recruit'].consequences
+
+        if input_event.num_characters > 2:
             compiled_consequences += self.consequences_by_type['MultipleCharacters'].consequences
 
-        if event.title == "Recruit":
-            compiled_consequences += self.consequences_by_type['Recruit'].consequences
-
-        if getattr(event, 'consequences', None):
+        if getattr(input_event, 'consequences', None):
             compiled_special_consequences = self.consequences_by_type['Special'].consequences
 
-            for consequence_command in event.consequences:
+            for consequence_command in input_event.consequences:
 
                 for special_consequence in compiled_special_consequences:
 
                     if special_consequence['command'] == consequence_command:
                         compiled_consequences.append(special_consequence)
 
-        event.consequences = compiled_consequences
+        output_event.consequences = compiled_consequences
 
 
         

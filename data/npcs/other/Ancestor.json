@@ -29,21 +29,21 @@
           "footwear": "Polished shoes"
       }
     },
-    "other_notes": [
+    "notes": [
       "The echoes of his voice narrate the struggle against the darkness he unleashed."
     ],
     "relationships": {
       "Persephone Dantill": {
         "affinity": 0,
-        "relationship_type": "Ancestral",
+        "dynamic": "Ancestral",
         "description": "The Ancestor views the Heiress' with a detached curiosity, wondering if she will succumb to the same fate he did or rise above it.",
-        "other_notes": "None."
+        "notes": "None."
       },
       "Percival Dantill": {
         "affinity": 0,
-        "relationship_type": "Ancestral",
+        "dynamic": "Ancestral",
         "description": "The Ancestor views the Heir's with a detached curiosity, wondering if he will succumb to the same fate he did or rise above it.",
-        "other_notes": "None."
+        "notes": "None."
       }
     }
   }

@@ -1,21 +1,45 @@
 [
     {
         "title": "The Old Road",
+        "type": "story",
         "num_characters": 4,
-        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] sit inside the stagecoach, travelling down the old road towards the Hamlet for the first time, about to start their long quest. This is the prologue, and the characters aren't yet fully aware of the horrors that await them.",
-        "outcome": [0, 2, 8, 3, 0],
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] sit inside the stagecoach, travelling down the old road towards the Hamlet for the first time, about to start their long quest. As the vignette ends, the party should still be in the stagecoach, surrounded by the old grizzled trees of the old road, the Hamlet still not in sight. This is the prologue, and the characters aren't yet fully aware of the horrors that await them.",
+        "outcomes": [0, 2, 8, 3, 0],
         "length": 1,
-        "npcs": ["Caretaker"],
-        "glossary": ["Stagecoach", "The Old Road", "Hamlet", "Estate"]
+        "locations": ["Stagecoach", "The Old Road", "Hamlet", "Estate", "Weald"]
     },
     {
         "title": "Crash",
+        "type": "story",
         "num_characters": 4,
         "summary": "Travelling down the old road, about to begin their gruelling quest, the stagecoach crashes and the Caretaker disappears. [Character 1], [Character 2], [Character 3], and [Character 4] assess their injuries and begin making their way to the Hamlet by foot. This is the prologue, and the characters aren't yet fully aware of the horrors that await them.",
-        "outcome": [0, 5, 7, 2, 0],
+        "outcomes": [0, 5, 7, 2, 0],
         "length": 1,
         "npcs": ["Caretaker"],
-        "glossary": ["Stagecoach", "The Old Road", "Hamlet", "Estate"],
+        "locations": ["Stagecoach", "The Old Road", "Hamlet", "Estate", "Weald"],
         "special_consequences": ["gain_wound"]
-    }    
+    },
+    {
+        "title": "Vermin",
+        "type": "story",
+        "num_characters": 4,
+        "summary": "On their way to the Hamlet on foot, after the Stagecoach crashed and Caretaker tracelessly vanished, [Character 1], [Character 2], [Character 3], and [Character 4] encounter [Enemies] and prepare for attack. Set the stage for the battle, but don't start it yet.",
+        "outcomes": [1, 3, 5, 4, 1],
+        "length": 1,
+        "npcs": ["Caretaker"],
+        "locations": ["Stagecoach", "The Old Road", "Hamlet", "Estate", "Weald"],
+        "keywords": ["Send these vermin a message. The rightful owners has returned, and their kind is no longer welcome!"],
+        "special_consequences": ["gain_wound"]
+    },
+    {
+        "title": "Vanquished",
+        "type": "story",
+        "num_characters": 4,
+        "summary": "On their way to the Hamlet on foot, after the Stagecoach crashed and Caretaker tracelessly vanished, [Character 1], [Character 2], [Character 3], and [Character 4] have defeated [Enemies]. Narrate their conversation, relieved or hostile, and actions post-battle.",
+        "outcomes": [0, 0, 0, 0, 0],
+        "length": 2,
+        "npcs": ["Caretaker"],
+        "locations": ["Stagecoach", "The Old Road", "Weald"],
+        "special_consequences": ["gain_wound"]
+    }
 ]

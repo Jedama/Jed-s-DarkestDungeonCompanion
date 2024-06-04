@@ -1,0 +1,120 @@
+{
+    "title": "Plague Doctor",
+    "name": "Paracelsus",
+    "level": 0,
+    "summary": "The Plague Doctor, is primarily driven by her fervor to practice medicine and unlock the secrets of life and death. Ostracized for her radical methods, she now makes use of the Heirs' resources, offering her medical expertise on missions in return for the freedom to conduct her experiments at the hamlet.",
+    "history": "Once a top student embroiled in scandal due to her unconventional theories, the Plague Doctor's intense curiosity pushed her beyond academic boundaries. Her breakthrough came when she revived the cadaver of her deceased professor during an unauthorized experiment. Haunted by the consequences of her actions, she was compelled to leave her former life behind, seeking refuge and opportunity in the shadows of the hamlet's resources.",
+    "race": "Human",
+    "gender": "Female",
+    "religion": "Agnostic",
+    "traits": [
+        "Innovative",
+        "Obsessive",
+        "Paranoid",
+        "Isolated",
+        "Compulsive'",
+        "Lygomania",
+        "Back Tracker",
+        "Slugger"
+    ],
+    "status": {
+        "physical": 10,
+        "mental": 9,
+        "description": "In good health and decent spirits",
+        "wounds": [],
+        "diseases": []
+    },
+    "stats": {
+        "strength": 3,
+        "agility": 5,
+        "intelligence": 9,
+        "authority": 3,
+        "sociability": 2
+    },
+    "equipment": [
+        "Incicion knife",
+        "Toxic flasks"
+    ],
+    "trinkets": [],
+    "appearance": {
+        "gender": "Female",
+        "height": "Average",
+        "build": "Slim",
+        "skin_tone": "Pale",
+        "hair_color": "Hidden under hood",
+        "hairstyle": "Short brown and unkempt",
+        "facial_hair": "None",
+        "accessories": [
+            "Plague mask"
+        ],
+        "distinguishing_marks": [],
+        "notes": []
+    },
+    "clothing": {
+        "headwear": "Iconic Plague Doctor mask",
+        "top": "Dark leather coat",
+        "pants": "Sturdy leather pants",
+        "outerwear": "Hooded cloak",
+        "footwear": "High leather boots",
+        "notes": [
+            "Wears glasses when outside her mask"
+        ]
+    },
+    "combat": {
+        "range": "Mid-range",
+        "weapon": "Alchemy and thrown weapons",
+        "strengths": [
+            "Chemical warfare",
+            "Medical knowledge",
+            "Blinding",
+            "Bludgeoning attacks with heavy objects"
+        ],
+        "weaknesses": [
+            "Physical combat",
+            "Social interactions",
+            "Agility"
+        ]
+    },
+    "magic": "None.",
+    "notes": [
+        "Struggles with ethical boundaries in her pursuit of knowledge",
+        "Tends to circle back and revisit locations repeatedly"
+    ],
+    "relationships": {
+        "Heir": {
+            "affinity": 4,
+            "dynamic": "Wary Partnership",
+            "description": "The Plague Doctor sees the Heir as a necessary resource, tolerating his meekness and appreciating his organizational capabilities, but remains aloof and focused on her own pursuits.",
+            "history": "The Plague Doctor has recently arrived at the estate, brought in by the Heir to lend her experimental medical expertise, though she maintains a detached professionalism in their interactions.",
+            "notes": ""
+        },
+        "Heiress": {
+            "affinity": 3,
+            "dynamic": "Cautious Interest",
+            "description": "The Plague Doctor sees the Heiress as a source of resources and freedom to conduct her experiments, but is wary of her authority and potential interference.",
+            "history": "The Plague Doctor was recruited by the Heiress to provide her unorthodox medical expertise in dealing with the supernatural afflictions plaguing the estate, in exchange for access to the hamlet''s resources.",
+            "notes": ""
+        },
+        "Highwayman": {
+            "affinity": 3,
+            "dynamic": "Curious Interest",
+            "description": "The Plague Doctor finds the Highwayman an intriguing specimen, his gruff exterior and sordid past piquing her curiosity to unravel the layers beneath.",
+            "history": "Their encounter at the tavern marked the beginning of an unlikely association, where the Plague Doctor saw an opportunity to study the hardened outlaw while he begrudgingly tolerated her eccentric tendencies.",
+            "notes": ""
+        },
+        "Vestal": {
+            "affinity": 2,
+            "dynamic": "Cautious Curiosity",
+            "description": "The Plague Doctor is intrigued by the Vestal's connection to divine forces, viewing her as a potential source of knowledge, but maintains a wary distance due to their contrasting philosophies.",
+            "history": "The Plague Doctor encountered the Vestal during her initial exploration of the estate, their first interaction marked by an air of tension arising from their different approaches to spiritual and medical matters.",
+            "notes": ""
+        },
+        "Crusader": {
+            "affinity": 4,
+            "dynamic": "Cautious Interest",
+            "description": "The Plague Doctor views the Crusader with a mix of fascination and wariness, intrigued by his prowess yet wary of his devout nature clashing with her unconventional methods.",
+            "history": "The Plague Doctor has only recently met the Crusader, their paths crossing upon her arrival at the hamlet to offer her expertise. While respecting his reputation, she remains guarded around him, unsure of how he might perceive her radical approach to medicine.",
+            "notes": ""
+        }
+    }
+}

@@ -1,0 +1,681 @@
+{
+    "title": "Dantill",
+    "characters": {
+        "Heiress": {
+            "title": "Heiress",
+            "name": "Persephone Dantill",
+            "level": 0,
+            "summary": "The Heiress to the accursed Dantill estate wields a strong air of authority as she commands the daunting task of reclaiming her ancestral home. Armed with intelligence and strategic insight, she also manages the nearby hamlet, serving as a pillar of support and strength in a community plagued by supernatural horrors. She is grateful to those brave or mad enough to join her quest. However, when her methods or authority are challenged, she shows hardheaded stubbornness.",
+            "history": "Upon receiving a chilling letter from her late ancestor, the Heiress left her academic pursuits to take up her role as the heiress of the estate. She found herself thrust into a nightmarish reality where her ancestral home was not only physically deteriorated but also infested with the horrors summoned by her ancestor's dark rituals.",
+            "race": null,
+            "gender": null,
+            "religion": "None",
+            "traits": [
+                "Determined",
+                "Resourceful",
+                "Strategic",
+                "Intelligent",
+                "Stubborn",
+                "Authoritative"
+            ],
+            "status": {
+                "physical": 10,
+                "mental": 9,
+                "description": "In good health and high spirits"
+            },
+            "stats": {
+                "strength": 3,
+                "agility": 5,
+                "intelligence": 8,
+                "authority": 10,
+                "sociability": 9
+            },
+            "equipment": [
+                "Derringer pistol",
+                "wine bottle"
+            ],
+            "trinkets": [
+                "None"
+            ],
+            "appearance": {
+                "gender": "Female",
+                "height": "Average",
+                "build": "Average",
+                "skin_tone": "Fair",
+                "hair_color": "Blond",
+                "hairstyle": "Curled and styled to shoulder length",
+                "clothing": {
+                    "headwear": "None",
+                    "top": "White ruffled shirt",
+                    "pants": "Mustard yellow breeches",
+                    "outerwear": "Blue double-breasted tailcoat with gold buttons",
+                    "footwear": "Brown boots"
+                }
+            },
+            "combat": {
+                "range": "Mid-range",
+                "weapon": "Derringer pistol",
+                "strengths": [
+                    "Quick reflexes",
+                    "Sharpshooting",
+                    "Strategic thinking"
+                ],
+                "weaknesses": [
+                    "Close combat",
+                    "Physical strength"
+                ]
+            },
+            "magic": "None",
+            "notes": [
+                "Has a wine addiction."
+            ],
+            "relationships": {
+                "Heir": {
+                    "affinity": 8,
+                    "dynamic": "Familial",
+                    "description": "Despite a cold exterior and lifetime of bickering, the Heiress loves and will not let harm come upon the Heir.",
+                    "history": "The Heir is the Heiress's brother, and they grew up together.",
+                    "notes": "None."
+                },
+                "Crusader": {
+                    "affinity": 5,
+                    "dynamic": "Professional",
+                    "description": "The Heiress is cautiously assessing the Crusader's capabilities as her new hire.",
+                    "history": "The Crusader has recently joined the Heiress's guard on probationary terms.",
+                    "notes": "None."
+                },
+                "Highwayman": {
+                    "affinity": 3,
+                    "dynamic": "Cautious",
+                    "description": "The Heiress remains wary of the Highwayman, given his dubious past and rough demeanor.",
+                    "history": "The Highwayman has recently joined the Heiress's guard on probationary terms.",
+                    "notes": "None."
+                },
+                "Vestal": {
+                    "affinity": 4,
+                    "dynamic": "Pragmatic Tolerance",
+                    "description": "The Heiress appreciates the Vestal's fervent conviction, even if she remains skeptical of religious dogma. She recognizes the value of the Vestal's abilities and hopes to channel her zeal productively.",
+                    "history": "Seeking aid against the supernatural forces infesting her family's estate, the Heiress has enlisted the skills of the devoted Vestal. While respectful of her role, the Heiress intends to keep a pragmatic eye on their partnershi",
+                    "notes": ""
+                },
+                "Plague Doctor": {
+                    "affinity": 4,
+                    "dynamic": "Uneasy Partnership",
+                    "description": "The Heiress is unsettled by the Plague Doctor''s eccentric methods but recognizes her expertise as a necessary asset in combating the horrors they face. She intends to keep a close watch on the doctor''s activities.",
+                    "history": "Desperate for aid in her quest to reclaim her ancestral home, the Heiress has employed the notorious Plague Doctor, renowned for her radical medical practices and disregard for ethical boundaries.",
+                    "notes": ""
+                }
+            }
+        },
+        "Heir": {
+            "title": "Heir",
+            "name": "Percival Dantill",
+            "level": 0,
+            "summary": "The Heir to the estate is a meek and cowardly man who relies on the authority of his name to maintain a semblance of control in the chaotic surroundings of his ancestral home. Although his intentions are generally good, his tendency to leverage his position often undermines his credibility among those he tries to lead. With high intelligence but low physical capabilities, Percival struggles to assert himself, instead relying heavily on strategic thinking and logistical planning to navigate the challenges posed by the estate's dark legacy.",
+            "history": "A reluctant participant in the quest to restore the estate, Percival was coaxed into action by his sister, the determined Heiress. While he lacks her physical courage and commanding presence, Percival brings his own unique strengths to the fore. Highly educated and obsessively detailed-oriented, he immerses himself in the logistical challenges of managing the estate\u2019s resources and orchestrating the efforts needed to support the hamlet and its frightened inhabitants.",
+            "race": null,
+            "gender": null,
+            "religion": "None",
+            "traits": [
+                "Meek",
+                "Cowardly",
+                "Strategic",
+                "Educated",
+                "Logistical",
+                "Obsessive"
+            ],
+            "status": {
+                "physical": 10,
+                "mental": 8,
+                "description": "In good health and high spirits",
+                "wounds": [],
+                "diseases": []
+            },
+            "stats": {
+                "strength": 2,
+                "agility": 2,
+                "intelligence": 9,
+                "authority": 7,
+                "sociability": 8
+            },
+            "equipment": [
+                "Letter opener",
+                "Wine bottle"
+            ],
+            "trinkets": [
+                "None"
+            ],
+            "appearance": {
+                "gender": "Male",
+                "height": "Short",
+                "build": "Chubby",
+                "skin_tone": "Fair",
+                "hair_color": "Blond",
+                "hairstyle": "Curled and styled",
+                "facial_hair": "None",
+                "accessories": "Bowtie",
+                "distinguishing_marks": "None",
+                "notes": "None",
+                "clothing": {
+                    "headwear": "None",
+                    "top": "Newly ironed white shirt",
+                    "pants": "Mustard yellow breeches",
+                    "outerwear": "Blue double-breasted tailcoat with gold buttons",
+                    "footwear": "Brown boots"
+                }
+            },
+            "clothing": null,
+            "combat": {
+                "range": "Backline",
+                "weapon": "Letter opener",
+                "strengths": [
+                    "Hiding behind others",
+                    "Strategic thinking"
+                ],
+                "weaknesses": [
+                    "Close combat",
+                    "Physical strength",
+                    "Endurance",
+                    "Courage"
+                ]
+            },
+            "magic": "None",
+            "notes": [
+                "Has a wine addiction."
+            ],
+            "relationships": {
+                "Heiress": {
+                    "affinity": 8,
+                    "dynamic": "Familial",
+                    "description": "The heir, while jealous of, does love his sister, the Heir.",
+                    "history": "The heir is brother to the Heiress, and they grew up together.",
+                    "notes": "None."
+                },
+                "Crusader": {
+                    "affinity": 4,
+                    "dynamic": "Skeptical",
+                    "description": "The heir is dubious over the trustworthiness of his new guard, the Crusader.",
+                    "history": "The Crusader has recently joined the heirs' guard on probationary terms.",
+                    "notes": "None."
+                },
+                "Highwayman": {
+                    "affinity": 2,
+                    "dynamic": "Distrustful",
+                    "description": "The Heir is distrusting towards the Highwayman, scared that he'll steal his fancy possessions.",
+                    "history": "The Highwayman has recently joined the heirs' guard on probationary terms.",
+                    "notes": "None."
+                },
+                "Vestal": {
+                    "affinity": 3,
+                    "dynamic": "Embarrassment",
+                    "description": "The Heir is embarrassed by his inappropriate behavior towards the Vestal, which stemmed from his drunken state and lack of respect for her sacred duties. He recognizes her as a formidable and righteous figure, but his actions have likely strained their relationship.",
+                    "history": "In a drunken stupor, the Heir stumbled into the chapel and made inappropriate advances towards the Vestal, who was engaged in her devotions. His disrespectful conduct was met with a stern re",
+                    "notes": ""
+                },
+                "Plague Doctor": {
+                    "affinity": 3,
+                    "dynamic": "Uneasy Alliance",
+                    "description": "The Heir is unsettled by the Plague Doctor's ominous demeanor but recognizes her skills, hoping to carefully manage this partnership while avoiding any ethical conflicts.'",
+                    "history": "Having sought out unique expertise to aid the estate's efforts, the Heir has arranged for the infamous Plague Doctor to join their ranks, despite some trepidation about her unconventional methods.",
+                    "notes": ""
+                }
+            }
+        },
+        "Crusader": {
+            "title": "Crusader",
+            "name": "Reynauld",
+            "level": 0,
+            "summary": "The Crusader, a stoic warrior, reluctantly left his family to join the holy war, finding unexpected solace and divine purpose in the midst of battle. His formidable presence on the battlefield left behind, he realises he can never return to the life or family he once knew. As a way to atone for his past, he seeks and has found a new cause under the Heir and Heiress.",
+            "history": "From tilling the land to relishing the fervor of the Crusade, the Crusader's life is marked by the weight of martial glory and the stark absence of domestic warmth. Having once sought to prevent famine by his departure, he now recognizes the battlefield as his true home, forsaking the hearth for the harsh camaraderie of war.",
+            "race": null,
+            "gender": null,
+            "religion": "The Light",
+            "traits": [
+                "Stoic",
+                "Reluctant",
+                "Devout",
+                "Reputable",
+                "Merciful",
+                "Kleptomaniac"
+            ],
+            "status": {
+                "physical": 10,
+                "mental": 9,
+                "description": "In good health and high spirits",
+                "wounds": [],
+                "diseases": []
+            },
+            "stats": {
+                "strength": 8,
+                "agility": 3,
+                "intelligence": 5,
+                "authority": 6,
+                "sociability": 4
+            },
+            "equipment": [
+                "Broadsword"
+            ],
+            "trinkets": [
+                "None"
+            ],
+            "appearance": {
+                "gender": "Male",
+                "height": "Tall",
+                "build": "Muscular",
+                "skin_tone": "Fair",
+                "hair_color": "Dark",
+                "hairstyle": "Concealed by helm",
+                "facial_hair": "Short beard",
+                "accessories": "Crusader's tabard",
+                "distinguishing_marks": "None",
+                "notes": "None",
+                "clothing": {
+                    "headwear": "Steel helm",
+                    "top": "Chainmail hauberk",
+                    "pants": "Mail chausses",
+                    "outerwear": "Surcoat",
+                    "footwear": "Steel sabatons"
+                }
+            },
+            "clothing": null,
+            "combat": {
+                "range": "Close combat",
+                "weapon": "Broadsword",
+                "strengths": [
+                    "Discipline",
+                    "Endurance",
+                    "Martial prowess"
+                ],
+                "weaknesses": [
+                    "Ranged combat",
+                    "Speed",
+                    "Evation",
+                    "Stealth"
+                ]
+            },
+            "magic": "The light, a divine power that lets him smite foes and heal allies.",
+            "notes": [
+                "Has an irresistible kleptomania."
+            ],
+            "relationships": {
+                "Heiress": {
+                    "affinity": 5,
+                    "dynamic": "Professional",
+                    "description": "Reynauld maintains a professional relationship with the Heiress, focusing on fulfilling his role as her protector with a devout sense of duty.",
+                    "history": "Despite the Heiress's guarded approach, he commits to her cause, considering it a righteous path that will lead to personal salvation.",
+                    "notes": "None."
+                },
+                "Heir": {
+                    "affinity": 4,
+                    "dynamic": "Skeptical",
+                    "description": "While Reynauld intends to uphold his duty with silent diligence, the realises the meek Heir is unfit to lead.",
+                    "history": "Having joined the their, he endures the Heir\u2019s skepticism as another trial on his path to redemption.",
+                    "notes": "None."
+                },
+                "Highwayman": {
+                    "affinity": 7,
+                    "dynamic": "Comrade",
+                    "description": "The Crusader sees in the Highwayman a kindred spirit; both men with troubled pasts seeking to carve out a purpose through the quest they now share.",
+                    "history": "Both have found themselves in the employ of the Heir and Heiress, their unlikely bond formed through a shared understanding of redemption and repentance.",
+                    "notes": "None."
+                },
+                "Vestal": {
+                    "affinity": 8,
+                    "dynamic": "Spiritual Kinship'",
+                    "description": "The Crusader recognizes the Vestal as a kindred spirit in their sacred mission against the forces of darkness. He admires her spiritual fortitude and looks to her for guidance in matters of faith.",
+                    "history": "Though their paths seldom crossed before arriving at the Hamlet, the Crusader and Vestal share an instant rapport born of their mutual devotion to the Light. He finds solace in her compassionate presence amidst the brutal realities of their quest.",
+                    "notes": ""
+                },
+                "Plague Doctor": {
+                    "affinity": 3,
+                    "dynamic": "Cautious Skepticism",
+                    "description": "The Crusader regards the Plague Doctor with a measure of skepticism, uncertain about her unorthodox ways yet acknowledging her innovative reputation. He remains guarded but open-minded, determined to judge her methods fairly.",
+                    "history": "Reynauld has been warned about the Plague Doctor's radical practices, fostering an initial skepticism toward her. However, their recent encounter has piqued his curiosity, and he is willing to reserve judgment until he witnesses her methods firsthand.",
+                    "notes": ""
+                }
+            }
+        },
+        "Highwayman": {
+            "title": "Highwayman",
+            "name": "Dismas",
+            "level": 0,
+            "summary": "Once a prisoner, the Highwayman is now a haunted fugitive, living off the squalor of the city's canals and the meager pickings from vermin. His vision of freedom has been replaced by a reality of degradation, driving him to reluctantly offer his services for a final, desperate heist. Now, his path has unexpectedly converged with that of the Heiress and the Heir, offering a precarious chance at redemption through service.",
+            "history": "The Highwayman's tale is one of escape and survival, painted with strokes of desperation and grim resolve. Escaping from incarceration during a prison riot, he sought refuge in the underbelly of the city, subsisting in conditions that stripped away his illusions of freedom. A final job, taken out of sheer necessity, ended in tragedy, leaving him with a burden of guilt that no distance can alleviate.",
+            "race": null,
+            "gender": null,
+            "religion": "None",
+            "traits": [
+                "Rugged",
+                "Resourceful",
+                "Desperate",
+                "Fugitive",
+                "Remorseful",
+                "Trapped",
+                "Cynical"
+            ],
+            "status": {
+                "physical": 10,
+                "mental": 7,
+                "description": "In good health and in decent spirits",
+                "wounds": [],
+                "diseases": []
+            },
+            "stats": {
+                "strength": 6,
+                "agility": 8,
+                "intelligence": 5,
+                "authority": 3,
+                "sociability": 3
+            },
+            "equipment": [
+                "Flintlock pistol",
+                "Dagger"
+            ],
+            "trinkets": [],
+            "appearance": {
+                "gender": "Male",
+                "height": "Average",
+                "build": "Athletic",
+                "skin_tone": "Weathered",
+                "hair_color": "Dark",
+                "hairstyle": "Short, practical",
+                "facial_hair": "Stubble",
+                "accessories": "Tattered red scarf",
+                "distinguishing_marks": "None",
+                "notes": "None",
+                "clothing": {
+                    "headwear": "Red scarf",
+                    "top": "Rugged grey coat with fur collar",
+                    "pants": "Dark trousers",
+                    "outerwear": "Leather belt with pouches",
+                    "footwear": "Worn boots"
+                }
+            },
+            "clothing": null,
+            "combat": {
+                "range": "Mid-range to close combat",
+                "weapon": "Flintlock pistol",
+                "strengths": [
+                    "Quick reflexes",
+                    "Stealth",
+                    "Marksmanship"
+                ],
+                "weaknesses": [
+                    "Distrustful",
+                    "Endurance"
+                ]
+            },
+            "magic": "None",
+            "notes": [
+                "Known to cheat at cards",
+                "Has a gallows sense of humor"
+            ],
+            "relationships": {
+                "Heiress": {
+                    "affinity": 4,
+                    "dynamic": "Guardian",
+                    "description": "The Highwayman is determined to prove himself to the Heiress and to assist in her quest despite her warranted distrust.",
+                    "history": "Aware of his sullied past, the Heiress accepted the Highwayman into her guard under strict watch, offering him a chance at redemption.",
+                    "notes": "None"
+                },
+                "Heir": {
+                    "affinity": 3,
+                    "dynamic": "Guardian",
+                    "description": "Despite the Heir's distrust, the Highwayman is resolute in his role as a guard, seeing their safety as his path to absolution.",
+                    "history": "The Heir\u2019s suspicion of the Highwayman does not deter him; he recognizes the need to demonstrate his determination through action.",
+                    "notes": "None"
+                },
+                "Crusader": {
+                    "affinity": 7,
+                    "dynamic": "Comrade",
+                    "description": "Despite their outwardly differences, the Highwayman and Crusader swiftly bonded over the mistakes of their respective pasts and quest for redemption.",
+                    "history": "Both the Highwayman and Crusader were hired to protect the Heir and Heiress, and shared their painful told with one another.",
+                    "notes": "None"
+                },
+                "Vestal": {
+                    "affinity": 3,
+                    "dynamic": "Amused Skepticism",
+                    "description": "The Highwayman regards the Vestal with a mix of amusement and skepticism, finding her pious ways naive but intriguing nonetheless.",
+                    "history": "The Highwayman met the Vestal in a crowded hamlet, initially mocking her sacred garb before sensing a hint of sincere compassion beneath her stern demeanor.",
+                    "notes": ""
+                },
+                "Plague Doctor": {
+                    "affinity": 2,
+                    "dynamic": "Wary Skepticism'",
+                    "description": "The Highwayman regards the Plague Doctor with a mixture of suspicion and guarded fascination, put off by her unsettling demeanor yet drawn to her unconventional ways.",
+                    "history": "Having led a life on the fringes, the Highwayman found the Plague Doctor's presence equal parts unnerving and intriguing, her obsessive pursuit of knowledge reminding him of the depths to which desperation could drive a person.",
+                    "notes": ""
+                }
+            }
+        },
+        "Vestal": {
+            "title": "Vestal",
+            "name": "Junia",
+            "level": 0,
+            "summary": "The Vestal, upheld her sacred duties with pious rigor within the Abbey's sheltered confines. Her life, once marked by the tranquility of clerical discipline, was disrupted by forbidden desires and the harsh admonitions of her superiors. She now seeks redemption and freedom from her past torments through divine service in battle.",
+            "history": "Raised within the Abbey's austere walls, the Vestal was the epitome of monastic discipline until a momentary lapse led to her unjust punishment. Imprisoned and tormented, she received a divine revelation that her captors had strayed from the true path. Rescued by radiant light, she now channels her zeal into protecting others, believing fervently in the Light's guidance and her role as its martial emissary.",
+            "race": null,
+            "gender": null,
+            "religion": "The Light",
+            "traits": [
+                "Devoted",
+                "Righteous",
+                "Compassionate",
+                "Vindictive",
+                "Temperamental",
+                "Salacious",
+                "Horny"
+            ],
+            "status": {
+                "physical": 10,
+                "mental": 8,
+                "description": "In good health and decent spirits",
+                "wounds": [],
+                "diseases": []
+            },
+            "stats": {
+                "strength": 4,
+                "agility": 3,
+                "intelligence": 6,
+                "authority": 6,
+                "sociability": 3
+            },
+            "equipment": [
+                "Sacred Mace",
+                "Divine Tome"
+            ],
+            "trinkets": [],
+            "appearance": {
+                "gender": "Female",
+                "height": "Average",
+                "build": "Sturdy",
+                "skin_tone": "Pale",
+                "hair_color": "Hidden under hood",
+                "hairstyle": "Hidden under hood",
+                "facial_hair": "None",
+                "accessories": [],
+                "distinguishing_marks": [],
+                "notes": "None",
+                "clothing": {
+                    "headwear": "Hooded robe",
+                    "top": "Robe",
+                    "pants": "Robe",
+                    "outerwear": "Steel breastplate",
+                    "footwear": "Leather boots"
+                }
+            },
+            "clothing": null,
+            "combat": {
+                "range": "Mid-range",
+                "weapon": "Mace and divine spells",
+                "strengths": [
+                    "Healing abilities",
+                    "Divine magic"
+                ],
+                "weaknesses": [
+                    "Physical confrontations",
+                    "Endurance"
+                ]
+            },
+            "magic": "Powerful healing and protection spells as well as the ability to smite enemies with holy light.",
+            "notes": [],
+            "relationships": {
+                "Crusader": {
+                    "affinity": 8,
+                    "dynamic": "Spiritual Kinship",
+                    "description": "The Vestal sees the Crusader as a brother in arms, bound by their shared devotion to The Light. She respects his martial prowess and relies on his protection in battle.",
+                    "history": "Their mutual understanding of divine duty and shared hardships have forged a deep bond of trust and respect. The Crusader's stoic nature complements the Vestal's compassionate but firm approach to their mission.",
+                    "notes": "None"
+                },
+                "Heir": {
+                    "affinity": 2,
+                    "dynamic": "Disdain",
+                    "description": "The Vestal is appalled by the Heir's drunken and lascivious behavior, which she sees as a desecration of the sacred grounds she holds dear. She views him with utter disdain and a firm resolve to correct his impious conduct.",
+                    "history": "The Vestal caught the Heir drunkenly intruding upon her devotions in the chapel, making lewd comments and disrespecting the sanctity of the holy site, prompting her to forcefully rebuke him with a blast of divine light.",
+                    "notes": "None"
+                },
+                "Heiress": {
+                    "affinity": 4,
+                    "dynamic": "Reverent Skepticism",
+                    "description": "The Vestal respects the Heiress's resolute leadership but worries her secular mindset may undermine their holy mission. She hopes to temper the Heiress's pragmatism with spiritual guidance.'",
+                    "history": "The Vestal has been summoned by the Heiress to lend divine strength in cleansing the Dantill estate of its unholy taint. Despite their differing beliefs, she sees potential for a productive partnership.",
+                    "notes": "None"
+                },
+                "Highwayman": {
+                    "affinity": 4,
+                    "dynamic": "Wary Sympathy",
+                    "description": "The Vestal sees the Highwayman as a troubled soul in need of guidance, sympathizing with his struggles while remaining cautious of his roguish ways.",
+                    "history": "The Vestal encountered the Highwayman in a humble hamlet, recognizing his cynical demeanor as a front for deeper spiritual pain. She pledged to aid his path to redemption despite his initial mockery.",
+                    "notes": "None"
+                },
+                "Plague Doctor": {
+                    "affinity": 3,
+                    "dynamic": "Guarded Intrigue",
+                    "description": "The Vestal senses a clash between her sacred calling and the Plague Doctor's unconventional methods, but is intrigued by the potential insights the Doctor's knowledge could offer.",
+                    "history": "The Vestal crossed paths with the Plague Doctor during her initial tour of the estate, their contrasting philosophies creating an air of tension, yet also a sense of intrigue about their respective roles.",
+                    "notes": ""
+                }
+            }
+        },
+        "Plague Doctor": {
+            "title": "Plague Doctor",
+            "name": "Paracelsus",
+            "level": 0,
+            "summary": "The Plague Doctor, is primarily driven by her fervor to practice medicine and unlock the secrets of life and death. Ostracized for her radical methods, she now makes use of the Heirs' resources, offering her medical expertise on missions in return for the freedom to conduct her experiments at the hamlet.",
+            "history": "Once a top student embroiled in scandal due to her unconventional theories, the Plague Doctor's intense curiosity pushed her beyond academic boundaries. Her breakthrough came when she revived the cadaver of her deceased professor during an unauthorized experiment. Haunted by the consequences of her actions, she was compelled to leave her former life behind, seeking refuge and opportunity in the shadows of the hamlet's resources.",
+            "race": "Human",
+            "gender": "Female",
+            "religion": "Agnostic",
+            "traits": [
+                "Innovative",
+                "Obsessive",
+                "Paranoid",
+                "Isolated",
+                "Compulsive'",
+                "Lygomania",
+                "Back Tracker",
+                "Slugger"
+            ],
+            "status": {
+                "physical": 10,
+                "mental": 9,
+                "description": "In good health and decent spirits",
+                "wounds": [],
+                "diseases": []
+            },
+            "stats": {
+                "strength": 3,
+                "agility": 5,
+                "intelligence": 9,
+                "authority": 3,
+                "sociability": 2
+            },
+            "equipment": [
+                "Incicion knife",
+                "Toxic flasks"
+            ],
+            "trinkets": [],
+            "appearance": {
+                "gender": "Female",
+                "height": "Average",
+                "build": "Slim",
+                "skin_tone": "Pale",
+                "hair_color": "Hidden under hood",
+                "hairstyle": "Short brown and unkempt",
+                "facial_hair": "None",
+                "accessories": [
+                    "Plague mask"
+                ],
+                "distinguishing_marks": [],
+                "notes": []
+            },
+            "clothing": {
+                "headwear": "Iconic Plague Doctor mask",
+                "top": "Dark leather coat",
+                "pants": "Sturdy leather pants",
+                "outerwear": "Hooded cloak",
+                "footwear": "High leather boots",
+                "notes": [
+                    "Wears glasses when outside her mask"
+                ]
+            },
+            "combat": {
+                "range": "Mid-range",
+                "weapon": "Alchemy and thrown weapons",
+                "strengths": [
+                    "Chemical warfare",
+                    "Medical knowledge",
+                    "Blinding",
+                    "Bludgeoning attacks with heavy objects"
+                ],
+                "weaknesses": [
+                    "Physical combat",
+                    "Social interactions",
+                    "Agility"
+                ]
+            },
+            "magic": "None.",
+            "notes": [
+                "Struggles with ethical boundaries in her pursuit of knowledge",
+                "Tends to circle back and revisit locations repeatedly"
+            ],
+            "relationships": {
+                "Heir": {
+                    "affinity": 4,
+                    "dynamic": "Wary Partnership",
+                    "description": "The Plague Doctor sees the Heir as a necessary resource, tolerating his meekness and appreciating his organizational capabilities, but remains aloof and focused on her own pursuits.",
+                    "history": "The Plague Doctor has recently arrived at the estate, brought in by the Heir to lend her experimental medical expertise, though she maintains a detached professionalism in their interactions.",
+                    "notes": ""
+                },
+                "Heiress": {
+                    "affinity": 3,
+                    "dynamic": "Cautious Interest",
+                    "description": "The Plague Doctor sees the Heiress as a source of resources and freedom to conduct her experiments, but is wary of her authority and potential interference.",
+                    "history": "The Plague Doctor was recruited by the Heiress to provide her unorthodox medical expertise in dealing with the supernatural afflictions plaguing the estate, in exchange for access to the hamlet''s resources.",
+                    "notes": ""
+                },
+                "Highwayman": {
+                    "affinity": 3,
+                    "dynamic": "Curious Interest",
+                    "description": "The Plague Doctor finds the Highwayman an intriguing specimen, his gruff exterior and sordid past piquing her curiosity to unravel the layers beneath.",
+                    "history": "Their encounter at the tavern marked the beginning of an unlikely association, where the Plague Doctor saw an opportunity to study the hardened outlaw while he begrudgingly tolerated her eccentric tendencies.",
+                    "notes": ""
+                },
+                "Vestal": {
+                    "affinity": 2,
+                    "dynamic": "Cautious Curiosity",
+                    "description": "The Plague Doctor is intrigued by the Vestal's connection to divine forces, viewing her as a potential source of knowledge, but maintains a wary distance due to their contrasting philosophies.",
+                    "history": "The Plague Doctor encountered the Vestal during her initial exploration of the estate, their first interaction marked by an air of tension arising from their different approaches to spiritual and medical matters.",
+                    "notes": ""
+                },
+                "Crusader": {
+                    "affinity": 4,
+                    "dynamic": "Cautious Interest",
+                    "description": "The Plague Doctor views the Crusader with a mix of fascination and wariness, intrigued by his prowess yet wary of his devout nature clashing with her unconventional methods.",
+                    "history": "The Plague Doctor has only recently met the Crusader, their paths crossing upon her arrival at the hamlet to offer her expertise. While respecting his reputation, she remains guarded around him, unsure of how he might perceive her radical approach to medicine.",
+                    "notes": ""
+                }
+            }
+        }
+    }
+}

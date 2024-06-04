@@ -1,0 +1,131 @@
+[
+  {
+    "title": "Brigand Cutthroat",
+    "summary": "The Brigand Cutthroat is a deadly, close-combat specialist armed with twin daggers, known for his precision and dexterity. His muscular build and dark skin are partially obscured by a green hood, making him a fearsome and ruthless adversary in battle.",
+    "race": "Human",
+    "gender": "Male",
+    "faction": "Brigands",
+    "stats": {
+      "strength": 8,
+      "agility": 5,
+      "intelligence": 3
+    },
+    "equipment": [
+      "Twin daggers"
+    ],
+    "appearance": {
+      "gender": "Male",
+      "height": "Tall",
+      "build": "Muscular",
+      "skin_tone": "Dark",
+      "facial_hair": "Stubble",
+      "notes": "Notably large nose"    
+    },
+    "clothing": {
+      "headwear": "Green hood that obscures part of the face",
+      "top": "Thick gambeson",
+      "pants": "Green pants that match the hood",
+      "outerwear": "Tan-colored, padded vest"
+    },
+    "combat": {
+      "range": "Close combat",
+      "weapon": "Twin daggers",
+      "strengths": [
+        "Precision",
+        "Close combat",
+        "Dexterity"
+      ],
+      "weaknesses": [
+        "Ranged combat",
+        "Endurance",
+        "Versatility"
+      ]
+    }
+  },
+  {
+    "title": "Brigand Fusilier",
+    "summary": "The Brigand Fusilier is armed with a blunderbuss which he uses to suppress the bandits' foes with sprays of lead.",
+    "race": "Human",
+    "gender": "Male",
+    "faction": "Brigands",
+    "stats": {
+      "strength": 4,
+      "agility": 6,
+      "intelligence": 3
+    },
+    "equipment": [
+      "Blunderbuss"
+    ],
+    "appearance": {
+      "gender": "Male",
+      "height": "Average",
+      "build": "Lean",
+      "skin_tone": "Tan",
+      "accessories": "Pouch for gunpowder"
+    },
+    "clothing": {
+      "headwear": "Green hood that obscures part of the face",
+      "top": "Simple, rugged shirt",
+      "pants": "Brown pants",
+      "outerwear": "Green cloak and tan padded vest"
+    },
+    "combat": {
+      "range": "Ranged combat",
+      "weapon": "Blunderbuss",
+      "strengths": [
+        "Suppressive fire",
+        "Debuffing dodge",
+        "Speed"
+      ],
+      "weaknesses": [
+        "Accuracy",
+        "Endurance",
+        "Close combat"
+      ]
+    }
+  },
+  {
+    "title": "Brigand Bloodletter",
+    "summary": "The Brigand Bloodletter is a hulking, battle-scarred brute. Armed with a vicious cat o' nine tails whip and a deadly flintlock pistol, he is ready to give his enemies deep and bloody scars to match his.",
+    "race": "Human",
+    "gender": "Male",
+    "faction": "Brigands",
+    "stats": {
+      "strength": 9,
+      "agility": 2,
+      "intelligence": 3
+    },
+    "equipment": [
+      "Cat o' nine tails whip",
+      "Flintlock pistol"
+    ],
+    "appearance": {
+      "gender": "Male",
+      "height": "Tall",
+      "build": "Muscular",
+      "skin_tone": "Dark",
+      "accessories": "Spiked bracelets",
+      "distinguishing_marks": "Battle scars"
+    },
+    "clothing": {
+      "headwear": "Green hood that obscures part of the face",
+      "top": "Bare chest with scars",
+      "pants": "Green pants that match the hood",
+      "outerwear": "Belted waist with pouches"
+    },
+    "combat": {
+      "range": "Close combat",
+      "weapon": "Cat o' nine tails whip and flintlock pistol",
+      "strengths": [
+        "Durability",
+        "Bleed infliction",
+        "Leadership"
+      ],
+      "weaknesses": [
+        "Slow",
+        "Maladroit",
+        "Scarred"
+      ]
+    }
+  }
+]

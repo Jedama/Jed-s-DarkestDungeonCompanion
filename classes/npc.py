@@ -1,12 +1,12 @@
 class NPC:
-    def __init__(self, title, name, summary, history, traits, appearance, other_notes, relationships):
+    def __init__(self, title, name, summary, history, traits, appearance, notes, relationships):
         self.title = title
         self.name = name
         self.summary = summary
         self.history = history
         self.traits = traits
         self.appearance = appearance
-        self.other_notes = other_notes
+        self.notes = notes
         self.relationships = relationships
 
     @classmethod
@@ -19,7 +19,7 @@ class NPC:
             history=data.get('history'),
             traits=data.get('traits'),
             appearance=data.get('appearance'),
-            other_notes=data.get('other_notes', []),
+            notes=data.get('notes', []),
             relationships=data.get('relationships', {})
         )
 
@@ -32,6 +32,6 @@ class NPC:
             "history": self.history,
             "traits": self.traits,
             "appearance": self.appearance,
-            "other_notes": self.other_notes,
+            "notes": self.notes,
             "relationships": self.relationships
         }

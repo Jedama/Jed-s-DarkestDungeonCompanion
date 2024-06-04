@@ -1,0 +1,12 @@
+[
+    {
+        "title": "First Encounter",
+        "type": "Town",
+        "num_characters": 2,
+        "summary": "[Character 1], having recently arrived in the Hamlet, meets [Character 2] for the first time.",
+        "outcomes": [0, 1, 4, 1, 0],
+        "fields": [],
+        "length": 1,
+        "keyword_range": [1, 3]
+    }
+]

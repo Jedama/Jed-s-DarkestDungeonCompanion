@@ -1,0 +1,113 @@
+{
+    "title": "Heiress",
+    "name": "Persephone Dantill",
+    "level": 0,
+    "summary": "The Heiress to the accursed Dantill estate wields a strong air of authority as she commands the daunting task of reclaiming her ancestral home. Armed with intelligence and strategic insight, she also manages the nearby hamlet, serving as a pillar of support and strength in a community plagued by supernatural horrors. She is grateful to those brave or mad enough to join her quest. However, when her methods or authority are challenged, she shows hardheaded stubbornness.",
+    "history": "Upon receiving a chilling letter from her late ancestor, the Heiress left her academic pursuits to take up her role as the heiress of the estate. She found herself thrust into a nightmarish reality where her ancestral home was not only physically deteriorated but also infested with the horrors summoned by her ancestor's dark rituals.",
+    "race": null,
+    "gender": null,
+    "religion": "None",
+    "traits": [
+        "Determined",
+        "Resourceful",
+        "Strategic",
+        "Intelligent",
+        "Stubborn",
+        "Authoritative"
+    ],
+    "status": {
+        "physical": 10,
+        "mental": 9,
+        "description": "In good health and high spirits",
+        "wounds": [],
+        "diseases": []
+    },
+    "stats": {
+        "strength": 3,
+        "agility": 5,
+        "intelligence": 8,
+        "authority": 10,
+        "sociability": 9
+    },
+    "equipment": [
+        "Derringer pistol",
+        "wine bottle"
+    ],
+    "trinkets": [
+        "None"
+    ],
+    "appearance": {
+        "gender": "Female",
+        "height": "Average",
+        "build": "Average",
+        "skin_tone": "Fair",
+        "hair_color": "Blond",
+        "hairstyle": "Curled and styled to shoulder length",
+        "facial_hair": "None",
+        "accessories": "None",
+        "distinguishing_marks": "None",
+        "notes": "None",
+        "clothing": {
+            "headwear": "None",
+            "top": "White ruffled shirt",
+            "pants": "Mustard yellow breeches",
+            "outerwear": "Blue double-breasted tailcoat with gold buttons",
+            "footwear": "Brown boots"
+        }
+    },
+    "clothing": null,
+    "combat": {
+        "range": "Mid-range",
+        "weapon": "Derringer pistol",
+        "strengths": [
+            "Quick reflexes",
+            "Sharpshooting",
+            "Strategic thinking"
+        ],
+        "weaknesses": [
+            "Close combat",
+            "Physical strength"
+        ]
+    },
+    "magic": "None",
+    "notes": [
+        "Has a wine addiction."
+    ],
+    "relationships": {
+        "Heir": {
+            "affinity": 8,
+            "dynamic": "Familial",
+            "description": "Despite a cold exterior and lifetime of bickering, the Heiress loves and will not let harm come upon the Heir.",
+            "history": "The Heir is the Heiress's brother, and they grew up together.",
+            "notes": "None."
+        },
+        "Crusader": {
+            "affinity": 5,
+            "dynamic": "Professional",
+            "description": "The Heiress is cautiously assessing the Crusader's capabilities as her new hire.",
+            "history": "The Crusader has recently joined the Heiress's guard on probationary terms.",
+            "notes": "None."
+        },
+        "Highwayman": {
+            "affinity": 3,
+            "dynamic": "Cautious",
+            "description": "The Heiress remains wary of the Highwayman, given his dubious past and rough demeanor.",
+            "history": "The Highwayman has recently joined the Heiress's guard on probationary terms.",
+            "notes": "None."
+        },
+        "Vestal": {
+            "affinity": 4,
+            "dynamic": "Pragmatic Tolerance",
+            "description": "The Heiress appreciates the Vestal's fervent conviction, even if she remains skeptical of religious dogma. She recognizes the value of the Vestal's abilities and hopes to channel her zeal productively.",
+            "history": "Seeking aid against the supernatural forces infesting her family's estate, the Heiress has enlisted the skills of the devoted Vestal. While respectful of her role, the Heiress intends to keep a pragmatic eye on their partnershi",
+            "notes": ""
+        },
+        "Plague Doctor": {
+            "affinity": 4,
+            "dynamic": "Uneasy Partnership",
+            "description": "The Heiress is unsettled by the Plague Doctor''s eccentric methods but recognizes her expertise as a necessary asset in combating the horrors they face. She intends to keep a close watch on the doctor''s activities.",
+            "history": "Desperate for aid in her quest to reclaim her ancestral home, the Heiress has employed the notorious Plague Doctor, renowned for her radical medical practices and disregard for ethical boundaries.",
+            "notes": ""
+        }
+    }
+}

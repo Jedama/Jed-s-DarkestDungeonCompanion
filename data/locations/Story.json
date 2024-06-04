@@ -1,7 +1,8 @@
 [
     {
         "title": "Estate",
-        "description": "The estate, the home of the Ancestor, is now overrun with brigands and eldritch horrors, conjured by the Ancestor in his pursuit of unknowable power, it is the mission of the Heir and Heiress, as well as the rest of the roster, to retake their birthrigth from its monstrous inhabitants."
+        "description": "The estate, the home of the Ancestor, is now overrun with brigands and eldritch horrors, conjured by the Ancestor in his pursuit of unknowable power, it is the mission of the Heir and Heiress, as well as the rest of the roster, to retake their birthrigth from its monstrous inhabitants.",
+        "npcs": "Ancestor"
     },
     {
         "title": "Hamlet",
