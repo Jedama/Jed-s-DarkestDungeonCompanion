@@ -115,14 +115,13 @@ class OutputEvent:
         system_prompt, user_prompt, assistant_prompt = self.create_story_prompt()
 
         # Call the prompt_claude function
-        event_story = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 350 + 200 * self.length, temperature=1)
+        event_story = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 500 + 200 * self.length, temperature=1)
         event_story = clean_response_claude(event_story)
 
         print(event_story)
 
         system_prompt, user_prompt, assistant_prompt = self.create_consequences_prompt(event_story)
-
-        event_consequences = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 250 + (50 * len(self.characters)), temperature=1)
+        event_consequences = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 350 + (50 * len(self.characters)), temperature=1)
         event_consequences = "For" + clean_response_claude(event_consequences)
 
         print(event_consequences)

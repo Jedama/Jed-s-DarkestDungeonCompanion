@@ -106,7 +106,7 @@
     {
         "title": "Sexual Activities",
         "num_characters": 2,
-        "summary": "Domineering, awkward, or passionate, [Character 1] and [character 2] have engage in erotic, sexual activities.",
+        "summary": "Domineering, awkward, or passionate, [Character 1] and [character 2] have engage in sexual activities.",
         "outcomes": [2, 1, 0, 4, 2],
         "fields": ["combat"],
         "length": 2

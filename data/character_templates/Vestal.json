@@ -43,23 +43,16 @@
       "build": "Sturdy",
       "skin_tone": "Pale",
       "hair_color": "Blonde",
-      "hairstyle": "Hidden under hood",
-      "facial_hair": "None",
-      "accessories": "None",
-      "distinguishing_marks": "None",
-      "notes": "None"
+      "hairstyle": "Hidden under hood"
   },
   "clothing": {
     "headwear": "Hooded robe",
     "top": "Sacred robe",
     "pants": "None",
-    "outerwear": "Steel breastplate",
-    "footwear": "Leather boots",
-    "notes": "Thick gloves"
+    "outerwear": "Steel breastplate"
   },
   "combat": {
-      "range": "Mid-range",
-      "weapon": "Mace and divine spells",
+      "role": "Healer",
       "strengths": [
           "Healing abilities",
           "Divine magic"

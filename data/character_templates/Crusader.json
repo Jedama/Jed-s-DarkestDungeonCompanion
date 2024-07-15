@@ -55,8 +55,7 @@
     "footwear": "Steel sabatons"
   },
   "combat": {
-    "range": "Close combat",
-    "weapon": "Broadsword",
+    "role": "Close combat",
     "strengths": [
       "Discipline",
       "Endurance",

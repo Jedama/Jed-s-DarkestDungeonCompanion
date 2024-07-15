@@ -1,15 +1,13 @@
 [
     {
         "title": "Recruit",
-        "type": "Town",
+        "type": "town",
         "num_characters": 1,
         "summary": "[Character 1] steps off the stagecoach and arrives in the hamlet.",
         "outcomes": [0, 0, 1, 0, 0],
-        "fields": ["combat"],
         "length": 1,
         "npcs": ["Caretaker"],
-        "roles": ["Welcomer"],
-        "fields": ["Stagecoach"],
+        "locations": ["Stagecoach"],
         "keyword_range": [0, 0]
     }
 ]

@@ -1,28 +1,68 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, send_from_directory
 from classes import Estate
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='static')
+
+# Helper function to check if an estate exists
+def check_estate_exists(estate_name):
+    return os.path.exists(f'estates/{estate_name}/estate.json')
 
 @app.route('/')
-def home():
-    return render_template('home.html')
+def index():
+    return render_template('index.html')
 
-def event():
-    return render_template('event.html')
+@app.route('/api/characters/<estate_name>')
+def get_characters(estate_name):
+    estate = Estate.load_estate(estate_name)
+    character_titles = [char.title for char in estate.characters.values()]
+    return jsonify(character_titles)
 
-@app.route('/start', methods=['POST'])
-def start():
-    estate_name = request.form['estate_name']
-    estate = Estate(estate_name)
-    estate.start_campaign()
+@app.route('/api/character/<estate_name>/<title>')
+def get_character_details(estate_name, title):
+    estate = Estate.load_estate(estate_name)
+    character = estate.characters.get(title)
+    if character:
+        return jsonify({
+            "title": character.title,
+            "name": character.name,
+            "summary": character.summary,
+            "history": character.history,
+            "race": character.race,
+            "gender": character.gender,
+            "religion": character.religion,
+            "traits": character.traits,
+            "status": character.status,
+            "stats": character.stats,
+            "equipment": character.equipment,
+            "trinkets": character.trinkets,
+            "appearance": character.appearance,
+            "clothing": character.clothing,
+            "combat": character.combat,
+            "magic": character.magic,
+            "notes": character.notes,
+            "relationships": character.relationships
+        })
+    return jsonify({"error": "Character not found"}), 404
 
-    # Handle start logic here
-    return redirect(url_for('home'))
+@app.route('/api/estate/<estate_name>', methods=['GET'])
+def load_or_create_estate(estate_name):
+    if check_estate_exists(estate_name):
+        estate = Estate.load_estate(estate_name)
+        return jsonify({"message": f"Estate {estate_name} loaded", "status": "loaded"})
+    else:
+        estate = Estate(estate_name)
+        estate.start_campaign()
+        estate.save_estate()  # Make sure to save the new estate
+        return jsonify({"message": f"Campaign started for estate {estate_name}", "status": "started"})
 
-@app.route('/load', methods=['POST'])
-def load():
-    # Handle load logic here
-    return redirect(url_for('home'))
-
+@app.route('/estates/<estate_name>/estate.json')
+def serve_estate_json(estate_name):
+    estate_path = os.path.join('estates', estate_name, 'estate.json')
+    if os.path.exists(estate_path):
+        return send_from_directory('estates', f'{estate_name}/estate.json')
+    else:
+        return jsonify({"error": "Estate not found"}), 404
+    
 if __name__ == '__main__':
     app.run(debug=True)

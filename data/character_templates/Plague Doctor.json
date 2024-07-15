@@ -32,31 +32,24 @@
       "Incicion knife",
       "Toxic flasks"
   ],
-  "trinkets": [
-  ],
+  "trinkets": [],
   "appearance": {
       "gender": "Female",
       "height": "Average",
       "build": "Slim",
       "skin_tone": "Pale",
       "hair_color": "Hidden under hood",
-      "hairstyle": "Short brown and unkempt",
-      "facial_hair": "None",
-      "accessories": ["Plague mask"],
-      "distinguishing_marks": [],
-      "notes": []
+      "hairstyle": "Short brown and unkempt"
   },
   "clothing": {
     "headwear": "Iconic Plague Doctor mask",
     "top": "Dark leather coat",
     "pants": "Sturdy leather pants",
     "outerwear": "Hooded cloak",
-    "footwear": "High leather boots",
     "notes": ["Wears glasses when outside her mask"]
   },
   "combat": {
-      "range": "Mid-range",
-      "weapon": "Alchemy and thrown weapons",
+      "role": "Poisoner",
       "strengths": [
           "Chemical warfare",
           "Medical knowledge",

@@ -1,0 +1,78 @@
+[
+    {
+        "title": "Bone Soldier",
+        "summary": "The Bone Soldier is an undead warrior, wielding a sword with deadly precision. Its skeletal form retains the combat skills it possessed in life.",
+        "race": "Undead",
+        "gender": "None",
+        "faction": "Skeleton",
+        "stats": {
+            "strength": 6,
+            "agility": 7,
+            "intelligence": 2
+        },
+        "equipment": [
+            "Sword"
+        ],
+        "appearance": {
+            "height": "Average",
+            "build": "Skeletal",
+            "skin_tone": "Bone"
+        },
+        "clothing": {
+            "headwear": "Tattered bandages",
+            "top": "Remnants of armor",
+            "pants": "Tattered trousers"
+        },
+        "combat": {
+            "role": "Melee fighter",
+            "strengths": [
+                "Above-average damage",
+                "Extended melee reach",
+                "Finesse in combat"
+            ],
+            "weaknesses": [
+                "Fragile bones",
+                "Vulnerable to holy attacks",
+                "Limited intelligence"
+            ]
+        }
+    },
+    {
+        "title": "Bone Rabble",
+        "summary": "The Bone Rabble is a basic skeletal warrior, wielding a crude club. It's a common, weak undead enemy often found in groups.",
+        "race": "Undead",
+        "gender": "None",
+        "faction": "Skeleton",
+        "stats": {
+            "strength": 2,
+            "agility": 2,
+            "intelligence": 1
+        },
+        "equipment": [
+            "Crude club"
+        ],
+        "appearance": {
+            "height": "Average",
+            "build": "Skeletal",
+            "skin_tone": "Bone"
+        },
+        "clothing": {
+            "headwear": "Spiked skull",
+            "top": "Tattered cloth",
+            "pants": "Worn trousers"
+        },
+        "combat": {
+            "role": "Frontline fodder",
+            "strengths": [
+                "Numbers",
+                "Resistance to bleeding"
+            ],
+            "weaknesses": [
+                "Fragile structure",
+                "Poor combat skills",
+                "Slow movement"
+            ]
+        }
+    }
+        
+]

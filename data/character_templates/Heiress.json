@@ -52,8 +52,7 @@
     "footwear": "Brown boots"
   },
   "combat": {
-    "range": "Mid-range",
-    "weapon": "Derringer pistol",
+    "role": "Leader",
     "strengths": [
       "Quick reflexes",
       "Sharpshooting",

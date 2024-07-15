@@ -115,6 +115,20 @@
             "description": "The Plague Doctor views the Crusader with a mix of fascination and wariness, intrigued by his prowess yet wary of his devout nature clashing with her unconventional methods.",
             "history": "The Plague Doctor has only recently met the Crusader, their paths crossing upon her arrival at the hamlet to offer her expertise. While respecting his reputation, she remains guarded around him, unsure of how he might perceive her radical approach to medicine.",
             "notes": ""
+        },
+        "Hood": {
+            "affinity": 5,
+            "dynamic": "Scientific Curiosity",
+            "description": "The Plague Doctor views the Hood as a fascinating subject for study, intrigued by her strange behavior and cryptic utterances.",
+            "history": "The Plague Doctor encountered the Hood near the apothecary, observing her peculiar actions and expressing interest in examining her further.",
+            "notes": ""
+        },
+        "Grave Robber": {
+            "affinity": 5,
+            "dynamic": "Curious",
+            "description": "The Plague Doctor views the Grave Robber as a potential source of specimens and a kindred spirit in the realm of death and bodies.",
+            "history": "They encountered each other in the hamlet, exchanging veiled threats that quickly turned to mutual intrigue about their shared fascination with anatomy.",
+            "notes": ""
         }
     }
 }

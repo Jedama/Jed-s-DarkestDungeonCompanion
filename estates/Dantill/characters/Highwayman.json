@@ -108,6 +108,20 @@
             "description": "The Highwayman regards the Plague Doctor with a mixture of suspicion and guarded fascination, put off by her unsettling demeanor yet drawn to her unconventional ways.",
             "history": "Having led a life on the fringes, the Highwayman found the Plague Doctor's presence equal parts unnerving and intriguing, her obsessive pursuit of knowledge reminding him of the depths to which desperation could drive a person.",
             "notes": ""
+        },
+        "Hood": {
+            "affinity": 3,
+            "dynamic": "Cautious Curiosity",
+            "description": "The Highwayman is intrigued yet wary of the Hood's strange behavior and unsettling perceptiveness.",
+            "history": "The Highwayman encountered the Hood in the streets of the Hamlet, where her odd comments and behavior caught him off guard.",
+            "notes": ""
+        },
+        "Grave Robber": {
+            "affinity": 5,
+            "dynamic": "Cautious Interest",
+            "description": "Dismas is drawn to Audrey's refinement and deadly skills, seeing her as a fascinating and potentially dangerous ally.",
+            "history": "Encountered Audrey in the tavern, accepting her challenge to a card game and noting her unique blend of nobility and roguish charm.",
+            "notes": ""
         }
     }
 }

@@ -1,0 +1,74 @@
+{
+    "title": "Grave Robber",
+    "name": "Audrey",
+    "level": 0,
+    "money": 0,
+    "summary": "Once a noblewoman, Audrey turned to grave robbing after murdering her abusive husband. She's a skilled assassin, specializing in quick, precise attacks and evading danger. Her past has left her with a cynical outlook, but she's found a new purpose in her dangerous profession.",
+    "history": "Born into wealth and married for status, Audrey endured years of abuse from her drunken, lustful husband. She eventually poisoned him, then robbed his grave to maintain her lifestyle. When faced with eviction due to debt, she fully embraced her new identity as a grave robber and fled her former life.",
+    "race": "Human",
+    "gender": "Female",
+    "religion": "None",
+    "traits": [
+    "Agile",
+    "Precise",
+    "Cynical",
+    "Resourceful",
+    "Addicted to thrill",
+    "Vengeful"
+    ],
+    "status": {
+    "physical": 8,
+    "mental": 7,
+    "affliction": "",
+    "description": "In good health and high spirits",
+    "wounds": [],
+    "diseases": []
+    },
+    "stats": {
+    "strength": 6,
+    "agility": 9,
+    "intelligence": 7,
+    "stealth": 8,
+    "accuracy": 9
+    },
+    "equipment": [
+    "Throwing daggers",
+    "Pickaxe",
+    "Poison darts"
+    ],
+    "trinkets": [],
+    "appearance": {
+    "gender": "Female",
+    "height": "Average",
+    "build": "Slender",
+    "skin_tone": "Pale",
+    "hair_color": "Blonde",
+    "hairstyle": "Long, straight"
+    },
+    "clothing": {
+    "headwear": "Wide-brimmed hat",
+    "top": "Dark, fitted jacket",
+    "pants": "Tight trousers",
+    "outerwear": "Long coat",
+    "footwear": "Knee-high boots"
+    },
+    "combat": {
+    "role": "Assassin",
+    "strengths": [
+    "Lithe",
+    "Precise",
+    "Quick",
+    "Stealthy"
+    ],
+    "weaknesses": [
+    "Frail",
+    "Vulnerable to direct attacks"
+    ]
+    },
+    "magic": "None",
+    "notes": [
+        "Has a gallows sense of humor"
+    ],
+    "relationships": {
+    }
+    }

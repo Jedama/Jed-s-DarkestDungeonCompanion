@@ -109,6 +109,20 @@
             "description": "The Crusader regards the Plague Doctor with a measure of skepticism, uncertain about her unorthodox ways yet acknowledging her innovative reputation. He remains guarded but open-minded, determined to judge her methods fairly.",
             "history": "Reynauld has been warned about the Plague Doctor's radical practices, fostering an initial skepticism toward her. However, their recent encounter has piqued his curiosity, and he is willing to reserve judgment until he witnesses her methods firsthand.",
             "notes": ""
+        },
+        "Hood": {
+            "affinity": 3,
+            "dynamic": "Protective Wariness",
+            "description": "The Crusader views the Hood with a mixture of concern and unease, torn between a desire to protect her innocence and a wariness of her unsettling nature.",
+            "history": "The Crusader met the Hood during an evening patrol, finding her behavior both childishly endearing and disturbingly out of place in the grim setting of the Hamlet.",
+            "notes": ""
+        },
+        "Grave Robber": {
+            "affinity": 2,
+            "dynamic": "Wary Distrust",
+            "description": "The Crusader views the Grave Robber with a mixture of distrust and grudging respect. Her skills and demeanor challenge his rigid worldview.",
+            "history": "Reynauld encountered Audrey at the tavern, where she attempted to draw him into a game. Their interaction was cut short by a sudden plunge into an eldritch horror.",
+            "notes": ""
         }
     }
 }

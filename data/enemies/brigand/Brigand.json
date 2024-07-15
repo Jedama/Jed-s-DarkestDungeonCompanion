@@ -28,17 +28,14 @@
       "outerwear": "Tan-colored, padded vest"
     },
     "combat": {
-      "range": "Close combat",
-      "weapon": "Twin daggers",
+      "role": "Close combat",
       "strengths": [
         "Precision",
-        "Close combat",
         "Dexterity"
       ],
       "weaknesses": [
         "Ranged combat",
-        "Endurance",
-        "Versatility"
+        "Endurance"
       ]
     }
   },
@@ -70,15 +67,12 @@
       "outerwear": "Green cloak and tan padded vest"
     },
     "combat": {
-      "range": "Ranged combat",
-      "weapon": "Blunderbuss",
+      "range": "Sharpshooter",
       "strengths": [
         "Suppressive fire",
-        "Debuffing dodge",
         "Speed"
       ],
       "weaknesses": [
-        "Accuracy",
         "Endurance",
         "Close combat"
       ]
@@ -115,16 +109,13 @@
     },
     "combat": {
       "range": "Close combat",
-      "weapon": "Cat o' nine tails whip and flintlock pistol",
       "strengths": [
         "Durability",
-        "Bleed infliction",
         "Leadership"
       ],
       "weaknesses": [
         "Slow",
-        "Maladroit",
-        "Scarred"
+        "Maladroit"
       ]
     }
   }

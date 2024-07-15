@@ -1,0 +1,129 @@
+/* Ensure no horizontal overflow */
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: #2b2b2b;
+    color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+header {
+    background-color: #444;
+    padding: 10px 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    margin: 10px 0;
+    flex-grow: 1;
+}
+
+.character-view {
+    flex: 5;
+    border: 1px solid #000;
+    margin-right: 5px;
+    padding: 10px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.character-view img {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+.character-list {
+    flex: 2;
+    border: 1px solid #a52a2a;
+    margin-right: 5px;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.event-options {
+    flex: 3;
+    border: 1px solid #008000;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background for better contrast */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #444; /* Darker background for content */
+    color: #f0f0f0; /* Light text color */
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.modal-content input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    background-color: #2b2b2b; /* Match background color */
+    color: #f0f0f0; /* Light text color */
+    border: 1px solid #888; /* Border color for better visibility */
+    border-radius: 4px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #5a5a5a; /* Button background color */
+    color: #f0f0f0; /* Button text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #777; /* Lighter background on hover */
+}

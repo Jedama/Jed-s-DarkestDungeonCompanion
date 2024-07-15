@@ -109,6 +109,20 @@
             "description": "The Heir is unsettled by the Plague Doctor's ominous demeanor but recognizes her skills, hoping to carefully manage this partnership while avoiding any ethical conflicts.'",
             "history": "Having sought out unique expertise to aid the estate's efforts, the Heir has arranged for the infamous Plague Doctor to join their ranks, despite some trepidation about her unconventional methods.",
             "notes": ""
+        },
+        "Hood": {
+            "affinity": 3,
+            "dynamic": "Bewildered",
+            "description": "The Heir finds the Hood both unsettling and oddly fascinating, her cryptic words and strange behavior leaving him confused and intrigued.",
+            "history": "The Heir encountered the Hood while drunk, stumbling out of the tavern. Her bizarre behavior and cryptic words left a lasting impression on him.",
+            "notes": ""
+        },
+        "Grave Robber": {
+            "affinity": 2,
+            "dynamic": "Intimidated",
+            "description": "The Heir views the Grave Robber with a mix of fear and desperate hope, seeing her as a dangerous but potentially valuable asset.",
+            "history": "The Heir's first encounter with the Grave Robber left him visibly shaken, struggling to maintain composure in the face of her intimidating presence.",
+            "notes": ""
         }
     }
 }

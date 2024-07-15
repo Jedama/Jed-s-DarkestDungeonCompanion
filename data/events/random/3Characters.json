@@ -22,5 +22,13 @@
         "outcomes": [2, 4, 4, 3, 1],
         "fields": [],
         "length": 4        
+    },
+    {
+        "title": "Swimming",
+        "num_characters": 3,
+        "summary": "[character 1], [character 2], and [character 3] meet at the shore and undress for a swim. ",
+        "outcomes": [0, 2, 2, 6, 3],
+        "fields": [],
+        "length": 4        
     }
 ]

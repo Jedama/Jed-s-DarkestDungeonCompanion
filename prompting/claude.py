@@ -11,7 +11,7 @@ def prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens=350, 
     )
 
     message = client.messages.create(
-        model="claude-3-sonnet-20240229",
+        model="claude-3-5-sonnet-20240620",
         max_tokens=max_tokens,
         temperature=temperature,
         system=system_prompt,

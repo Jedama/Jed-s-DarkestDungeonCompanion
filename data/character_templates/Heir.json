@@ -35,9 +35,7 @@
     "Letter opener",
     "Wine bottle"
   ],
-  "trinkets": [
-    "None"
-  ],
+  "trinkets": [],
   "appearance": {
     "gender": "Male",
     "height": "Short",
@@ -45,19 +43,16 @@
     "skin_tone": "Fair",
     "hair_color": "Blond",
     "hairstyle": "Curled and styled",
-    "facial_hair": "None",
     "accessories": "Bowtie"
   },
   "clothing": {
-    "headwear": "None",
     "top": "Newly ironed white shirt",
     "pants": "Mustard yellow breeches",
     "outerwear": "Blue double-breasted tailcoat with gold buttons",
     "footwear": "Brown boots"
   },
   "combat": {
-    "range": "Backline",
-    "weapon": "Letter opener",
+    "role": "Tactician",
     "strengths": [
       "Hiding behind others",
       "Strategic thinking"

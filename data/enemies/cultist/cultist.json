@@ -1,0 +1,78 @@
+[
+    {
+        "title": "Cultist Brawler",
+        "summary": "The Cultist Brawler has a menacing appearance and ritualistic attire. He wields claw-like weapons and wears a skull mask.",
+        "race": "Human",
+        "gender": "Male",
+        "faction": "Cultist",
+        "stats": {
+            "strength": 7,
+            "agility": 5,
+            "intelligence": 2
+        },
+        "equipment": [
+            "Claw-like weapons"
+        ],
+        "appearance": {
+            "height": "Tall",
+            "build": "Muscular",
+            "skin_tone": "Pale"
+        },
+        "clothing": {
+            "headwear": "Skull mask with a spiked crown",
+            "top": "Bare torso",
+            "pants": "Dark pants with red symbols"
+        },
+        "combat": {
+            "role": "Close combat",
+            "strengths": [
+                "Precision",
+                "Intimidation",
+                "Exsanguination"
+            ],
+            "weaknesses": [
+                "Inflexible",
+                "Unarmored",
+                "Short range"
+            ]
+        }
+    },
+    {
+        "title": "Cultist Acolyte",
+        "summary": "The Cultist Acolyte is a sinister spellcaster who assaults the mind with unholy incantations. They wear dark robes and a skull mask with a spiked crown.",
+        "race": "Human",
+        "gender": "Female",
+        "faction": "Cultist",
+        "stats": {
+          "strength": 3,
+          "agility": 4,
+          "intelligence": 7
+        },
+        "equipment": [
+          "Ritual magic cane"
+        ],
+        "appearance": {
+          "height": "Average",
+          "build": "Thin",
+          "skin_tone": "Pale"
+        },
+        "clothing": {
+          "headwear": "Skull mask with a spiked crown",
+          "top": "Dark robes with occult symbols",
+          "pants": "Dark robes (full-length)"
+        },
+        "combat": {
+          "role": "Spellcaster",
+          "strengths": [
+            "Removing light",
+            "Stress damage",
+            "Position manipulation"
+          ],
+          "weaknesses": [
+            "Physical fragility",
+            "Close combat",
+            "Low health"
+          ]
+        }
+      }
+]

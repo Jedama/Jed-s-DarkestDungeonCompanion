@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roleplaying Web UI</title>
+    <title>Jed's Darkest Dungeon Companion</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <div id="savefile-modal" class="modal">
+        <div class="modal-content">
+            <h2>Enter Estate Name</h2>
+            <input type="text" id="savefile-name" placeholder="Enter Estate name">
+            <button id="savefile-submit">Submit</button>
+        </div>
+    </div>
     <header>
-        <h1>Roleplaying Web UI</h1>
+        <h1>Jed's Darkest Dungeon Companion</h1>
     </header>
     <div class="container">
         <div class="character-view" id="current-character">
@@ -17,21 +24,11 @@
         </div>
         <div class="character-list" id="character-list">
             <h2>Character List</h2>
-            <ul>
-                {% for character in characters %}
-                <li><a href="{{ url_for('character', name=character.name) }}">{{ character.title }}: {{ character.name }}</a></li>
-                {% endfor %}
-            </ul>
+            <!-- Character list will be loaded here -->
         </div>
         <div class="event-options" id="event-options">
             <h2>Options for Crafting Events</h2>
-            <form action="{{ url_for('event') }}" method="get">
-                <label for="event-name">Event Name:</label>
-                <input type="text" id="event-name" name="event-name"><br><br>
-                <label for="event-description">Event Description:</label>
-                <textarea id="event-description" name="event-description"></textarea><br><br>
-                <button type="submit">Create Event</button>
-            </form>
+            <!-- Options for crafting events will be loaded here -->
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>

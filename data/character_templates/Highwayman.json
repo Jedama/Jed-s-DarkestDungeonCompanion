@@ -55,8 +55,7 @@
     "footwear": "Worn boots"
   },
   "combat": {
-    "range": "Mid-range to close combat",
-    "weapon": "Flintlock pistol",
+    "role": "Skirmisher",
     "strengths": [
       "Quick reflexes",
       "Stealth",

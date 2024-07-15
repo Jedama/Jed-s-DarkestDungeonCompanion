@@ -52,6 +52,7 @@
                     "footwear": "Brown boots"
                 }
             },
+            "clothing": null,
             "combat": {
                 "range": "Mid-range",
                 "weapon": "Derringer pistol",
@@ -103,6 +104,20 @@
                     "dynamic": "Uneasy Partnership",
                     "description": "The Heiress is unsettled by the Plague Doctor''s eccentric methods but recognizes her expertise as a necessary asset in combating the horrors they face. She intends to keep a close watch on the doctor''s activities.",
                     "history": "Desperate for aid in her quest to reclaim her ancestral home, the Heiress has employed the notorious Plague Doctor, renowned for her radical medical practices and disregard for ethical boundaries.",
+                    "notes": ""
+                },
+                "Hood": {
+                    "affinity": 4,
+                    "dynamic": "Concerned Curiosity",
+                    "description": "The Heiress views the Hood as a mysterious and potentially troubled child in need of protection and further investigation.",
+                    "history": "The Heiress encountered the Hood in the village, noting her strange behavior and inappropriate attire. She offered assistance and decided to find safe lodging for the child.",
+                    "notes": ""
+                },
+                "Grave Robber": {
+                    "affinity": 3,
+                    "dynamic": "Cautious Employer",
+                    "description": "The Heiress views the Grave Robber as a potentially useful but dangerous ally, maintaining a wary distance while acknowledging her skills.",
+                    "history": "The Heiress reluctantly recruited the Grave Robber to aid in reclaiming her ancestral home, setting a tense foundation for their working relationship.",
                     "notes": ""
                 }
             }
@@ -218,6 +233,20 @@
                     "description": "The Heir is unsettled by the Plague Doctor's ominous demeanor but recognizes her skills, hoping to carefully manage this partnership while avoiding any ethical conflicts.'",
                     "history": "Having sought out unique expertise to aid the estate's efforts, the Heir has arranged for the infamous Plague Doctor to join their ranks, despite some trepidation about her unconventional methods.",
                     "notes": ""
+                },
+                "Hood": {
+                    "affinity": 3,
+                    "dynamic": "Bewildered",
+                    "description": "The Heir finds the Hood both unsettling and oddly fascinating, her cryptic words and strange behavior leaving him confused and intrigued.",
+                    "history": "The Heir encountered the Hood while drunk, stumbling out of the tavern. Her bizarre behavior and cryptic words left a lasting impression on him.",
+                    "notes": ""
+                },
+                "Grave Robber": {
+                    "affinity": 2,
+                    "dynamic": "Intimidated",
+                    "description": "The Heir views the Grave Robber with a mix of fear and desperate hope, seeing her as a dangerous but potentially valuable asset.",
+                    "history": "The Heir's first encounter with the Grave Robber left him visibly shaken, struggling to maintain composure in the face of her intimidating presence.",
+                    "notes": ""
                 }
             }
         },
@@ -332,6 +361,20 @@
                     "description": "The Crusader regards the Plague Doctor with a measure of skepticism, uncertain about her unorthodox ways yet acknowledging her innovative reputation. He remains guarded but open-minded, determined to judge her methods fairly.",
                     "history": "Reynauld has been warned about the Plague Doctor's radical practices, fostering an initial skepticism toward her. However, their recent encounter has piqued his curiosity, and he is willing to reserve judgment until he witnesses her methods firsthand.",
                     "notes": ""
+                },
+                "Hood": {
+                    "affinity": 3,
+                    "dynamic": "Protective Wariness",
+                    "description": "The Crusader views the Hood with a mixture of concern and unease, torn between a desire to protect her innocence and a wariness of her unsettling nature.",
+                    "history": "The Crusader met the Hood during an evening patrol, finding her behavior both childishly endearing and disturbingly out of place in the grim setting of the Hamlet.",
+                    "notes": ""
+                },
+                "Grave Robber": {
+                    "affinity": 2,
+                    "dynamic": "Wary Distrust",
+                    "description": "The Crusader views the Grave Robber with a mixture of distrust and grudging respect. Her skills and demeanor challenge his rigid worldview.",
+                    "history": "Reynauld encountered Audrey at the tavern, where she attempted to draw him into a game.",
+                    "notes": ""
                 }
             }
         },
@@ -445,6 +488,20 @@
                     "description": "The Highwayman regards the Plague Doctor with a mixture of suspicion and guarded fascination, put off by her unsettling demeanor yet drawn to her unconventional ways.",
                     "history": "Having led a life on the fringes, the Highwayman found the Plague Doctor's presence equal parts unnerving and intriguing, her obsessive pursuit of knowledge reminding him of the depths to which desperation could drive a person.",
                     "notes": ""
+                },
+                "Hood": {
+                    "affinity": 3,
+                    "dynamic": "Cautious Curiosity",
+                    "description": "The Highwayman is intrigued yet wary of the Hood's strange behavior and unsettling perceptiveness.",
+                    "history": "The Highwayman encountered the Hood in the streets of the Hamlet, where her odd comments and behavior caught him off guard.",
+                    "notes": ""
+                },
+                "Grave Robber": {
+                    "affinity": 5,
+                    "dynamic": "Cautious Interest",
+                    "description": "Dismas is drawn to Audrey's refinement and deadly skills, seeing her as a fascinating and potentially dangerous ally.",
+                    "history": "Encountered Audrey in the tavern, accepting her challenge to a card game and noting her unique blend of nobility and roguish charm.",
+                    "notes": ""
                 }
             }
         },
@@ -553,6 +610,20 @@
                     "dynamic": "Guarded Intrigue",
                     "description": "The Vestal senses a clash between her sacred calling and the Plague Doctor's unconventional methods, but is intrigued by the potential insights the Doctor's knowledge could offer.",
                     "history": "The Vestal crossed paths with the Plague Doctor during her initial tour of the estate, their contrasting philosophies creating an air of tension, yet also a sense of intrigue about their respective roles.",
+                    "notes": ""
+                },
+                "Hood": {
+                    "affinity": 3,
+                    "dynamic": "Uneasy Concern",
+                    "description": "The Vestal feels a mixture of concern, fascination, and discomfort towards the Hood, struggling between her duty to protect and her unease with the child's strange behavior.",
+                    "history": "The Vestal encountered the Hood in the hamlet, initially trying to help the seemingly lost child, but became increasingly disturbed by her nonsensical words and unsettling behavior.",
+                    "notes": ""
+                },
+                "Grave Robber": {
+                    "affinity": 4,
+                    "dynamic": "Cautious Curiosity",
+                    "description": "The Vestal sees the Grave Robber as a morally ambiguous figure, simultaneously drawn to and wary of her worldly ways and cavalier attitude towards risk.",
+                    "history": "The Vestal unexpectedly agreed to a game of dice with the Grave Robber in the tavern, finding herself both conflicted and intrigued by the encounter.",
                     "notes": ""
                 }
             }
@@ -673,6 +744,272 @@
                     "dynamic": "Cautious Interest",
                     "description": "The Plague Doctor views the Crusader with a mix of fascination and wariness, intrigued by his prowess yet wary of his devout nature clashing with her unconventional methods.",
                     "history": "The Plague Doctor has only recently met the Crusader, their paths crossing upon her arrival at the hamlet to offer her expertise. While respecting his reputation, she remains guarded around him, unsure of how he might perceive her radical approach to medicine.",
+                    "notes": ""
+                },
+                "Hood": {
+                    "affinity": 5,
+                    "dynamic": "Scientific Curiosity",
+                    "description": "The Plague Doctor views the Hood as a fascinating subject for study, intrigued by her strange behavior and cryptic utterances.",
+                    "history": "The Plague Doctor encountered the Hood near the apothecary, observing her peculiar actions and expressing interest in examining her further.",
+                    "notes": ""
+                },
+                "Grave Robber": {
+                    "affinity": 5,
+                    "dynamic": "Curious",
+                    "description": "The Plague Doctor views the Grave Robber as a potential source of specimens and a kindred spirit in the realm of death and bodies.",
+                    "history": "They encountered each other in the hamlet, exchanging veiled threats that quickly turned to mutual intrigue about their shared fascination with anatomy.",
+                    "notes": ""
+                }
+            }
+        },
+        "Hood": {
+            "title": "Hood",
+            "name": "Tilly",
+            "level": 0,
+            "summary": "The Hood is a strange and enigmatic child who, stumbling, chases around her imaginary-or are they real?-cat and butterfly companions and talking nonsense to herself. She is unsettling in her childish ways and soft nonsensical words, but she has an unnatural sense of finding lost things and ability to conveniently dodge out of danger at the perfect moment. Her constant ruminations and heightened awareness during daylight hours hint at hidden depths of perception and understanding.",
+            "history": "The Hood was seen as unnerving by those around her, talking to herself with a complete disregard for anyone else, save for the occasional unnerving comment. Voluptuous yet cherubic for her young age and unwanted by her family, she was sent to serve at the Hamlet's brothel at an age barely above 10. Due to her total disinterest and lack of reaction even when sexually assaulted, she was kicked out and now roams the streets, either in her red hood and skimpy clothes, or in uncaring stark nudity. Her peculiar gifts and tendency to ruminate have only added to her mysterious aura, making her both a source of fascination and unease for the hamlet's inhabitants.",
+            "race": "Human",
+            "gender": "Female",
+            "religion": "None",
+            "traits": [
+                "Enigmatic",
+                "Soft",
+                "Uncaring",
+                "Enticing",
+                "Daydreaming",
+                "Absent",
+                "Ruminator",
+                "Diurnal",
+                "Gifted"
+            ],
+            "status": {
+                "physical": 10,
+                "mental": 9,
+                "affliction": "",
+                "description": "In good health and high spirits",
+                "wounds": [],
+                "diseases": []
+            },
+            "stats": {
+                "strength": 1,
+                "agility": 7,
+                "intelligence": 4,
+                "authority": 2,
+                "sociability": 4
+            },
+            "equipment": [
+                "Satchel bag"
+            ],
+            "trinkets": [],
+            "appearance": {
+                "gender": "Female",
+                "height": "Short",
+                "build": "Buxom",
+                "skin_tone": "Fair",
+                "hair_color": "Orange",
+                "hairstyle": "Shoulder length"
+            },
+            "clothing": {
+                "headwear": "Red hood",
+                "top": "Skimpy, frilly top showing cleavage",
+                "pants": "Short white skirt that doesn't quite cover her exposed genitals",
+                "outerwear": "Hood covering shoulders",
+                "footwear": "Pink frilly boots"
+            },
+            "combat": {
+                "role": "Collector",
+                "strengths": [
+                    "Finding things",
+                    "Unnatural luck",
+                    "Confusion",
+                    "Uncanny intuition"
+                ],
+                "weaknesses": [
+                    "Close combat",
+                    "Frail"
+                ]
+            },
+            "magic": "None",
+            "notes": [
+                "Her nonsensical monologues often seems to circle back to her grandmother.",
+                "Rarely says anything even remotely relevant to what she responds to.",
+                "Becomes more animated and energetic during daytime",
+                "Often lost in deep thought, muttering to herself"
+            ],
+            "relationships": {
+                "Crusader": {
+                    "affinity": 5,
+                    "dynamic": "Childlike Fascination",
+                    "description": "The Hood sees the Crusader as a fairy tale knight, a figure of wonder and excitement in her whimsical world.",
+                    "history": "The Hood encountered the Crusader on the streets of the Hamlet, immediately casting him in the role of a storybook hero come to life.",
+                    "notes": ""
+                },
+                "Heir": {
+                    "affinity": 4,
+                    "dynamic": "Indifferent",
+                    "description": "The Hood sees the Heir as just another figure in her surreal world, neither particularly interesting nor threatening.",
+                    "history": "The Hood briefly interacted with the Heir on the streets of the Hamlet, speaking in riddles and leaving him perplexed.",
+                    "notes": ""
+                },
+                "Vestal": {
+                    "affinity": 5,
+                    "dynamic": "Playful Curiosity",
+                    "description": "The Hood sees the Vestal as an intriguing new playmate, oblivious to the woman's discomfort and drawn to her \"shiny\" appearance.",
+                    "history": "The Hood met the Vestal in the hamlet, engaging her in a perplexing conversation filled with nonsensical remarks and invitations to play, unaware of the unease she was causing.",
+                    "notes": ""
+                },
+                "Heiress": {
+                    "affinity": 5,
+                    "dynamic": "Curious Fascination",
+                    "description": "The Hood sees the Heiress as a kind figure who offered help, sparking a childlike fascination and trust.",
+                    "history": "The Heiress approached the Hood in the village, showed concern for her well-being, and offered to find her a safe place for the night.",
+                    "notes": ""
+                },
+                "Plague Doctor": {
+                    "affinity": 4,
+                    "dynamic": "Oblivious Interest",
+                    "description": "The Hood seems largely unaware of the Plague Doctor's intentions, responding to her presence with cryptic statements and childlike behavior.",
+                    "history": "The Hood met the Plague Doctor near the apothecary, engaging in her typical bizarre behavior and making enigmatic comments about shadows and wickedness.",
+                    "notes": ""
+                },
+                "Highwayman": {
+                    "affinity": 5,
+                    "dynamic": "Whimsical Interest",
+                    "description": "The Hood sees the Highwayman as an interesting figure, perceiving hidden depths beneath his gruff exterior.",
+                    "history": "The Hood met the Highwayman on the streets, sharing cryptic observations about his nature that seemed to come from her invisible companions.",
+                    "notes": ""
+                },
+                "Grave Robber": {
+                    "affinity": 6,
+                    "dynamic": "Fascinated",
+                    "description": "The Hood sees the Grave Robber as a new, intriguing presence in her whimsical world, possibly viewing her as another imaginary friend or part of her fantastical reality.",
+                    "history": "The Hood met the Grave Robber during one of her twilight dances, sharing cryptic observations about shadows and secrets.",
+                    "notes": ""
+                }
+            }
+        },
+        "Grave Robber": {
+            "title": "Grave Robber",
+            "name": "Audrey",
+            "level": 0,
+            "summary": "Once a noblewoman, Audrey turned to grave robbing after murdering her abusive husband. She's a skilled assassin and gambler, specializing in quick, precise attacks, evading danger, and manipulating chance. Her gothic appearance and demeanor reflect her dark past and dangerous profession. Her cynical outlook is tempered by a newfound thrill in high-stakes games, both in combat and leisure.",
+            "history": "After embracing her new identity as a grave robber, Audrey honed her skills in dispatching human targets, earning a reputation as a formidable assassin. Her natural cunning evolved into an almost supernatural ability to manipulate chance, making her equally deadly at the gambling table as she is in combat. Her gothic appearance now serves as both a disguise and a warning to those who might cross her.",
+            "race": "Human",
+            "gender": "Female",
+            "religion": "None",
+            "traits": [
+                "Agile",
+                "Precise",
+                "Cynical",
+                "Resourceful",
+                "Addicted to thrill",
+                "Vengeful",
+                "Gambler's intuition"
+            ],
+            "status": {
+                "physical": 8,
+                "mental": 7,
+                "affliction": "",
+                "description": "In good health and high spirits",
+                "wounds": [],
+                "diseases": []
+            },
+            "stats": {
+                "strength": 6,
+                "agility": 9,
+                "intelligence": 7,
+                "stealth": 8,
+                "accuracy": 10
+            },
+            "equipment": [
+                "Throwing daggers",
+                "Pickaxe",
+                "Poison darts"
+            ],
+            "trinkets": [],
+            "appearance": {
+                "gender": "Female",
+                "height": "Average",
+                "build": "Slender",
+                "skin_tone": "Pale with a gothic pallor",
+                "hair_color": "Blonde",
+                "hairstyle": "Long, straight"
+            },
+            "clothing": {
+                "headwear": "Wide-brimmed hat",
+                "top": "Dark, fitted jacket",
+                "pants": "Tight trousers",
+                "outerwear": "Long, gothic-style coat with intricate dark patterns",
+                "footwear": "Knee-high boots"
+            },
+            "combat": {
+                "role": "Assassin",
+                "strengths": [
+                    "Lithe",
+                    "Precise",
+                    "Quick",
+                    "Stealthy",
+                    "Skilled in dispatching human targets"
+                ],
+                "weaknesses": [
+                    "Frail",
+                    "Vulnerable to direct attacks",
+                    "Tendency to take unnecessary risks for greater rewards"
+                ]
+            },
+            "magic": "None",
+            "notes": [
+                "Has a gallows sense of humor",
+                "Has an uncanny ability to predict outcomes in games of chance"
+            ],
+            "relationships": {
+                "Heiress": {
+                    "affinity": 2,
+                    "dynamic": "Opportunistic Subordinate",
+                    "description": "The Grave Robber sees the Heiress as a potential source of profit and excitement, while remaining skeptical of her authority and motives.",
+                    "history": "The Grave Robber agreed to work for the Heiress in reclaiming her ancestral home, recognizing the potential for both danger and reward in the arrangement.",
+                    "notes": ""
+                },
+                "Plague Doctor": {
+                    "affinity": 5,
+                    "dynamic": "Intrigued",
+                    "description": "The Grave Robber sees the Plague Doctor as a potential ally with shared interests in anatomy and death, finding her mysterious and alluring.",
+                    "history": "They met on the streets of the hamlet, engaging in suggestive banter about their respective \"professions\" and hinting at future collaborations.",
+                    "notes": ""
+                },
+                "Hood": {
+                    "affinity": 5,
+                    "dynamic": "Intrigued",
+                    "description": "The Grave Robber finds the Hood oddly compelling despite her nonsensical behavior, seeing potential for useful information or entertainment.",
+                    "history": "The Grave Robber encountered the Hood dancing under a tree at dusk, engaging in a brief, cryptic conversation that piqued her interest.",
+                    "notes": ""
+                },
+                "Highwayman": {
+                    "affinity": 6,
+                    "dynamic": "Intrigued Camaraderie",
+                    "description": "Audrey sees Dismas as a kindred spirit, recognizing his roguish nature and finding a potential ally in the grim world they inhabit.",
+                    "history": "Met Dismas in the tavern, engaging in a game of cards and sensing a mutual understanding of their shared outlaw status.",
+                    "notes": ""
+                },
+                "Vestal": {
+                    "affinity": 5,
+                    "dynamic": "Intrigued Amusement",
+                    "description": "The Grave Robber finds the Vestal an interesting mix of piety and hidden complexity, viewing her as a potential source of entertainment and perhaps even an unlikely ally.",
+                    "history": "The Grave Robber encountered the Vestal in the Hamlet's tavern and engaged her in a game of dice, surprised by the holy woman's willingness to participate.",
+                    "notes": ""
+                },
+                "Heir": {
+                    "affinity": 3,
+                    "dynamic": "Contemptuous",
+                    "description": "The Grave Robber sees the Heir as a weak-willed, incompetent leader, ripe for manipulation.",
+                    "history": "Upon first meeting, the Grave Robber immediately assessed the Heir as a nervous, ineffectual leader, setting the tone for future interactions.",
+                    "notes": ""
+                },
+                "Crusader": {
+                    "affinity": 3,
+                    "dynamic": "Cautious Intrigue",
+                    "description": "The Grave Robber sees the Crusader as a potentially useful ally, albeit one shrouded in religious fervor and inner turmoil. She's intrigued by his apparent contradictions.",
+                    "history": "Audrey attempted to engage Reynauld in a game of chance at the tavern, but they were cut short.",
                     "notes": ""
                 }
             }

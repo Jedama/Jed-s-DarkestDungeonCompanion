@@ -104,6 +104,20 @@
             "description": "The Vestal senses a clash between her sacred calling and the Plague Doctor's unconventional methods, but is intrigued by the potential insights the Doctor's knowledge could offer.",
             "history": "The Vestal crossed paths with the Plague Doctor during her initial tour of the estate, their contrasting philosophies creating an air of tension, yet also a sense of intrigue about their respective roles.",
             "notes": ""
+        },
+        "Hood": {
+            "affinity": 3,
+            "dynamic": "Uneasy Concern",
+            "description": "The Vestal feels a mixture of concern, fascination, and discomfort towards the Hood, struggling between her duty to protect and her unease with the child's strange behavior.",
+            "history": "The Vestal encountered the Hood in the hamlet, initially trying to help the seemingly lost child, but became increasingly disturbed by her nonsensical words and unsettling behavior.",
+            "notes": ""
+        },
+        "Grave Robber": {
+            "affinity": 4,
+            "dynamic": "Cautious Curiosity",
+            "description": "The Vestal sees the Grave Robber as a morally ambiguous figure, simultaneously drawn to and wary of her worldly ways and cavalier attitude towards risk.",
+            "history": "The Vestal unexpectedly agreed to a game of dice with the Grave Robber in the tavern, finding herself both conflicted and intrigued by the encounter.",
+            "notes": ""
         }
     }
 }
