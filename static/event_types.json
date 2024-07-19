@@ -1,0 +1,11 @@
+{
+  "Town": {
+    "Recruit": {
+      "fields": [
+        {"type": "character-select", "id": "character-title", "label": "Select Character"},
+        {"type": "modifier-input", "id": "character-modifiers", "label": "Add Modifier"}
+      ]
+    }
+  }
+}
+

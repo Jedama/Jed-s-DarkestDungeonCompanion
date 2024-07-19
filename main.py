@@ -2,6 +2,10 @@ from classes import Estate
 
 estate = Estate.load_estate('Dantill')
 
+estate.recruit('Martyr', ['Fated', 'Tough', 'Antsy', 'Imposter syndrome'])
+
+estate.save_estate()
+
 character_titles = [char.title for char in estate.characters.values()]
 
 # estate.start_event('story', 'The Old Road')

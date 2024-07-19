@@ -36,19 +36,18 @@
     ],
     "trinkets": [],
     "appearance": {
-      "gender": "Female",
       "height": "Short",
       "build": "Buxom",
       "skin_tone": "Fair",
       "hair_color": "Orange",
-      "hairstyle": "Shoulder length"
+      "hairstyle": "Shoulder length",
+      "facial_hair": "None"
     },
     "clothing": {
       "headwear": "Red hood",
       "top": "Skimpy, frilly top",
       "pants": "Short white skirt",
-      "outerwear": "Hood covering shoulders",
-      "footwear": "Pink frilly boots"
+      "accessories": "Satchel, bridal garter"
     },
     "combat": {
       "role": "Collector",

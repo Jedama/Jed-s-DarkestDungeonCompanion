@@ -38,21 +38,18 @@
   ],
   "trinkets": [],
   "appearance": {
-    "gender": "Male",
     "height": "Average",
     "build": "Athletic",
     "skin_tone": "Weathered",
     "hair_color": "Dark",
     "hairstyle": "Short, practical",
-    "facial_hair": "Stubble",
-    "accessories": "Tattered red scarf"
+    "facial_hair": "Stubble"
   },
   "clothing": {
     "headwear": "Red scarf",
     "top": "Rugged grey coat with fur collar",
     "pants": "Dark trousers",
-    "outerwear": "Leather belt with pouches",
-    "footwear": "Worn boots"
+    "accessories": "None"
   },
   "combat": {
     "role": "Skirmisher",

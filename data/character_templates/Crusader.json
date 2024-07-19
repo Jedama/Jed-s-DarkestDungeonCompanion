@@ -38,21 +38,17 @@
     "None"
   ],
   "appearance": {
-    "gender": "Male",
     "height": "Tall",
     "build": "Muscular",
     "skin_tone": "Fair",
-    "hair_color": "Dark",
-    "hairstyle": "Concealed by helm",
-    "facial_hair": "Short beard",
-    "accessories": "Crusader's tabard"
+    "hair_color": "Black",
+    "hairstyle": "Short",
+    "facial_hair": "Stubble"
   },
   "clothing": {
     "headwear": "Steel helm",
     "top": "Chainmail hauberk",
-    "pants": "Mail chausses",
-    "outerwear": "Surcoat",
-    "footwear": "Steel sabatons"
+    "pants": "Mail chausses"
   },
   "combat": {
     "role": "Close combat",

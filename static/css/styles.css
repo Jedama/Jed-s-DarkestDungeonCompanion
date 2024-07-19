@@ -1,129 +1,304 @@
-/* Ensure no horizontal overflow */
-html, body {
-    overflow-x: hidden;
+/* Font Declarations */
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/fonts/UbuntuRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DwarvenAxe';
+    src: url('/fonts/DwarvenAxe.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Global Styles */
+body {
+    background-image: url('/background/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f0f0f0;
+    font-family: 'Ubuntu', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
     margin: 0;
     padding: 0;
+}
+
+/* Main Container Layout */
+.main-container {
+    display: flex;
     height: 100%;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+.left-panel {
+    flex: 0 0 35%;
+    padding: 35px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.middle-panel {
+    flex: 0 0 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.right-panel {
+    flex: 0 0 5%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Character Grid Styles */
+.gallery {
+    flex: 1;
+    padding: 40px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
     width: 100%;
     box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 160px); /* Match the width of character-item */
+    gap: 0px;
+    margin-top: 0px;
+    justify-content: center;
 }
 
-body {
-    background-color: #2b2b2b;
-    color: #f0f0f0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-}
-
-header {
-    background-color: #444;
-    padding: 10px 20px;
-    text-align: center;
-    width: 100%;
-}
-
-.container {
-    display: flex;
-    width: 90%;
-    margin: 10px 0;
-    flex-grow: 1;
-}
-
-.character-view {
-    flex: 5;
-    border: 1px solid #000;
-    margin-right: 5px;
-    padding: 10px;
+.grid-wrapper {
+    max-width: 100%;
     overflow-x: hidden;
-    position: relative;
 }
 
-.character-view img {
+.character-item {
+    position: relative;
+    cursor: pointer;
+    width: 160px; /* Set a fixed width */
+    height: 192px; /* Set a fixed height - adjust based on your frame image */
+    margin: 0 auto; /* Center the item in its grid cell */
+    transition: transform 0.3s ease;
+}
+
+.character-item img.portrait {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 150px;
-    height: 150px;
+    top: 25%;
+    left: 28%;
+    width: 45%;
+    height: 55%;
     object-fit: cover;
-    border: 2px solid #fff;
+    z-index: 1;
+}
+
+.character-item img.frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.character-item:hover {
+    transform: scale(1.05); /* Slight increase in size on hover */
+}
+
+.character-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 5px;
 }
 
-.character-list {
-    flex: 2;
-    border: 1px solid #a52a2a;
-    margin-right: 5px;
-    padding: 10px;
-    overflow-x: hidden;
+/* Character Info Styles */
+.character-portrait {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
-.event-options {
-    flex: 3;
-    border: 1px solid #008000;
-    padding: 10px;
-    overflow-x: hidden;
+.character-info h1,
+.character-info h2 {
+    font-family: 'DwarvenAxe', 'Ubuntu', Arial, sans-serif;
+    font-weight: normal;
+    font-size: 48px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-h2 {
-    text-align: center;
-    margin-top: 0;
+/* Form and Input Styles */
+#search, #savefile-name, #event-type-select {
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #888;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgba(0, 123, 255, 0.7);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    width: 100%;
+}
+
+button:hover {
+    background-color: rgba(0, 86, 179, 0.7);
 }
 
 /* Modal Styles */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 5;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8); /* Darker background for better contrast */
-    padding-top: 60px;
+    background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
-    background-color: #444; /* Darker background for content */
-    color: #f0f0f0; /* Light text color */
-    margin: 5% auto;
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
+    width: 300px;
     text-align: center;
-    border-radius: 8px;
 }
 
-.modal-content input {
-    width: calc(100% - 20px);
+/* Event Creation Modal Styles */
+.event-creation-modal .modal-content {
+    background-image: url('/background/form.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 800px;
+    height: 600px;
+    position: relative;
+    margin: 5% auto;
+    padding: 0;
+}
+
+.event-creation-modal #form-container {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    width: 700px;
+    height: 400px;
+    overflow-y: auto;
+}
+
+.event-creation-modal #dynamic-form-fields {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.event-creation-modal .custom-select,
+.event-creation-modal .modifier-input {
+    margin-bottom: 20px;
+}
+
+.event-creation-modal input[type="text"] {
+    width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    box-sizing: border-box;
-    background-color: #2b2b2b; /* Match background color */
-    color: #f0f0f0; /* Light text color */
-    border: 1px solid #888; /* Border color for better visibility */
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.modal-content button {
-    padding: 10px 20px;
-    background-color: #5a5a5a; /* Button background color */
-    color: #f0f0f0; /* Button text color */
-    border: none;
+.event-creation-modal button {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+}
+
+/* Custom Select Styles */
+.custom-select {
+    position: relative;
+    width: 200px;
+}
+
+.custom-select input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.modal-content button:hover {
-    background-color: #777; /* Lighter background on hover */
+.custom-select-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-item {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+/* Modifier Styles */
+.modifier-input {
+    margin-top: 10px;
+}
+
+.modifier-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.modifier-list li {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* Modal Open State */
+body.modal-open .character-item {
+    pointer-events: none;
+}
+
+body.modal-open .character-item:hover {
+    transform: none;
 }

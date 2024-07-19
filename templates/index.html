@@ -5,32 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jed's Darkest Dungeon Companion</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body>
     <div id="savefile-modal" class="modal">
         <div class="modal-content">
             <h2>Enter Estate Name</h2>
-            <input type="text" id="savefile-name" placeholder="Enter Estate name">
+            <input type="text" id="savefile-name" placeholder="Estate Name">
             <button id="savefile-submit">Submit</button>
         </div>
     </div>
-    <header>
-        <h1>Jed's Darkest Dungeon Companion</h1>
-    </header>
-    <div class="container">
-        <div class="character-view" id="current-character">
-            <h2>Current Character</h2>
-            <!-- Character details will be loaded here -->
-        </div>
-        <div class="character-list" id="character-list">
-            <h2>Character List</h2>
-            <!-- Character list will be loaded here -->
-        </div>
-        <div class="event-options" id="event-options">
-            <h2>Options for Crafting Events</h2>
-            <!-- Options for crafting events will be loaded here -->
+
+    <div id="event-type-modal" class="modal event-creation-modal">
+        <div class="modal-content">
+            <div id="form-container">
+                <!-- Dynamic content will be inserted here -->
+            </div>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+    <div class="main-container">
+        <div class="left-panel">
+            <div class="character-info">
+                <img id="character-portrait" class="character-portrait" src="" alt="Character Portrait">
+                <h2 id="character-name"></h2>
+                <p>Level: <span id="character-level"></span></p>
+                <p>Money: <span id="character-money"></span></p>
+                <p id="character-summary"></p>
+            </div>
+            <div class="relationship-info">
+                <h3>Relationship</h3>
+                <div id="relationship-detail">
+                    <h4 id="relationship-name"></h4>
+                    <p>Affinity: <span id="relationship-affinity"></span></p>
+                    <p>Bond: <span id="relationship-bond"></span></p>
+                </div>
+                <button id="detailed-info">Detailed Information</button>
+            </div>
+        </div>
+        <div class="middle-panel">
+            <div class="gallery">
+                <input type="text" id="search" placeholder="Search">
+                <div id="character-grid" class="character-grid"></div>
+            </div>
+            <div class="current-team">
+                <h3>Current team</h3>
+                <div id="team-grid" class="team-grid"></div>
+            </div>
+        </div>
+        <div class="right-panel">
+            <button id="story-button" class="panel-button">Story</button>
+            <button id="events-button" class="panel-button">Events</button>
+            <button id="save-button" class="panel-button">Save</button>
+        </div>
+    </div>
+
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

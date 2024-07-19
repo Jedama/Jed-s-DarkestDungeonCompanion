@@ -4,8 +4,8 @@
     "level": 0,
     "summary": "The Heir to the estate is a meek and cowardly man who relies on the authority of his name to maintain a semblance of control in the chaotic surroundings of his ancestral home. Although his intentions are generally good, his tendency to leverage his position often undermines his credibility among those he tries to lead. With high intelligence but low physical capabilities, Percival struggles to assert himself, instead relying heavily on strategic thinking and logistical planning to navigate the challenges posed by the estate's dark legacy.",
     "history": "A reluctant participant in the quest to restore the estate, Percival was coaxed into action by his sister, the determined Heiress. While he lacks her physical courage and commanding presence, Percival brings his own unique strengths to the fore. Highly educated and obsessively detailed-oriented, he immerses himself in the logistical challenges of managing the estate\u2019s resources and orchestrating the efforts needed to support the hamlet and its frightened inhabitants.",
-    "race": null,
-    "gender": null,
+    "race": "Human",
+    "gender": "Male",
     "religion": "None",
     "traits": [
         "Meek",
@@ -37,30 +37,24 @@
         "None"
     ],
     "appearance": {
-        "gender": "Male",
         "height": "Short",
         "build": "Chubby",
         "skin_tone": "Fair",
         "hair_color": "Blond",
-        "hairstyle": "Curled and styled",
-        "facial_hair": "None",
-        "accessories": "Bowtie",
-        "distinguishing_marks": "None",
-        "notes": "None",
-        "clothing": {
-            "headwear": "None",
-            "top": "Newly ironed white shirt",
-            "pants": "Mustard yellow breeches",
-            "outerwear": "Blue double-breasted tailcoat with gold buttons",
-            "footwear": "Brown boots"
-        }
+        "hairstyle": "Curled and styled"
     },
-    "clothing": null,
+    "clothing": {
+        "headwear": "None",
+        "top": "Newly ironed white shirt",
+        "pants": "Mustard yellow breeches",
+        "outerwear": "Blue double-breasted tailcoat with gold buttons",
+        "footwear": "Brown boots"
+    },
     "combat": {
         "range": "Backline",
         "weapon": "Letter opener",
         "strengths": [
-            "Hiding behind others",
+            "Encouragement",
             "Strategic thinking"
         ],
         "weaknesses": [
@@ -122,6 +116,13 @@
             "dynamic": "Intimidated",
             "description": "The Heir views the Grave Robber with a mix of fear and desperate hope, seeing her as a dangerous but potentially valuable asset.",
             "history": "The Heir's first encounter with the Grave Robber left him visibly shaken, struggling to maintain composure in the face of her intimidating presence.",
+            "notes": ""
+        },
+        "Martyr": {
+            "affinity": 2,
+            "dynamic": "Fearful Fascination",
+            "description": "The Heir is both terrified and fascinated by the Martyr, seeing her as a potentially dangerous asset to the estate.",
+            "history": "The Heir encountered the Martyr in the town square, where her unsettling demeanor and casual self-harm left a strong impression on him.",
             "notes": ""
         }
     }

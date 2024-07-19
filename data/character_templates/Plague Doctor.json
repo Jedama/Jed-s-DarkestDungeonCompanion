@@ -34,19 +34,18 @@
   ],
   "trinkets": [],
   "appearance": {
-      "gender": "Female",
-      "height": "Average",
-      "build": "Slim",
-      "skin_tone": "Pale",
-      "hair_color": "Hidden under hood",
-      "hairstyle": "Short brown and unkempt"
+    "height": "Average",
+    "build": "Slim",
+    "skin_tone": "Pale",
+    "hair_color": "Brown",
+    "hairstyle": "Short brown and unkempt",
+    "facial_hair": "None"
   },
   "clothing": {
-    "headwear": "Iconic Plague Doctor mask",
-    "top": "Dark leather coat",
-    "pants": "Sturdy leather pants",
-    "outerwear": "Hooded cloak",
-    "notes": ["Wears glasses when outside her mask"]
+    "headwear": "Plague Doctor mask",
+    "top": "Green coat with spiked leather pauldrons",
+    "pants": "Bandages",
+    "accessories": "Sachets"
   },
   "combat": {
       "role": "Poisoner",
@@ -57,7 +56,7 @@
       ],
       "weaknesses": [
           "Physical combat",
-          "Social interactions",
+          "Communication",
           "Agility",
           "Dodging"
       ]

@@ -37,24 +37,23 @@
   ],
   "trinkets": [],
   "appearance": {
-    "gender": "Male",
     "height": "Short",
     "build": "Chubby",
     "skin_tone": "Fair",
     "hair_color": "Blond",
     "hairstyle": "Curled and styled",
-    "accessories": "Bowtie"
+    "facial_hair": "None"
   },
   "clothing": {
+    "headwear": "None",
     "top": "Newly ironed white shirt",
     "pants": "Mustard yellow breeches",
-    "outerwear": "Blue double-breasted tailcoat with gold buttons",
-    "footwear": "Brown boots"
+    "accessories": "Bowtie"
   },
   "combat": {
     "role": "Tactician",
     "strengths": [
-      "Hiding behind others",
+      "Encouragement",
       "Strategic thinking"
     ],
     "weaknesses": [

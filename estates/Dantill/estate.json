@@ -4,7 +4,7 @@
         "Heiress": {
             "title": "Heiress",
             "name": "Persephone Dantill",
-            "level": 0,
+            "level": 5,
             "summary": "The Heiress to the accursed Dantill estate wields a strong air of authority as she commands the daunting task of reclaiming her ancestral home. Armed with intelligence and strategic insight, she also manages the nearby hamlet, serving as a pillar of support and strength in a community plagued by supernatural horrors. She is grateful to those brave or mad enough to join her quest. However, when her methods or authority are challenged, she shows hardheaded stubbornness.",
             "history": "Upon receiving a chilling letter from her late ancestor, the Heiress left her academic pursuits to take up her role as the heiress of the estate. She found herself thrust into a nightmarish reality where her ancestral home was not only physically deteriorated but also infested with the horrors summoned by her ancestor's dark rituals.",
             "race": null,
@@ -118,6 +118,13 @@
                     "dynamic": "Cautious Employer",
                     "description": "The Heiress views the Grave Robber as a potentially useful but dangerous ally, maintaining a wary distance while acknowledging her skills.",
                     "history": "The Heiress reluctantly recruited the Grave Robber to aid in reclaiming her ancestral home, setting a tense foundation for their working relationship.",
+                    "notes": ""
+                },
+                "Martyr": {
+                    "affinity": 1,
+                    "dynamic": "Disturbed Wariness",
+                    "description": "The Heiress views the Martyr with a mix of disgust, horror, and reluctant pragmatism, recognizing her potential usefulness despite her disturbing zealotry.",
+                    "history": "The Heiress witnessed the Martyr's alarming self-mutilation in her office, leaving her deeply unsettled but aware of the Martyr's potential as a resilient fighter.",
                     "notes": ""
                 }
             }
@@ -247,13 +254,20 @@
                     "description": "The Heir views the Grave Robber with a mix of fear and desperate hope, seeing her as a dangerous but potentially valuable asset.",
                     "history": "The Heir's first encounter with the Grave Robber left him visibly shaken, struggling to maintain composure in the face of her intimidating presence.",
                     "notes": ""
+                },
+                "Martyr": {
+                    "affinity": 2,
+                    "dynamic": "Fearful Fascination",
+                    "description": "The Heir is both terrified and fascinated by the Martyr, seeing her as a potentially dangerous asset to the estate.",
+                    "history": "The Heir encountered the Martyr in the town square, where her unsettling demeanor and casual self-harm left a strong impression on him.",
+                    "notes": ""
                 }
             }
         },
         "Crusader": {
             "title": "Crusader",
             "name": "Reynauld",
-            "level": 0,
+            "level": 2,
             "summary": "The Crusader, a stoic warrior, reluctantly left his family to join the holy war, finding unexpected solace and divine purpose in the midst of battle. His formidable presence on the battlefield left behind, he realises he can never return to the life or family he once knew. As a way to atone for his past, he seeks and has found a new cause under the Heir and Heiress.",
             "history": "From tilling the land to relishing the fervor of the Crusade, the Crusader's life is marked by the weight of martial glory and the stark absence of domestic warmth. Having once sought to prevent famine by his departure, he now recognizes the battlefield as his true home, forsaking the hearth for the harsh camaraderie of war.",
             "race": null,
@@ -375,13 +389,20 @@
                     "description": "The Crusader views the Grave Robber with a mixture of distrust and grudging respect. Her skills and demeanor challenge his rigid worldview.",
                     "history": "Reynauld encountered Audrey at the tavern, where she attempted to draw him into a game.",
                     "notes": ""
+                },
+                "Martyr": {
+                    "affinity": 3,
+                    "dynamic": "Cautious Concern",
+                    "description": "The Crusader views the Martyr with a mix of wariness and concern, torn between his duty to protect and his suspicion of her strange devotion.",
+                    "history": "The Crusader encountered the Martyr dancing and self-flagellating in the streets of the Hamlet, unsure of how to react to her zealous behavior.",
+                    "notes": ""
                 }
             }
         },
         "Highwayman": {
             "title": "Highwayman",
             "name": "Dismas",
-            "level": 0,
+            "level": 5,
             "summary": "Once a prisoner, the Highwayman is now a haunted fugitive, living off the squalor of the city's canals and the meager pickings from vermin. His vision of freedom has been replaced by a reality of degradation, driving him to reluctantly offer his services for a final, desperate heist. Now, his path has unexpectedly converged with that of the Heiress and the Heir, offering a precarious chance at redemption through service.",
             "history": "The Highwayman's tale is one of escape and survival, painted with strokes of desperation and grim resolve. Escaping from incarceration during a prison riot, he sought refuge in the underbelly of the city, subsisting in conditions that stripped away his illusions of freedom. A final job, taken out of sheer necessity, ended in tragedy, leaving him with a burden of guilt that no distance can alleviate.",
             "race": null,
@@ -501,6 +522,13 @@
                     "dynamic": "Cautious Interest",
                     "description": "Dismas is drawn to Audrey's refinement and deadly skills, seeing her as a fascinating and potentially dangerous ally.",
                     "history": "Encountered Audrey in the tavern, accepting her challenge to a card game and noting her unique blend of nobility and roguish charm.",
+                    "notes": ""
+                },
+                "Martyr": {
+                    "affinity": 4,
+                    "dynamic": "Cautious Intrigue",
+                    "description": "The Highwayman views the Martyr with a mix of wariness and reluctant admiration, recognizing her enthusiasm as both an asset and a potential liability in their perilous environment.",
+                    "history": "The Highwayman encountered the Martyr as she entered the Hamlet, taken aback by her unusual appearance and unsettling eagerness for danger.",
                     "notes": ""
                 }
             }
@@ -624,6 +652,13 @@
                     "dynamic": "Cautious Curiosity",
                     "description": "The Vestal sees the Grave Robber as a morally ambiguous figure, simultaneously drawn to and wary of her worldly ways and cavalier attitude towards risk.",
                     "history": "The Vestal unexpectedly agreed to a game of dice with the Grave Robber in the tavern, finding herself both conflicted and intrigued by the encounter.",
+                    "notes": ""
+                },
+                "Martyr": {
+                    "affinity": 4,
+                    "dynamic": "Conflicted Attraction",
+                    "description": "The Vestal feels a mix of revulsion and forbidden attraction towards the Martyr, struggling with her own desires and her commitment to purity.",
+                    "history": "Their paths crossed in the Hamlet, where the Vestal witnessed the Martyr's blood-soaked form, stirring both disgust and a hint of desire within her.",
                     "notes": ""
                 }
             }
@@ -759,13 +794,20 @@
                     "description": "The Plague Doctor views the Grave Robber as a potential source of specimens and a kindred spirit in the realm of death and bodies.",
                     "history": "They encountered each other in the hamlet, exchanging veiled threats that quickly turned to mutual intrigue about their shared fascination with anatomy.",
                     "notes": ""
+                },
+                "Martyr": {
+                    "affinity": 4,
+                    "dynamic": "Cautious Interest",
+                    "description": "The Plague Doctor sees the Martyr as a potentially valuable test subject, albeit one that requires careful handling due to her unpredictable nature.",
+                    "history": "The Plague Doctor reluctantly allowed the Martyr to observe her experiments, recognizing potential in her unique tolerance for pain and suffering.",
+                    "notes": ""
                 }
             }
         },
         "Hood": {
             "title": "Hood",
             "name": "Tilly",
-            "level": 0,
+            "level": 1,
             "summary": "The Hood is a strange and enigmatic child who, stumbling, chases around her imaginary-or are they real?-cat and butterfly companions and talking nonsense to herself. She is unsettling in her childish ways and soft nonsensical words, but she has an unnatural sense of finding lost things and ability to conveniently dodge out of danger at the perfect moment. Her constant ruminations and heightened awareness during daylight hours hint at hidden depths of perception and understanding.",
             "history": "The Hood was seen as unnerving by those around her, talking to herself with a complete disregard for anyone else, save for the occasional unnerving comment. Voluptuous yet cherubic for her young age and unwanted by her family, she was sent to serve at the Hamlet's brothel at an age barely above 10. Due to her total disinterest and lack of reaction even when sexually assaulted, she was kicked out and now roams the streets, either in her red hood and skimpy clothes, or in uncaring stark nudity. Her peculiar gifts and tendency to ruminate have only added to her mysterious aura, making her both a source of fascination and unease for the hamlet's inhabitants.",
             "race": "Human",
@@ -885,13 +927,20 @@
                     "description": "The Hood sees the Grave Robber as a new, intriguing presence in her whimsical world, possibly viewing her as another imaginary friend or part of her fantastical reality.",
                     "history": "The Hood met the Grave Robber during one of her twilight dances, sharing cryptic observations about shadows and secrets.",
                     "notes": ""
+                },
+                "Martyr": {
+                    "affinity": 4,
+                    "dynamic": "Curious Indifference",
+                    "description": "The Hood sees the Martyr as another interesting element in her surreal world, occasionally focusing on her with eerie clarity.",
+                    "history": "The Hood met the Martyr while chasing imaginary butterflies and allowed herself to be led away from the foggy streets.",
+                    "notes": ""
                 }
             }
         },
         "Grave Robber": {
             "title": "Grave Robber",
             "name": "Audrey",
-            "level": 0,
+            "level": 3,
             "summary": "Once a noblewoman, Audrey turned to grave robbing after murdering her abusive husband. She's a skilled assassin and gambler, specializing in quick, precise attacks, evading danger, and manipulating chance. Her gothic appearance and demeanor reflect her dark past and dangerous profession. Her cynical outlook is tempered by a newfound thrill in high-stakes games, both in combat and leisure.",
             "history": "After embracing her new identity as a grave robber, Audrey honed her skills in dispatching human targets, earning a reputation as a formidable assassin. Her natural cunning evolved into an almost supernatural ability to manipulate chance, making her equally deadly at the gambling table as she is in combat. Her gothic appearance now serves as both a disguise and a warning to those who might cross her.",
             "race": "Human",
@@ -1010,6 +1059,146 @@
                     "dynamic": "Cautious Intrigue",
                     "description": "The Grave Robber sees the Crusader as a potentially useful ally, albeit one shrouded in religious fervor and inner turmoil. She's intrigued by his apparent contradictions.",
                     "history": "Audrey attempted to engage Reynauld in a game of chance at the tavern, but they were cut short.",
+                    "notes": ""
+                },
+                "Martyr": {
+                    "affinity": 6,
+                    "dynamic": "Curious Interest",
+                    "description": "The Grave Robber finds the Martyr's paradoxical nature of innocence and pain-seeking behavior intriguing, viewing her as a potentially useful ally and an entertaining enigma to unravel.",
+                    "history": "Audrey encountered the peculiar Martyr in a tavern, immediately intrigued by her contradictory appearance and demeanor.",
+                    "notes": ""
+                }
+            }
+        },
+        "Martyr": {
+            "title": "Martyr",
+            "name": "Anastasia",
+            "level": 6,
+            "summary": "The Martyr, a devout follower of a pain-worshipping sect, blessed with near-immortality by Yuzupov. She wields a thorn whip in combat and views suffering as a path to enlightenment. Despite her unwavering faith, she battles an internal conflict between her zealous devotion and nagging self-doubt, often driven by an inexplicable restlessness into danger. Her presence is both an asset and liability, enduring suffering to protect others while fate seems to preserve her for an unknown purpose.",
+            "history": "The Martyr's extreme devotion caught Yuzupov's attention, granting her near-immortality. She now views the estate's horrors as a pilgrimage to test her faith and endurance.",
+            "race": "Human",
+            "gender": "Female",
+            "religion": "Yuzupov's",
+            "traits": [
+                "Devoted",
+                "Masochistic",
+                "Resilient",
+                "Fearless",
+                "Reckless",
+                "Enigmatic",
+                "Antsy",
+                "Self-Doubting"
+            ],
+            "status": {
+                "physical": 10,
+                "mental": 8,
+                "affliction": "",
+                "description": "In good health and high spirits",
+                "wounds": [],
+                "diseases": []
+            },
+            "stats": {
+                "strength": 7,
+                "agility": 4,
+                "intelligence": 2,
+                "authority": 3,
+                "sociability": 4
+            },
+            "equipment": [
+                "Thorn whip"
+            ],
+            "trinkets": [],
+            "appearance": {
+                "gender": "Female",
+                "height": "Short",
+                "build": "Slender",
+                "skin_tone": "Pale",
+                "hair_color": "Pink",
+                "hairstyle": "Wavy, shoulder-length"
+            },
+            "clothing": {
+                "headwear": "Crown of thorns",
+                "top": "Frilly red dress with ruffled white collar",
+                "pants": "None",
+                "outerwear": "None",
+                "footwear": "Rose-colored ballet slippers"
+            },
+            "combat": {
+                "role": "Frontliner",
+                "strengths": [
+                    "High pain tolerance",
+                    "Attention-grabbing",
+                    "Morale booster",
+                    "Uncanny ability to survive fatal blows"
+                ],
+                "weaknesses": [
+                    "Weak",
+                    "Single-minded",
+                    "Prone to reckless actions due to restlessness"
+                ]
+            },
+            "magic": "Spirit-granted near-immortality",
+            "notes": [
+                "Constantly seeks out pain and dangerous situations.",
+                "Finds pleasure in cutting, entangling, and strangling herself with her thorn whip",
+                "Fate seems to intervene in her most dire moments, preserving her for an unknown purpose",
+                "Her restlessness often leads her into precarious situations"
+            ],
+            "relationships": {
+                "Hood": {
+                    "affinity": 5,
+                    "dynamic": "Protective",
+                    "description": "The Martyr feels a strong urge to protect this strange, vulnerable child despite her bewildering behavior.",
+                    "history": "The Martyr encountered the Hood in the misty streets of the hamlet and felt compelled to escort her to safety.",
+                    "notes": ""
+                },
+                "Crusader": {
+                    "affinity": 5,
+                    "dynamic": "Admiration",
+                    "description": "The Martyr sees the Crusader as a kindred spirit in faith, albeit following a different path, and admires his dedication and strength.",
+                    "history": "The Martyr first met the Crusader in the streets of the Hamlet, where she was dancing and embracing her pain. She was impressed by his strong presence and devotion to his faith.",
+                    "notes": ""
+                },
+                "Heir": {
+                    "affinity": 3,
+                    "dynamic": "Intrigued Superiority",
+                    "description": "The Martyr views the Heir as a weak-willed individual, potentially useful for her devotion but ultimately beneath her spiritual level.",
+                    "history": "The Martyr met the Heir in the town square, finding him nervous and easily frightened by her displays of devotion.",
+                    "notes": ""
+                },
+                "Highwayman": {
+                    "affinity": 5,
+                    "dynamic": "Curious Excitement",
+                    "description": "The Martyr sees the Highwayman as a potential companion in her quest for exquisite suffering and danger, intrigued by his worldly experience and sardonic attitude.",
+                    "history": "The Martyr met the Highwayman upon entering the Hamlet, immediately drawn to his rugged appearance and hints of a dangerous past.",
+                    "notes": ""
+                },
+                "Plague Doctor": {
+                    "affinity": 5,
+                    "dynamic": "Fascinated",
+                    "description": "The Martyr is intrigued by the Plague Doctor's work and eager to assist, viewing it as a potential source of enlightening suffering.",
+                    "history": "The Martyr encountered the Plague Doctor conducting experiments in the Hamlet and offered her assistance, drawn by the promise of pain and scientific discovery.",
+                    "notes": ""
+                },
+                "Heiress": {
+                    "affinity": 2,
+                    "dynamic": "Eager to Impress",
+                    "description": "The Martyr sees the Heiress as a potential leader to follow and impress, viewing her as someone who can provide opportunities for suffering and enlightenment.",
+                    "history": "The Martyr met the Heiress in her office, eagerly demonstrating her devotion through self-harm, which horrified and disgusted the Heiress.",
+                    "notes": ""
+                },
+                "Grave Robber": {
+                    "affinity": 5,
+                    "dynamic": "Intrigued Fascination",
+                    "description": "The Martyr is captivated by the Grave Robber's dangerous aura and worldly demeanor, seeing her as a thrilling companion who might lead her to new experiences of pain and pleasure.",
+                    "history": "The Martyr and Grave Robber met in a tavern, where Anastasia was drawn to Audrey's mysterious and dangerous presence.",
+                    "notes": ""
+                },
+                "Vestal": {
+                    "affinity": 5,
+                    "dynamic": "Intrigued Fascination",
+                    "description": "The Martyr sees the Vestal as a fascinating blend of purity and hidden desires, sparking her interest and a longing for connection.",
+                    "history": "Their first encounter in the Hamlet streets was brief but charged with unspoken tension and mutual intrigue.",
                     "notes": ""
                 }
             }

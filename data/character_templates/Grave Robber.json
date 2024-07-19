@@ -9,48 +9,48 @@
     "gender": "Female",
     "religion": "None",
     "traits": [
-    "Agile",
-    "Precise",
-    "Cynical",
-    "Resourceful",
-    "Addicted to thrill",
-    "Vengeful"
+        "Agile",
+        "Precise",
+        "Cynical",
+        "Resourceful",
+        "Addicted to thrill",
+        "Vengeful"
     ],
     "status": {
-    "physical": 8,
-    "mental": 7,
-    "affliction": "",
-    "description": "In good health and high spirits",
-    "wounds": [],
-    "diseases": []
+        "physical": 8,
+        "mental": 7,
+        "affliction": "",
+        "description": "In good health and high spirits",
+        "wounds": [],
+        "diseases": []
     },
     "stats": {
-    "strength": 6,
-    "agility": 9,
-    "intelligence": 7,
-    "stealth": 8,
-    "accuracy": 9
+        "strength": 6,
+        "agility": 9,
+        "intelligence": 7,
+        "stealth": 8,
+        "accuracy": 9
     },
     "equipment": [
-    "Throwing daggers",
-    "Pickaxe",
-    "Poison darts"
+        "Throwing daggers",
+        "Pickaxe",
+        "Poison darts"
     ],
-    "trinkets": [],
+    "trinkets": [
+    ],
     "appearance": {
-    "gender": "Female",
-    "height": "Average",
-    "build": "Slender",
-    "skin_tone": "Pale",
-    "hair_color": "Blonde",
-    "hairstyle": "Long, straight"
+        "height": "Average",
+        "build": "Slender",
+        "skin_tone": "Pale",
+        "hair_color": "Blonde",
+        "hairstyle": "Long, straight",
+        "facial_hair": "None"
     },
     "clothing": {
-    "headwear": "Wide-brimmed hat",
-    "top": "Dark, fitted jacket",
-    "pants": "Tight trousers",
-    "outerwear": "Long coat",
-    "footwear": "Knee-high boots"
+        "headwear": "Wide-brimmed hat",
+        "top": "Blue fitted jacket with puffy shoulders",
+        "pants": "Tight trousers",
+        "accessories": "Ascot"
     },
     "combat": {
     "role": "Assassin",

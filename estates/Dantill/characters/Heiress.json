@@ -1,11 +1,11 @@
 {
     "title": "Heiress",
     "name": "Persephone Dantill",
-    "level": 0,
+    "level": 5,
     "summary": "The Heiress to the accursed Dantill estate wields a strong air of authority as she commands the daunting task of reclaiming her ancestral home. Armed with intelligence and strategic insight, she also manages the nearby hamlet, serving as a pillar of support and strength in a community plagued by supernatural horrors. She is grateful to those brave or mad enough to join her quest. However, when her methods or authority are challenged, she shows hardheaded stubbornness.",
     "history": "Upon receiving a chilling letter from her late ancestor, the Heiress left her academic pursuits to take up her role as the heiress of the estate. She found herself thrust into a nightmarish reality where her ancestral home was not only physically deteriorated but also infested with the horrors summoned by her ancestor's dark rituals.",
-    "race": null,
-    "gender": null,
+    "race": "Human",
+    "gender": "Female",
     "religion": "None",
     "traits": [
         "Determined",
@@ -35,21 +35,19 @@
         "None"
     ],
     "appearance": {
-        "gender": "Female",
         "height": "Average",
         "build": "Average",
         "skin_tone": "Fair",
         "hair_color": "Blond",
-        "hairstyle": "Curled and styled to shoulder length",
-        "clothing": {
-            "headwear": "None",
-            "top": "White ruffled shirt",
-            "pants": "Mustard yellow breeches",
-            "outerwear": "Blue double-breasted tailcoat with gold buttons",
-            "footwear": "Brown boots"
-        }
+        "hairstyle": "Curled and styled to shoulder length"
     },
-    "clothing": null,
+    "clothing": {
+        "headwear": "None",
+        "top": "White ruffled shirt",
+        "pants": "Mustard yellow breeches",
+        "outerwear": "Blue double-breasted tailcoat with gold buttons",
+        "footwear": "Brown boots"
+    },
     "combat": {
         "range": "Mid-range",
         "weapon": "Derringer pistol",
@@ -115,6 +113,13 @@
             "dynamic": "Cautious Employer",
             "description": "The Heiress views the Grave Robber as a potentially useful but dangerous ally, maintaining a wary distance while acknowledging her skills.",
             "history": "The Heiress reluctantly recruited the Grave Robber to aid in reclaiming her ancestral home, setting a tense foundation for their working relationship.",
+            "notes": ""
+        },
+        "Martyr": {
+            "affinity": 1,
+            "dynamic": "Disturbed Wariness",
+            "description": "The Heiress views the Martyr with a mix of disgust, horror, and reluctant pragmatism, recognizing her potential usefulness despite her disturbing zealotry.",
+            "history": "The Heiress witnessed the Martyr's alarming self-mutilation in her office, leaving her deeply unsettled but aware of the Martyr's potential as a resilient fighter.",
             "notes": ""
         }
     }

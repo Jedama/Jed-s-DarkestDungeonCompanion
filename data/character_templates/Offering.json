@@ -1,0 +1,74 @@
+{
+    "title": "Offering",
+    "name": "Lyra",
+    "level": 0,
+    "money": 0,
+    "summary": "The Offering, is a complex and tormented soul who stands at the forefront of battle. Driven by a morbid fascination with mortality, she shields her allies while seeking to understand the fragility of life. Her presence is both a blessing and a curse, as she endures great suffering to protect others.",
+    "history": "Once a farmer's daughter, Lyra's life changed dramatically after a traumatic event involving a mysterious heart-like artifact. This experience left her with an unusual connection to the forces of life and death, driving her to join the fight against the horrors that plague the land.",
+    "race": "Human",
+    "gender": "Female",
+    "religion": "Personal doctrine",
+    "traits": [
+      "Protective",
+      "Morbidly curious",
+      "Resilient",
+      "Troubled",
+      "Empathetic",
+      "Quiet"
+    ],
+    "status": {
+      "physical": 10,
+      "mental": 10,
+      "affliction": "",
+      "description": "In good health and high spirits",
+      "wounds": [],
+      "diseases": []
+    },
+    "stats": {
+        "strength": 6,
+        "agility": 2,
+        "intelligence": 6,
+        "authority": 4,
+        "sociability": 1
+    },
+    "equipment": [
+      "Chained Levitating Heart"
+    ],
+    "trinkets": [
+    
+    ],
+    "appearance": {
+      "height": "Average",
+      "build": "Athletic",
+      "skin_tone": "Pale",
+      "hair_color": "Green",
+      "hairstyle": "Elaborate updo with ornaments",
+      "facial_hair": "Stubble"
+    },
+    "clothing": {
+      "headwear": "Blindfold, gag",
+      "top": "Loose patches of silk",
+      "pants": "Indivial leg bindings",
+      "accessories": "Dark arm binding, gorgerin, ribbons"
+    },
+    "combat": {
+      "role": "Tank",
+      "strengths": [
+        "High endurance",
+        "Protective nature",
+        "Willingness to suffer"
+      ],
+      "weaknesses": [
+        "Short range",
+        "Weak attacks",
+        "Psychologically vulnerable"
+      ]
+    },
+    "magic": "Life force manipulation",
+    "notes": [
+      "A mysterious bound in a chain levitates behind her",
+      "Her arms are tied together in an unusable position",
+      "Has a deep, albeit troubling, empathy for others' suffering"
+    ],
+    "relationships": {}
+  }

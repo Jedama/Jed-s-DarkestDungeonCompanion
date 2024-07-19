@@ -129,6 +129,13 @@
             "description": "The Plague Doctor views the Grave Robber as a potential source of specimens and a kindred spirit in the realm of death and bodies.",
             "history": "They encountered each other in the hamlet, exchanging veiled threats that quickly turned to mutual intrigue about their shared fascination with anatomy.",
             "notes": ""
+        },
+        "Martyr": {
+            "affinity": 4,
+            "dynamic": "Cautious Interest",
+            "description": "The Plague Doctor sees the Martyr as a potentially valuable test subject, albeit one that requires careful handling due to her unpredictable nature.",
+            "history": "The Plague Doctor reluctantly allowed the Martyr to observe her experiments, recognizing potential in her unique tolerance for pain and suffering.",
+            "notes": ""
         }
     }
 }

@@ -118,6 +118,13 @@
             "description": "The Vestal sees the Grave Robber as a morally ambiguous figure, simultaneously drawn to and wary of her worldly ways and cavalier attitude towards risk.",
             "history": "The Vestal unexpectedly agreed to a game of dice with the Grave Robber in the tavern, finding herself both conflicted and intrigued by the encounter.",
             "notes": ""
+        },
+        "Martyr": {
+            "affinity": 4,
+            "dynamic": "Conflicted Attraction",
+            "description": "The Vestal feels a mix of revulsion and forbidden attraction towards the Martyr, struggling with her own desires and her commitment to purity.",
+            "history": "Their paths crossed in the Hamlet, where the Vestal witnessed the Martyr's blood-soaked form, stirring both disgust and a hint of desire within her.",
+            "notes": ""
         }
     }
 }

@@ -12,6 +12,15 @@ def check_estate_exists(estate_name):
 def index():
     return render_template('index.html')
 
+@app.route('/api/estate/<estate_name>/save', methods=['POST'])
+def save_estate(estate_name):
+    try:
+        estate = Estate.load_estate(estate_name)
+        estate.save_estate()
+        return jsonify({"status": "success", "message": f"Estate {estate_name} saved successfully"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 @app.route('/api/characters/<estate_name>')
 def get_characters(estate_name):
     estate = Estate.load_estate(estate_name)
@@ -63,6 +72,22 @@ def serve_estate_json(estate_name):
         return send_from_directory('estates', f'{estate_name}/estate.json')
     else:
         return jsonify({"error": "Estate not found"}), 404
+
+@app.route('/api/character_titles', methods=['GET'])
+def get_character_titles():
+    character_titles = []
+    template_dir = 'data/character_templates'
+    try:
+        for filename in os.listdir(template_dir):
+            if filename.endswith('.json'):
+                character_titles.append(os.path.splitext(filename)[0])
+        return jsonify(sorted(character_titles))
+    except FileNotFoundError:
+        return jsonify({"error": "Character templates directory not found"}), 404
+    except PermissionError:
+        return jsonify({"error": "Permission denied when accessing character templates"}), 403
+    except Exception as e:
+        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
     
 if __name__ == '__main__':
     app.run(debug=True)

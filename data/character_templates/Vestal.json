@@ -38,18 +38,17 @@
   ],
   "trinkets": [],
   "appearance": {
-      "gender": "Female",
       "height": "Average",
       "build": "Sturdy",
       "skin_tone": "Pale",
       "hair_color": "Blonde",
-      "hairstyle": "Hidden under hood"
+      "hairstyle": "Tied down"
   },
   "clothing": {
-    "headwear": "Hooded robe",
+    "headwear": "Hooded robe and wimple",
     "top": "Sacred robe",
     "pants": "None",
-    "outerwear": "Steel breastplate"
+    "accessories": "None"
   },
   "combat": {
       "role": "Healer",

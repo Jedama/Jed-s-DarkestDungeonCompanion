@@ -1,7 +1,7 @@
 {
     "title": "Crusader",
     "name": "Reynauld",
-    "level": 0,
+    "level": 2,
     "summary": "The Crusader, a stoic warrior, reluctantly left his family to join the holy war, finding unexpected solace and divine purpose in the midst of battle. His formidable presence on the battlefield left behind, he realises he can never return to the life or family he once knew. As a way to atone for his past, he seeks and has found a new cause under the Heir and Heiress.",
     "history": "From tilling the land to relishing the fervor of the Crusade, the Crusader's life is marked by the weight of martial glory and the stark absence of domestic warmth. Having once sought to prevent famine by his departure, he now recognizes the battlefield as his true home, forsaking the hearth for the harsh camaraderie of war.",
     "race": null,
@@ -121,7 +121,14 @@
             "affinity": 2,
             "dynamic": "Wary Distrust",
             "description": "The Crusader views the Grave Robber with a mixture of distrust and grudging respect. Her skills and demeanor challenge his rigid worldview.",
-            "history": "Reynauld encountered Audrey at the tavern, where she attempted to draw him into a game. Their interaction was cut short by a sudden plunge into an eldritch horror.",
+            "history": "Reynauld encountered Audrey at the tavern, where she attempted to draw him into a game.",
+            "notes": ""
+        },
+        "Martyr": {
+            "affinity": 3,
+            "dynamic": "Cautious Concern",
+            "description": "The Crusader views the Martyr with a mix of wariness and concern, torn between his duty to protect and his suspicion of her strange devotion.",
+            "history": "The Crusader encountered the Martyr dancing and self-flagellating in the streets of the Hamlet, unsure of how to react to her zealous behavior.",
             "notes": ""
         }
     }
