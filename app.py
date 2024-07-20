@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, render_template, request, send_from_directory
 from classes import Estate
+import json
 import os
+
 
 app = Flask(__name__, static_url_path='', static_folder='static')
 
@@ -73,19 +75,27 @@ def serve_estate_json(estate_name):
     else:
         return jsonify({"error": "Estate not found"}), 404
 
-@app.route('/api/character_titles', methods=['GET'])
-def get_character_titles():
-    character_titles = []
+@app.route('/api/character_info', methods=['GET'])
+def get_character_info():
+    character_info = {}
     template_dir = 'data/character_templates'
     try:
         for filename in os.listdir(template_dir):
             if filename.endswith('.json'):
-                character_titles.append(os.path.splitext(filename)[0])
-        return jsonify(sorted(character_titles))
+                with open(os.path.join(template_dir, filename), 'r') as file:
+                    data = json.load(file)
+                    title = os.path.splitext(filename)[0]
+                    character_info[title] = {
+                        'default_name': data.get('name', ''),
+                        'title': title
+                    }
+        return jsonify(character_info)
     except FileNotFoundError:
         return jsonify({"error": "Character templates directory not found"}), 404
     except PermissionError:
         return jsonify({"error": "Permission denied when accessing character templates"}), 403
+    except json.JSONDecodeError:
+        return jsonify({"error": f"Invalid JSON in file {filename}"}), 500
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
     
