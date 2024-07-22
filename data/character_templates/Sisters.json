@@ -1,0 +1,71 @@
+{
+    "title": "Sisters",
+    "name": "Junjeong & Nammo",
+    "level": 0,
+    "money": 0,
+    "summary": "Two souls bound within one body, the Scholar and the Warrior constantly fight for control. The Scholar foten maintains control, but the Warrior fights for control and often takes over, primarily when there is blood to shed. Their shared past is marked by tragedy, rivalry, and a mysterious massacre.",
+    "history": "Orphaned by a powerful warlord, the sisters were trained in tactics and combat. After a victory celebration, the two sisters set out to kill the other and a massacre occurred, leaving one sister dead. Both claim to be the survivor, with the other a parasitic spirit. They now seek the power at the Estate to rid themselves of the other.",
+    "race": "Human & Spirit",
+    "gender": "Female",
+    "religion": "None",
+    "traits": [
+      "Conflicted",
+      "Ambitious",
+      "Knowledgeable",
+      "Violent",
+      "Resentful",
+      "Manipulative"
+    ],
+    "status": {
+      "physical": 10,
+      "mental": 10,
+      "affliction": "None",
+      "description": "In good health and high spirit",
+      "wounds": [],
+      "diseases": []
+    },
+    "stats": {
+      "strength": 7,
+      "agility": 8,
+      "intelligence": 9,
+      "authority": 8,
+      "sociability": 4
+    },
+    "equipment": [
+      "Forbidden scrolls",
+      "Sword"
+    ],
+    "trinkets": [
+    ],
+    "appearance": {
+      "height": "Average",
+      "build": "Athletic",
+      "skin_tone": "Fair",
+      "hair_color": "Black",
+      "hairstyle": "Elaborate updo with two-flower headdress"
+    },
+    "clothing": {
+      "headwear": "Two-flower headdress",
+      "top": "Warrior's armor over Scholar's robes",
+      "pants": "Scholar's robes",
+      "accessories": "None"
+    },
+    "combat": {
+      "role": "Tactician & Swordmaster",
+      "strengths": [
+        "Tactical knowledge",
+        "Melee combat prowess",
+        "Life essence manipulation"
+      ],
+      "weaknesses": [
+        "Internal conflict",
+        "Unpredictable personality shifts",
+        "Causes unrest to teammates"
+      ]
+    },
+    "magic": "Forbidden knowledge allowing manipulation of life essence",
+    "notes": [
+    ],
+    "relationships": {
+    }
+  }

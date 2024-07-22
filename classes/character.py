@@ -267,29 +267,6 @@ class Character:
         else:
             print(f"No relationship with {title} exists to update description.")
 
-    def update_relationship_history(self, title, history):
-        """ Update the history within the relationship with another character. """
-        if title in self.relationships:
-            self.relationships[title]['history'] = history
-        else:
-            print(f"No relationship with {title} exists to update history.")
-
-    def update_relationship_notes(self, title, notes):
-        """ Update the notes within the relationship with another character. """
-
-        # First encounter might try to add none to notes
-        if notes is None:
-            return
-
-        if title in self.relationships:
-            self.relationships[title]['notes'] = notes
-        else:
-            print(f"No relationship with {title} exists to update notes.")
-
-    def update_relationship_notes(self, title, notes):
-        #If the LLM calls the wrong name function
-        self.update_relationship_notes(title, notes)
-
     def has_money(self, amount):
         # Check if the character has amount or more money
         return bool(self.money >= amount)

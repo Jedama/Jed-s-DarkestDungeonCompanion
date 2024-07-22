@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
         iconDiv: document.getElementById("character-icon"),
         characterNameInput: document.getElementById("character-name"),
         modifierInput: document.getElementById("modifier"),
+        modifierContainer: document.getElementById("modifier-container"),
         beginRecruitButton: document.getElementById("begin-recruit"),
         characterGrid: document.getElementById("character-grid")
     };
@@ -23,6 +24,20 @@ document.addEventListener("DOMContentLoaded", function() {
     let estateName;
     let characterInfo = {};
     let currentCharacters = new Set();
+    let modifiers = [];
+
+    //Positions for modifier text for recruit
+    const positions = [
+        {x: '0%', y: '0%'},    // Top-left
+        {x: '100%', y: '0%'},  // Top-right
+        {x: '0%', y: '100%'},  // Bottom-left
+        {x: '100%', y: '100%'},// Bottom-right
+        {x: '50%', y: '0%'},   // Top-center
+        {x: '0%', y: '50%'},   // Middle-left
+        {x: '100%', y: '50%'}, // Middle-right
+        {x: '50%', y: '100%'}, // Bottom-center
+        {x: '50%', y: '50%'}   // Center
+    ];
 
     // Initialize
     showSavefileModal();
@@ -42,7 +57,9 @@ document.addEventListener("DOMContentLoaded", function() {
         elements.savefileNameInput.addEventListener("keyup", handleSavefileKeyUp);
         elements.eventsButton.addEventListener("click", openRecruitModal);
         elements.characterDropdown.addEventListener('change', updateIcon);
+        elements.beginRecruitButton = document.getElementById("begin-recruit");
         elements.beginRecruitButton.addEventListener('click', handleRecruitSubmission);
+        elements.modifierInput.addEventListener('keypress', handleModifierKeyPress);
     }
 
     // Savefile and Estate Management
@@ -111,6 +128,14 @@ document.addEventListener("DOMContentLoaded", function() {
     function openRecruitModal() {
         populateCharacterDropdown();
         elements.recruitModal.style.display = "block";
+        modifiers = []; // Reset modifiers
+        clearModifierOverlays();
+        resetSeal();
+    }
+
+    function clearModifierOverlays() {
+        const modalContent = elements.recruitModal.querySelector('.modal-content');
+        modalContent.querySelectorAll('.modifier-overlay').forEach(el => el.remove());
     }
 
     elements.characterDropdown.addEventListener('change', updateCharacterDetails)
@@ -119,6 +144,21 @@ document.addEventListener("DOMContentLoaded", function() {
         const selectedCharacter = elements.characterDropdown.value;
         updateIcon(selectedCharacter);
         updateDefaultName(selectedCharacter);
+
+        // Clear modifiers and reset seal
+        modifiers = [];
+        clearModifierOverlays();
+        resetSeal();
+    }
+
+    function clearModifierOverlays() {
+        const modalContent = elements.recruitModal.querySelector('.modal-content');
+        modalContent.querySelectorAll('.modifier-overlay').forEach(el => el.remove());
+    }
+    
+    function resetSeal() {
+        elements.beginRecruitButton.classList.remove('active');
+        elements.beginRecruitButton.classList.add('inactive');
     }
 
     function updateDefaultName(characterTitle) {
@@ -147,6 +187,52 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function handleModifierKeyPress(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            addModifier();
+        }
+    }
+
+    function addModifier() {
+        const modifier = elements.modifierInput.value.trim();
+        if (modifier) {
+            modifiers.push(modifier);
+            elements.modifierInput.value = '';
+            updateModifierOverlay();
+            elements.beginRecruitButton.classList.remove('inactive');
+            elements.beginRecruitButton.classList.add('active');
+        }
+    }
+
+    function updateModifierOverlay() {
+        const modalContent = elements.recruitModal.querySelector('.modal-content');
+        const iconRect = elements.iconDiv.getBoundingClientRect();
+        const modalRect = modalContent.getBoundingClientRect();
+    
+        const overlay = document.createElement('div');
+        overlay.className = 'modifier-overlay';
+        overlay.textContent = modifiers[modifiers.length - 1];
+    
+        const position = positions[(modifiers.length - 1) % positions.length];
+        
+        // Calculate position relative to the modal content
+        const left = iconRect.left - modalRect.left + (iconRect.width * parseFloat(position.x) / 100);
+        const top = iconRect.top - modalRect.top + (iconRect.height * parseFloat(position.y) / 100);
+    
+        overlay.style.left = `${left}px`;
+        overlay.style.top = `${top}px`;
+    
+        // Center the text on the calculated position
+        overlay.style.transform = 'translate(-50%, -50%)';
+    
+        // Add random tilt
+        const tilt = Math.random() * 40 - 20; // Random angle between -20 and 20 degrees
+        overlay.style.transform += ` rotate(${tilt}deg)`;
+    
+        modalContent.appendChild(overlay);
+    }
+
     function updateIcon() {
         const selectedCharacter = elements.characterDropdown.value;
         elements.iconDiv.innerHTML = selectedCharacter
@@ -154,23 +240,23 @@ document.addEventListener("DOMContentLoaded", function() {
             : '';
     }
 
-    function handleRecruitSubmission() {
+    function handleRecruitSubmission(event) {
+        if (!modifiers) {
+            event.preventDefault();
+            return; // Do nothing if the seal is inactive
+        }
+    
         const characterTitle = elements.characterDropdown.value;
         const characterName = elements.characterNameInput.value;
-        const modifier = elements.modifierInput.value;
         
         if (characterTitle) {
             console.log('Selected character:', characterTitle);
             console.log('Character name:', characterName);
-            console.log('Modifier:', modifier);
+            console.log('Modifiers:', modifiers);
             
-            // Here you would typically send this data to your backend
-            // For now, we'll just show an alert
-            alert(`Character ${characterName} (${characterTitle}) recruited with modifier: ${modifier}`);
+            alert(`Character ${characterName} (${characterTitle}) recruited with modifiers: ${modifiers.join(', ')}`);
             
             elements.recruitModal.style.display = "none";
-            
-            // Repopulate the dropdown to reflect the new state
             populateCharacterDropdown();
         } else {
             alert('Please select a character.');

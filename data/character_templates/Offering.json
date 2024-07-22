@@ -1,20 +1,19 @@
 {
     "title": "Offering",
-    "name": "Lyra",
+    "name": "Lulu",
     "level": 0,
     "money": 0,
-    "summary": "The Offering, is a complex and tormented soul who stands at the forefront of battle. Driven by a morbid fascination with mortality, she shields her allies while seeking to understand the fragility of life. Her presence is both a blessing and a curse, as she endures great suffering to protect others.",
-    "history": "Once a farmer's daughter, Lyra's life changed dramatically after a traumatic event involving a mysterious heart-like artifact. This experience left her with an unusual connection to the forces of life and death, driving her to join the fight against the horrors that plague the land.",
+    "summary": "Driven by a morbid fascination with mortality, the Offering shields her allies while seeking to understand the fragility of life. Her helpless, vulnerable getup renders her powerless to stop the violations she eagerly welcomes unto herself from friend and foe alike, in order to experience the depths of agony, suffering, and desperation.",
+    "history": "Born into a secluded cult and groomed for sacrifice, the Offering's fate took a cruel twist when an eldritch entity rejected her, instead taking her heart and replacing it with another's - one that carried the memories of a young abused girl. Left with an empty chest and overwhelmed by newfound empathy and pain, the Offering fled her cult. She now walks a precarious path between life and death, driven to understand and share in others' suffering.",
     "race": "Human",
     "gender": "Female",
-    "religion": "Personal doctrine",
+    "religion": "None",
     "traits": [
-      "Protective",
       "Morbidly curious",
-      "Resilient",
-      "Troubled",
+      "Masochistic",
+      "Accepting",
       "Empathetic",
-      "Quiet"
+      "Taciturn"
     ],
     "status": {
       "physical": 10,
@@ -32,23 +31,22 @@
         "sociability": 1
     },
     "equipment": [
-      "Chained Levitating Heart"
+      "Heart levitating behind her, wrapped in chains"
     ],
     "trinkets": [
-    
     ],
     "appearance": {
       "height": "Average",
-      "build": "Athletic",
+      "build": "Curvy",
       "skin_tone": "Pale",
       "hair_color": "Green",
       "hairstyle": "Elaborate updo with ornaments",
-      "facial_hair": "Stubble"
+      "facial_hair": "None"
     },
     "clothing": {
-      "headwear": "Blindfold, gag",
-      "top": "Loose patches of silk",
-      "pants": "Indivial leg bindings",
+      "headwear": "Blindfold, gag, ribbons",
+      "top": "Tiny patches of fleeting silk",
+      "pants": "None",
       "accessories": "Dark arm binding, gorgerin, ribbons"
     },
     "combat": {
@@ -66,9 +64,8 @@
     },
     "magic": "Life force manipulation",
     "notes": [
-      "A mysterious bound in a chain levitates behind her",
-      "Her arms are tied together in an unusable position",
-      "Has a deep, albeit troubling, empathy for others' suffering"
+      "Her arms are tightly bound together and unusable below her chest",
+      "The gag in her mouth renders her unable to speak"
     ],
     "relationships": {}
   }

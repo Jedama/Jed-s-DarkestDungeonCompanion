@@ -65,29 +65,24 @@
   },
   "magic": "None",
   "notes": [
-    "Has a wine addiction."
+    "Turns to wine when overwhelmed by the stress of managing the Hamlet.",
+    "Turned on, and easily distracted, by women with ample breasts."
   ],
   "relationships": {
     "Heir": {
       "affinity": 8,
       "dynamic": "Familial",
-      "description": "Despite a cold exterior and lifetime of bickering, the Heiress loves and will not let harm come upon the Heir.",
-      "history": "The Heir is the Heiress's brother, and they grew up together.",
-      "notes": "None."
+      "description": "Despite a cold exterior and lifetime of bickering, the Heiress loves and will not let harm come upon the Heir."
     },
     "Crusader": {
       "affinity": 5,
       "dynamic": "Professional",
-      "description": "The Heiress is cautiously assessing the Crusader's capabilities as her new hire.",
-      "history": "The Crusader has recently joined the Heiress's guard on probationary terms.",
-      "notes": "None."
+      "description": "The Heiress maintains a reserved, professional demeanor towards the Crusader, her latest recruit. She's keenly observing their performance and reliability, weighing their potential value to her cause against the risks of trusting a newcomer in such perilous circumstances."
     },    
     "Highwayman": {
       "affinity": 3,
       "dynamic": "Cautious",
-      "description": "The Heiress remains wary of the Highwayman, given his dubious past and rough demeanor.",
-      "history": "The Highwayman has recently joined the Heiress's guard on probationary terms.",
-      "notes": "None."
+      "description": "The Heiress regards the Highwayman with a mix of suspicion and pragmatic interest. While his skills could prove valuable, his checkered past and gruff manner keep her on guard."
     }    
   }
 }

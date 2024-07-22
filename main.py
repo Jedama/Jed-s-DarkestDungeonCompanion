@@ -1,8 +1,9 @@
 from classes import Estate
 
-estate = Estate.load_estate('Dantill')
+estate = Estate('Dantill')
+estate.start_campaign()
 
-estate.recruit('Martyr', ['Fated', 'Tough', 'Antsy', 'Imposter syndrome'])
+estate.recruit('Offering', ['Slow', 'Pallid'])
 
 estate.save_estate()
 

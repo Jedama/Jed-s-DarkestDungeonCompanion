@@ -198,10 +198,7 @@ class OutputEvent:
                     if i != j:  # Ensure we do not compare a character to themselves
                         user_prompt += f'{self.characters[i].title} and {self.characters[j].title}:\n'
                         
-                        if self.type == 'dungeon':
-                            relationship_fields = ['affinity', 'dynamic']
-                        else:
-                            relationship_fields = ['affinity', 'dynamic', 'description', 'history', 'notes']
+                        relationship_fields = ['affinity', 'dynamic', 'description']
 
                         # Check if the relationship exists
                         relationship_info = self.characters[i].relationships.get(self.characters[j].title)
@@ -296,7 +293,7 @@ class OutputEvent:
                 for j in range(len(self.characters)):
                     for k in range(j+1, len(self.characters)):
                         user_prompt += f'{self.characters[j].title} and {self.characters[k].title}\n'
-                        relationship_fields = ['affinity', 'dynamic', 'description', 'history', 'notes']
+                        relationship_fields = ['affinity', 'dynamic', 'description']
                         for field in relationship_fields:
                             user_prompt += f'{field}: {self.characters[j].relationships[self.characters[k].title][field]}\n'
     

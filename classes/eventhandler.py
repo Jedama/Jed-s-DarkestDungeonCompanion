@@ -4,6 +4,7 @@ from .events import InputEvent, OutputEvent
 from .faction import Faction
 from .location import Location
 from .npc import NPC
+from prompting import prompt_claude, clean_response_claude
 
 from storage import load_json, read_json, read_txt_all
 
@@ -124,6 +125,126 @@ class EventHandler:
 
         output_event.summary = summary
 
+    def recruit_rank_characters(self, characters, leader_title, new_character):
+        # Ensure the leader is always first
+        ranked_characters = []
+        
+        # Prepare new character summary
+        new_character_info = f"""
+            New Recruit:
+            Name: {new_character.name}
+            Title: {new_character.title}
+            Race: {new_character.race}
+            Gender: {new_character.gender}
+            Summary: {new_character.summary}
+            History: {new_character.history}
+            Religion: {new_character.religion}
+            Traits: {new_character.traits}
+            Stats: {new_character.stats}
+            Appearance: {new_character.appearance}
+            Clothing: {new_character.clothing}
+            Combat: {new_character.combat}
+            Equipment: {new_character.equipment}
+            Magic: {new_character.magic}
+            Other notes: {new_character.notes}
+            """
+
+        # Shuffle the order of existing characters
+        existing_characters = list(characters.items())
+        random.shuffle(existing_characters)
+
+        # Prepare existing character summaries (only title and summary)
+        character_summaries = "\n".join([
+            f"{title}: {char.summary}"
+            for title, char in existing_characters
+            if title != new_character.title
+        ])
+        
+        system_prompt = """
+            You are an expert in character dynamics and storytelling. Your task is to rank existing characters 
+            based on their potential for interesting interactions with a new recruit joining the team. You will output 
+            the results in a specific format combining individual characters and small groups.
+        """
+
+        user_prompt = f"""
+            A new character is joining the team. Given the following character summaries:
+
+            1. Group the characters into logical sets of 1-3 characters each. 
+            2. Rank these groups from most to least interesting in terms of potential interactions with the new recruit.
+            3. Output the result using similarly to the example below:
+
+            [Character1, Character2], [Character3], [Character4, Character5], [Character6], [Character7, Character8, Character9]
+
+            Guidelines:
+            - Each set of square brackets represents a group of 1-3 characters.
+            - The order of the brackets indicates the ranking, from most interesting interactions to least.
+            - Group characters based on compelling dynamics, shared histories, or interesting contrasts.
+            - Aim for a mix of group sizes (singles, pairs, and trios) to create varied interaction possibilities.
+            - Consider how each group might react to or interact with the new recruit.
+            - Output only the list of ranked character groups, nothing else.
+
+            New Recruit:
+            {new_character_info}
+
+            Existing Characters:
+            {character_summaries}
+        """
+
+        assistant_prompt = "Here is the ranking of character interactions with the new recruit, formatted as requested:"
+
+        # Call the prompt_claude function directly
+        ranking_result = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens=400, temperature=1)
+        ranking_result = clean_response_claude(ranking_result)
+        
+        # Process the result
+        try:
+            # Remove newline characters and split the result into groups
+            ranking_result = ranking_result.replace('\n', '').strip()
+            if ranking_result.startswith('[') and ranking_result.endswith(']'):
+                ranking_result = ranking_result[1:-1]
+            groups = ranking_result.split('], [')
+
+            processed_groups = []
+            for group in groups:
+                # Remove any remaining brackets
+                group = group.strip('[]')
+                # Split the group into individual names and strip any whitespace
+                titles = [title.strip() for title in group.split(',')]
+                processed_groups.append(titles)
+            
+            # Remove duplicates while preserving order
+            seen = set()
+            unique_processed_groups = []
+            for group in processed_groups:
+                unique_group = []
+                for title in group:
+                    if title not in seen and title != new_character.title:
+                        seen.add(title)
+                        unique_group.append(title)
+                if unique_group:
+                    unique_processed_groups.append(unique_group)
+
+            # Add remaining characters as single-character groups
+            remaining_characters = set(characters.keys()) - seen - {new_character.title}
+            remaining_groups = [[title] for title in remaining_characters]
+            random.shuffle(remaining_groups)
+            unique_processed_groups.extend(remaining_groups)
+            
+            # Move the group with the leader_title to the front
+            leader_group_index = next((i for i, group in enumerate(unique_processed_groups) if leader_title in group), None)
+            if leader_group_index is not None:
+                leader_group = unique_processed_groups.pop(leader_group_index)
+                unique_processed_groups.insert(0, leader_group)
+            
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            # Return the character list in a random order in single-character groups
+            random_characters = list(characters.keys())
+            random_characters.remove(new_character.title)  # Remove the new character's title
+            random.shuffle(random_characters)
+            return [[char] for char in random_characters]
+
+        return unique_processed_groups
 
 
     def process_keywords(self, input_event, output_event, keywords=None):

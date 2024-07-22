@@ -10,6 +10,7 @@ class Estate:
     def __init__(self, title):
         self.title = title
         self.money = 0
+        self.leader = 'Heiress'
         self.characters = {}
         self.eventHandler = EventHandler()
         self.dungeon_team = []
@@ -84,9 +85,7 @@ class Estate:
                 character.relationships[other_character.title] = {
                     "affinity": 0,
                     "dynamic": "Neutral",
-                    "description": "",
-                    "history": "",
-                    "notes": ""
+                    "description": ""
                 }
 
         character_data = read_json(os.path.join('data/character_templates', title))
@@ -98,23 +97,27 @@ class Estate:
 
         recruit_story, recruit_consequences = self.eventHandler.craft_event(self.characters, 'town', 'Recruit', [title], quirks)
 
+        ordered_characters = self.eventHandler.recruit_rank_characters(self.characters, self.leader, character)
+
         # Store the return values in a list of lists
         encounter_results = []
 
-        # Get a list of other characters in the town
-        other_characters = [char for char in self.characters if char != title]
-
-        # Shuffle the order of the encounters
-        random.shuffle(other_characters)
-
-        # Loop through every other character in the town
-        for other_character in other_characters:
-            # Ensure relationship placeholders exist for both characters
-            ensure_relationship_placeholder(self.characters[title], self.characters[other_character])
-            ensure_relationship_placeholder(self.characters[other_character], self.characters[title])
-
-            result = self.eventHandler.craft_event(self.characters, 'town', 'First Encounter', [title, other_character])
-            encounter_results.append(result)
+        # Loop through each group in ordered_characters
+        for group in ordered_characters:
+            group_encounter_results = []
+            
+            # Ensure relationships exist between the new character and each character in the group
+            for other_title in group:
+                if other_title != title:  # Skip if it's the new character
+                    ensure_relationship_placeholder(self.characters[title], self.characters[other_title])
+                    ensure_relationship_placeholder(self.characters[other_title], self.characters[title])
+            
+            # Create an encounter for the entire group
+            encounter_characters = [title] + group
+            result = self.eventHandler.craft_event(self.characters, 'town', f'First Encounter {len(encounter_characters)}', encounter_characters)
+            group_encounter_results.append(result)
+            
+            encounter_results.append(group_encounter_results)
 
         return recruit_story, recruit_consequences, encounter_results
 
@@ -130,7 +133,7 @@ class Estate:
             if character_data:
                 character = Character.from_dict(character_data)
                 self.add_character(character)
-                self.dungeon_team = starting_characters
-                self.dungeon_region = 'The Old Road'
+                #s elf.dungeon_team = starting_characters
+                #s elf.dungeon_region = 'The Old Road'
             else:
                 print(f'Character template not found: {character_title}')

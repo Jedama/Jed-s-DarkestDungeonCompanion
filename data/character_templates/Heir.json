@@ -3,24 +3,25 @@
   "name": "Percival Dantill",
   "level": 0,
   "money": 0,
-  "summary": "The Heir to the estate is a meek and cowardly man who relies on the authority of his name to maintain a semblance of control in the chaotic surroundings of his ancestral home. Although his intentions are generally good, his tendency to leverage his position often undermines his credibility among those he tries to lead. With high intelligence but low physical capabilities, Percival struggles to assert himself, instead relying heavily on strategic thinking and logistical planning to navigate the challenges posed by the estate's dark legacy.",
-  "history": "A reluctant participant in the quest to restore the estate, Percival was coaxed into action by his sister. While he lacks her physical courage and commanding presence, Percival brings his own unique strengths to the fore. Highly educated and obsessively detailed-oriented, he immerses himself in the logistical challenges of managing the estate’s resources and orchestrating the efforts needed to support the hamlet and its frightened inhabitants.",
+  "summary": "The Heir to the estate is a brilliant scholar and capable manager who is desperately trying to cope in this world of horrors far beyond his comfort. Despite being a man of cowardice and meek nature, Percival's keen intellect and organizational skills prove invaluable in coordinating the chaotic efforts to reclaim his ancestral home.",
+  "history": "Raised in academic circles far from the estate's dark legacy, Percival was reluctantly drawn into the family's quest by his sister. Despite his initial hesitation, he's found ways to apply his scholarly knowledge and managerial expertise to the daunting task at hand.",
   "race": "Human",
   "gender": "Male",
   "religion": "None",
   "traits": [
     "Meek",
+    "Organized",
     "Cowardly",
-    "Strategic",
-    "Educated",
-    "Logistical",
-    "Obsessive"
+    "Scholarly",
+    "Anxious",
+    "Resourceful",
+    "Possessive"
   ],
   "status": {
     "physical": 10,
-    "mental": 8,
-    "affliction": "",
-    "description": "In good health and high spirits",
+    "mental": 10,
+    "affliction": "None",
+    "description": "In good health and high spitits",
     "wounds": [],
     "diseases": []
   },
@@ -35,7 +36,8 @@
     "Letter opener",
     "Wine bottle"
   ],
-  "trinkets": [],
+  "trinkets": [
+  ],
   "appearance": {
     "height": "Short",
     "build": "Chubby",
@@ -46,48 +48,43 @@
   },
   "clothing": {
     "headwear": "None",
-    "top": "Newly ironed white shirt",
+    "top": "Well-tailored jacket and waistcoat",
     "pants": "Mustard yellow breeches",
     "accessories": "Bowtie"
   },
   "combat": {
-    "role": "Tactician",
+    "role": "Support Tactician",
     "strengths": [
-      "Encouragement",
-      "Strategic thinking"
+      "Strategic planning",
+      "Resource management",
+      "Knowledge application"
     ],
     "weaknesses": [
       "Close combat",
-      "Physical strength",
       "Endurance",
-      "Courage"
+      "Falls apart under stress"
     ]
   },
   "magic": "None",
   "notes": [
-    "Has a wine addiction."
+    "Hates waste and is very possesive of his belongings",
+    "Has a penchant for fine wines to calm his nerves"
   ],
   "relationships": {
     "Heiress": {
       "affinity": 8,
       "dynamic": "Familial",
-      "description": "The Heir, while jealous of, does love his sister, the Heiress.",
-      "history": "The Heir is brother to the Heiress, and they grew up together.",
-      "notes": "None."
+      "description": "Percival admires, and is deeply jealous of, his sister's strength and ability to take initiave. Despite their fierce bickering, The Heir loves his sister."
     },   
     "Crusader": {
       "affinity": 4,
-      "dynamic": "Skeptical",
-      "description": "The Heir is dubious over the trustworthiness of his new guard, the Crusader.",
-      "history": "The Crusader has recently joined the heirs' guard on probationary terms.",
-      "notes": "None."
+      "dynamic": "Cautious respect",
+      "description": "Though he recognizes his potential, The Heir is dubious over the trustworthiness of his new guard, the Crusader."
     },    
     "Highwayman": {
       "affinity": 2,
       "dynamic": "Distrustful",
-      "description": "The Heir is distrusting towards the Highwayman, scared that he'll steal his fancy possessions.",
-      "history": "The Highwayman has recently joined the heirs' guard on probationary terms.",
-      "notes": "None."
+      "description": "The Heir is distrusting towards the Highwayman, scared that the rugged man will betray them and steal his possessions."
     } 
   }
 }

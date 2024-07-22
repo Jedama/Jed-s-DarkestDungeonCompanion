@@ -72,23 +72,17 @@
     "Heiress": {
       "affinity": 4,
       "dynamic": "Guardian",
-      "description": "The Highwayman is determined to prove himself to the Heiress and to assist in her quest despite her warranted distrust.",
-      "history": "Aware of his sullied past, the Heiress accepted the Highwayman into her guard under strict watch, offering him a chance at redemption.",
-      "notes": "None"
+      "description": "The Highwayman is determined to prove himself to the Heiress and to assist in her quest despite her warranted distrust."
     },
     "Heir": {
       "affinity": 3,
       "dynamic": "Guardian",
-      "description": "Despite the Heir's distrust, the Highwayman is resolute in his role as a guard, seeing their safety as his path to absolution.",
-      "history": "The Heir’s suspicion of the Highwayman does not deter him; he recognizes the need to demonstrate his determination through action.",
-      "notes": "None"
+      "description": "Despite the Heir's distrust, the Highwayman is resolute in his role as a guard, seeing their safety as his path to absolution."
     },
     "Crusader": {
       "affinity": 7,
       "dynamic": "Comrade",
-      "description": "Despite their outwardly differences, the Highwayman and Crusader swiftly bonded over the mistakes of their respective pasts and quest for redemption.",
-      "history": "Both the Highwayman and Crusader were hired to protect the Heir and Heiress, and shared their painful told with one another.",
-      "notes": "None"
+      "description": "Despite their outwardly differences, the Highwayman and Crusader swiftly bonded over the mistakes of their respective pasts and quest for redemption."
     }
   }
 }
