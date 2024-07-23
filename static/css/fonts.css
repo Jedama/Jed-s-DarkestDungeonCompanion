@@ -1,0 +1,21 @@
+/* Font Declarations */
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/fonts/UbuntuRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DwarvenAxe';
+    src: url('/fonts/DwarvenAxe.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mythshire';
+    src: url('/fonts/MythshireRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

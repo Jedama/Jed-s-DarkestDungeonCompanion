@@ -1,0 +1,154 @@
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    text-align: center;
+    background-color: #fefefe;
+    border-radius: 5px;
+}
+
+#recruit-modal .modal-content {
+    background-image: url('/background/recruit.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 90vw;
+    height: 90vh;
+    max-width: 600px;
+    max-height: 900px;
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    padding-top: 0px;
+    border: none;
+    box-sizing: border-box;
+    overflow: auto;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#recruit-modal h2 {
+    color: #000000;
+    margin-top: -20;
+    margin-bottom: 20px;
+    font-family: 'DwarvenAxe', 'Ubuntu', Arial, sans-serif;
+    font-size: 64px; 
+    text-align: center;
+}
+
+#recruit-modal #character-dropdown,
+#recruit-modal #character-name,
+#recruit-modal #modifier {
+    width: 100%;
+    max-width: 300px;
+    padding: 0 0 -2px 0;
+    margin: 5px 0;
+    line-height: 1;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    font-family: 'DwarvenAxe';
+    font-size: 32px;
+    text-align: center;
+    color: #000000;
+    background-color: transparent;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+#recruit-modal #character-dropdown {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 30px;
+}
+
+#recruit-modal #character-dropdown::placeholder,
+#recruit-modal #character-name::placeholder,
+#recruit-modal #modifier::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+#recruit-modal #character-dropdown:focus,
+#recruit-modal #character-name:focus,
+#recruit-modal #modifier:focus {
+    outline: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.8);
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.8);
+}
+
+#recruit-modal #character-icon {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+    margin: 20px auto;
+    overflow: hidden;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#recruit-modal #character-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+#recruit-modal #begin-recruit {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    width: 150px;
+    height: auto;
+    transform: rotate(15deg);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+#recruit-modal #begin-recruit.inactive {
+    filter: grayscale(100%);
+    cursor: default;
+}
+
+#recruit-modal #begin-recruit.active {
+    filter: grayscale(0%) opacity(100%);
+    cursor: pointer;
+}
+
+#recruit-modal #begin-recruit.active:hover {
+    transform: scale(1.1);
+}
+
+.dropdown-item {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+#modifier-container {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 100px;
+}

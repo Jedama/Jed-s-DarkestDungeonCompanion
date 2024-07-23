@@ -1,0 +1,32 @@
+/* Panel Styles */
+.left-panel {
+    flex: 0 0 35%;
+    padding: 35px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-image: url('/background/book.png');
+    background-size: calc(100% + 150px) 100%;
+    background-position: -50px center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+}
+
+.middle-panel {
+    flex: 0 0 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.right-panel {
+    flex: 0 0 5%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+}

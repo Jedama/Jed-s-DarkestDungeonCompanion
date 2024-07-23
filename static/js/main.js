@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (estateData.characters && typeof estateData.characters === 'object') {
             currentCharacters = new Set(Object.keys(estateData.characters));
             renderCharacterList(estateData.characters);
+            loadAndRenderCharacterDetails(Object.keys(estateData.characters)[0])
         } else {
             console.error("Estate characters not found or not an object");
             currentCharacters = new Set();
@@ -298,29 +299,15 @@ document.addEventListener("DOMContentLoaded", function() {
         const characterInfo = document.querySelector('.character-info');
         const relationshipInfo = document.querySelector('.relationship-info');
     
-        characterInfo.innerHTML = `
-            <img id="character-portrait" class="character-portrait" src="/portraits/${character.title.toLowerCase()}0.png" alt="${character.name}">
-            <h2 id="character-name">${character.name}</h2>
-            <p>Title: ${character.title}</p>
-            <p>Level: <span id="character-level">${character.level}</span></p>
-            <p>Money: <span id="character-money">${character.money}</span></p>
-            <p id="character-summary">${character.summary}</p>
-        `;
+        // Update character portrait
+        const characterPortrait = characterInfo.querySelector('#character-portrait');
+        characterPortrait.src = `/portraits/${character.title.toLowerCase()}0.png`;
+        characterPortrait.alt = character.name;
     
-        if (character.relationships && Object.keys(character.relationships).length > 0) {
-            const firstRelationship = Object.entries(character.relationships)[0];
-            relationshipInfo.innerHTML = `
-                <h3>Relationship</h3>
-                <div id="relationship-detail">
-                    <h4 id="relationship-name">${firstRelationship[0]}</h4>
-                    <p>Affinity: <span id="relationship-affinity">${firstRelationship[1].affinity}</span></p>
-                    <p>Bond: <span id="relationship-bond">${firstRelationship[1].dynamic}</span></p>
-                </div>
-                <button id="detailed-info">Detailed Information</button>
-            `;
-        } else {
-            relationshipInfo.innerHTML = '<p>No relationships available.</p>';
-        }
+        // Update character name
+        const characterName = characterInfo.querySelector('#character-name');
+        characterName.textContent = character.name;
+
     }
 
     function fetchCharacterDetails(estateName, title) {
