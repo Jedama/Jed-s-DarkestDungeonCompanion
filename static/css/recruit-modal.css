@@ -1,26 +1,4 @@
-/* Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 5;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 300px;
-    text-align: center;
-    background-color: #fefefe;
-    border-radius: 5px;
-}
-
+/* Recruit Modal Styles */
 #recruit-modal .modal-content {
     background-image: url('/background/recruit.png');
     background-size: contain;
@@ -32,8 +10,7 @@
     max-height: 900px;
     position: relative;
     margin: auto;
-    padding: 20px;
-    padding-top: 0px;
+    padding: 20px 20px 0;
     border: none;
     box-sizing: border-box;
     overflow: auto;
@@ -45,16 +22,16 @@
 
 #recruit-modal h2 {
     color: #000000;
-    margin-top: -20;
+    margin-top: -20px;
     margin-bottom: 20px;
     font-family: 'DwarvenAxe', 'Ubuntu', Arial, sans-serif;
     font-size: 64px; 
     text-align: center;
 }
 
-#recruit-modal #character-dropdown,
-#recruit-modal #character-name,
-#recruit-modal #modifier {
+#recruit-modal #recruit-dropdown,
+#recruit-modal #recruit-name,
+#recruit-modal #recruit-modifier {
     width: 100%;
     max-width: 300px;
     padding: 0 0 -2px 0;
@@ -62,7 +39,7 @@
     line-height: 1;
     border: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-    font-family: 'DwarvenAxe';
+    font-family: 'DwarvenAxe', sans-serif;
     font-size: 32px;
     text-align: center;
     color: #000000;
@@ -70,7 +47,7 @@
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-#recruit-modal #character-dropdown {
+#recruit-modal #recruit-dropdown {
     appearance: none;
     background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
     background-repeat: no-repeat;
@@ -78,21 +55,21 @@
     padding-right: 30px;
 }
 
-#recruit-modal #character-dropdown::placeholder,
-#recruit-modal #character-name::placeholder,
-#recruit-modal #modifier::placeholder {
+#recruit-modal #recruit-dropdown::placeholder,
+#recruit-modal #recruit-name::placeholder,
+#recruit-modal #recruit-modifier::placeholder {
     color: rgba(0, 0, 0, 0.3);
 }
 
-#recruit-modal #character-dropdown:focus,
-#recruit-modal #character-name:focus,
-#recruit-modal #modifier:focus {
+#recruit-modal #recruit-dropdown:focus,
+#recruit-modal #recruit-name:focus,
+#recruit-modal #recruit-modifier:focus {
     outline: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.8);
     box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.8);
 }
 
-#recruit-modal #character-icon {
+#recruit-modal #recruit-icon {
     width: 100%;
     max-width: 300px;
     aspect-ratio: 1 / 1;
@@ -102,16 +79,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-#recruit-modal #character-icon img {
+#recruit-modal #recruit-icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     object-position: center;
 }
 
-#recruit-modal #begin-recruit {
+#recruit-modal #recruit-hire {
     position: absolute;
     bottom: 20px;
     right: 50px;
@@ -121,18 +99,18 @@
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-#recruit-modal #begin-recruit.inactive {
+#recruit-modal #recruit-hire.inactive {
     filter: grayscale(100%);
     cursor: default;
 }
 
-#recruit-modal #begin-recruit.active {
+#recruit-modal #recruit-hire.active {
     filter: grayscale(0%) opacity(100%);
     cursor: pointer;
 }
 
-#recruit-modal #begin-recruit.active:hover {
-    transform: scale(1.1);
+#recruit-modal #recruit-hire.active:hover {
+    transform: scale(1.1) rotate(0deg);
 }
 
 .dropdown-item {
@@ -146,17 +124,18 @@
     background-color: #f1f1f1;
 }
 
-#modifier-container {
-    margin-top: 20px;
+#recruit-modifier-container {
+    margin: 20px auto 100px;
     width: 100%;
     max-width: 300px;
-    margin-bottom: 100px;
 }
 
-.modifier-overlay {
+#recruit-modifier-overlay {
     position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Mythshire';
+    font-family: 'Mythshire', sans-serif;
     font-size: 40px;
     font-weight: bold;
     color: rgb(65, 0, 0);
@@ -165,14 +144,4 @@
     white-space: nowrap;
     z-index: 4;
     pointer-events: none;
-    transform-origin: center;
-}
-
-#character-icon {
-    position: relative;
-}
-
-/* Modifier Styles */
-.modifier-input {
-    margin-top: 10px;
 }

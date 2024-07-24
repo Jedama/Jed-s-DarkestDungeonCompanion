@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
         eventsButton: document.getElementById("events-button"),
         saveButton: document.getElementById("save-button"),
         recruitModal: document.getElementById("recruit-modal"),
-        characterDropdown: document.getElementById("character-dropdown"),
-        iconDiv: document.getElementById("character-icon"),
-        characterNameInput: document.getElementById("character-name"),
-        modifierInput: document.getElementById("modifier"),
-        modifierContainer: document.getElementById("modifier-container"),
-        beginRecruitButton: document.getElementById("begin-recruit"),
+        recruitDropdown: document.getElementById("recruit-dropdown"),
+        recruitIcon: document.getElementById("recruit-icon"),
+        recruitNameInput: document.getElementById("recruit-name"),
+        recruitModifierInput: document.getElementById("recruit-modifier"),
+        recruitModifierContainer: document.getElementById("recruit-modifier-container"),
+        recruitHireButton: document.getElementById("recruit-hire"),
         characterGrid: document.getElementById("character-grid")
     };
 
@@ -55,11 +55,10 @@ document.addEventListener("DOMContentLoaded", function() {
         elements.saveButton.addEventListener("click", saveEstate);
         elements.savefileSubmit.addEventListener("click", handleSavefileSubmission);
         elements.savefileNameInput.addEventListener("keyup", handleSavefileKeyUp);
-        elements.eventsButton.addEventListener("click", openRecruitModal);
-        elements.characterDropdown.addEventListener('change', updateIcon);
-        elements.beginRecruitButton = document.getElementById("begin-recruit");
-        elements.beginRecruitButton.addEventListener('click', handleRecruitSubmission);
-        elements.modifierInput.addEventListener('keypress', handleModifierKeyPress);
+        elements.eventsButton.addEventListener("click", recruitOpenModal);
+        elements.recruitDropdown.addEventListener('change', recruitUpdateDetails);
+        elements.recruitHireButton.addEventListener('click', recruitHandleSubmission);
+        elements.recruitModifierInput.addEventListener('keypress', recruitHandleModifierKeyPress);
     }
 
     // Savefile and Estate Management
@@ -126,93 +125,81 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Recruit Modal
-    function openRecruitModal() {
-        populateCharacterDropdown();
+    function recruitOpenModal() {
+        recruitPopulateDropdown();
         elements.recruitModal.style.display = "block";
         modifiers = []; // Reset modifiers
-        clearModifierOverlays();
-        resetSeal();
+        recruitClearModifiers();
+        recruitResetSeal();
     }
 
-    function clearModifierOverlays() {
-        const modalContent = elements.recruitModal.querySelector('.modal-content');
-        modalContent.querySelectorAll('.modifier-overlay').forEach(el => el.remove());
-    }
+    elements.recruitDropdown.addEventListener('change', recruitUpdateDetails)
 
-    elements.characterDropdown.addEventListener('change', updateCharacterDetails)
-
-    function updateCharacterDetails() {
-        const selectedCharacter = elements.characterDropdown.value;
-        updateIcon(selectedCharacter);
-        updateDefaultName(selectedCharacter);
+    function recruitUpdateDetails() {
+        const selectedCharacter = elements.recruitDropdown.value;
+        elements.recruitIcon.innerHTML = selectedCharacter
+            ? `<img src="/icons/${selectedCharacter.toLowerCase()}0.png" alt="${selectedCharacter}">`
+            : '';
+        const info = characterInfo[selectedCharacter];
+        elements.recruitNameInput.value = info ? info.default_name : '';
 
         // Clear modifiers and reset seal
         modifiers = [];
-        clearModifierOverlays();
-        resetSeal();
+        recruitClearModifiers();
+        recruitResetSeal();
     }
 
-    function clearModifierOverlays() {
+    function recruitClearModifiers() {
         const modalContent = elements.recruitModal.querySelector('.modal-content');
-        modalContent.querySelectorAll('.modifier-overlay').forEach(el => el.remove());
+        modalContent.querySelectorAll('#recruit-modifier-overlay').forEach(el => el.remove());
     }
     
-    function resetSeal() {
-        elements.beginRecruitButton.classList.remove('active');
-        elements.beginRecruitButton.classList.add('inactive');
+    function recruitResetSeal() {
+        elements.recruitHireButton.classList.remove('active');
+        elements.recruitHireButton.classList.add('inactive');
     }
 
-    function updateDefaultName(characterTitle) {
-        const info = characterInfo[characterTitle];
-        elements.characterNameInput.value = info ? info.default_name : '';
-    }
-
-    async function populateCharacterDropdown() {
+    async function recruitPopulateDropdown() {
         try {
             characterInfo = await fetchCharacterInfo();
             const availableCharacters = Object.keys(characterInfo).filter(char => !currentCharacters.has(char));
             
-            elements.characterDropdown.innerHTML = availableCharacters.map(char => 
+            elements.recruitDropdown.innerHTML = availableCharacters.map(char => 
                 `<option value="${char}">${char}</option>`
             ).join('');
             
-            if (availableCharacters.length > 0) {
-                updateCharacterDetails();
-            } else {
-                elements.characterDropdown.innerHTML = '<option value="">No characters available</option>';
-                updateIcon();
-                elements.characterNameInput.value = '';
-            }
+            recruitUpdateDetails();
+
         } catch (error) {
             console.error('Error fetching character info:', error);
         }
     }
 
-    function handleModifierKeyPress(event) {
+    function recruitHandleModifierKeyPress(event) {
         if (event.key === "Enter") {
             event.preventDefault();
-            addModifier();
+            recruitAddModifier();
         }
     }
 
-    function addModifier() {
-        const modifier = elements.modifierInput.value.trim();
+    function recruitAddModifier() {
+        const modifier = elements.recruitModifierInput.value.trim();
         if (modifier) {
             modifiers.push(modifier);
-            elements.modifierInput.value = '';
-            updateModifierOverlay();
-            elements.beginRecruitButton.classList.remove('inactive');
-            elements.beginRecruitButton.classList.add('active');
+            elements.recruitModifierInput.value = '';
+            recruitUpdateModifierOverlay();
+            elements.recruitHireButton.classList.remove('inactive');
+            elements.recruitHireButton.classList.add('active');
         }
     }
 
-    function updateModifierOverlay() {
+    function recruitUpdateModifierOverlay() {
         const modalContent = elements.recruitModal.querySelector('.modal-content');
-        const iconRect = elements.iconDiv.getBoundingClientRect();
+        const iconRect = elements.recruitIcon.getBoundingClientRect();
         const modalRect = modalContent.getBoundingClientRect();
     
         const overlay = document.createElement('div');
-        overlay.className = 'modifier-overlay';
+        overlay.id = 'recruit-modifier-overlay';
         overlay.textContent = modifiers[modifiers.length - 1];
     
         const position = positions[(modifiers.length - 1) % positions.length];
@@ -231,24 +218,22 @@ document.addEventListener("DOMContentLoaded", function() {
         const tilt = Math.random() * 40 - 20; // Random angle between -20 and 20 degrees
         overlay.style.transform += ` rotate(${tilt}deg)`;
     
+        // Ensure the overlay is positioned absolutely within the modal content
+        overlay.style.position = 'absolute';
+    
+        // Append the overlay to the modal content
         modalContent.appendChild(overlay);
     }
 
-    function updateIcon() {
-        const selectedCharacter = elements.characterDropdown.value;
-        elements.iconDiv.innerHTML = selectedCharacter
-            ? `<img src="/icons/${selectedCharacter.toLowerCase()}0.png" alt="${selectedCharacter}">`
-            : '';
-    }
 
-    function handleRecruitSubmission(event) {
-        if (!modifiers) {
+    function recruitHandleSubmission(event) {
+        if (!modifiers.length) {
             event.preventDefault();
             return; // Do nothing if the seal is inactive
         }
     
-        const characterTitle = elements.characterDropdown.value;
-        const characterName = elements.characterNameInput.value;
+        const characterTitle = elements.recruitDropdown.value;
+        const characterName = elements.recruitNameInput.value;
         
         if (characterTitle) {
             console.log('Selected character:', characterTitle);
@@ -258,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert(`Character ${characterName} (${characterTitle}) recruited with modifiers: ${modifiers.join(', ')}`);
             
             elements.recruitModal.style.display = "none";
-            populateCharacterDropdown();
+            recruitPopulateDropdown();
         } else {
             alert('Please select a character.');
         }
