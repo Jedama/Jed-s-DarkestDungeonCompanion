@@ -297,7 +297,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function renderCharacterDetails(character) {
         const characterInfo = document.querySelector('.character-info');
-        const relationshipInfo = document.querySelector('.relationship-info');
     
         // Update character portrait
         const characterPortrait = characterInfo.querySelector('#character-portrait');
@@ -308,6 +307,35 @@ document.addEventListener("DOMContentLoaded", function() {
         const characterName = characterInfo.querySelector('#character-name');
         characterName.textContent = character.name;
 
+        updateCharacterStats(character);
+    }
+
+    function updateCharacterStats(character) {
+        const stats = ['strength', 'agility', 'intelligence', 'authority', 'sociability'];
+        stats.forEach(stat => {
+            const statValue = character.stats[stat] || 0;
+            const statItem = document.querySelector(`.stat-item[data-stat="${stat}"]`);
+            
+            if (statItem) {
+                const romanNumeralElement = statItem.querySelector('.stat-number');
+                if (romanNumeralElement) {
+                    romanNumeralElement.textContent = statValue;
+                }
+    
+                // Update gem appearance
+                const gemWrapper = statItem.querySelector('.gem-wrapper');
+                if (gemWrapper) {
+                    // Remove old gem-level classes
+                    gemWrapper.classList.forEach(className => {
+                        if (className.startsWith('gem-level-')) {
+                            gemWrapper.classList.remove(className);
+                        }
+                    });
+                    // Add new gem-level class
+                    gemWrapper.classList.add(`gem-level-${statValue}`);
+                }
+            }
+        });
     }
 
     function fetchCharacterDetails(estateName, title) {

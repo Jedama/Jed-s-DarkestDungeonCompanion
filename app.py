@@ -1,8 +1,7 @@
-from flask import Flask, jsonify, render_template, request, send_from_directory
+from flask import Flask, jsonify, render_template, send_from_directory
 from classes import Estate
 import json
 import os
-
 
 app = Flask(__name__, static_url_path='', static_folder='static')
 

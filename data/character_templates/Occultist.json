@@ -22,11 +22,11 @@
         "description": "Physically capable but mentally strained by constant eldritch assaults"
     },
     "stats": {
-        "strength": 5,
-        "agility": 6,
-        "intelligence": 10,
-        "occult": 10,
-        "willpower": 8
+        "strength": 3,
+        "agility": 3,
+        "intelligence": 8,
+        "authority": 8,
+        "sociability": 5
     },
     "equipment": [
         "Ritual dagger",

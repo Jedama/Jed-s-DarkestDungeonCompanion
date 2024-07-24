@@ -3,8 +3,8 @@
   "name": "Persephone Dantill",
   "level": 0,
   "money": 0,
-  "summary": "The Heiress to the accursed Dantill estate wields a strong air of authority as she commands the daunting task of reclaiming her ancestral home. Armed with intelligence and strategic insight, she also manages the nearby hamlet, serving as a pillar of support and strength in a community plagued by supernatural horrors. She is grateful to those brave or mad enough to join her quest. However, when her methods or authority are challenged, she shows hardheaded stubbornness.",
-  "history": "Upon receiving a chilling letter from her late ancestor, the Heiress left her academic pursuits to take up her role as the heiress of the estate. She found herself thrust into a nightmarish reality where her ancestral home was not only physically deteriorated but also infested with the horrors summoned by her ancestor's dark rituals.",
+  "summary": "The Heiress to the accursed Estate, excels at taking command in even the most daunting situations. With her sharp intellect and strategic prowess, she fearlessly leads the charge to reclaim her ancestral home while deftly managing the nearby hamlet. Her natural authority and decisive leadership serve as a beacon of strength for a community besieged by supernatural horrors. Though grateful for allies brave enough to join her cause, Persephone's unwavering confidence in her own judgment can manifest as stubborn resistance when her authority is challenged.",
+  "history": "Upon receiving a chilling letter from her late ancestor, the Heiress left her academic pursuits with her brother in tow to take up her role as the Heiress of the Estate. She found herself thrust into a nightmarish reality where her ancestral home was not only physically deteriorated but also infested with the horrors summoned by her ancestor's dark rituals.",
   "race": "Human",
   "gender": "Female",
   "religion": "None",
@@ -18,15 +18,15 @@
   ],
   "status": {
     "physical": 10,
-    "mental": 9,
+    "mental": 10,
     "affliction": "",
     "description": "In good health and high spirits",
     "wounds": [],
     "diseases": []
   },
   "stats": {
-    "strength": 3,
-    "agility": 5,
+    "strength": 2,
+    "agility": 3,
     "intelligence": 8,
     "authority": 10,
     "sociability": 9
@@ -37,19 +37,18 @@
   ],
   "trinkets": [],
   "appearance": {
-    "gender": "Female",
     "height": "Average",
     "build": "Average",
     "skin_tone": "Fair",
     "hair_color": "Blond",
-    "hairstyle": "Curled and styled to shoulder length"
+    "hairstyle": "Curled and styled to shoulder length",
+    "facial_hair": "None"
   },
   "clothing": {
     "headwear": "None",
     "top": "White ruffled shirt",
     "pants": "Mustard yellow breeches",
-    "outerwear": "Blue double-breasted tailcoat with gold buttons",
-    "footwear": "Brown boots"
+    "accessories": "None"
   },
   "combat": {
     "role": "Leader",
@@ -77,12 +76,12 @@
     "Crusader": {
       "affinity": 5,
       "dynamic": "Professional",
-      "description": "The Heiress maintains a reserved, professional demeanor towards the Crusader, her latest recruit. She's keenly observing their performance and reliability, weighing their potential value to her cause against the risks of trusting a newcomer in such perilous circumstances."
+      "description": "The Heiress maintains a reserved, professional demeanor towards the Crusader, her latest recruit."
     },    
     "Highwayman": {
       "affinity": 3,
       "dynamic": "Cautious",
-      "description": "The Heiress regards the Highwayman with a mix of suspicion and pragmatic interest. While his skills could prove valuable, his checkered past and gruff manner keep her on guard."
+      "description": "The Heiress regards the Highwayman with suspicion. While his skills could prove valuable, his checkered past and gruff manner keep her on guard."
     }    
   }
 }

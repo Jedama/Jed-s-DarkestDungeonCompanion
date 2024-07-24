@@ -152,3 +152,27 @@
     max-width: 300px;
     margin-bottom: 100px;
 }
+
+.modifier-overlay {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: 'Mythshire';
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(65, 0, 0);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    white-space: nowrap;
+    z-index: 4;
+    pointer-events: none;
+    transform-origin: center;
+}
+
+#character-icon {
+    position: relative;
+}
+
+/* Modifier Styles */
+.modifier-input {
+    margin-top: 10px;
+}

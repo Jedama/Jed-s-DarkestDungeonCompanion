@@ -1,24 +1,14 @@
 /* Character Grid Styles */
 .gallery {
     flex: 1;
-    padding: 40px 20px;
     overflow-y: auto;
-    overflow-x: hidden;
     width: 100%;
-    box-sizing: border-box;
 }
 
 .character-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 160px);
-    gap: 0px;
-    margin-top: 0px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     justify-content: center;
-}
-
-.grid-wrapper {
-    max-width: 100%;
-    overflow-x: hidden;
 }
 
 .character-item {
@@ -26,8 +16,12 @@
     cursor: pointer;
     width: 160px;
     height: 192px;
-    margin: 0 auto;
     transition: transform 0.3s ease;
+    margin: -10px;
+}
+
+.character-item:hover {
+    transform: scale(1.05);
 }
 
 .character-item img.portrait {
@@ -49,24 +43,11 @@
     z-index: 3;
 }
 
-.character-item:hover {
-    transform: scale(1.05);
-}
-
-.character-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
 /* Character Info Styles */
 .character-info {
     position: relative;
-    min-height: 400px; /* Adjust as needed */
-    padding: 20px;
+    height: 95%; /* Adjust as needed */
     overflow: visible; /* Changed from hidden to visible */
-    border: solid red;
 }
 
 .character-portrait {
@@ -86,67 +67,63 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-.character-info h1,
-.character-info h2 {
-    font-family: 'DwarvenAxe', 'Ubuntu', Arial, sans-serif;
-    font-weight: normal;
-    font-size: 48px;
-    margin-top: 0;
-    margin-bottom: 10px;
+#character-name {
+    font-family: 'DwarvenAxe', 'Ubuntu', sans-serif;
+    font-size: 40px;
+    margin: 0 0 10px;
     color: black;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 2;
-}
-
-.character-header {
     position: absolute;
-    top: 10px; /* Adjust as needed */
-    left: 20px; /* Align with the padding of .character-info */
+    top: 10px;
+    left: 30px;
     right: 20px;
     z-index: 3;
 }
 
-.pentagon-background {
+.stats-container {
     position: absolute;
-    top: 40%;
-    right: 0%;
-    width: 75%;
-    height: auto;
+    bottom: 0px;
+    left: 0px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
     z-index: 3;
-    transform: translateY(-50%);
-    transform: rotate(2deg);
 }
 
-.modifier-overlay {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    font-family: 'Mythshire';
-    font-size: 40px;
-    font-weight: bold;
-    color: rgb(65, 0, 0);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    text-align: center;
-    white-space: nowrap;
-    z-index: 4;
-    pointer-events: none;
-    transform-origin: center;
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#character-icon {
-    position: relative;
+.gem {
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 5px;
 }
 
-/* Modifier Styles */
-.modifier-input {
-    margin-top: 10px;
-}
+.gem-level-0 { transform: scale(0.65); filter: grayscale(100%) drop-shadow(0 0 2px rgba(0, 0, 0, 0.5)); }
+.gem-level-1 { transform: scale(0.72); filter: grayscale(83.33%) drop-shadow(0 0 2px rgba(0, 0, 0, 0.5)); }
+.gem-level-2 { transform: scale(0.79); filter: grayscale(66.67%) drop-shadow(0 0 2px rgba(0, 0, 0, 0.5)); }
+.gem-level-3 { transform: scale(0.86); filter: grayscale(50%) drop-shadow(0 0 2px rgba(0, 0, 0, 0.5)); }
+.gem-level-4 { transform: scale(0.93); filter: grayscale(33.33%) drop-shadow(0 0 2px rgba(0, 0, 0, 0.5)); }
+.gem-level-5 { transform: scale(0.95); filter: grayscale(16.67%) drop-shadow(0 0 2px rgba(0, 0, 0, 0.5)); }
+.gem-level-6 { transform: scale(1); filter: grayscale(0%) drop-shadow(0 0 2px rgba(0, 0, 0, 0.5)); }
+.gem-level-7 { transform: scale(1.07); filter: grayscale(0%) drop-shadow(0 0 3px currentColor); }
+.gem-level-8 { transform: scale(1.14); filter: grayscale(0%) drop-shadow(0 0 5px currentColor); }
+.gem-level-9 { transform: scale(1.21); filter: grayscale(0%) drop-shadow(0 0 8px currentColor); }
+.gem-level-10 { transform: scale(1.28); filter: grayscale(0%) drop-shadow(0 0 12px currentColor); }
 
-/* Modal Open State */
-body.modal-open .character-item {
-    pointer-events: none;
-}
+/* Gem colors for glow effect */
+.stat-item[data-stat="strength"] .gem-wrapper { color: #ff4136; }
+.stat-item[data-stat="agility"] .gem-wrapper { color: #2ecc40; }
+.stat-item[data-stat="intelligence"] .gem-wrapper { color: #0074d9; }
+.stat-item[data-stat="authority"] .gem-wrapper { color: #b10dc9; }
+.stat-item[data-stat="sociability"] .gem-wrapper { color: #ffdc00; }
 
-body.modal-open .character-item:hover {
-    transform: none;
+.stat-number {
+    font-family: 'Moria', serif;
+    font-size: 24px;
+    color: #4a0e0e;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }

@@ -34,21 +34,42 @@
             <div class="character-info">
                 <img id="character-portrait" class="character-portrait" src="" alt="Character Portrait">
                 <h2 id="character-name"></h2>
-                <img class="pentagon-background" src="/background/pentagon.png" alt="Pentagon Background">
-            </div>
-            <div class="relationship-info">
-                <h3>Relationship</h3>
-                <div id="relationship-detail">
-                    <h4 id="relationship-name"></h4>
-                    <p>Affinity: <span id="relationship-affinity"></span></p>
-                    <p>Bond: <span id="relationship-bond"></span></p>
+                <div class="stats-container">
+                    <div class="stat-item" data-stat="strength">
+                        <div class="gem-wrapper">
+                            <img src="/background/strength.png" alt="Strength" class="gem">
+                        </div>
+                        <span class="stat-number"></span>
+                    </div>
+                    <div class="stat-item" data-stat="agility">
+                        <div class="gem-wrapper">
+                            <img src="/background/agility.png" alt="Agility" class="gem">
+                        </div>
+                        <span class="stat-number"></span>
+                    </div>
+                    <div class="stat-item" data-stat="intelligence">
+                        <div class="gem-wrapper">
+                            <img src="/background/intelligence.png" alt="Intelligence" class="gem">
+                        </div>
+                        <span class="stat-number"></span>
+                    </div>
+                    <div class="stat-item" data-stat="authority">
+                        <div class="gem-wrapper">
+                            <img src="/background/authority.png" alt="Authority" class="gem">
+                        </div>
+                        <span class="stat-number"></span>
+                    </div>
+                    <div class="stat-item" data-stat="sociability">
+                        <div class="gem-wrapper">
+                            <img src="/background/sociability.png" alt="Sociability" class="gem">
+                        </div>
+                        <span class="stat-number"></span>
+                    </div>
                 </div>
-                <button id="detailed-info">Detailed Information</button>
             </div>
         </div>
         <div class="middle-panel">
             <div class="gallery">
-                <input type="text" id="search" placeholder="Search">
                 <div id="character-grid" class="character-grid"></div>
             </div>
         </div>

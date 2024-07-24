@@ -25,11 +25,11 @@
         "diseases": []
     },
     "stats": {
-        "strength": 6,
+        "strength": 5,
         "agility": 9,
         "intelligence": 7,
-        "stealth": 8,
-        "accuracy": 9
+        "authority": 4,
+        "sociability": 9
     },
     "equipment": [
         "Throwing daggers",
