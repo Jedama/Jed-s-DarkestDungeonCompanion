@@ -1,10 +1,4 @@
 /* Character Grid Styles */
-.gallery {
-    flex: 1;
-    overflow-y: auto;
-    width: 100%;
-}
-
 .character-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -14,33 +8,34 @@
 .character-item {
     position: relative;
     cursor: pointer;
-    width: 160px;
-    height: 192px;
-    transition: transform 0.3s ease;
     margin: -10px;
-}
-
-.character-item:hover {
-    transform: scale(1.05);
-}
-
-.character-item img.portrait {
-    position: absolute;
-    top: 25%;
-    left: 28%;
-    width: 45%;
-    height: 55%;
-    object-fit: cover;
-    z-index: 2;
+    aspect-ratio: 442 / 500;
+    transition: transform 0.3s ease;
+    will-change: transform;
 }
 
 .character-item img.frame {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+.character-item img.portrait {
+    position: absolute;
+    width: 44%; /* (190 / 442) * 100 */
+    height: auto; /* (244 / 500) * 100 */
+    left: 28%; /* Adjust as needed to center within the frame */
+    top: 24.5%; /* Adjust as needed to center within the frame */
+    object-fit: contain;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.character-item:hover img.frame,
+.character-item:hover img.portrait {
+    transform: scale(1.05);
 }
 
 /* Character Info Styles */
@@ -54,7 +49,7 @@
     width: 40%;
     height: auto;
     position: absolute;
-    top: 80px;
+    top: 85px;
     left: 30px;
     transform: rotate(-3deg);
     transition: all 0.3s ease;
@@ -68,13 +63,27 @@
 }
 
 #character-name {
-    font-family: 'DwarvenAxe', 'Ubuntu', sans-serif;
+    font-family: 'DwarvenAxe';
     font-size: 40px;
+    letter-spacing: 1px;
     margin: 0 0 10px;
     color: black;
     position: absolute;
     top: 10px;
     left: 30px;
+    right: 20px;
+    z-index: 3;
+}
+
+#character-title {
+    font-family: 'Mythshire', sans-serif;
+    font-size: 30px;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #333;
+    position: absolute;
+    top: 50px;
+    left: 40px;
     right: 20px;
     z-index: 3;
 }

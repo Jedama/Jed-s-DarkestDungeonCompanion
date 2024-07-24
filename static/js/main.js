@@ -307,6 +307,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const characterName = characterInfo.querySelector('#character-name');
         characterName.textContent = character.name;
 
+        // Update character title
+        const characterTitle = characterInfo.querySelector('#character-title');
+        characterTitle.textContent = `the ${character.title}`;
+
         updateCharacterStats(character);
     }
 
