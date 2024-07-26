@@ -29,12 +29,32 @@
         </div>
     </div>
 
+    <div id="story-modal" class="modal">
+        <div class="modal-content">
+            <div class="story-panel">
+                <h2 class="story-title">Story Title</h2>
+                <div class="story-text"></div>
+            </div>
+            <div class="story-cards">
+                <div class="story-card" id="card0"></div>
+                <div class="story-card" id="card1"></div>
+                <div class="story-card" id="card2"></div>
+                <div class="story-card" id="card3"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="main-container">
         <div class="left-panel">
             <div class="character-info">
                 <img id="character-portrait" class="character-portrait" src="" alt="Character Portrait">
                 <h2 id="character-name"></h2>
                 <h3 id="character-title"></h3>
+                <div class="trait-list">
+                    <ul id="character-traits"></ul>
+                </div>
+                <div class="health-bookmark"></div>
+                <div class="mental-bookmark"></div>
                 <div class="stats-container">
                     <div class="stat-item" data-stat="strength">
                         <div class="gem-wrapper">
@@ -76,7 +96,8 @@
         </div>
         <div class="right-panel">
             <button id="story-button" class="panel-button">Story</button>
-            <button id="events-button" class="panel-button">Events</button>
+            <button id="recruit-button" class="panel-button">Recruit</button>
+            <button id="event-button" class="panel-button">Event</button>
             <button id="save-button" class="panel-button">Save</button>
         </div>
     </div>

@@ -1,14 +1,14 @@
 /* Panel Styles */
 .left-panel {
     flex: 0 0 35%;
-    padding: 20px;
+    padding: 10px;
     padding-top: 45px;
-    padding-right: 35px;
+    padding-right: 45px;
     overflow-y: auto;
     box-sizing: border-box;
     background-image: url('/background/book.png');
     background-size: calc(100% + 150px) 100%;
-    background-position: -100px center;
+    background-position: -128px center;
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
@@ -20,6 +20,7 @@
     flex-direction: column;
     padding: 15px 0 0;
     overflow-x: hidden;
+    z-index: 0;
 }
 
 .right-panel {

@@ -126,9 +126,9 @@ class OutputEvent:
 
         print(event_consequences)
 
-        self.process_response(event_consequences)
+        consequence_dict = self.process_response(event_consequences)
 
-        return event_story, event_consequences
+        return event_story, consequence_dict
     
     def create_story_prompt(self):
 
@@ -306,6 +306,9 @@ class OutputEvent:
         # Remove empty lines
         lines = [line for line in lines if line.strip()]
 
+        # Dictionary to store consequence text representations for each character
+        consequences = {}
+
         # Variable to keep track of the current character being processed
         current_character = None
 
@@ -321,6 +324,8 @@ class OutputEvent:
                 # Find the character object based on the title
                 current_character = next((char for char in self.characters if char.title == character_title), None)
 
+                consequences[character_title] = []
+
             elif line[0].islower():
                 command_name, target, value = self.process_command(line)
 
@@ -331,13 +336,17 @@ class OutputEvent:
                 method = getattr(current_character, command_name)
                 # Check if target is None, and call the method accordingly
                 if target is not None:
-                    method(target, value)  # Assuming the method requires two parameters: target and value
+                    result = method(target, value)  # Assuming the method requires two parameters: target and value
                 else:
-                    method(value)  # Assuming the method only requires value if target is None
+                    result = method(value)  # Assuming the method only requires value if target is None
+
+                consequences[current_character.title].append(result)
 
             elif line.startswith('End'):
                 # Reset current character when block ends
                 current_character = None
+
+        return consequences
 
     @staticmethod
     def process_command(command):

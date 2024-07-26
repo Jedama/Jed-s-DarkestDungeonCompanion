@@ -142,130 +142,156 @@ class Character:
         pass
 
     def update_stats(self, field, change):
-        self.update_stat(self, field, change)
+        return self.update_stat(self, field, change)
 
     def update_stat(self, field, change):
-
-        # If change is str +x change to int x
         if isinstance(change, str):
             change = int(change.replace('+', ''))
 
         if field in self.stats:
             self.stats[field] += change
+            return f"{field.capitalize()} {'+' if change >= 0 else ''}{change}"
         else:
-            print(f"Stat {field} does not exist.")
+            return f"Stat {field} does not exist."
 
     def update_status_physical(self, change):
-
-        # If change is str +x change to int x
         if isinstance(change, str):
             change = int(change.replace('+', ''))
 
         self.status['physical'] += change
+        return f"Physical status {'+' if change >= 0 else ''}{change}"
 
     def update_status_mental(self, change):
-
         self.status['mental'] += change
+        return f"Mental status {'+' if change >= 0 else ''}{change}"
 
     def update_status_description(self, description):
         self.status['description'] = description
+        return "Status description updated"
 
     def update_appearance(self, field, description):
         if field in self.appearance:
             self.appearance[field] = description
+            return f"Appearance {field} updated"
         else:
-            print(f"Appearance attribute {field} does not exist.")
+            return f"Appearance attribute {field} does not exist."
 
     def update_clothing(self, field, description):
         if field in self.clothing:
             self.clothing[field] = description
+            return f"Clothing {field} updated"
         else:
-            print(f"Clothing attribute {field} does not exist.")
+            return f"Clothing attribute {field} does not exist."
 
     def add_trait(self, trait):
-        self.gain_trait(trait)
+        return self.gain_trait(trait)
 
     def update_trait(self, trait):
-        self.gain_trait(trait)
+        return self.gain_trait(trait)
 
     def add_quirk(self, trait):
-        self.gain_trait(trait)
+        return self.gain_trait(trait)
 
     def gain_trait(self, trait):
         if trait not in self.traits:
             self.traits.append(trait)
+            return f"Gained trait: {trait}"
+        return f"Already has trait: {trait}"
 
     def lose_trait(self, trait):
         if trait in self.traits:
             self.traits.remove(trait)
+            return f"Lost trait: {trait}"
+        return f"Didn't have trait: {trait}"
 
     def add_note(self, note):
-        self.gain_note(note)
+        return self.gain_note(note)
 
     def gain_note(self, note):
         self.notes.append(note)
+        return "Note added"
 
     def lose_note(self, note):
         if note in self.notes:
             self.notes.remove(note)
+            return "Note removed"
+        return "Note not found"
 
     def gain_equipment(self, equipment):
         self.equipment.append(equipment)
+        return f"Gained equipment: {equipment}"
 
     def lose_equipment(self, equipment):
         if equipment in self.equipment:
             self.equipment.remove(equipment)
+            return f"Lost equipment: {equipment}"
+        return f"Didn't have equipment: {equipment}"
 
     def lose_trinket(self, trinket):
         if trinket in self.trinkets:
             self.trinkets.remove(trinket)
+            return f"Lost trinket: {trinket}"
+        return f"Didn't have trinket: {trinket}"
 
     def update_summary(self, new_summary):
         self.summary = new_summary
+        return "Summary updated"
 
     def update_history(self, new_history):
         self.history = new_history
+        return "History updated"
 
     def update_religion(self, new_religion):
         self.religion = new_religion
+        return "Religion updated"
 
     def gain_combat_strength(self, strength):
         if strength not in self.combat['strengths']:
             self.combat['strengths'].append(strength)
+            return f"Gained combat strength: {strength}"
+        return f"Already had combat strength: {strength}"
 
     def lose_combat_strength(self, strength):
         if strength in self.combat['strengths']:
             self.combat['strengths'].remove(strength)
+            return f"Lost combat strength: {strength}"
+        return f"Didn't have combat strength: {strength}"
 
     def gain_combat_weakness(self, weakness):
         if weakness not in self.combat['weaknesses']:
             self.combat['weaknesses'].append(weakness)
+            return f"Gained combat weakness: {weakness}"
+        return f"Already had combat weakness: {weakness}"
 
     def lose_combat_weakness(self, weakness):
         if weakness in self.combat['weaknesses']:
             self.combat['weaknesses'].remove(weakness)
+            return f"Lost combat weakness: {weakness}"
+        return f"Didn't have combat weakness: {weakness}"
 
     def update_relationship_affinity(self, title, change):
-        # If change is str +x change to int x
         if isinstance(change, str):
             change = int(change.replace('+', ''))
 
         if title in self.relationships:
             self.relationships[title]['affinity'] += change
+            return f"[{title}] Affinity {'+' if change >= 0 else ''}{change}"
         else:
-            print(f"No relationship with {title} exists to update affinity.")
+            return f"[{title}] No relationship"
 
     def update_relationship_dynamic(self, title, dynamic):
         if title in self.relationships:
             self.relationships[title]['dynamic'] = dynamic
+            return f"[{title}] Dynamic: {dynamic}"
         else:
-            print(f"No relationship with {title} exists to update dynamic.")
+            return f"[{title}] No relationship"
 
     def update_relationship_description(self, title, description):
         if title in self.relationships:
             self.relationships[title]['description'] = description
+            return f"[{title}] Description updated"
         else:
-            print(f"No relationship with {title} exists to update description.")
+            return f"[{title}] No relationship"
 
     def has_money(self, amount):
         # Check if the character has amount or more money

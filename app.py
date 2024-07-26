@@ -13,15 +13,20 @@ def check_estate_exists(estate_name):
 def index():
     return render_template('index.html')
 
-@app.route('/api/estate/<estate_name>/save', methods=['POST'])
-def save_estate(estate_name):
+@app.route('/api/estate/<estate_name>/create_event', methods=['POST'])
+def create_event(estate_name):
     try:
         estate = Estate.load_estate(estate_name)
-        estate.save_estate()
-        return jsonify({"status": "success", "message": f"Estate {estate_name} saved successfully"})
+        event_story, consequences_dict = estate.craft_event()
+        
+        return jsonify({
+            "status": "success",
+            "event_story": event_story,
+            "consequences": consequences_dict
+        })
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
-
+    
 @app.route('/api/characters/<estate_name>')
 def get_characters(estate_name):
     estate = Estate.load_estate(estate_name)

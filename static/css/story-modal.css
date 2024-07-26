@@ -1,0 +1,50 @@
+.story-panel {
+    flex: 2;
+    padding: 20px;
+    border-right: 1px solid #444;
+}
+
+.story-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+.story-text {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.story-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.story-card {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(60, 60, 60, 0.7);
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .story-panel {
+        border-right: none;
+        border-bottom: 1px solid #444;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .story-cards {
+        padding-top: 0;
+    }
+}

@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
         savefileModal: document.getElementById("savefile-modal"),
         savefileSubmit: document.getElementById("savefile-submit"),
         savefileNameInput: document.getElementById("savefile-name"),
-        eventsButton: document.getElementById("events-button"),
+        eventButton: document.getElementById("event-button"),
+        recruitButton: document.getElementById("recruit-button"),
         saveButton: document.getElementById("save-button"),
         recruitModal: document.getElementById("recruit-modal"),
         recruitDropdown: document.getElementById("recruit-dropdown"),
@@ -28,14 +29,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //Positions for modifier text for recruit
     const positions = [
-        {x: '0%', y: '0%'},    // Top-left
-        {x: '100%', y: '0%'},  // Top-right
-        {x: '0%', y: '100%'},  // Bottom-left
-        {x: '100%', y: '100%'},// Bottom-right
-        {x: '50%', y: '0%'},   // Top-center
-        {x: '0%', y: '50%'},   // Middle-left
-        {x: '100%', y: '50%'}, // Middle-right
-        {x: '50%', y: '100%'}, // Bottom-center
+        {x: '10%', y: '10%'},    // Top-left
+        {x: '90%', y: '10%'},  // Top-right
+        {x: '10%', y: '90%'},  // Bottom-left
+        {x: '90%', y: '90%'},// Bottom-right
+        {x: '50%', y: '10%'},   // Top-center
+        {x: '10%', y: '50%'},   // Middle-left
+        {x: '90%', y: '50%'}, // Middle-right
+        {x: '50%', y: '90%'}, // Bottom-center
         {x: '50%', y: '50%'}   // Center
     ];
 
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
         elements.saveButton.addEventListener("click", saveEstate);
         elements.savefileSubmit.addEventListener("click", handleSavefileSubmission);
         elements.savefileNameInput.addEventListener("keyup", handleSavefileKeyUp);
-        elements.eventsButton.addEventListener("click", recruitOpenModal);
+        elements.recruitButton.addEventListener("click", recruitOpenModal);
         elements.recruitDropdown.addEventListener('change', recruitUpdateDetails);
         elements.recruitHireButton.addEventListener('click', recruitHandleSubmission);
         elements.recruitModifierInput.addEventListener('keypress', recruitHandleModifierKeyPress);
@@ -296,7 +297,61 @@ document.addEventListener("DOMContentLoaded", function() {
         const characterTitle = characterInfo.querySelector('#character-title');
         characterTitle.textContent = `the ${character.title}`;
 
+        // Update trait list
+        updateTraits(character.traits);     
+
+        // Update health bookmark
+        updateBookmark('health', character.status.physical);
+
+        // Update mental bookmark
+        updateBookmark('mental', character.status.mental);
+
         updateCharacterStats(character);
+    }
+
+    function updateTraits(traits) {
+        const traitList = document.getElementById('character-traits');
+        traitList.innerHTML = ''; // Clear existing traits
+        
+        traits.forEach(trait => {
+            const li = document.createElement('li');
+            li.textContent = trait;
+            traitList.appendChild(li);
+        });
+    }
+
+    function updateBookmark(type, status) {
+        const bookmark = document.querySelector(`.${type}-bookmark`);
+        const maxHeight = 400; // Maximum height of the bookmark
+    
+        let texture, scale;
+    
+        if (status > 5) {
+            texture = `${type}10`;
+            scale = status / 10; // Scale from 0.6 to 1 for status 6 to 10
+        } else if (status > 3) {
+            texture = `${type}5`;
+            scale = (status - 3) / 2; // Scale from 0.5 to 1 for status 4 to 5
+        } else if (status > 0) {
+            texture = `${type}2`;
+            if (status === 3) {
+                scale = 1.3; // Full size for status 3
+            } else if (status === 2) {
+                scale = 1; // 85% size for status 2
+            } else { // status === 1
+                scale = 0.6; // 70% size for status 1
+            }
+        } else {
+            texture = `${type}0`;
+            scale = 1; // Full size for the smallest texture
+        }
+    
+        // Update the background image
+        bookmark.style.backgroundImage = `url('/background/${texture}.png')`;
+    
+        // Calculate and set the new height
+        const newHeight = maxHeight * scale;
+        bookmark.style.height = `${newHeight}px`;
     }
 
     function updateCharacterStats(character) {

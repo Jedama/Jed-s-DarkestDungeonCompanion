@@ -22,7 +22,7 @@
 
 #recruit-modal h2 {
     color: #000000;
-    margin-top: -20px;
+    margin-top: 10px;
     margin-bottom: 20px;
     font-family: 'DwarvenAxe', 'Ubuntu', Arial, sans-serif;
     font-size: 64px; 
@@ -71,7 +71,7 @@
 
 #recruit-modal #recruit-icon {
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     aspect-ratio: 1 / 1;
     margin: 20px auto;
     overflow: hidden;
@@ -125,7 +125,7 @@
 }
 
 #recruit-modifier-container {
-    margin: 20px auto 100px;
+    margin: 20px auto 30px;
     width: 100%;
     max-width: 300px;
 }

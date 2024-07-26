@@ -1,0 +1,39 @@
+/* Character Grid Styles */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    justify-content: center;
+}
+
+.character-item {
+    position: relative;
+    cursor: pointer;
+    margin: -10px;
+    aspect-ratio: 442 / 500;
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.character-item img.frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+.character-item img.portrait {
+    position: absolute;
+    width: 44%; /* (190 / 442) * 100 */
+    height: auto; /* (244 / 500) * 100 */
+    left: 28%; /* Adjust as needed to center within the frame */
+    top: 24.5%; /* Adjust as needed to center within the frame */
+    object-fit: contain;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.character-item:hover img.frame,
+.character-item:hover img.portrait {
+    transform: scale(1.05);
+}
