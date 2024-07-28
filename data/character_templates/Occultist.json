@@ -17,9 +17,12 @@
         "Enigmatic"
     ],
     "status": {
-        "physical": 7,
-        "mental": 6,
-        "description": "Physically capable but mentally strained by constant eldritch assaults"
+        "physical": 10,
+        "mental": 10,
+        "affliction": "",
+        "description": "In good health and high spirits",
+        "wounds": [],
+        "diseases": []
     },
     "stats": {
         "strength": 3,
@@ -62,9 +65,7 @@
             "Dependent on magical abilities"
         ]
     },
-    "magic": {
-        "type": "Eldritch tenacle summoning"
-    },
+    "magic": "Eldritch tenacle summoning",
     "notes": [
         "Constantly hears whispers from eldritch entities",
         "Has sacrificed parts of himself for power"

@@ -7,11 +7,6 @@ export const state = {
 
     // Estate name
     estateName: '',
-
-    // Add any other shared variables you need here
-    // For example:
-    // gameStartDate: null,
-    // playerScore: 0,
 };
 
 export function addCharacter(character) {

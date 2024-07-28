@@ -1,6 +1,7 @@
+import { loadEstateData, createNewEstate, createEvent } from './apiClient.js';
+import { state, setEstateName, addCharacter } from './state.js';
+import { renderCharacterList, renderCharacterDetails } from './character.js';
 import { initializeRecruit } from './recruit.js';
-import { state, setEstateName, addCharacter, getCharacter, getAllCharacters } from './state.js';
-
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM fully loaded and parsed");
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("recruit-modal").style.display = "block";
             populateDropdown();  // Call populateDropdown when the modal is opened
         });
+        elements.eventButton.addEventListener("click", handleEventButtonClick);
     }
 
     function handleSavefileSubmission() {
@@ -54,31 +56,27 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    function loadGame(savefileName) {
+    async function loadGame(savefileName) {
         console.log("Loading game with savefile:", savefileName);
-        fetch(`/estates/${savefileName}/estate.json`)
-            .then(response => {
-                if (response.ok) return response.json();
-                if (response.status === 404) return null;
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            })
-            .then(data => {
-                if (data) {
-                    handleEstateData(data);
-                } else {
-                    console.log("No existing estate data found. Creating new estate...");
-                    return fetch(`/api/create_estate/${savefileName}`, { method: 'POST' })
-                        .then(response => response.json());
-                }
-            })
-            .then(newEstateData => newEstateData && handleEstateData(newEstateData))
-            .catch(error => console.error('Error loading estate:', error));
-    }
+        try {
+            let estateData = await loadEstateData(savefileName);
+            
+            if (estateData) {
+                handleEstateData(estateData);
+            } else {
+                console.log("No existing estate data found. Creating new estate...");
+                estateData = await createNewEstate(savefileName);
+                handleEstateData(estateData);
+            }
+        } catch (error) {
+            console.error('Error loading estate:', error);
+        }
+      }
 
     function handleEstateData(estateData) {
         if (estateData.characters && typeof estateData.characters === 'object') {
             Object.values(estateData.characters).forEach(character => addCharacter(character));
-            renderCharacterList();
+            renderCharacterList(elements);
             const firstCharacterName = Object.keys(estateData.characters)[0];
             if (firstCharacterName) {
                 renderCharacterDetails(firstCharacterName);
@@ -88,139 +86,71 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Character Management
-    function renderCharacterList() {
-        elements.characterGrid.innerHTML = '';
-        const characters = getAllCharacters();
-        
-        Object.entries(characters).forEach(([title, character]) => {
-            const characterElement = document.createElement('div');
-            characterElement.classList.add('character-item');
-            
-            const portraitImg = document.createElement('img');
-            portraitImg.src = `/portraits/${title.toLowerCase()}0.png`;
-            portraitImg.alt = title;
-            portraitImg.classList.add('portrait');
-            
-            const frameImg = document.createElement('img');
-            const frameLevel = Math.min(character.level, 6);
-            frameImg.src = `/background/level${frameLevel}.png`;
-            frameImg.alt = 'frame';
-            frameImg.classList.add('frame');
-            
-            characterElement.appendChild(portraitImg);
-            characterElement.appendChild(frameImg);
-            characterElement.addEventListener('click', () => renderCharacterDetails(title));
-            
-            elements.characterGrid.appendChild(characterElement);
-        });
-    }
+    // Function to process the event result
+function processEventResult(result) {
+    updateStoryPanel(result.title, result.storyText);
+    updateCards(result.consequences);
+    showModal();
+}
 
-    function renderCharacterDetails(title) {
-        const character = getCharacter(title);
-        if (!character) {
-            console.error(`Character ${title} not found in state`);
-            document.querySelector('.character-info').innerHTML = `<p>Error loading character details</p>`;
-            return;
+// Function to update the story panel
+function updateStoryPanel(title, storyText) {
+    const storyPanel = document.querySelector('.story-panel');
+    storyPanel.innerHTML = `
+        <h2 class="story-title">${title || 'New Event'}</h2>
+        <p class="story-text">${storyText || 'No story available.'}</p>
+    `;
+}
+
+function updateCards(consequences) {
+    const cardContainer = document.querySelector('.story-cards');
+    cardContainer.innerHTML = ''; // Clear existing cards
+
+    const characters = Object.keys(consequences);
+
+    characters.forEach((character, index) => {
+        if (index < 4) { // Limit to 4 cards
+            const consequenceList = consequences[character];
+            const card = document.createElement('div');
+            card.className = 'story-card';
+            card.innerHTML = `
+                <div class="card-frame"></div>
+                <div class="card-content">
+                    <div class="card-image" style="background-image: url('/graphics/default/cards/${character.toLowerCase()}0.png')"></div>
+                    <h3>${character}</h3>
+                    <ul class="consequence-text">
+                        ${consequenceList.map(consequence => `<li>${consequence}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            cardContainer.appendChild(card);
         }
+    });
+}
 
-        const characterInfo = document.querySelector('.character-info');
-    
-        // Update character portrait
-        const characterPortrait = characterInfo.querySelector('#character-portrait');
-        characterPortrait.src = `/portraits/${character.title.toLowerCase()}0.png`;
-        characterPortrait.alt = character.name;
-    
-        // Update character name
-        const characterName = characterInfo.querySelector('#character-name');
-        characterName.textContent = character.name;
+// Function to show the modal
+function showModal() {
+    const modal = document.getElementById('story-modal');
+    modal.style.display = 'block';
+    document.body.classList.add('modal-open');
+}
 
-        // Update character title
-        const characterTitle = characterInfo.querySelector('#character-title');
-        characterTitle.textContent = `the ${character.title}`;
+// Function to hide the modal
+function hideModal() {
+    const modal = document.getElementById('story-modal');
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+}
 
-        // Update trait list
-        updateTraits(character.traits);     
-
-        // Update health bookmark
-        updateBookmark('health', character.status.physical);
-
-        // Update mental bookmark
-        updateBookmark('mental', character.status.mental);
-
-        updateCharacterStats(character);
+// Updated handleEventButtonClick function
+async function handleEventButtonClick() {
+    try {
+        const result = await createEvent('random', 'random', [], []);
+        console.log('Event created:', result);
+        processEventResult(result);
+    } catch (error) {
+        console.error('Error creating event:', error);
+        // Handle the error (e.g., show an error message to the user)
     }
-
-    function updateTraits(traits) {
-        const traitList = document.getElementById('character-traits');
-        traitList.innerHTML = ''; // Clear existing traits
-        
-        traits.forEach(trait => {
-            const li = document.createElement('li');
-            li.textContent = trait;
-            traitList.appendChild(li);
-        });
-    }
-
-    function updateBookmark(type, status) {
-        const bookmark = document.querySelector(`.${type}-bookmark`);
-        const maxHeight = 400; // Maximum height of the bookmark
-    
-        let texture, scale;
-    
-        if (status > 5) {
-            texture = `${type}10`;
-            scale = status / 10; // Scale from 0.6 to 1 for status 6 to 10
-        } else if (status > 3) {
-            texture = `${type}5`;
-            scale = (status - 3) / 2; // Scale from 0.5 to 1 for status 4 to 5
-        } else if (status > 0) {
-            texture = `${type}2`;
-            if (status === 3) {
-                scale = 1.3; // Full size for status 3
-            } else if (status === 2) {
-                scale = 1; // 85% size for status 2
-            } else { // status === 1
-                scale = 0.6; // 70% size for status 1
-            }
-        } else {
-            texture = `${type}0`;
-            scale = 1; // Full size for the smallest texture
-        }
-    
-        // Update the background image
-        bookmark.style.backgroundImage = `url('/background/${texture}.png')`;
-    
-        // Calculate and set the new height
-        const newHeight = maxHeight * scale;
-        bookmark.style.height = `${newHeight}px`;
-    }
-
-    function updateCharacterStats(character) {
-        const stats = ['strength', 'agility', 'intelligence', 'authority', 'sociability'];
-        stats.forEach(stat => {
-            const statValue = character.stats[stat] || 0;
-            const statItem = document.querySelector(`.stat-item[data-stat="${stat}"]`);
-            
-            if (statItem) {
-                const romanNumeralElement = statItem.querySelector('.stat-number');
-                if (romanNumeralElement) {
-                    romanNumeralElement.textContent = statValue;
-                }
-    
-                // Update gem appearance
-                const gemWrapper = statItem.querySelector('.gem-wrapper');
-                if (gemWrapper) {
-                    // Remove old gem-level classes
-                    gemWrapper.classList.forEach(className => {
-                        if (className.startsWith('gem-level-')) {
-                            gemWrapper.classList.remove(className);
-                        }
-                    });
-                    // Add new gem-level class
-                    gemWrapper.classList.add(`gem-level-${statValue}`);
-                }
-            }
-        });
-    }
+}
 });

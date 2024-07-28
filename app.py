@@ -1,64 +1,27 @@
-from flask import Flask, jsonify, render_template, send_from_directory
-from classes import Estate
+from flask import Flask, request, jsonify, render_template, send_from_directory
+from classes import Estate, Character
 import json
 import os
 
 app = Flask(__name__, static_url_path='', static_folder='static')
 
-# Helper function to check if an estate exists
-def check_estate_exists(estate_name):
-    return os.path.exists(f'estates/{estate_name}/estate.json')
-
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/api/estate/<estate_name>/create_event', methods=['POST'])
-def create_event(estate_name):
-    try:
-        estate = Estate.load_estate(estate_name)
-        event_story, consequences_dict = estate.craft_event()
-        
-        return jsonify({
-            "status": "success",
-            "event_story": event_story,
-            "consequences": consequences_dict
-        })
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+@app.route('/api/save-estate', methods=['POST'])
+def save_estate_endpoint():
+    data = request.json
     
-@app.route('/api/characters/<estate_name>')
-def get_characters(estate_name):
-    estate = Estate.load_estate(estate_name)
-    character_titles = [char.title for char in estate.characters.values()]
-    return jsonify(character_titles)
-
-@app.route('/api/character/<estate_name>/<title>')
-def get_character_details(estate_name, title):
-    estate = Estate.load_estate(estate_name)
-    character = estate.characters.get(title)
-    if character:
-        return jsonify({
-            "title": character.title,
-            "name": character.name,
-            "summary": character.summary,
-            "history": character.history,
-            "race": character.race,
-            "gender": character.gender,
-            "religion": character.religion,
-            "traits": character.traits,
-            "status": character.status,
-            "stats": character.stats,
-            "equipment": character.equipment,
-            "trinkets": character.trinkets,
-            "appearance": character.appearance,
-            "clothing": character.clothing,
-            "combat": character.combat,
-            "magic": character.magic,
-            "notes": character.notes,
-            "relationships": character.relationships
-        })
-    return jsonify({"error": "Character not found"}), 404
+    # Create an Estate instance with the data
+    estate = Estate(data['estateName'])
+    estate.characters = data['characters']
+    # Set other properties as needed
+    
+    # Call the save_estate method
+    estate.save_estate()
+    
+    return jsonify({"message": "Estate saved successfully"}), 200
 
 @app.route('/api/estate/<estate_name>', methods=['GET'])
 def load_or_create_estate(estate_name):
@@ -79,8 +42,30 @@ def serve_estate_json(estate_name):
     else:
         return jsonify({"error": "Estate not found"}), 404
 
-@app.route('/api/character_info', methods=['GET'])
-def get_character_info():
+@app.route('/api/create-event', methods=['POST'])
+def create_event_endpoint():
+    data = request.json
+    
+    # Create an Estate instance with the data
+    estate = Estate(data['estateName'])
+    for title, char_data in data['characters'].items():
+        character = Character.from_dict(char_data)
+        estate.add_character(character)
+    
+    # Call the start_event method with the additional data
+    event_characters = data['eventCharacters']
+    event_text, consequence_dict = estate.start_event(titles = event_characters)
+    
+    response_data = {
+        'title': 'New Event',  
+        'storyText': event_text,
+        'consequences': consequence_dict  
+    }
+
+    return jsonify(response_data), 200
+
+@app.route('/api/default_character_info', methods=['GET'])
+def get_default_character_info():
     character_info = {}
     template_dir = 'data/character_templates'
     try:
@@ -103,5 +88,9 @@ def get_character_info():
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
     
+# Helper function to check if an estate exists
+def check_estate_exists(estate_name):
+    return os.path.exists(f'estates/{estate_name}/estate.json')
+
 if __name__ == '__main__':
     app.run(debug=True)

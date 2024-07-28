@@ -1,6 +1,6 @@
 /* Recruit Modal Styles */
 #recruit-modal .modal-content {
-    background-image: url('/background/recruit.png');
+    background-image: url('/graphics/default/background/recruit.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

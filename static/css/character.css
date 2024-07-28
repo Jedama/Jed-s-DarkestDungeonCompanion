@@ -74,7 +74,7 @@
 .health-bookmark {
     width: 40px;
     height: 400px;
-    background-image: url('/background/health10.png');
+    background-image: url('/graphics/default/background/health10.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
@@ -87,7 +87,7 @@
 .mental-bookmark {
     width: 20px;
     height: 400px;
-    background-image: url('/background/mental10.png');
+    background-image: url('/graphics/default/background/mental10.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;

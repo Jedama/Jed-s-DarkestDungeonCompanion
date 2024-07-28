@@ -1,6 +1,7 @@
 API key.txt
 .vscode
 estates/
+static/graphics/custom/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

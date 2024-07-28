@@ -1,5 +1,5 @@
-import { fetchCharacterInfo } from './apiClient.js';
-import { state, addCharacter, getAllCharacters, getCharacterTitles } from './state.js';
+import { fetchDefaultCharacterInfo } from './apiClient.js';
+import { getCharacterTitles } from './state.js';
 
 export function initializeRecruit() {
     const elements = {
@@ -34,7 +34,7 @@ export function initializeRecruit() {
     function updateDetails() {
         const selectedCharacter = elements.recruitDropdown.value;
         elements.recruitIcon.innerHTML = selectedCharacter
-            ? `<img src="/icons/${selectedCharacter.toLowerCase()}0.png" alt="${selectedCharacter}">`
+            ? `<img src="/graphics/default/icons/${selectedCharacter.toLowerCase()}0.png" alt="${selectedCharacter}">`
             : '';
         const info = characterInfo[selectedCharacter];
         elements.recruitNameInput.value = info ? info.default_name : '';
@@ -57,7 +57,7 @@ export function initializeRecruit() {
 
     async function populateDropdown() {
         try {
-            characterInfo = await fetchCharacterInfo();
+            characterInfo = await fetchDefaultCharacterInfo();
             const currentCharacters = getCharacterTitles();
 
             const availableCharacters = Object.keys(characterInfo).filter(char => 

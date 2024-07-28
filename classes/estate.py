@@ -4,7 +4,6 @@ from .character import Character
 from .eventhandler import EventHandler
 
 import os
-import random
 
 class Estate:
     def __init__(self, title):
@@ -33,10 +32,6 @@ class Estate:
         # Save estate.json using save_json function from storage.py
         estate_path = os.path.join(estate_dir, 'estate.json')
         save_json(estate_path, estate_data)
-
-        # Save each character's data using save_json_directory function from storage.py
-        characters_dir = os.path.join(estate_dir, 'characters')
-        save_json_directory(characters_dir, self.characters)
 
     @classmethod
     def from_dict(cls, data):

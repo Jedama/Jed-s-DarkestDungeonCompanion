@@ -1,50 +1,131 @@
+/* Story Panel */
 .story-panel {
-    flex: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    height: 110%;
+    background-image: url('/background/cloth.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    z-index: 1;
+    overflow-y: auto;
     padding: 20px;
-    border-right: 1px solid #444;
+    max-width: 950px;
+    box-sizing: border-box;
 }
 
-.story-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #ffd700;
-}
-
+/* Story Text Container */
 .story-text {
+    color: white;
     font-size: 16px;
     line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 3;
 }
 
+/* Story Cards */
 .story-cards {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow-y: hidden;
 }
 
 .story-card {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: rgba(60, 60, 60, 0.7);
-    border-radius: 5px;
-    font-size: 14px;
+    position: absolute;
+    height: 50%;
+    aspect-ratio: 832 / 1216;
+    transform: translate(-50%, -50%) rotate(var(--rotation));
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    box-sizing: border-box;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .modal-content {
-        flex-direction: column;
-        width: 95%;
-    }
+.card-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/background/card.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10; /* Increased z-index */
+}
 
-    .story-panel {
-        border-right: none;
-        border-bottom: 1px solid #444;
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-    }
+.card-image {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 95%;
+    height: 95%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
 
-    .story-cards {
-        padding-top: 0;
-    }
+.card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 4; /* Increased z-index */
+    padding: 10%;
+    box-sizing: border-box;
+}
+
+/* Card Positioning */
+.story-card:nth-child(1) { top: 25%; left: 15%; --rotation: -5deg; }
+.story-card:nth-child(2) { top: 25%; left: 85%; --rotation: 3deg; }
+.story-card:nth-child(3) { top: 75%; left: 15%; --rotation: -2deg; }
+.story-card:nth-child(4) { top: 75%; left: 85%; --rotation: 4deg; }
+
+.story-card:hover {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.05);
+    z-index: 5; /* Increased z-index on hover */
+}
+
+/* Consequence Text Styling */
+.consequence-text {
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 1.3;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 5; /* Ensure text is above all other elements */
+}
+
+.consequence-text li,
+.consequence-text ol {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+h3 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    color: #ffffff;
+    position: relative;
+    z-index: 5; /* Ensure text is above all other elements */
 }
