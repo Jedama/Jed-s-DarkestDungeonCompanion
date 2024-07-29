@@ -61,7 +61,7 @@ class EventHandler:
             # Ensure that the number of specified titles does not exceed the number of characters required by the event
             if len(titles) > event.num_characters:
                 print(f"Too many titles specified for event '{event.title}'. Expected {event.num_characters} or fewer.")
-                return None, None
+                return None, None, None
             
             event_characters = self.process_characters(input_event, characters, titles)
             if event_characters:
@@ -80,30 +80,30 @@ class EventHandler:
                 # self.process_enemies()
             else:
                 print(f"No valid characters found for event '{event.title}'")
-                return None, None
+                return None, None, None
         
         events = self.events_by_type.get(event_type, {})
         if not events:
             print(f"No events available for type '{event_type}'")
-            return
+            return None, None, None
         
         if event_title:
             event_instance = events.get(event_title)
             input_event = copy.deepcopy(event_instance)
             if not input_event:
                 print(f"No event found with title '{event_title}'")
-                return
+                return None, None, None
 
-            event_story, event_consequences = craft_event_with_characters(input_event)
+            event_title, event_story, event_consequences = craft_event_with_characters(input_event)
             if event_story and event_consequences:
-                return event_story, event_consequences
+                return event_title, event_story, event_consequences
         else:
             while True:
                 input_event = random.choice(list(events.values()))
                 if input_event.num_characters >= len(titles):
-                    event_story, event_consequences = craft_event_with_characters(input_event)
+                    event_title, event_story, event_consequences = craft_event_with_characters(input_event)
                     if event_story and event_consequences:
-                        return event_story, event_consequences
+                        return event_title, event_story, event_consequences
                 print(f"No valid characters found for event '{input_event.title}' or event invalid for specified characters. Trying another event...")
 
     def process_summary(self, input_event, output_event, characters, enemies):
@@ -439,12 +439,13 @@ class EventHandler:
 
         if input_event.type in ['random', 'story', 'dungeon']:
             compiled_consequences = self.consequences_by_type['Default'].consequences
+            compiled_consequences += self.consequences_by_type['Event'].consequences
         elif input_event.type == "town":
             if input_event.title == "Recruit":
                 compiled_consequences = self.consequences_by_type['Default'].consequences
                 compiled_consequences += self.consequences_by_type['Recruit'].consequences
 
-        if input_event.num_characters > 2:
+        if input_event.num_characters >= 2:
             compiled_consequences += self.consequences_by_type['MultipleCharacters'].consequences
 
         if getattr(input_event, 'consequences', None):

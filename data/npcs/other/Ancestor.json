@@ -31,20 +31,6 @@
     },
     "notes": [
       "The echoes of his voice narrate the struggle against the darkness he unleashed."
-    ],
-    "relationships": {
-      "Persephone Dantill": {
-        "affinity": 0,
-        "dynamic": "Ancestral",
-        "description": "The Ancestor views the Heiress' with a detached curiosity, wondering if she will succumb to the same fate he did or rise above it.",
-        "notes": "None."
-      },
-      "Percival Dantill": {
-        "affinity": 0,
-        "dynamic": "Ancestral",
-        "description": "The Ancestor views the Heir's with a detached curiosity, wondering if he will succumb to the same fate he did or rise above it.",
-        "notes": "None."
-      }
-    }
+    ]
   }
 ]

@@ -30,5 +30,21 @@
         "outcomes": [0, 2, 2, 6, 3],
         "fields": [],
         "length": 4        
+    },
+    {
+        "title": "Stargazing Night",
+        "num_characters": 3,
+        "summary": "[Character 1], [Character 2], and [Character 3] spend a quiet night observing the stars, sharing stories and reflections.",
+        "outcomes": [1, 2, 3, 5, 3],
+        "length": 3
+    },
+    {
+        "title": "Unusual Weather",
+        "num_characters": 3,
+        "summary": "[Character 1], [Character 2], and [Character 3] must deal with a strange weather phenomenon.",
+        "outcomes": [4, 5, 4, 2, 1],
+        "length": 2,
+        "location": ["Town Square"],
+        "special_consequences": ["gain_wound"]
     }
 ]

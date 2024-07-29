@@ -16,22 +16,17 @@
       "skin_tone": "Pale",
       "hair_color": "Grey",
       "hairstyle": "Balding",
-      "facial_hair": "Beard",
-      "accessories": "Spectacles",
-      "distinguishing_marks": "Permanent grin",
-      "notes": "None",
-      "clothing": {
-          "headwear": "None",
-          "top": "Tattered overcoat with fitted sleeves",
-          "pants": "Worn trousers",
-          "outerwear": "Tattered overcoat with fitted sleeves",
-          "footwear": "Worn boots"
-      }
+      "facial_hair": "Beard"
+    },
+    "clothing": {
+      "headwear": "None",
+      "top": "Tattered overcoat with fitted sleeves",
+      "pants": "Worn trousers",
+      "accessories": "Spectacles"
     },
     "notes": [
       "Prone to fits of maniacal laughter",
       "Often found mumbling to himself"
-    ],
-    "relationships": {}
+    ]
   }
 ]

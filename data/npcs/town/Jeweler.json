@@ -11,27 +11,21 @@
       "Eager"
     ],
     "appearance": {
-      "gender": "Male",
       "height": "Average",
       "build": "Lean",
       "skin_tone": "Weathered",
       "hair_color": "Silvering",
       "hairstyle": "Pulled back",
-      "facial_hair": "Trimmed beard",
-      "accessories": "None",
-      "distinguishing_marks": "None",
-      "notes": "None",
-      "clothing": {
-          "headwear": "Blue cap",
-          "top": "Dark purple jacket with deep pockets",
-          "pants": "Simple, functional trousers",
-          "outerwear": "Leather apron",
-          "footwear": "Sturdy shoes, practical for work"
-      }
+      "facial_hair": "Trimmed beard"
+    },
+    "clothing": {
+      "headwear": "Blue cap",
+      "top": "Dark purple jacket with deep pockets",
+      "pants": "Simple, functional trousers",
+      "accessories": "None"
     },
     "notes": [
         "The Jeweler is always on the lookout for more cosmic stones, and will pay handsomely for any that are brought to him."
-    ],
-    "relationships": {}
+    ]
   }
 ]

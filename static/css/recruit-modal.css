@@ -52,7 +52,6 @@
     background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
     background-repeat: no-repeat;
     background-position: right center;
-    padding-right: 30px;
 }
 
 #recruit-modal #recruit-dropdown::placeholder,
@@ -114,7 +113,7 @@
 }
 
 .dropdown-item {
-    padding: 12px 16px;
+    padding: 12px 12px;
     text-decoration: none;
     display: block;
     cursor: pointer;

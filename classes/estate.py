@@ -69,10 +69,8 @@ class Estate:
 
     def start_event(self, event_type='random', event_title=None, titles = [], modifiers = []):
         # Start an event by title
-        event_story, event_consequences = self.eventHandler.craft_event(self.characters, event_type, event_title, titles, modifiers + self.keywords)
+        return self.eventHandler.craft_event(self.characters, event_type, event_title, titles, modifiers + self.keywords)
 
-        return event_story, event_consequences
-    
     def recruit(self, title, quirks=[]):
 
         def ensure_relationship_placeholder(character, other_character):

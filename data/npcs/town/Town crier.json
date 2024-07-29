@@ -1,0 +1,33 @@
+[
+    {
+      "title": "Town Crier",
+      "name": "Bartholomew",
+      "summary": "The Town Crier, a figure worth pitying, stumbles through the streets with his announcements. His theatrical flair is overshadowed by his obvious vices, making him a somewhat unreliable but entertaining source of news.",
+      "history": "Once a hopeful actor, the Town Crier's dreams of stardom were crushed by a string of disastrous performances. The town crier position was his last resort, a role he clings to desperately. Though often eclipsed by his personal struggles, his theatrical background occasionally shines through.",
+      "traits": [
+        "Loud",
+        "Inbibed",
+        "Pleasure-seeking"
+      ],
+      "appearance": {
+        "height": "Slightly below average",
+        "build": "Paunchy",
+        "skin_tone": "Ruddy",
+        "hair_color": "Thinning gray",
+        "hairstyle": "Poorly maintained combover",
+        "facial_hair": "Patchy mutton chops"
+      },
+      "clothing": {
+        "headwear": "None",
+        "top": "Stained and threadbare coat",
+        "pants": "Wrinkled breeches",
+        "accessories": "Frayed and yellowing cravat"
+      },
+      "notes": [
+        "Voice cracks occasionally, especially when excited or inebriated",
+        "Gestures wildly while making announcements, often losing balance",
+        "Spends most of his wages at the gambling hall, tavern, and brothel",
+        "Can be easily bribed to include personal messages in official announcements"
+      ]
+    }
+  ]

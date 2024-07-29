@@ -2,7 +2,7 @@ from classes import Estate
 
 estate = Estate.load_estate('Dantill')
 
-story, consequences = estate.start_event()
+title, story, consequences = estate.start_event()
 
 estate.recruit('Offering', ['Slow', 'Pallid'])
 

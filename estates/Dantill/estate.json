@@ -43,16 +43,15 @@
                 "build": "Average",
                 "skin_tone": "Fair",
                 "hair_color": "Blond",
-                "hairstyle": "Curled and styled to shoulder length",
-                "clothing": {
-                    "headwear": "None",
-                    "top": "White ruffled shirt",
-                    "pants": "Mustard yellow breeches",
-                    "outerwear": "Blue double-breasted tailcoat with gold buttons",
-                    "footwear": "Brown boots"
-                }
+                "hairstyle": "Curled and styled to shoulder length"
             },
-            "clothing": null,
+            "clothing": {
+                "headwear": "None",
+                "top": "White ruffled shirt",
+                "pants": "Mustard yellow breeches",
+                "outerwear": "Blue double-breasted tailcoat with gold buttons",
+                "footwear": "Brown boots"
+            },
             "combat": {
                 "range": "Mid-range",
                 "weapon": "Derringer pistol",
@@ -1076,8 +1075,7 @@
                 "Fearless",
                 "Reckless",
                 "Enigmatic",
-                "Antsy",
-                "Self-Doubting"
+                "Nudist"
             ],
             "status": {
                 "physical": 5,
@@ -1108,10 +1106,8 @@
             },
             "clothing": {
                 "headwear": "Crown of thorns",
-                "top": "Frilly red dress with ruffled white collar",
-                "pants": "None",
-                "outerwear": "None",
-                "footwear": "Rose-colored ballet slippers"
+                "top": "None",
+                "pants": "None"
             },
             "combat": {
                 "role": "Frontliner",
@@ -1132,7 +1128,7 @@
                 "Constantly seeks out pain and dangerous situations.",
                 "Finds pleasure in cutting, entangling, and strangling herself with her thorn whip",
                 "Fate seems to intervene in her most dire moments, preserving her for an unknown purpose",
-                "Her restlessness often leads her into precarious situations"
+                "Refuses to wear clothes"
             ],
             "relationships": {
                 "Hood": {

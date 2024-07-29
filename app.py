@@ -54,10 +54,10 @@ def create_event_endpoint():
     
     # Call the start_event method with the additional data
     event_characters = data['eventCharacters']
-    event_text, consequence_dict = estate.start_event(titles = event_characters)
+    event_title, event_text, consequence_dict = estate.start_event(titles = event_characters)
     
     response_data = {
-        'title': 'New Event',  
+        'title': event_title,  
         'storyText': event_text,
         'consequences': consequence_dict  
     }

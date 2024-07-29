@@ -33,6 +33,14 @@
         "outcomes": [1, 3, 4, 7, 3],
         "fields": ["combat"],
         "length": 1
+    },
+    {
+        "title": "Mysterious Letter",
+        "num_characters": 1,
+        "summary": "[Character 1] receives a cryptic letter.",
+        "outcomes": [2, 3, 5, 2, 1],
+        "length": 2,
+        "npcs": ["Town Crier"]
     }
     
 ]

@@ -10,27 +10,21 @@
       "Melancholic"
     ],
     "appearance": {
-      "gender": "Female",
       "height": "Average",
       "build": "Slim",
       "skin_tone": "Fair",
       "hair_color": "Dark",
       "hairstyle": "Long, straight, tucked beneath headwear",
-      "facial_hair": "None",
-      "accessories": "Medallion",
-      "distinguishing_marks": "None",
-      "notes": "None",
+      "facial_hair": "None"
+    },
       "clothing": {
-          "headwear": "Tall, white conical hat",
-          "top": "Loose-fitting, dark blue tunic",
-          "pants": "Matching dark skirt",
-          "outerwear": "None",
-          "footwear": "Sturdy, practical boots"
-      }
+      "headwear": "Tall, white conical hat",
+      "top": "Loose-fitting, dark blue tunic",
+      "pants": "Matching dark skirt",
+      "accessories": "Medallion"
     },
     "notes": [
       "Carries an air of quiet dignity amidst the despair that surrounds her"
-    ],
-    "relationships": {}
+    ]
   }
 ]

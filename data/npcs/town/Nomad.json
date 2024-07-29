@@ -10,28 +10,23 @@
       "Insightful"
     ],
     "appearance": {
-      "gender": "Female",
-      "height": "Medium",
+      "height": "Average",
       "build": "Slender",
       "skin_tone": "Olive",
       "hair_color": "Raven black",
       "hairstyle": "Long and wavy",
-      "facial_hair": "None",
-      "accessories": "Earrings, bracelets, and necklaces",
-      "distinguishing_marks": "None",
-      "notes": "None",
-      "clothing": {
-          "headwear": "Red headscarf",
-          "top": "Richly embroidered vest",
-          "pants": "Loose, flowing skirt",
-          "outerwear": "Decorated shawl draped over shoulders",
-          "footwear": "Leather sandals"
-      }
+      "facial_hair": "None"
+      
+    },
+    "clothing": {
+      "headwear": "Red headscarf",
+      "top": "Richly embroidered vest",
+      "pants": "Loose, flowing skirt",
+      "accessories": "Earrings, bracelets, and necklaces"
     },
     "notes": [
       "Her voice carries the lilt of a far-off place, often accompanied by a knowing smile",
       "The scent of exotic spices and incense lingers around her wagon"
-    ],
-    "relationships": {}
+    ]
   }
 ]

@@ -25,5 +25,12 @@
         "npcs": ["Abbot"],
         "location": ["Abbey"],
         "special_consequences": ["change_religion"]
+    },
+    {
+        "title": "Ghost Story Night",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] gather to share chilling tales.",
+        "outcomes": [3, 2, 3, 4, 2],
+        "length": 3
     }
 ]

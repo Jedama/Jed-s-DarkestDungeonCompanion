@@ -1,0 +1,30 @@
+[
+    {
+      "title": "Guild Master",
+      "name": "Thorne",
+      "summary": "The Guild Master, a formidable warrior and cunning strategist, leads with an iron fist and unwavering resolve. His presence commands respect, and his decisions shape the fate of the guild and its members.",
+      "history": "Once a legendary mercenary, the Guild Master's tactical acumen and combat prowess elevated him to the highest rank within the guild. His leadership has seen the organization through countless challenges, earning both fear and admiration.",
+      "traits": [
+        "Authoritative",
+        "Strategic"
+      ],
+      "appearance": {
+        "height": "Tall",
+        "build": "Muscular",
+        "skin_tone": "Dark",
+        "hair_color": "Black",
+        "hairstyle": "Tied in a topknot",
+        "facial_hair": "Full beard",
+        "accessories": "Battle scars across face and arms"
+      },
+      "clothing": {
+        "headwear": "None",
+        "top": "Heavy plate armor with leather underlay",
+        "pants": "Armored greaves over dark fabric"
+      },
+      "notes": [
+        "Carries a large, ornate sword at his hip",
+        "Has a penetrating gaze that can unnerve even seasoned warriors"
+      ]
+    }
+  ]

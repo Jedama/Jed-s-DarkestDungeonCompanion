@@ -159,27 +159,27 @@ class Character:
             change = int(change.replace('+', ''))
 
         self.status['physical'] += change
-        return f"Physical status {'+' if change >= 0 else ''}{change}"
+        return f"Health {'+' if change >= 0 else ''}{change}"
 
     def update_status_mental(self, change):
         self.status['mental'] += change
-        return f"Mental status {'+' if change >= 0 else ''}{change}"
+        return f"Mental {'+' if change >= 0 else ''}{change}"
 
     def update_status_description(self, description):
         self.status['description'] = description
-        return "Status description updated"
+        return "Status updated"
 
     def update_appearance(self, field, description):
         if field in self.appearance:
             self.appearance[field] = description
-            return f"Appearance {field} updated"
+            return f"Appearance update"
         else:
             return f"Appearance attribute {field} does not exist."
 
     def update_clothing(self, field, description):
         if field in self.clothing:
             self.clothing[field] = description
-            return f"Clothing {field} updated"
+            return f"Clothing updated"
         else:
             return f"Clothing attribute {field} does not exist."
 
@@ -195,7 +195,7 @@ class Character:
     def gain_trait(self, trait):
         if trait not in self.traits:
             self.traits.append(trait)
-            return f"Gained trait: {trait}"
+            return f"New trait: {trait}"
         return f"Already has trait: {trait}"
 
     def lose_trait(self, trait):
@@ -219,7 +219,7 @@ class Character:
 
     def gain_equipment(self, equipment):
         self.equipment.append(equipment)
-        return f"Gained equipment: {equipment}"
+        return f"New equipment: {equipment}"
 
     def lose_equipment(self, equipment):
         if equipment in self.equipment:
@@ -232,6 +232,10 @@ class Character:
             self.trinkets.remove(trinket)
             return f"Lost trinket: {trinket}"
         return f"Didn't have trinket: {trinket}"
+    
+    def gain_wound(self, note):
+        self.status['wounds'].append(note)
+        return "Note added"
 
     def update_summary(self, new_summary):
         self.summary = new_summary
@@ -248,25 +252,25 @@ class Character:
     def gain_combat_strength(self, strength):
         if strength not in self.combat['strengths']:
             self.combat['strengths'].append(strength)
-            return f"Gained combat strength: {strength}"
+            return f"New strength: {strength}"
         return f"Already had combat strength: {strength}"
 
     def lose_combat_strength(self, strength):
         if strength in self.combat['strengths']:
             self.combat['strengths'].remove(strength)
-            return f"Lost combat strength: {strength}"
+            return f"Lost strength: {strength}"
         return f"Didn't have combat strength: {strength}"
 
     def gain_combat_weakness(self, weakness):
         if weakness not in self.combat['weaknesses']:
             self.combat['weaknesses'].append(weakness)
-            return f"Gained combat weakness: {weakness}"
+            return f"New weakness: {weakness}"
         return f"Already had combat weakness: {weakness}"
 
     def lose_combat_weakness(self, weakness):
         if weakness in self.combat['weaknesses']:
             self.combat['weaknesses'].remove(weakness)
-            return f"Lost combat weakness: {weakness}"
+            return f"Lost weakness: {weakness}"
         return f"Didn't have combat weakness: {weakness}"
 
     def update_relationship_affinity(self, title, change):
@@ -282,14 +286,14 @@ class Character:
     def update_relationship_dynamic(self, title, dynamic):
         if title in self.relationships:
             self.relationships[title]['dynamic'] = dynamic
-            return f"[{title}] Dynamic: {dynamic}"
+            return f"[{title}] Dynamic update"
         else:
             return f"[{title}] No relationship"
 
     def update_relationship_description(self, title, description):
         if title in self.relationships:
             self.relationships[title]['description'] = description
-            return f"[{title}] Description updated"
+            return f"[{title}] Desc. update"
         else:
             return f"[{title}] No relationship"
 

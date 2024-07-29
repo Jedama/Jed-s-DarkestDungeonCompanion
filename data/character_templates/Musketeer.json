@@ -1,5 +1,5 @@
 {
-    "title": "The Musketeer",
+    "title": "Musketeer",
     "name": "Margaret",
     "level": 0,
     "money": 0,
@@ -11,9 +11,9 @@
     "traits": [
         "Skilled",
         "Determined",
-        "Aristocratic",
+        "Adventurous",
         "Traumatized",
-        "Ambitious",
+        "Taciturn",
         "Resourceful"
     ],
     "status": {
@@ -33,6 +33,7 @@
     },
     "equipment": [
         "Musket",
+        "Sidearm",
         "Smoke pellets",
         "First aid kit"
     ],
@@ -53,7 +54,6 @@
     },
     "combat": {
         "role": "Sharpshooter",
-        "weapon": "Musket",
         "strengths": [
             "Excellent marksmanship",
             "Analytical eye",

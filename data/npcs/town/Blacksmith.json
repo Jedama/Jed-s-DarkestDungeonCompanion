@@ -1,0 +1,33 @@
+[
+    {
+      "title": "Blacksmith",
+      "name": "Gus",
+      "summary": "The Blacksmith is a jovial man with a heart as warm as his forge. Known for his craftsmanship and friendly demeanor, he is always ready with a old tale and a well-crafted piece of metalwork.",
+      "history": "Born and raised in the Hamlet, Gus learned the trade from his father. His natural talent and passion for metalworking, combined with his amiable nature, have made him a beloved figure in the community.",
+      "traits": [
+        "Easygoing",
+        "Skilled",
+        "Sociable"
+      ],
+      "appearance": {
+        "height": "Average",
+        "build": "Stocky and muscular",
+        "skin_tone": "Ruddy and weathered",
+        "hair_color": "Gray-white",
+        "hairstyle": "Long and slightly unkempt",
+        "facial_hair": "Full, bushy beard"
+      },
+      "clothing": {
+        "headwear": "Fading red leather headband",
+        "top": "Sleeveless tan shirt under a thick leather apron",
+        "pants": "Dark, sturdy trousers",
+        "accessories": "Pipe often in mouth"
+      },
+      "notes": [
+        "Always has his pipe with him, even while working",
+        "Strength belies his age - can easily wield his massive hammer",
+        "Enjoys sharing stories of his craft with customers and apprentices alike",
+        "Often settles disputes among villagers with his calm, friendly demeanor"
+      ]
+    }
+  ]

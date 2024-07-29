@@ -106,9 +106,34 @@
     {
         "title": "Sexual Activities",
         "num_characters": 2,
-        "summary": "Domineering, awkward, or passionate, [Character 1] and [character 2] have engage in sexual activities.",
+        "summary": "Domineering, awkward, or passionate, [Character 1] and [character 2] engage in sexual activities.",
         "outcomes": [2, 1, 0, 4, 2],
         "fields": ["combat"],
         "length": 2
+    },
+    {
+        "title": "Unexpected Visitor",
+        "num_characters": 2,
+        "summary": "In their everyday work, duties, or errands, [Character 1] receives an unexpected visit from [Character 2].",
+        "outcomes": [1, 3, 4, 3, 1],
+        "length": 2
+    },
+    {
+        "title": "Impromptu Performance",
+        "num_characters": 2,
+        "summary": "[Character 1] is coerced (or attempted) into giving an impromptu performance of some talent with [Character 2] as the primary audience.",
+        "outcomes": [3, 2, 0, 5, 3],
+        "length": 2,
+        "location": ["Tavern"]
+    },
+    {
+        "title": "Lost in the Woods",
+        "num_characters": 2,
+        "summary": "[Character 1] and [Character 2] lose their way in the forest around the Hamlet and struggle to find their way home.",
+        "outcomes": [3, 4, 3, 2, 0],
+        "length": 2,
+        "location": ["Weald"],
+        "special_consequences": ["gain_wound"],
+        "fields": ["combat"]
     }
 ]

@@ -1,0 +1,32 @@
+[
+    {
+      "title": "Survivalist",
+      "name": "Raven",
+      "summary": "The Survivalist is a mysterious and resourceful figure, adept at navigating the harshest environments. With an uncanny ability to endure and a deep connection to the wild, they are both respected and feared for their knowledge of nature's deadliest secrets.",
+      "history": "Little is known of the Survivalist's past, but the scars and weathered appearance speak of countless battles against both nature and man. They emerged from the wilderness with skills honed by years of isolation and survival against impossible odds.",
+      "traits": [
+        "Resourceful",
+        "Enigmatic",
+        "Vigilant"
+      ],
+      "appearance": {
+        "height": "Average",
+        "build": "Lean and wiry",
+        "skin_tone": "Weathered, dark",
+        "hair_color": "Deep auburn with streaks of grey",
+        "hairstyle": "Long, unkempt dreadlocks",
+        "facial_hair": "None"
+      },
+      "clothing": {
+        "headwear": "Dark, tattered hood",
+        "top": "Layers of worn leather and fabric",
+        "pants": "Reinforced, patched trousers",
+        "accessories": "Wolf-head fur collar"
+      },
+      "notes": [
+        "Despite her cold and taciturn exterior, she enjoys teaching the ways of survival",
+        "Moves silently, even in dense underbrush",
+        "Listens in on conversaions, hiding"
+      ]
+    }
+  ]

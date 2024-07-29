@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
         savefileNameInput: document.getElementById("savefile-name"),
         eventButton: document.getElementById("event-button"),
         recruitButton: document.getElementById("recruit-button"),
-        characterGrid: document.getElementById("character-grid")
+        characterGrid: document.getElementById("character-grid"),
+        returnButton: document.getElementById("return-btn")
     };
 
     // Initialize
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
             populateDropdown();  // Call populateDropdown when the modal is opened
         });
         elements.eventButton.addEventListener("click", handleEventButtonClick);
+        elements.returnButton.addEventListener("click", hideModal);
     }
 
     function handleSavefileSubmission() {
@@ -117,10 +119,30 @@ function updateCards(consequences) {
                 <div class="card-frame"></div>
                 <div class="card-content">
                     <div class="card-image" style="background-image: url('/graphics/default/cards/${character.toLowerCase()}0.png')"></div>
-                    <h3>${character}</h3>
                     <ul class="consequence-text">
-                        ${consequenceList.map(consequence => `<li>${consequence}</li>`).join('')}
+                        ${consequenceList.map(consequence => {
+                            let color = 'lightsteelblue';
+                            if (consequence.includes('Strength')) {
+                                color = 'red';
+                            } else if (consequence.includes('Agility')) {
+                                color = 'green';
+                            } else if (consequence.includes('Intelligence')) {
+                                color = 'dodgerblue';
+                            } else if (consequence.includes('Authority')) {
+                                color = 'darkmagenta';
+                            } else if (consequence.includes('Sociability')) {
+                                color = 'yellow';
+                            } else if (consequence.includes('Health')) {
+                                color = 'crimson';
+                            } else if (consequence.includes('Mental')) {
+                                color = 'white';
+                            }
+                            return `<li style="color: ${color};">${consequence}</li>`;
+                        }).join('')}
                     </ul>
+                </div>
+                <div class="character-name-container">
+                    <div class="character-name">${character}</div>
                 </div>
             `;
             cardContainer.appendChild(card);

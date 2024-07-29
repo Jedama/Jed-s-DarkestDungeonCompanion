@@ -8,6 +8,8 @@
         {"command": "lose_trait", "params": {"trait": "specific trait"}, "text": "Lose an existing trait from the character."},
         {"command": "gain_note", "params": {"note": "new note"}, "text": "Gain a new piece of trivia for the character."},
         {"command": "lose_note", "params": {"note": "specific note"}, "text": "Lose an existing piece of trivia from the character."},
-        {"command": "lose_trinket", "params": {"trinket": "specific trinket"}, "text": "Lose a trinket from the character."}
+        {"command": "lose_trinket", "params": {"trinket": "specific trinket"}, "text": "Lose a trinket from the character."},
+        {"command": "gain_wound", "params": {"wound": "new wound"}, "text": "Add new wound to the character."},
+        {"command": "lose_wound", "params": {"wound": "specific wound"}, "text": "Remove an existing wound from the character."}
     ]
 }

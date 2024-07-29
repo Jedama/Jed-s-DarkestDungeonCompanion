@@ -118,6 +118,14 @@ class OutputEvent:
         event_story = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 500 + 200 * self.length, temperature=1)
         event_story = clean_response_claude(event_story)
 
+        bracket_index = event_story.find(']')
+        if bracket_index != -1:
+            event_title = event_story[:bracket_index].strip()
+            event_story = event_story[bracket_index + 1:].lstrip('\n')
+        else:
+            event_title = "A darkest tale"
+
+
         print(event_story)
 
         system_prompt, user_prompt, assistant_prompt = self.create_consequences_prompt(event_story)
@@ -128,7 +136,7 @@ class OutputEvent:
 
         consequence_dict = self.process_response(event_consequences)
 
-        return event_story, consequence_dict
+        return event_title, event_story, consequence_dict
     
     def create_story_prompt(self):
 
@@ -137,7 +145,7 @@ class OutputEvent:
         # Create user prompt
         user_prompt = self.story_user_prompt()
         # Create assistant prompt
-        assistant_prompt = "Here is the story:"
+        assistant_prompt = "Here is the story:\n ["
 
         return system_prompt, user_prompt, assistant_prompt
     
@@ -216,6 +224,8 @@ class OutputEvent:
                 user_prompt += f'Name: {npc.name}\n'
                 user_prompt += f'Summary: {npc.summary}\n'
                 user_prompt += f'History: {npc.history}\n'
+                user_prompt += f'Appearance: {npc.appearance}\n'
+                user_prompt += f'Clothing: {npc.clothing}\n'
                 user_prompt += f'Traits: {npc.traits}\n'
                 user_prompt += f'Notes: {npc.notes}\n'
 

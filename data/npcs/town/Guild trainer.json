@@ -1,0 +1,30 @@
+[
+    {
+      "title": "Guild Trainer",
+      "name": "Freya",
+      "summary": "The Guild Trainer, a seasoned warrior with a keen eye for talent, stands ready to mold raw recruits into formidable fighters. Her no-nonsense approach and battle-hardened expertise make her an invaluable asset to the guild.",
+      "history": "Rising through the ranks with unparalleled skill, the Guild Trainer earned her position through countless battles and a reputation for turning even the most hopeless cases into capable warriors. Her methods are tough but effective, born from hard-won experience.",
+      "traits": [
+        "Disciplined",
+        "Perceptive"
+      ],
+      "appearance": {
+        "height": "Average",
+        "build": "Athletic",
+        "skin_tone": "Tanned",
+        "hair_color": "Blonde",
+        "hairstyle": "Short, messy",
+        "facial_hair": "None"
+      },
+      "clothing": {
+        "headwear": "Head band",
+        "top": "Leather armor with metal reinforcements",
+        "pants": "Sturdy dark trousers",
+        "accessories": "None"
+      },
+      "notes": [
+        "Carries a large axe over her shoulder",
+        "Has a scar across her left cheek"
+      ]
+    }
+  ]

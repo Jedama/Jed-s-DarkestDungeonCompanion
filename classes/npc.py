@@ -1,13 +1,13 @@
 class NPC:
-    def __init__(self, title, name, summary, history, traits, appearance, notes, relationships):
+    def __init__(self, title, name, summary, history, traits, appearance, clothing, notes):
         self.title = title
         self.name = name
         self.summary = summary
         self.history = history
         self.traits = traits
         self.appearance = appearance
+        self.clothing = clothing
         self.notes = notes
-        self.relationships = relationships
 
     @classmethod
     def from_dict(cls, data):
@@ -19,8 +19,8 @@ class NPC:
             history=data.get('history'),
             traits=data.get('traits'),
             appearance=data.get('appearance'),
-            notes=data.get('notes', []),
-            relationships=data.get('relationships', {})
+            clothing=data.get('clothing'),
+            notes=data.get('notes', [])
         )
 
     def to_dict(self):
@@ -32,6 +32,6 @@ class NPC:
             "history": self.history,
             "traits": self.traits,
             "appearance": self.appearance,
-            "notes": self.notes,
-            "relationships": self.relationships
+            "clothing": self.clothing,
+            "notes": self.notes
         }

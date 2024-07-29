@@ -9,27 +9,21 @@
       "Observant"
     ],
     "appearance": {
-      "gender": "Male",
       "height": "Burly",
       "build": "Muscular",
       "skin_tone": "Rugged tan",
       "hair_color": "Salt and pepper",
       "hairstyle": "Short, braided",
-      "facial_hair": "Thick beard",
-      "accessories": "Golden earrings in both ears",
-      "distinguishing_marks": "Battle scars across arms and face",
-      "notes": "None",
-      "clothing": {
-          "headwear": "None",
-          "top": "Leather vest over a white linen shirt",
-          "pants": "Sturdy brown trousers",
-          "outerwear": "Green barkeep's apron",
-          "footwear": "Heavy leather boots"
-      }
+      "facial_hair": "Thick beard"
+    },
+    "clothing": {
+      "headwear": "None",
+      "top": "Leather vest over a white linen shirt",
+      "pants": "Sturdy brown trousers",
+      "accessories": "Golden earrings in both ears"
     },
     "notes": [
       "Has a deep, rumbling laugh that echoes through the tavern"
-    ],
-    "relationships": {}
+    ]
   }
 ]

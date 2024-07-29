@@ -14,8 +14,9 @@ def system_prompts(event):
                 4. Avoids introducing new powers, major story events, or significant changes to the overall state
                 5. Adheres to characters' mental, physical, and affliction status
                 6. Highlights negative afflictions and dysfunctional group dynamics (unless characters are healthy with compatible personalities)
+                7. Horrible and Excellent outcome should represent characters doing vile things to each other and harming trust and vice versa
 
-                Begin with a title.'''
+                Begin with a title within brackets [].'''
         )
     elif event.type == 'town':
         if event.title == 'Recruit':
@@ -55,7 +56,7 @@ def consequences_prompts(event):
             - Each character's description should be self-contained and not mention other characters directly. References to other characters should be made exclusively within the defined relationship context.
             - Avoid mentioning things that occured during the vignette, instead focus on how the characters in general have changed as a consequence of it.
             - If the outcome is "Contextual", infer it from the story.
-            - Don't give any consequences to or relating to the NPCs
+            - Don't give any consequences to or relating to the NPCs, and don't create any relationship consequences if there is only one chracter in the scene.
             
             Format your output as follows for clarity and direct execution in the script: (This example had a 'horrible' outcome)
 
