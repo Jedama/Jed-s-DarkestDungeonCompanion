@@ -20,27 +20,40 @@
 
 /* Story Text Container */
 .story-text {
+    font-family: 'CalsonAntique';
     color: white;
     white-space: pre-wrap;
-    font-size: 16px;
-    line-height: 1.6;
-    max-width: 700px;
+    font-size: 24px;
+    line-height: 1;
+    max-width: 750px;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
     position: relative;
     z-index: 3;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
 }
 
 /* Story Title */
 .story-title {
     color: white;
-    font-size: 24px;
+    font-family: 'CalsonAntique';
+    font-weight: bold;
+    font-size: 40px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     font-weight: bold;
     position: relative;
     z-index: 3;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
 }
 
 /* Story Cards */

@@ -43,7 +43,5 @@ export function getAllCharacters() {
 
 // Helper function to get character titles
 export function getCharacterTitles() {
-    console.log(state.characters);
-    console.log(Object.keys(state.characters));
     return Object.keys(state.characters);
 }

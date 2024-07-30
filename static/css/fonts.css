@@ -31,3 +31,30 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'CaslonAntique';
+    src: url('/fonts/CaslonAntique.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CaslonAntique';
+    src: url('/fonts/CaslonAntique-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'CaslonAntique';
+    src: url('/fonts/CaslonAntique-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CaslonAntique';
+    src: url('/fonts/CaslonAntique-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}

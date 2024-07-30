@@ -44,6 +44,7 @@ export function initializeEventHandler(elements) {
         'Health': 'red',
         'Mental': 'white',
         'Money': 'gold',
+        'Note': 'AntiqueWhite',
         'Appearance': 'beige',
         'Clothing': 'violet',
         'Status': 'lightseagreen',
@@ -61,7 +62,7 @@ export function initializeEventHandler(elements) {
         
         // Check for negative consequence (- "[text]")
         if (consequence.includes("-'")) {
-            return 'darkorange';
+            return 'orangered';
         }
     
         // Check for keyword matches

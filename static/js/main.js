@@ -3,6 +3,7 @@ import { state, setEstateName, addCharacter } from './state.js';
 import { renderCharacterList, renderCharacterDetails } from './character.js';
 import { initializeRecruit } from './recruit.js';
 import { initializeEventHandler } from './events.js';
+import { showLoading, hideLoading } from './loading.js'; 
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM fully loaded and parsed");
@@ -94,8 +95,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // Updated handleEventButtonClick function
     async function handleEventButtonClick() {
         try {
+            showLoading();
             const result = await createEvent('random', 'random', [], []);
             console.log('Event created:', result);
+            hideLoading();
             processEventResult(result);
         } catch (error) {
             console.error('Error creating event:', error);

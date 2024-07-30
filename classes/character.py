@@ -167,19 +167,19 @@ class Character:
 
     def update_status_description(self, description):
         self.status['description'] = description
-        return "Status updated"
+        return "↻Status"
 
     def update_appearance(self, field, description):
         if field in self.appearance:
             self.appearance[field] = description
-            return f"Appearance update"
+            return f"↻Appearance"
         else:
             return f"Appearance attribute {field} does not exist."
 
     def update_clothing(self, field, description):
         if field in self.clothing:
             self.clothing[field] = description
-            return f"Clothing updated"
+            return f"↻Clothing"
         else:
             return f"Clothing attribute {field} does not exist."
 
