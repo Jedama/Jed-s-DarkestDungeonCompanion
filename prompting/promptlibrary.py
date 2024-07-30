@@ -56,7 +56,7 @@ def consequences_prompts(event):
             - Each character's description should be self-contained and not mention other characters directly. References to other characters should be made exclusively within the defined relationship context.
             - Avoid mentioning things that occured during the vignette, instead focus on how the characters in general have changed as a consequence of it.
             - If the outcome is "Contextual", infer it from the story.
-            - Don't give any consequences to or relating to the NPCs, and don't create any relationship consequences if there is only one chracter in the scene.
+            - Completely ignore the NPCs, and don't create any relationship consequences if there is only one chracter in the scene.
             
             Format your output as follows for clarity and direct execution in the script: (This example had a 'horrible' outcome)
 

@@ -2,14 +2,17 @@
     "title": "Default",
     "consequences": [
         {"command": "update_stat", "params": {"field": "specific_stat", "change": "±x"}, "text": "Update a specific stat of the character."},
-        {"command": "update_appearance", "params": {"field": "specific_feature", "description": "new description"}, "text": "Update a part of the character's physical features."},
-        {"command": "update_clothing", "params": {"field": "specific_clothing", "description": "new description"}, "text": "Update a part of the character's clothing."},
+        {"command": "update_status_mental", "params": {"change": "±x"}, "text": "Update the physical state of the character."},
+        {"command": "update_status_physical", "params": {"change": "±x"}, "text": "Update the mental state of the character."},
+        {"command": "update_status_description", "params": {"description": "new description"}, "text": "Update the status description of the character."},
         {"command": "gain_trait", "params": {"trait": "new trait"}, "text": "Gain a new trait for the character."},
         {"command": "lose_trait", "params": {"trait": "specific trait"}, "text": "Lose an existing trait from the character."},
         {"command": "gain_note", "params": {"note": "new note"}, "text": "Gain a new piece of trivia for the character."},
         {"command": "lose_note", "params": {"note": "specific note"}, "text": "Lose an existing piece of trivia from the character."},
         {"command": "lose_trinket", "params": {"trinket": "specific trinket"}, "text": "Lose a trinket from the character."},
         {"command": "gain_wound", "params": {"wound": "new wound"}, "text": "Add new wound to the character."},
-        {"command": "lose_wound", "params": {"wound": "specific wound"}, "text": "Remove an existing wound from the character."}
+        {"command": "lose_wound", "params": {"wound": "specific wound"}, "text": "Remove an existing wound from the character."},
+        {"command": "update_appearance", "params": {"field": "specific_feature", "description": "new description"}, "text": "Update a part of the character's physical features."},
+        {"command": "update_clothing", "params": {"field": "specific_clothing", "description": "new description"}, "text": "Update a part of the character's clothing."}
     ]
 }

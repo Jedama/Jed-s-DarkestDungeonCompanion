@@ -41,6 +41,92 @@
         "outcomes": [2, 3, 5, 2, 1],
         "length": 2,
         "npcs": ["Town Crier"]
+    },
+    {
+        "title": "Graveyard Shift",
+        "num_characters": 1,
+        "summary": "[Character 1] assists the Caretaker in tending to the graveyard during a particularly eerie night.",
+        "outcomes": [3, 4, 3, 1, 2],
+        "length": 2,
+        "locations": ["Graveyard"]
+    },
+    {
+        "title": "Sewer Exploration",
+        "num_characters": 1,
+        "summary": "[Character 1] ventures into the sewers, driven by curiosity or necessity, and fortunately doesn't encounter any Ratfolk.",
+        "outcomes": [4, 3, 3, 1, 2],
+        "fields": ["combat"],
+        "length": 2,
+        "locations": ["Sewers"],
+        "special_consequences": ["gain_disease"]
+    },
+    {
+        "title": "Ancestor's Whispers",
+        "num_characters": 1,
+        "summary": "[Character 1] experiences unsettling visions while standing before the Ancestor's statue.",
+        "outcomes": [5, 4, 1, 1, 2],
+        "length": 1,
+        "locations": ["Ancestor's Statue"]
+    },
+    {
+        "title": "Farmland Patrol",
+        "num_characters": 1,
+        "summary": "[Character 1] patrols the outskirts of the farmlands, wary of corrupted farmhands.",
+        "outcomes": [2, 3, 4, 2, 1],
+        "fields": ["combat"],
+        "length": 2,
+        "locations": ["Farmlands"]
+    },
+    {
+        "title": "Blacksmith's Apprentice",
+        "num_characters": 1,
+        "summary": "[Character 1] spends a day assisting the Blacksmith, learning the intricacies of weapon and armor maintenance.",
+        "outcomes": [1, 2, 5, 3, 1],
+        "length": 2,
+        "npcs": ["Blacksmith"],
+        "locations": ["Blacksmith"]
+    },
+    {
+        "title": "Nomad's Tale",
+        "num_characters": 1,
+        "summary": "[Character 1] listens to the Nomad's tales of distant lands and strange artifacts.",
+        "outcomes": [1, 2, 4, 4, 1],
+        "length": 1,
+        "npcs": ["Nomad"],
+        "locations": ["Nomad Wagon"]
+    },
+    {
+        "title": "Solitary Reflection",
+        "num_characters": 1,
+        "summary": "[Character 1] spends time in solitary reflection, confronting inner demons and past regrets.",
+        "outcomes": [2, 3, 1, 3, 3],
+        "length": 1
+    },
+    {
+        "title": "Dockside Reverie",
+        "num_characters": 1,
+        "summary": "[Character 1] spends time at the docks, watching ships come and go, pondering the world beyond the hamlet.",
+        "outcomes": [1, 2, 3, 4, 3],
+        "length": 1,
+        "locations": ["Docks"]
+    },
+    {
+        "title": "Perimeter Watch",
+        "num_characters": 1,
+        "summary": "[Character 1] takes a shift watching the hamlet's perimeter, alert for any signs of danger.",
+        "outcomes": [2, 3, 5, 2, 1],
+        "fields": ["combat"],
+        "length": 2,
+        "locations": ["Perimeter"]
+    },
+    {
+        "title": "Hunting Expedition",
+        "num_characters": 1,
+        "summary": "[Character 1] goes on a solitary hunting trip in the surrounding wilderness.",
+        "outcomes": [3, 3, 3, 2, 1],
+        "fields": ["combat"],
+        "length": 2,
+        "locations": ["Forest"]
     }
     
 ]

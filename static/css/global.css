@@ -43,8 +43,8 @@ button {
     margin: 10px 0;
 }
 
-button:hover {
-    background-color: rgba(0, 86, 179, 0.7);
+button:focus {
+    outline: none;
 }
 
 /* Modal Styles */
@@ -78,3 +78,4 @@ body.modal-open .character-item {
 body.modal-open .character-item:hover {
     transform: none;
 }
+

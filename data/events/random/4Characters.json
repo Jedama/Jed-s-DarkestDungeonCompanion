@@ -4,7 +4,8 @@
         "num_characters": 4,
         "summary": "As night falls, [character 1], [character 2], [character 3], and [character 4] gather for a meager meal. ",
         "outcomes": [1, 3, 6, 2, 1],
-        "length": 2
+        "length": 2,
+        "location": ["Dining Hall"]
     },
     {
         "title": "Game of Cards",
@@ -13,7 +14,7 @@
         "outcomes": [1, 5, 4, 5, 1],
         "length": 2,
         "npcs": ["Barkeep", "Caretaker"],
-        "location": ["Tavern"],
+        "location": ["Gambling Hall"],
         "special_consequences": ["move_money"]
     },
     {
@@ -32,5 +33,14 @@
         "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] gather to share chilling tales.",
         "outcomes": [3, 2, 3, 4, 2],
         "length": 3
+    },
+    {
+        "title": "Argument4",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] take different sides in a heated argument.",
+        "outcomes": [2, 5, 0, 3, 1],
+        "fields": ["combat"],
+        "length": 3,
+        "special_consequences": ["gain_wound"]
     }
 ]

@@ -1,10 +1,6 @@
 {   
     "title": "Event",
     "consequences": [
-        {"command": "update_status_mental", "params": {"change": "±x"}, "text": "Update the physical state of the character."},
-        {"command": "update_status_physical", "params": {"change": "±x"}, "text": "Update the mental state of the character."},
-        {"command": "update_status_description", "params": {"description": "new description"}, "text": "Update the status description of the character."},
-        {"command": "lose_trinket", "params": {"trinket": "specific trinket"}, "text": "Lose a trinket from the character."},
         {"command": "gain_equipment", "params": {"equipment": "specific equipment"}, "text": "Gain a new equipment for the character."},
         {"command": "lose_equipment", "params": {"equipment": "specific equipment"}, "text": "Lose equipment from the character."}
     ]

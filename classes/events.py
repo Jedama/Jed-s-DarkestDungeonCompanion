@@ -129,7 +129,7 @@ class OutputEvent:
         print(event_story)
 
         system_prompt, user_prompt, assistant_prompt = self.create_consequences_prompt(event_story)
-        event_consequences = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 450 + (50 * len(self.characters)), temperature=1)
+        event_consequences = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 450 + (100 * len(self.characters)), temperature=1)
         event_consequences = "For" + clean_response_claude(event_consequences)
 
         print(event_consequences)
@@ -189,7 +189,6 @@ class OutputEvent:
             user_prompt += f'Appearance: {character.appearance}\n'
             user_prompt += f'Clothing: {character.clothing}\n'
             user_prompt += f'Equipment: {character.equipment}\n'
-            user_prompt += f'Trinkets: {character.trinkets}\n'
             user_prompt += f'Magic: {character.magic}\n'
             user_prompt += f'Other notes: {character.notes}\n'
 

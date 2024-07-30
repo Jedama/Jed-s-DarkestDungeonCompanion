@@ -2,6 +2,7 @@ import { loadEstateData, createNewEstate, createEvent } from './apiClient.js';
 import { state, setEstateName, addCharacter } from './state.js';
 import { renderCharacterList, renderCharacterDetails } from './character.js';
 import { initializeRecruit } from './recruit.js';
+import { initializeEventHandler } from './events.js';
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM fully loaded and parsed");
@@ -14,13 +15,16 @@ document.addEventListener("DOMContentLoaded", function() {
         eventButton: document.getElementById("event-button"),
         recruitButton: document.getElementById("recruit-button"),
         characterGrid: document.getElementById("character-grid"),
-        returnButton: document.getElementById("return-btn")
+        storyModal: document.getElementById("story-modal"),
+        returnButton: document.getElementById("return-btn"),
+        renderCharacterList: renderCharacterList  // Add this function to elements
     };
 
     // Initialize
     showSavefileModal();
     initializeEventListeners();
     const { populateDropdown } = initializeRecruit();
+    const { processEventResult } = initializeEventHandler(elements);
 
     // Function to show savefile modal
     function showSavefileModal() {
@@ -36,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function() {
             populateDropdown();  // Call populateDropdown when the modal is opened
         });
         elements.eventButton.addEventListener("click", handleEventButtonClick);
-        elements.returnButton.addEventListener("click", hideModal);
     }
 
     function handleSavefileSubmission() {
@@ -88,91 +91,15 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Function to process the event result
-function processEventResult(result) {
-    updateStoryPanel(result.title, result.storyText);
-    updateCards(result.consequences);
-    showModal();
-}
-
-// Function to update the story panel
-function updateStoryPanel(title, storyText) {
-    const storyPanel = document.querySelector('.story-panel');
-    storyPanel.innerHTML = `
-        <h2 class="story-title">${title || 'New Event'}</h2>
-        <p class="story-text">${storyText || 'No story available.'}</p>
-    `;
-}
-
-function updateCards(consequences) {
-    const cardContainer = document.querySelector('.story-cards');
-    cardContainer.innerHTML = ''; // Clear existing cards
-
-    const characters = Object.keys(consequences);
-
-    characters.forEach((character, index) => {
-        if (index < 4) { // Limit to 4 cards
-            const consequenceList = consequences[character];
-            const card = document.createElement('div');
-            card.className = 'story-card';
-            card.innerHTML = `
-                <div class="card-frame"></div>
-                <div class="card-content">
-                    <div class="card-image" style="background-image: url('/graphics/default/cards/${character.toLowerCase()}0.png')"></div>
-                    <ul class="consequence-text">
-                        ${consequenceList.map(consequence => {
-                            let color = 'lightsteelblue';
-                            if (consequence.includes('Strength')) {
-                                color = 'red';
-                            } else if (consequence.includes('Agility')) {
-                                color = 'green';
-                            } else if (consequence.includes('Intelligence')) {
-                                color = 'dodgerblue';
-                            } else if (consequence.includes('Authority')) {
-                                color = 'darkmagenta';
-                            } else if (consequence.includes('Sociability')) {
-                                color = 'yellow';
-                            } else if (consequence.includes('Health')) {
-                                color = 'crimson';
-                            } else if (consequence.includes('Mental')) {
-                                color = 'white';
-                            }
-                            return `<li style="color: ${color};">${consequence}</li>`;
-                        }).join('')}
-                    </ul>
-                </div>
-                <div class="character-name-container">
-                    <div class="character-name">${character}</div>
-                </div>
-            `;
-            cardContainer.appendChild(card);
+    // Updated handleEventButtonClick function
+    async function handleEventButtonClick() {
+        try {
+            const result = await createEvent('random', 'random', [], []);
+            console.log('Event created:', result);
+            processEventResult(result);
+        } catch (error) {
+            console.error('Error creating event:', error);
+            // Handle the error (e.g., show an error message to the user)
         }
-    });
-}
-
-// Function to show the modal
-function showModal() {
-    const modal = document.getElementById('story-modal');
-    modal.style.display = 'block';
-    document.body.classList.add('modal-open');
-}
-
-// Function to hide the modal
-function hideModal() {
-    const modal = document.getElementById('story-modal');
-    modal.style.display = 'none';
-    document.body.classList.remove('modal-open');
-}
-
-// Updated handleEventButtonClick function
-async function handleEventButtonClick() {
-    try {
-        const result = await createEvent('random', 'random', [], []);
-        console.log('Event created:', result);
-        processEventResult(result);
-    } catch (error) {
-        console.error('Error creating event:', error);
-        // Handle the error (e.g., show an error message to the user)
     }
-}
 });

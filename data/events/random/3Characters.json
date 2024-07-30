@@ -10,7 +10,7 @@
     {
         "title": "Caught",
         "num_characters": 3,
-        "summary": "[character 1] is caught doing something private and embarrassing by [character 2] and [character 3]. ",
+        "summary": "[character 1] is caught doing something private by [character 2] and [character 3]. ",
         "outcomes": [2, 4, 4, 3, 1],
         "fields": [],
         "length": 4        
@@ -18,7 +18,7 @@
     {
         "title": "Caught2",
         "num_characters": 3,
-        "summary": "[character 1] and [character 2] are caught doing something private and embarrassing by [character 3]. ",
+        "summary": "[character 1] and [character 2] are caught doing something private by [character 3]. ",
         "outcomes": [2, 4, 4, 3, 1],
         "fields": [],
         "length": 4        
@@ -28,7 +28,7 @@
         "num_characters": 3,
         "summary": "[character 1], [character 2], and [character 3] meet at the shore and undress for a swim. ",
         "outcomes": [0, 2, 2, 6, 3],
-        "fields": [],
+        "location": ["Shore"],
         "length": 4        
     },
     {
@@ -44,7 +44,41 @@
         "summary": "[Character 1], [Character 2], and [Character 3] must deal with a strange weather phenomenon.",
         "outcomes": [4, 5, 4, 2, 1],
         "length": 2,
-        "location": ["Town Square"],
+        "location": ["Perimeter"],
         "special_consequences": ["gain_wound"]
+    },
+    {
+        "title": "Tavern Conspiracy",
+        "num_characters": 3,
+        "summary": "[Character 1], [Character 2], and [Character 3] meet in a shadowy corner of the tavern to plot a secret mission.",
+        "outcomes": [1, 3, 5, 3, 1],
+        "length": 2,
+        "locations": ["Tavern"],
+        "npcs": ["Barkeep"]
+    },
+    {
+        "title": "Graveyard Séance",
+        "num_characters": 3,
+        "summary": "[Character 1], [Character 2], and [Character 3] head to the graveyard, urged by one of them to participate in a séance.",
+        "outcomes": [3, 4, 2, 1, 2],
+        "length": 3,
+        "locations": ["Graveyard"]
+    },
+    {
+        "title": "Abbey Intervention",
+        "num_characters": 3,
+        "summary": "[Character 1] and [Character 2] stage an intervention for [Character 3] at the Abbey, concerned about their recent behavior.",
+        "outcomes": [2, 3, 2, 3, 2],
+        "length": 2,
+        "locations": ["Abbey"]
+    },
+    {
+        "title": "Town Square Debate",
+        "num_characters": 3,
+        "summary": "[Character 1], [Character 2], and [Character 3] engage in a heated public debate in the Town Square, drawing a crowd.",
+        "outcomes": [2, 4, 5, 2, 1],
+        "length": 3,
+        "locations": ["Town Square"],
+        "npcs": ["Town Crier"]
     }
 ]

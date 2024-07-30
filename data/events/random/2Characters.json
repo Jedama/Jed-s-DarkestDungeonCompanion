@@ -45,14 +45,16 @@
         "outcomes": [3, 5, 2, 4, 1],
         "fields": ["money", "combat"],
         "length": 2,
-        "special_consequences": ["move_money", "gain_wound"]
+        "special_consequences": ["move_money", "gain_wound"],
+        "location": ["Training Grouds"]
     },
     {
         "title": "Joint Mission Briefing",
         "num_characters": 2,
         "summary": "[Character 1] and [Character 2] take part in an important mission briefing.",
         "outcomes": [0, 2, 5, 2, 0],
-        "length": 1
+        "length": 1,
+        "location": ["Strategy Room"]
     },
     {
         "title": "Late night visit",
@@ -132,8 +134,51 @@
         "summary": "[Character 1] and [Character 2] lose their way in the forest around the Hamlet and struggle to find their way home.",
         "outcomes": [3, 4, 3, 2, 0],
         "length": 2,
-        "location": ["Weald"],
+        "location": ["Forest"],
         "special_consequences": ["gain_wound"],
         "fields": ["combat"]
+    },
+    {
+        "title": "Graveyard Vigil",
+        "num_characters": 2,
+        "summary": "[Character 1] and [Character 2] keep a solemn vigil in the graveyard, honoring fallen comrades.",
+        "outcomes": [2, 3, 2, 3, 2],
+        "length": 2,
+        "locations": ["Graveyard"]
+    },
+    {
+        "title": "Shared Nightmare",
+        "num_characters": 2,
+        "summary": "[Character 1] and [Character 2] wake from the same horrifying nightmare, seeking each other out afterwards.",
+        "outcomes": [3, 4, 1, 2, 2],
+        "length": 3
+    },
+    {
+        "title": "Tavern Brawl",
+        "num_characters": 2,
+        "summary": "A heated argument between [Character 1] and [Character 2] escalates into a full-blown tavern brawl.",
+        "outcomes": [4, 3, 1, 2, 2],
+        "fields": ["combat"],
+        "length": 1,
+        "locations": ["Tavern"],
+        "npcs": ["Barkeep"],
+        "special_consequences": ["gain_wound"]
+    },
+    {
+        "title": "Shore Patrol",
+        "num_characters": 2,
+        "summary": "[Character 1] and [Character 2] patrol the misty shores, alert for signs of Fishfolk emerging from the sea.",
+        "outcomes": [3, 4, 3, 1, 1],
+        "fields": ["combat"],
+        "length": 2,
+        "locations": ["Shore"]
+    },
+    {
+        "title": "Nomad's Riddle",
+        "num_characters": 2,
+        "summary": "[Character 1] and [Character 2] work together to solve a cryptic riddle posed by the Nomad.",
+        "outcomes": [1, 2, 5, 4, 2],
+        "length": 1,
+        "locations": ["Nomad Wagon"]
     }
 ]

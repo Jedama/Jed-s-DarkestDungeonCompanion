@@ -52,7 +52,7 @@
     height: 100%;
     pointer-events: none;
     z-index: 2;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .story-card {
@@ -63,6 +63,14 @@
     transition: all 0.3s ease;
     pointer-events: auto;
     box-sizing: border-box;
+    overflow: visible;
+}
+
+.card-frame-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
 }
 
 .card-frame {
@@ -75,6 +83,61 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 10;
+}
+
+.card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.8) 20%,
+        rgba(255, 255, 255, 0.5) 40%,
+        rgba(255, 255, 255, 0.2) 60%,
+        rgba(255, 255, 255, 0) 80%
+    );
+    transform: scale(0.9);
+    filter: blur(10px);
+}
+
+.card-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 0, 0, 0.8) 20%,
+        rgba(255, 0, 0, 0.5) 40%,
+        rgba(255, 0, 0, 0.2) 60%,
+        rgba(255, 0, 0, 0) 80%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-glow.red::before {
+    opacity: 1;
+}
+
+.story-card:hover .card-glow {
+    opacity: 0.9;
+    transform: scale(1);
+}
+
+.story-card:hover {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.05);
     z-index: 10;
 }
 
@@ -112,16 +175,11 @@
 .story-card:nth-child(3) { top: 75%; left: 10%; --rotation: -2deg; }
 .story-card:nth-child(4) { top: 75%; left: 90%; --rotation: 4deg; }
 
-.story-card:hover {
-    transform: translate(-50%, -50%) rotate(0deg) scale(1.05);
-    z-index: 5;
-}
-
 /* Consequence Text Styling */
 .consequence-text {
     color: #ffffff;
-    font-family: sans-serif;
-    font-size: 16px;
+    font-family: 'DwarvenAxe', 'sans-serif';
+    font-size: 36px;
     line-height: 1;
     text-align: left;
     margin: 0;
@@ -129,10 +187,37 @@
     position: relative;
     z-index: 5;
     text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
+    transition: opacity 0.3s ease;
+}
+
+.affinity-change-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'DwarvenAxe', sans-serif;
+    font-size: 36px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 6;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
+    pointer-events: none;
+    width: 90%;
+    max-height: 80%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .consequence-text li,
@@ -195,29 +280,33 @@ h3 {
     background: none;
     border: none;
     padding: 0;
+    outline: none;
 }
 
 .story-btn img {
     width: 150px;
     height: auto;
+    box-shadow: none;
 }
 
 #continue-btn {
     position: absolute;
-    left: 25%;
-    transform: translateX(-50%);
+    right: 22.5%;
+    transform: translateX(50%);
+    transition: ease 0.3s;
 }
 
 #return-btn {
     position: absolute;
-    right: 25%;
-    transform: translateX(50%);
+    left: 22.5%;
+    transform: translateX(-50%);
+    transition: ease 0.3s;
 }
 
 #continue-btn:hover {
-    transform: translateX(-50%) scale(1.1) rotate(2deg);
+    transform: translateX(50%) scale(1.1) rotate(2deg);
 }
 
 #return-btn:hover {
-    transform: translateX(50%) scale(1.1) rotate(2deg);
+    transform: translateX(-50%) scale(1.1) rotate(2deg);
 }

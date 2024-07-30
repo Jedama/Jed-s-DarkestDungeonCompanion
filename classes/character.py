@@ -195,13 +195,13 @@ class Character:
     def gain_trait(self, trait):
         if trait not in self.traits:
             self.traits.append(trait)
-            return f"New trait: {trait}"
+            return f"+'{trait}'"
         return f"Already has trait: {trait}"
 
     def lose_trait(self, trait):
         if trait in self.traits:
             self.traits.remove(trait)
-            return f"Lost trait: {trait}"
+            return f"-'{trait}'"
         return f"Didn't have trait: {trait}"
 
     def add_note(self, note):
@@ -219,12 +219,12 @@ class Character:
 
     def gain_equipment(self, equipment):
         self.equipment.append(equipment)
-        return f"New equipment: {equipment}"
+        return f"+Equipment"
 
     def lose_equipment(self, equipment):
         if equipment in self.equipment:
             self.equipment.remove(equipment)
-            return f"Lost equipment: {equipment}"
+            return f"-Equipment"
         return f"Didn't have equipment: {equipment}"
 
     def lose_trinket(self, trinket):
@@ -235,7 +235,7 @@ class Character:
     
     def gain_wound(self, note):
         self.status['wounds'].append(note)
-        return "Note added"
+        return "+Wound"
 
     def update_summary(self, new_summary):
         self.summary = new_summary
@@ -247,7 +247,7 @@ class Character:
 
     def update_religion(self, new_religion):
         self.religion = new_religion
-        return "Religion updated"
+        return "↻Religion"
 
     def gain_combat_strength(self, strength):
         if strength not in self.combat['strengths']:
