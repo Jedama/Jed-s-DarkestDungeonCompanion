@@ -65,6 +65,7 @@ def create_event_endpoint():
             input_modifiers,
             input_name,
         )
+        event_type = 'recruit'
     else:
         event_title, event_text, consequence_dict = estate.start_event(
             event_type = input_type,
@@ -73,12 +74,14 @@ def create_event_endpoint():
             modifiers = input_modifiers
         )
         importance_list = []
+        event_type = 'random'
 
     updated_characters = {title: estate.characters[title].to_dict() for title in consequence_dict.keys() if title in estate.characters}
     
     response_data = {
         'characters': updated_characters,
-        'title': event_title,  
+        'eventType': event_type,
+        'title': event_title,
         'storyText': event_text,
         'consequences': consequence_dict,
         'interestList': importance_list

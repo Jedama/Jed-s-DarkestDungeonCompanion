@@ -1,4 +1,5 @@
 // events.js
+import { EventHandlerFactory } from './eventHandler.js';
 import { getState, addCharacter, updateCharacter } from "./state.js";
 
 export function initializeEventHandler(elements) {
@@ -7,22 +8,18 @@ export function initializeEventHandler(elements) {
     return { storyModal };
 }
 
+
 export function processEventResult(result, storyModal, elements) {
+    const state = getState();
+    const eventHandler = EventHandlerFactory.createHandler(result.eventType, state);
+    
+    eventHandler.processEvent(result);
+    const consequences = eventHandler.getConsequences();
+  
     updateStoryPanel(result.title, result.storyText, elements);
-    updateCards(result.consequences, elements);
+    updateCards(consequences, elements);
     storyModal.show();
 
-    const currentState = getState();
-
-    for (const [title, characterData] of Object.entries(result.characters)) {
-        if (currentState.characters.hasOwnProperty(title)) {
-            // Character exists, update it
-            updateCharacter(title, characterData);
-        } else {
-            // Character doesn't exist, add it
-            addCharacter(characterData);
-        }
-    }
 }
 
 function initializeStoryModal(elements) {
