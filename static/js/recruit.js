@@ -1,7 +1,7 @@
-import { fetchDefaultCharacterInfo, createEvent } from './apiClient.js';
-import { getState, addModifier, clearModifiers, getModifiers } from './state.js';
+import { fetchDefaultCharacterInfo, startEvent } from './apiClient.js';
+import { getState, addModifier, clearModifiers, getModifiers, setEventType } from './state.js';
 import { showLoading, hideLoading } from './loading.js'
-import { processEventResult } from './events.js';
+import { createEvent } from './events.js';
 import { elementManager } from './elementManager.js';
 
 let cachedCharacterInfo = null;
@@ -137,15 +137,9 @@ async function handleSubmission(event) {
     const characterTitle = elementManager.get('recruitDropdown').value;
     const characterName = elementManager.get('recruitNameInput').value;
     
-    if (characterTitle) {  
-        showLoading();
-        elementManager.get('recruitModal').style.display = "none";
-        const result = await createEvent('town', 'Recruit', [characterTitle], modifiers, characterName);
-        console.log('Event created:', result);
-        hideLoading();
-        processEventResult(result);
-        
-        elementManager.get('recruitModal').style.display = "none";
+    if (characterTitle) { 
+        elementManager.get('recruitModal').style.display = "none"; 
+        createEvent('recruit', '', [characterTitle], modifiers, characterName);
     } else {
         alert('Please select a character.');
     }

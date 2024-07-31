@@ -91,7 +91,7 @@ class Estate:
         else:
             print(f'Character template not found: {title}')
 
-        recruit_title, recruit_story, recruit_consequences = self.eventHandler.craft_event(self.characters, 'town', 'Recruit', [title], quirks)
+        recruit_title, recruit_story, recruit_consequences = self.eventHandler.craft_event(self.characters, 'recruit', '', [title], quirks)
 
         ordered_characters = self.eventHandler.recruit_rank_characters(self.characters, self.leader, character)
 

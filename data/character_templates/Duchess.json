@@ -42,11 +42,11 @@
         "build": "Athletic",
         "skin_tone": "Pale",
         "hair_color": "Dark red",
-        "hairstyle": "Short and messy",
+        "hairstyle": "Short and messy (hidden inside helmet)",
         "facial_hair": "None"
     },
     "clothing": {
-        "headwear": "Large, angular helmet with a wide, flat top and narrow eye slit",
+        "headwear": "Large, angular helmet that hides everything but her toothy mouth",
         "top": "Tight corset showing ample cleavage",
         "pants": "Tattered, flowing dress",
         "accessories": "None"

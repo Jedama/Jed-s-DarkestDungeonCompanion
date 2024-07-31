@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Recruit_Disembark",
+        "type": "recruit",
+        "num_characters": 1,
+        "summary": "[Character 1] steps off the stagecoach and arrives in the hamlet.",
+        "outcomes": [0, 0, 1, 0, 0],
+        "length": 1,
+        "locations": ["Stagecoach"],
+        "keyword_range": [0, 0]
+    },
+    {
+        "title": "Recruit_Crier",
+        "type": "recruit",
+        "num_characters": 1,
+        "summary": "The town crier announces [Character 1]'s arrival to the hamlet.",
+        "outcomes": [0, 0, 1, 0, 0],
+        "length": 1,
+        "npcs": ["Town Crier"],
+        "locations": ["Town Square"],
+        "keyword_range": [0, 0]
+    }
+]

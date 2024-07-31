@@ -73,56 +73,56 @@ def consequences_prompts(event):
             update_relationship_description('Ancestor', 'The Miller is eternally hateful for the fate the Ancestor cast him into')
             End
             '''
-    elif event.type == 'town':
-        if event.title == 'Recruit':
-            consequences_prompt = f'''Given the template and modifiers, update the template character sheet through outputting the functions below in a format ready for script execution.
+    elif event.type == 'recruit':
+        
+        consequences_prompt = f'''Given the template and modifiers, update the template character sheet through outputting the functions below in a format ready for script execution.
 
-            Modifiers: {', '.join(event.keywords)}
+        Modifiers: {', '.join(event.keywords)}
 
-            - Start with the character's title in single quotation marks followed by their name in parenthesis and a colon.
+        - Start with the character's title in single quotation marks followed by their name in parenthesis and a colon.
+        - List each consequence command on a new line below the character's title.
+        - Each command should begin with the action, followed by the parameters in parentheses.
+        - Always refer to characters by their title.
+        - Only modify the things relevant to the modifiers
+
+        Format your output as follows for clarity and direct execution in the script:
+
+        Example output given Ancestor with modifiers ['Overconfident', 'Curious', 'Aging']
+
+        For 'Ancestor' (Pandora Dantill)
+        update_stat('intelligence', 1)
+        update_summary('The Ancestor, the forebearer of ruin, whose insatiable curiosity and hubris tore asunder the veil of reality, beckoning forth the Darkest Dungeon. He gambled his legacy and the safety of the realm on forbidden occult practices, only to doom his lineage and land.')
+        gain_fighting_strength('Cataclysmic spells')
+        gain_note('Would sacrifice anything for his ambitions')
+        update_appearance('hair_color', 'Graying')
+        End
+        '''
+    if event.type == 'first_encounter':
+        consequences_prompt = f'''Initialize the character relationships between the new character and those present in the scene by outputting the functions below in a format ready for script execution:
+
+            - Start with the character's title in single quotes, followed by their name in parentheses and a colon.
             - List each consequence command on a new line below the character's title.
-            - Each command should begin with the action, followed by the parameters in parentheses.
+            - Begin each command with the action, followed by the parameters in parentheses.
             - Always refer to characters by their title.
-            - Only modify the things relevant to the modifiers
+            - Update affinity, dynamic, description, and history for both characters. Remember that relationships are often asymmetrical.
+            - Set affinity to a value between 1 and 8, where 4 represents a neutral interaction.
+            - Ensure that the interactions are portrayed accurately.
+            
 
-            Format your output as follows for clarity and direct execution in the script:
-
-            Example output given Ancestor with modifiers ['Overconfident', 'Curious', 'Aging']
+            Format your output as follows for clarity and direct execution in the script. Example:
 
             For 'Ancestor' (Pandora Dantill)
-            update_stat('intelligence', 1)
-            update_summary('The Ancestor, the forebearer of ruin, whose insatiable curiosity and hubris tore asunder the veil of reality, beckoning forth the Darkest Dungeon. He gambled his legacy and the safety of the realm on forbidden occult practices, only to doom his lineage and land.')
-            gain_fighting_strength('Cataclysmic spells')
-            gain_note('Would sacrifice anything for his ambitions')
-            update_appearance('hair_color', 'Graying')
+            update_relationship_affinity('Miller', 2)
+            update_relationship_dynamic('Miller', 'Indifference')
+            update_relationship_description('Miller', 'The Ancestor sees the Miller as someone to manipulate for his own ends while being aware of the Miller’s seething resentment.')
+
+            For 'Miller' (Dalton)
+            update_relationship_affinity('Ancestor', 0)
+            update_relationship_dynamic('Ancestor', 'Deep Hatred')
+            update_relationship_description('Ancestor', 'The Miller is eternally hateful for the fate the Ancestor cast him into, harboring a burning desire for revenge against the Ancestor’s relentless cruelty.')
             End
-            '''
-        if event.title in ['First Encounter 2', 'First Encounter 3', 'First Encounter 4']:
-            consequences_prompt = f'''Initialize the character relationships between the new character and those present in the scene by outputting the functions below in a format ready for script execution:
 
-                - Start with the character's title in single quotes, followed by their name in parentheses and a colon.
-                - List each consequence command on a new line below the character's title.
-                - Begin each command with the action, followed by the parameters in parentheses.
-                - Always refer to characters by their title.
-                - Update affinity, dynamic, description, and history for both characters. Remember that relationships are often asymmetrical.
-                - Set affinity to a value between 1 and 8, where 4 represents a neutral interaction.
-                - Ensure that the interactions are portrayed accurately.
-                
-
-                Format your output as follows for clarity and direct execution in the script. Example:
-
-                For 'Ancestor' (Pandora Dantill)
-                update_relationship_affinity('Miller', 2)
-                update_relationship_dynamic('Miller', 'Indifference')
-                update_relationship_description('Miller', 'The Ancestor sees the Miller as someone to manipulate for his own ends while being aware of the Miller’s seething resentment.')
-
-                For 'Miller' (Dalton)
-                update_relationship_affinity('Ancestor', 0)
-                update_relationship_dynamic('Ancestor', 'Deep Hatred')
-                update_relationship_description('Ancestor', 'The Miller is eternally hateful for the fate the Ancestor cast him into, harboring a burning desire for revenge against the Ancestor’s relentless cruelty.')
-                End
-
-            '''
+        '''
             
 
     return consequences_prompt

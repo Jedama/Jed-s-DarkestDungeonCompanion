@@ -1,5 +1,6 @@
 // eventHandler.js
 import { addCharacter, updateCharacter } from './state.js';
+import { createEvent } from './events.js';
 
 export class EventHandler {
     constructor(state) {
@@ -60,12 +61,11 @@ class RecruitEventHandler extends EventHandler {
 const eventHandlers = {
     random: {
       continue: () => {
-        console.log('Continuing from random event');
-        // Implement random event continue logic here
+        // Create a new random event
+        createEvent('random', '', [], [], '');
       },
       return: () => {
-        console.log('Returning from random event');
-        // Implement random event return logic here
+        // Do nothing but close the modal
       }
     },
     recruit: {

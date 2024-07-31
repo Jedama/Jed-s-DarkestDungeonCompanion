@@ -440,10 +440,9 @@ class EventHandler:
         if input_event.type in ['random', 'story', 'dungeon']:
             compiled_consequences = self.consequences_by_type['Default'].consequences
             compiled_consequences += self.consequences_by_type['Event'].consequences
-        elif input_event.type == "town":
-            if input_event.title == "Recruit":
-                compiled_consequences = self.consequences_by_type['Default'].consequences
-                compiled_consequences += self.consequences_by_type['Recruit'].consequences
+        elif input_event.type == "recruit":
+            compiled_consequences = self.consequences_by_type['Default'].consequences
+            compiled_consequences += self.consequences_by_type['Recruit'].consequences
 
         if input_event.num_characters >= 2:
             compiled_consequences += self.consequences_by_type['MultipleCharacters'].consequences

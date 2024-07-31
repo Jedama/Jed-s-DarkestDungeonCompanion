@@ -1,9 +1,8 @@
-import { loadEstateData, createNewEstate, createEvent } from './apiClient.js';
-import { addCharacter, setEstateName, getState, setEventType } from './state.js';
+import { loadEstateData, createNewEstate } from './apiClient.js';
+import { addCharacter, setEstateName, getState } from './state.js';
 import { renderCharacterList, renderCharacterDetails } from './character.js';
 import { initializeRecruit, populateDropdown } from './recruit.js';
-import { initializeEventHandler, processEventResult } from './events.js';
-import { showLoading, hideLoading } from './loading.js';
+import { initializeEventHandler, createEvent } from './events.js';
 import { elementManager } from './elementManager.js';
 
 document.addEventListener("DOMContentLoaded", initializeApp);
@@ -67,10 +66,10 @@ async function loadGame(savefileName, elements) {
     }
 }
 
-function handleEstateData(estateData, elements) {
+function handleEstateData(estateData) {
     if (estateData.characters && typeof estateData.characters === 'object') {
         Object.values(estateData.characters).forEach(addCharacter);
-        renderCharacterList(elements);
+        renderCharacterList();
         const firstCharacterName = Object.keys(estateData.characters)[0];
         if (firstCharacterName) {
             renderCharacterDetails(firstCharacterName);
@@ -80,23 +79,14 @@ function handleEstateData(estateData, elements) {
     }
 }
 
-function handleRecruitButtonClick(elements) {
+function handleRecruitButtonClick() {
     // Show the recruit modal
     document.getElementById("recruit-modal").style.display = "block";
     
     // Populate the dropdown
-    populateDropdown(elements);
+    populateDropdown();
 }
 
-async function handleEventButtonClick(elements) {
-    try {
-      showLoading();
-      const result = await createEvent('random', 'Argument4', [], [], '');
-      hideLoading();
-      setEventType('random', '');
-      processEventResult(result, elements.storyModal, elements);
-    } catch (error) {
-      console.error('Error creating event:', error);
-      // Handle the error (e.g., show an error message to the user)
-    }
+function handleEventButtonClick() {
+    createEvent('random', 'Argument4', [], [], '');
 }

@@ -1,7 +1,7 @@
 [
     {
         "title": "First Encounter 2",
-        "type": "town",
+        "type": "first_encounter",
         "num_characters": 2,
         "summary": "[Character 1], having recently arrived in the Hamlet, meets [Character 2] for the first time.",
         "outcomes": [0, 1, 4, 1, 0],
@@ -11,7 +11,7 @@
     },
     {
         "title": "First Encounter 3",
-        "type": "town",
+        "type": "first_encounter",
         "num_characters": 3,
         "summary": "[Character 1], having recently arrived in the Hamlet, meets [Character 2] and [Character 3] for the first time.",
         "outcomes": [0, 1, 4, 1, 0],
@@ -21,7 +21,7 @@
     },
     {
         "title": "First Encounter 4",
-        "type": "town",
+        "type": "first_encounter",
         "num_characters": 4,
         "summary": "[Character 1], having recently arrived in the Hamlet, meets [Character 2], [Character 3], and [Character 4] for the first time.",
         "outcomes": [0, 1, 4, 1, 0],

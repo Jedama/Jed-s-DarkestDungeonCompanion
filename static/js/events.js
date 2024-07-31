@@ -1,8 +1,10 @@
 // events.js
+import { startEvent } from './apiClient.js';
 import { EventHandlerFactory } from './eventHandler.js';
 import { renderCharacterList } from './character.js';
 import { getState, setEventType } from "./state.js";
 import { elementManager } from './elementManager.js';
+import { showLoading, hideLoading } from './loading.js';
 import eventHandlers from './eventHandler.js';
 
 
@@ -10,6 +12,19 @@ export function initializeEventHandler() {
     const storyModal = initializeStoryModal();
 
     return { storyModal };
+}
+
+export async function createEvent(eventType, eventName, eventCharacter, eventModifiers, recruitName) {
+    try {
+        showLoading();
+        const result = await startEvent(eventType, eventName, eventCharacter, eventModifiers, recruitName);
+        hideLoading();
+        setEventType(eventType, recruitName);
+        processEventResult(result);
+    } catch (error) {
+        console.error('Error creating event:', error);
+        // Handle the error (e.g., show an error message to the user)
+    }
 }
 
 export function processEventResult(result) {

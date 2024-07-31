@@ -149,7 +149,7 @@ class Character:
             change = int(change.replace('+', ''))
 
         if field in self.stats:
-            self.stats[field] += change
+            self.stats[field] = max(0, min(10, self.stats[field] + change))
             return f"{field.capitalize()} {'+' if change >= 0 else ''}{change}"
         else:
             return f"Stat {field} does not exist."
@@ -158,11 +158,14 @@ class Character:
         if isinstance(change, str):
             change = int(change.replace('+', ''))
 
-        self.status['physical'] += change
+        self.status['physical'] = max(0, min(10, self.status['physical'] + change))
         return f"Health {'+' if change >= 0 else ''}{change}"
 
     def update_status_mental(self, change):
-        self.status['mental'] += change
+        if isinstance(change, str):
+            change = int(change.replace('+', ''))
+
+        self.status['mental'] = max(0, min(10, self.status['mental'] + change))
         return f"Mental {'+' if change >= 0 else ''}{change}"
 
     def update_status_description(self, description):
@@ -263,19 +266,19 @@ class Character:
     def lose_combat_strength(self, strength):
         if strength in self.combat['strengths']:
             self.combat['strengths'].remove(strength)
-            return f"-Proficiency: {strength}"
+            return f"-Proficiency"
         return f"Didn't have combat strength: {strength}"
 
     def gain_combat_weakness(self, weakness):
         if weakness not in self.combat['weaknesses']:
             self.combat['weaknesses'].append(weakness)
-            return f"+Vulnerability: {weakness}"
+            return f"+Vulnerability"
         return f"Already had combat weakness: {weakness}"
 
     def lose_combat_weakness(self, weakness):
         if weakness in self.combat['weaknesses']:
             self.combat['weaknesses'].remove(weakness)
-            return f"-Vulnerability: {weakness}"
+            return f"-Vulnerability"
         return f"Didn't have combat weakness: {weakness}"
 
     def update_relationship_affinity(self, title, change):
