@@ -7,6 +7,16 @@ export const state = {
 
     // Estate name
     estateName: '',
+
+    // Current Event Type
+    currentEventType: null,
+
+    // For recruit events
+    recruitEvent: {
+        newCharacter: null,
+        interestingEncounters: [],
+        currentEncounterIndex: 0
+    }
 };
 
 export function addCharacter(character) {
@@ -28,6 +38,13 @@ export function updateCharacter(characterName, updatedInfo) {
     }
 }
 
+export function overwriteCharacter(character) {
+    if (!character.title) {
+        throw new Error('Character must have a title');
+    }
+    state.characters[character.title] = character;
+}
+
 export function getCharacter(characterName) {
     return state.characters[characterName];
 }
@@ -44,4 +61,17 @@ export function getAllCharacters() {
 // Helper function to get character titles
 export function getCharacterTitles() {
     return Object.keys(state.characters);
+}
+
+export function setEventType(eventType, title) {
+    state.currentEventType = eventType;
+
+    if (eventType === 'Recruit') {
+        // Reset recruit event state
+        state.recruitEvent = {
+            newCharacter: title,
+            interestingEncounters: [],
+            currentEncounterIndex: 0
+        };
+    }
 }

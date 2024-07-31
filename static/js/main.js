@@ -2,7 +2,7 @@ import { loadEstateData, createNewEstate, createEvent } from './apiClient.js';
 import { state, setEstateName, addCharacter } from './state.js';
 import { renderCharacterList, renderCharacterDetails } from './character.js';
 import { initializeRecruit } from './recruit.js';
-import { initializeEventHandler } from './events.js';
+import { initializeEventHandler, processEventResult } from './events.js';
 import { showLoading, hideLoading } from './loading.js'; 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -24,8 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize
     showSavefileModal();
     initializeEventListeners();
-    const { populateDropdown } = initializeRecruit();
-    const { processEventResult } = initializeEventHandler(elements);
+  
+    const { storyModal } = initializeEventHandler(elements);
+    const { populateDropdown } = initializeRecruit(elements, storyModal);
 
     // Function to show savefile modal
     function showSavefileModal() {
@@ -96,10 +97,10 @@ document.addEventListener("DOMContentLoaded", function() {
     async function handleEventButtonClick() {
         try {
             showLoading();
-            const result = await createEvent('random', 'random', [], []);
+            const result = await createEvent('random', '', [], [], '');
             console.log('Event created:', result);
             hideLoading();
-            processEventResult(result);
+            processEventResult(result, storyModal, elements);
         } catch (error) {
             console.error('Error creating event:', error);
             // Handle the error (e.g., show an error message to the user)

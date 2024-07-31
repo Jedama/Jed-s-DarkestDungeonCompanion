@@ -71,7 +71,7 @@ class Estate:
         # Start an event by title
         return self.eventHandler.craft_event(self.characters, event_type, event_title, titles, modifiers + self.keywords)
 
-    def recruit(self, title, quirks=[]):
+    def recruit(self, title, quirks=[], name = ''):
 
         def ensure_relationship_placeholder(character, other_character):
             if other_character.title not in character.relationships:
@@ -84,13 +84,28 @@ class Estate:
         character_data = read_json(os.path.join('data/character_templates', title))
         if character_data:
             character = Character.from_dict(character_data)
+            if name != '':
+                character.name = name
+            
             self.add_character(character)
         else:
             print(f'Character template not found: {title}')
 
-        recruit_story, recruit_consequences = self.eventHandler.craft_event(self.characters, 'town', 'Recruit', [title], quirks)
+        recruit_title, recruit_story, recruit_consequences = self.eventHandler.craft_event(self.characters, 'town', 'Recruit', [title], quirks)
 
         ordered_characters = self.eventHandler.recruit_rank_characters(self.characters, self.leader, character)
+
+        # Loop through each group in ordered_characters
+        for group in ordered_characters:
+            group_encounter_results = []
+            
+            # Ensure relationships exist between the new character and each character in the group
+            for other_title in group:
+                if other_title != title:  # Skip if it's the new character
+                    ensure_relationship_placeholder(self.characters[title], self.characters[other_title])
+                    ensure_relationship_placeholder(self.characters[other_title], self.characters[title])
+
+        return f'Recruit: {name}', recruit_story, recruit_consequences, ordered_characters
 
         # Store the return values in a list of lists
         encounter_results = []

@@ -3,7 +3,7 @@
     "name": "Junjeong & Nammo",
     "level": 0,
     "money": 0,
-    "summary": "Two souls bound within one body, the Scholar and the Warrior constantly fight for control. The Scholar foten maintains control, but the Warrior fights for control and often takes over, primarily when there is blood to shed. Their shared past is marked by tragedy, rivalry, and a mysterious massacre.",
+    "summary": "The sisters are composed of The Scholar (the first name) and the Warrior (the second name), who are two souls bound to one body, which both claim to be the rightful owner of. The Scholar often maintains control, but the Warrior is able to seize autonomy of the body, primarily when there is blood to shed. Their shared past is marked by tragedy, rivalry, and a mysterious massacre. Refer to the Sisters with the name of the sister currently in control.",
     "history": "Orphaned by a powerful warlord, the sisters were trained in tactics and combat. After a victory celebration, the two sisters set out to kill the other and a massacre occurred, leaving one sister dead. Both claim to be the survivor, with the other a parasitic spirit. They now seek the power at the Estate to rid themselves of the other.",
     "race": "Human & Spirit",
     "gender": "Female",
@@ -48,7 +48,7 @@
       "headwear": "Two-flower headdress",
       "top": "Warrior's armor over Scholar's robes",
       "pants": "Scholar's robes",
-      "accessories": "None"
+      "accessories": "The spirit of the sister not in control hovers behind the body, their translucent form only rarely seen by the other heroes."
     },
     "combat": {
       "role": "Tactician & Swordmaster",
@@ -65,6 +65,10 @@
     },
     "magic": "Forbidden knowledge allowing manipulation of life essence",
     "notes": [
+      "The Sister's personality differs greatly depending on who is in control",
+      "When one sister seizes control, they typically retain it for a significant time (unless willingly relinquished)",
+      "Others cannot typically see or hear the spiritual sister, making their conversations appear as heated self-dialogue",
+      "In combat, the sister in control will reluctantly relinquish control to take advantage of the other's strength"
     ],
     "relationships": {
     }

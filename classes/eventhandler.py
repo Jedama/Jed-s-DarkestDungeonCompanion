@@ -55,7 +55,7 @@ class EventHandler:
             consequence_type = filename[:-5]
             self.consequences_by_type[consequence_type] =  Consequences.from_dict(read_json(full_path))
 
-    def craft_event(self, characters, event_type='random', event_title=None, titles=[], keywords=[], enemies=[], region=''):
+    def craft_event(self, characters, event_type='random', event_title='', titles=[], keywords=[], enemies=[], region=''):
         
         def craft_event_with_characters(event):
             # Ensure that the number of specified titles does not exceed the number of characters required by the event
@@ -87,7 +87,7 @@ class EventHandler:
             print(f"No events available for type '{event_type}'")
             return None, None, None
         
-        if event_title:
+        if event_title != '':
             event_instance = events.get(event_title)
             input_event = copy.deepcopy(event_instance)
             if not input_event:

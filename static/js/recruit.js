@@ -1,7 +1,9 @@
-import { fetchDefaultCharacterInfo } from './apiClient.js';
-import { getCharacterTitles } from './state.js';
+import { fetchDefaultCharacterInfo, createEvent } from './apiClient.js';
+import { getCharacterTitles, setEventType } from './state.js';
+import { showLoading, hideLoading } from './loading.js'
+import { processEventResult } from './events.js';
 
-export function initializeRecruit() {
+export function initializeRecruit(globalElements, globalStoryModal) {
     const elements = {
         recruitModal: document.getElementById("recruit-modal"),
         recruitDropdown: document.getElementById("recruit-dropdown"),
@@ -125,18 +127,26 @@ export function initializeRecruit() {
         modalContent.appendChild(overlay);
     }
 
-    function handleSubmission(event) {
+    async function handleSubmission(event) {
         if (!modifiers.length) {
             event.preventDefault();
             return; // Do nothing if the seal is inactive
         }
+
+        console.log('handleSubmission called');
     
         const characterTitle = elements.recruitDropdown.value;
         const characterName = elements.recruitNameInput.value;
         
         if (characterTitle) {  
             
-            alert(`Character ${characterName} (${characterTitle}) recruited with modifiers: ${modifiers.join(', ')}`);
+            showLoading();
+            document.getElementById("recruit-modal").style.display = "none";
+            setEventType('Recruit', characterTitle)
+            const result = await createEvent('town', 'Recruit', [characterTitle], modifiers, characterName);
+            console.log('Event created:', result);
+            hideLoading();
+            processEventResult(result, globalStoryModal, globalElements);
             
             elements.recruitModal.style.display = "none";
         } else {

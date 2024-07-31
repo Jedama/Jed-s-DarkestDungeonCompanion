@@ -53,13 +53,35 @@ def create_event_endpoint():
         estate.add_character(character)
     
     # Call the start_event method with the additional data
-    event_characters = data['eventCharacters']
-    event_title, event_text, consequence_dict = estate.start_event(event_title= 'Argument4', titles = event_characters)
+    input_type = data['eventType']
+    input_title = data['eventTitle']
+    input_characters = data['eventCharacters']
+    input_modifiers = data['eventModifiers']
+    input_name = data['recruitName']
+
+    if input_title == 'Recruit':
+        event_title, event_text, consequence_dict, importance_list = estate.recruit(
+            input_characters[0],
+            input_modifiers,
+            input_name,
+        )
+    else:
+        event_title, event_text, consequence_dict = estate.start_event(
+            event_type = input_type,
+            event_title = input_title, 
+            titles = input_characters, 
+            modifiers = input_modifiers
+        )
+        importance_list = []
+
+    updated_characters = {title: estate.characters[title].to_dict() for title in consequence_dict.keys() if title in estate.characters}
     
     response_data = {
+        'characters': updated_characters,
         'title': event_title,  
         'storyText': event_text,
-        'consequences': consequence_dict  
+        'consequences': consequence_dict,
+        'interestList': importance_list
     }
 
     return jsonify(response_data), 200

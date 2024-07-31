@@ -56,13 +56,14 @@ export async function fetchDefaultCharacterInfo() {
   return response.json();
 }
 
-export async function createEvent(eventType, eventName, eventCharacters, eventModifiers) {
+export async function createEvent(eventType, eventTitle, eventCharacters, eventModifiers, recruitName) {
   try {
       const estateData = compileEstateData({
           eventType: eventType,
-          eventName: eventName,
+          eventTitle: eventTitle,
           eventCharacters: eventCharacters,
-          eventModifiers: eventModifiers
+          eventModifiers: eventModifiers,
+          recruitName: recruitName
       });
 
       const response = await fetch('/api/create-event', {
