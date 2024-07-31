@@ -209,12 +209,12 @@ class Character:
 
     def gain_note(self, note):
         self.notes.append(note)
-        return "Note added"
+        return "+Note"
 
     def lose_note(self, note):
         if note in self.notes:
             self.notes.remove(note)
-            return "Note removed"
+            return "-Note"
         return "Note not found"
 
     def gain_equipment(self, equipment):
@@ -230,7 +230,7 @@ class Character:
     def lose_trinket(self, trinket):
         if trinket in self.trinkets:
             self.trinkets.remove(trinket)
-            return f"Lost trinket: {trinket}"
+            return f"-Trinket: {trinket}"
         return f"Didn't have trinket: {trinket}"
     
     def gain_wound(self, note):
@@ -239,11 +239,11 @@ class Character:
 
     def update_summary(self, new_summary):
         self.summary = new_summary
-        return "Summary updated"
+        return "↻Summary"
 
     def update_history(self, new_history):
         self.history = new_history
-        return "History updated"
+        return "↻History"
 
     def update_religion(self, new_religion):
         self.religion = new_religion
@@ -252,25 +252,25 @@ class Character:
     def gain_combat_strength(self, strength):
         if strength not in self.combat['strengths']:
             self.combat['strengths'].append(strength)
-            return f"New strength: {strength}"
+            return f"+Proficiency"
         return f"Already had combat strength: {strength}"
 
     def lose_combat_strength(self, strength):
         if strength in self.combat['strengths']:
             self.combat['strengths'].remove(strength)
-            return f"Lost strength: {strength}"
+            return f"-Proficiency: {strength}"
         return f"Didn't have combat strength: {strength}"
 
     def gain_combat_weakness(self, weakness):
         if weakness not in self.combat['weaknesses']:
             self.combat['weaknesses'].append(weakness)
-            return f"New weakness: {weakness}"
+            return f"+Vulnerability: {weakness}"
         return f"Already had combat weakness: {weakness}"
 
     def lose_combat_weakness(self, weakness):
         if weakness in self.combat['weaknesses']:
             self.combat['weaknesses'].remove(weakness)
-            return f"Lost weakness: {weakness}"
+            return f"-Vulnerability: {weakness}"
         return f"Didn't have combat weakness: {weakness}"
 
     def update_relationship_affinity(self, title, change):

@@ -1,88 +1,68 @@
 // apiClient.js
+
 import { state } from './state.js';
+
+const BASE_URL = '/api'; // Consider moving this to a config file
 
 function compileEstateData(additionalData = {}) {
   return {
-      "estateName": state.estateName,
-      "characters": state.characters,
-      ...additionalData
+    "estateName": state.estateName,
+    "characters": state.characters,
+    ...additionalData
   };
 }
 
+// Helper function for making API requests
+async function apiRequest(endpoint, method = 'GET', body = null) {
+  const options = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  if (body) {
+    options.body = JSON.stringify(body);
+  }
+
+  const response = await fetch(`${BASE_URL}${endpoint}`, options);
+
+  if (!response.ok) {
+    throw new Error(`API error: ${response.status} ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+// Estate-related API calls
 export async function loadEstateData(savefileName) {
-  const response = await fetch(`/estates/${savefileName}/estate.json`);
-  if (response.ok) return response.json();
-  if (response.status === 404) return null;
-  throw new Error(`HTTP error! Status: ${response.status}`);
+  return apiRequest(`/estates/${savefileName}/estate.json`);
 }
 
 export async function createNewEstate(savefileName) {
-  const response = await fetch(`/api/create_estate/${savefileName}`, { method: 'POST' });
-  if (!response.ok) {
-    throw new Error(`Failed to create new estate. Status: ${response.status}`);
-  }
-  return response.json();
+  return apiRequest(`/create_estate/${savefileName}`, 'POST');
 }
 
 export async function saveEstate() {
-  try {
-      const estateData = compileEstateData();
-      const response = await fetch('/api/save-estate', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(estateData),
-      });
-
-      if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const result = await response.json();
-      console.log('Estate saved successfully:', result);
-      return result;
-  } catch (error) {
-      console.error('Error saving estate:', error);
-      throw error;
-  }
+  const estateData = compileEstateData();
+  return apiRequest('/save-estate', 'POST', estateData);
 }
 
+// Character-related API calls
 export async function fetchDefaultCharacterInfo() {
-  const response = await fetch('/api/default_character_info');
-  if (!response.ok) {
-    throw new Error('Failed to fetch character info');
-  }
-  return response.json();
+  return apiRequest('/default_character_info');
 }
 
+// Event-related API calls
 export async function createEvent(eventType, eventTitle, eventCharacters, eventModifiers, recruitName) {
-  try {
-      const estateData = compileEstateData({
-          eventType: eventType,
-          eventTitle: eventTitle,
-          eventCharacters: eventCharacters,
-          eventModifiers: eventModifiers,
-          recruitName: recruitName
-      });
-
-      const response = await fetch('/api/create-event', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(estateData),
-      });
-
-      if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const result = await response.json();
-      console.log('Event created successfully:', result);
-      return result;
-  } catch (error) {
-      console.error('Error creating event:', error);
-      throw error;
-  }
+  const estateData = compileEstateData({
+    eventType,
+    eventTitle,
+    eventCharacters,
+    eventModifiers,
+    recruitName
+  });
+  return apiRequest('/create-event', 'POST', estateData);
 }
+
+// Add any other API calls here...

@@ -34,7 +34,7 @@ def load_or_create_estate(estate_name):
         estate.save_estate()  # Make sure to save the new estate
         return jsonify({"message": f"Campaign started for estate {estate_name}", "status": "started"})
 
-@app.route('/estates/<estate_name>/estate.json')
+@app.route('/api/estates/<estate_name>/estate.json')
 def serve_estate_json(estate_name):
     estate_path = os.path.join('estates', estate_name, 'estate.json')
     if os.path.exists(estate_path):
