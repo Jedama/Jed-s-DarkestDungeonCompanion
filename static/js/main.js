@@ -1,59 +1,44 @@
 import { loadEstateData, createNewEstate, createEvent } from './apiClient.js';
-import { addCharacter, setEstateName, getState } from './state.js';
+import { addCharacter, setEstateName, getState, setEventType } from './state.js';
 import { renderCharacterList, renderCharacterDetails } from './character.js';
-import { initializeRecruit } from './recruit.js';
+import { initializeRecruit, populateDropdown } from './recruit.js';
 import { initializeEventHandler, processEventResult } from './events.js';
 import { showLoading, hideLoading } from './loading.js';
+import { elementManager } from './elementManager.js';
 
 document.addEventListener("DOMContentLoaded", initializeApp);
 
 function initializeApp() {
     console.log("DOM fully loaded and parsed");
 
-    const elements = getDOMElements();
-    const { storyModal } = initializeEventHandler(elements);
-    const { populateDropdown } = initializeRecruit(elements, storyModal);
+    elementManager.initialize();
+    renderCharacterList();
+    const { storyModal } = initializeEventHandler();
+    initializeRecruit(storyModal);
 
-    showSavefileModal(elements.savefileModal);
-    initializeEventListeners(elements, populateDropdown);
+    showSavefileModal();
+    initializeEventListeners();
 }
 
-function getDOMElements() {
-    return {
-        savefileModal: document.getElementById("savefile-modal"),
-        savefileSubmit: document.getElementById("savefile-submit"),
-        savefileNameInput: document.getElementById("savefile-name"),
-        eventButton: document.getElementById("event-button"),
-        recruitButton: document.getElementById("recruit-button"),
-        characterGrid: document.getElementById("character-grid"),
-        storyModal: document.getElementById("story-modal"),
-        returnButton: document.getElementById("return-btn"),
-        renderCharacterList
-    };
+function showSavefileModal() {
+    elementManager.get('savefileModal').style.display = "block";
 }
 
-function showSavefileModal(modal) {
-    modal.style.display = "block";
+function initializeEventListeners() {
+    elementManager.get('savefileSubmit').addEventListener("click", handleSavefileSubmission);
+    elementManager.get('savefileNameInput').addEventListener("keyup", handleSavefileKeyUp);
+    elementManager.get('recruitButton').addEventListener("click", handleRecruitButtonClick);
+    elementManager.get('eventButton').addEventListener("click", handleEventButtonClick);
 }
 
-function initializeEventListeners(elements, populateDropdown) {
-    elements.savefileSubmit.addEventListener("click", () => handleSavefileSubmission(elements));
-    elements.savefileNameInput.addEventListener("keyup", (event) => handleSavefileKeyUp(event, elements));
-    elements.recruitButton.addEventListener("click", () => {
-        document.getElementById("recruit-modal").style.display = "block";
-        populateDropdown();
-    });
-    elements.eventButton.addEventListener("click", () => handleEventButtonClick(elements));
-}
-
-function handleSavefileSubmission(elements) {
-    const estateName = elements.savefileNameInput.value.trim();
+function handleSavefileSubmission() {
+    const estateName = elementManager.get('savefileNameInput').value.trim();
     if (estateName) {
         console.log("Savefile name entered:", estateName);
         setEstateName(estateName);
         console.log("Estate name after setting:", getState().estateName);
-        elements.savefileModal.style.display = "none";
-        loadGame(estateName, elements);
+        elementManager.get('savefileModal').style.display = "none";
+        loadGame(estateName);
     } else {
         alert("Please enter a savefile name.");
     }
@@ -85,7 +70,7 @@ async function loadGame(savefileName, elements) {
 function handleEstateData(estateData, elements) {
     if (estateData.characters && typeof estateData.characters === 'object') {
         Object.values(estateData.characters).forEach(addCharacter);
-        elements.renderCharacterList(elements);
+        renderCharacterList(elements);
         const firstCharacterName = Object.keys(estateData.characters)[0];
         if (firstCharacterName) {
             renderCharacterDetails(firstCharacterName);
@@ -95,12 +80,20 @@ function handleEstateData(estateData, elements) {
     }
 }
 
+function handleRecruitButtonClick(elements) {
+    // Show the recruit modal
+    document.getElementById("recruit-modal").style.display = "block";
+    
+    // Populate the dropdown
+    populateDropdown(elements);
+}
+
 async function handleEventButtonClick(elements) {
     try {
       showLoading();
-      const result = await createEvent('random', '', [], [], '');
-      console.log('Event created:', result);
+      const result = await createEvent('random', 'Argument4', [], [], '');
       hideLoading();
+      setEventType('random', '');
       processEventResult(result, elements.storyModal, elements);
     } catch (error) {
       console.error('Error creating event:', error);

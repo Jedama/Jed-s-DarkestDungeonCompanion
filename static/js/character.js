@@ -1,9 +1,11 @@
 import { getState, subscribeToState } from './state.js';
+import { elementManager } from './elementManager.js';
 
-export function renderCharacterList(elements) {
+export function renderCharacterList() {
     const updateList = () => {
         const state = getState();
-        elements.characterGrid.innerHTML = '';
+        const characterGrid = elementManager.get('characterGrid');
+        characterGrid.innerHTML = '';
     
         Object.entries(state.characters).forEach(([title, character]) => {
             const characterElement = document.createElement('div');
@@ -24,7 +26,7 @@ export function renderCharacterList(elements) {
             characterElement.appendChild(frameImg);
             characterElement.addEventListener('click', () => renderCharacterDetails(title));
             
-            elements.characterGrid.appendChild(characterElement);
+            characterGrid.appendChild(characterElement);
         });
     };
 
@@ -37,11 +39,11 @@ export function renderCharacterDetails(title) {
     const character = state.characters[title];
     if (!character) {
         console.error(`Character ${title} not found in state`);
-        document.querySelector('.character-info').innerHTML = `<p>Error loading character details</p>`;
+        elementManager.get('characterInfo').innerHTML = `<p>Error loading character details</p>`;
         return;
     }
 
-    const characterInfo = document.querySelector('.character-info');
+    const characterInfo = elementManager.get('characterInfo');
 
     // Update character portrait
     const characterPortrait = characterInfo.querySelector('#character-portrait');
@@ -69,7 +71,7 @@ export function renderCharacterDetails(title) {
 }
 
 function updateTraits(traits) {
-    const traitList = document.getElementById('character-traits');
+    const traitList = elementManager.get('characterTraits');
     traitList.innerHTML = ''; // Clear existing traits
     
     traits.forEach(trait => {
@@ -80,7 +82,7 @@ function updateTraits(traits) {
 }
 
 function updateBookmark(type, status) {
-    const bookmark = document.querySelector(`.${type}-bookmark`);
+    const bookmark = elementManager.get(`${type}Bookmark`);
     const maxHeight = 400; // Maximum height of the bookmark
 
     let texture, scale;
@@ -117,7 +119,7 @@ function updateCharacterStats(character) {
     const stats = ['strength', 'agility', 'intelligence', 'authority', 'sociability'];
     stats.forEach(stat => {
         const statValue = character.stats[stat] || 0;
-        const statItem = document.querySelector(`.stat-item[data-stat="${stat}"]`);
+        const statItem = elementManager.get(`${stat}Stat`);
         
         if (statItem) {
             const romanNumeralElement = statItem.querySelector('.stat-number');

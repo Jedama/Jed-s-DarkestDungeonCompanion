@@ -56,3 +56,29 @@ class RecruitEventHandler extends EventHandler {
       return this.eventData.consequences;
     }
 }
+
+const eventHandlers = {
+    random: {
+      continue: () => {
+        console.log('Continuing from random event');
+        // Implement random event continue logic here
+      },
+      return: () => {
+        console.log('Returning from random event');
+        // Implement random event return logic here
+      }
+    },
+    recruit: {
+      continue: () => {
+        console.log('Continuing from recruit event');
+        // Implement recruit event continue logic here
+      },
+      return: () => {
+        console.log('Returning from recruit event');
+        // Implement recruit event return logic here
+      }
+    }
+    // Add more event types as needed
+  };
+  
+  export default eventHandlers;

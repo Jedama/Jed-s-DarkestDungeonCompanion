@@ -48,6 +48,23 @@ class StateManager {
       const { [characterTitle]: removed, ...remainingCharacters } = this.state.characters;
       this.setState({ characters: remainingCharacters });
     }
+
+    addModifier(modifier) {
+      this.setState({
+        eventModifiers: [
+          ...this.state.eventModifiers,
+          modifier
+        ]
+      });
+    }
+
+    clearModifiers() {
+      this.setState({ eventModifiers: [] });
+    }
+
+    getModifiers() {
+      return this.state.eventModifiers || [];
+    }
   
     updateCharacter(characterTitle, updatedInfo) {
       if (this.state.characters[characterTitle]) {
@@ -65,7 +82,7 @@ class StateManager {
     setEventType(eventType, title) {
       this.setState({
         currentEventType: eventType,
-        recruitEvent: eventType === 'Recruit' ? {
+        recruitEvent: eventType === 'recruit' ? {
           newCharacter: title,
           interestingEncounters: [],
           currentEncounterIndex: 0
@@ -78,6 +95,7 @@ class StateManager {
   const initialState = {
     characters: {},
     estateName: '',
+    eventModifiers: [],
     currentEventType: null,
     recruitEvent: null
   };
@@ -89,6 +107,9 @@ class StateManager {
   export const setEstateName = (name) => stateManager.setEstateName(name);
   export const addCharacter = (character) => stateManager.addCharacter(character);
   export const removeCharacter = (characterTitle) => stateManager.removeCharacter(characterTitle);
+  export const addModifier = (modifier) => stateManager.addModifier(modifier);
+  export const clearModifiers = () => stateManager.clearModifiers();
+  export const getModifiers = () => stateManager.getModifiers();
   export const updateCharacter = (characterTitle, updatedInfo) => stateManager.updateCharacter(characterTitle, updatedInfo);
   export const setEventType = (eventType, title) => stateManager.setEventType(eventType, title);
   export const subscribeToState = (listener) => stateManager.subscribe(listener);

@@ -23,7 +23,7 @@ def system_prompts(event):
             system_prompt += (
                 "Your role is to present the new character as they step off the stagecoach, focusing on their appearance, mannerisms, and overall vibe. "
                 "Highlight how their unique characteristics and personal quirks, listed in the modifiers section, influence their behavior and the townspeople's reactions. "
-                "Avoid explicitly mentioning the provided quirks and traits, and focus on presenting them through the story."
+                "Avoid explicitly mentioning the provided quirks and traits, and focus on presenting them through the story. Start your story with [Recruit: 'name']"
             )
         if event.title == 'First Encounter':
             system_prompt += f"""

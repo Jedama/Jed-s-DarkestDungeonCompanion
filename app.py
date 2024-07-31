@@ -81,7 +81,7 @@ def create_event_endpoint():
     response_data = {
         'characters': updated_characters,
         'eventType': event_type,
-        'title': event_title,
+        'title': event_title,  
         'storyText': event_text,
         'consequences': consequence_dict,
         'interestList': importance_list

@@ -1,47 +1,67 @@
 // events.js
 import { EventHandlerFactory } from './eventHandler.js';
-import { getState, addCharacter, updateCharacter } from "./state.js";
+import { renderCharacterList } from './character.js';
+import { getState, setEventType } from "./state.js";
+import { elementManager } from './elementManager.js';
+import eventHandlers from './eventHandler.js';
 
-export function initializeEventHandler(elements) {
-    const storyModal = initializeStoryModal(elements);
+
+export function initializeEventHandler() {
+    const storyModal = initializeStoryModal();
 
     return { storyModal };
 }
 
-
-export function processEventResult(result, storyModal, elements) {
+export function processEventResult(result) {
     const state = getState();
     const eventHandler = EventHandlerFactory.createHandler(result.eventType, state);
     
     eventHandler.processEvent(result);
     const consequences = eventHandler.getConsequences();
   
-    updateStoryPanel(result.title, result.storyText, elements);
-    updateCards(consequences, elements);
-    storyModal.show();
+    updateStoryPanel(result.title, result.storyText);
+    updateCards(consequences);
 
+    const storyModal = elementManager.get('storyModal');
+    storyModal.style.display = 'block';
+
+    // Update the current event type in the state
+    setEventType(result.eventType, Object.keys(consequences)[0]);
 }
 
-function initializeStoryModal(elements) {
+function initializeStoryModal() {
     const modal = {
         show: function() {
-            elements.storyModal.style.display = 'block';
+            elementManager.get('storyModal').style.display = 'block';
             document.body.classList.add('story-modal-open');
         },
         hide: function() {
-            elements.storyModal.style.display = 'none';
+            elementManager.get('storyModal').style.display = 'none';
             document.body.classList.remove('story-modal-open');
-            elements.renderCharacterList(elements);  // Update character list when closing modal
+            renderCharacterList();  // Update character list when closing modal
         }
     };
 
-    elements.returnButton.addEventListener("click", modal.hide);
+    elementManager.get('returnButton').addEventListener("click", () => {
+        const currentEventType = getState().currentEventType;
+        if (eventHandlers[currentEventType] && eventHandlers[currentEventType].return) {
+            eventHandlers[currentEventType].return();
+        }
+        modal.hide();
+    });
+
+    elementManager.get('continueButton').addEventListener("click", () => {
+        const currentEventType = getState().currentEventType;
+        if (eventHandlers[currentEventType] && eventHandlers[currentEventType].continue) {
+            eventHandlers[currentEventType].continue();
+        }
+    });
 
     return modal;
 }
 
-function updateStoryPanel(title, storyText, elements) {
-    const storyPanel = elements.storyModal.querySelector('.story-panel');
+function updateStoryPanel(title, storyText) {
+    const storyPanel = elementManager.get('storyPanel');
     storyPanel.innerHTML = `
         <h2 class="story-title">${title || 'New Event'}</h2>
         <p class="story-text">${storyText || 'No story available.'}</p>
@@ -132,9 +152,9 @@ function processConsequences(consequences) {
     return characterData;
 }
 
-function updateCards(consequences, elements) {
+function updateCards(consequences) {
     const characterData = processConsequences(consequences);
-    const cardContainer = elements.storyModal.querySelector('.story-cards');
+    const cardContainer = elementManager.get('storyCards');
     cardContainer.innerHTML = ''; // Clear existing cards
 
     const cards = {};

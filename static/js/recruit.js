@@ -1,155 +1,152 @@
 import { fetchDefaultCharacterInfo, createEvent } from './apiClient.js';
-import { getState } from './state.js';
+import { getState, addModifier, clearModifiers, getModifiers } from './state.js';
 import { showLoading, hideLoading } from './loading.js'
 import { processEventResult } from './events.js';
+import { elementManager } from './elementManager.js';
 
-export function initializeRecruit(globalElements, globalStoryModal) {
-    const elements = {
-        recruitModal: document.getElementById("recruit-modal"),
-        recruitDropdown: document.getElementById("recruit-dropdown"),
-        recruitIcon: document.getElementById("recruit-icon"),
-        recruitNameInput: document.getElementById("recruit-name"),
-        recruitModifierInput: document.getElementById("recruit-modifier"),
-        recruitModifierContainer: document.getElementById("recruit-modifier-container"),
-        recruitHireButton: document.getElementById("recruit-hire"),
-    };
+let cachedCharacterInfo = null;
 
-    let characterInfo = {};
-    let modifiers = [];
+export function initializeRecruit() {    
 
-    const positions = [
-        {x: '10%', y: '10%'},    // Top-left
-        {x: '90%', y: '10%'},  // Top-right
-        {x: '10%', y: '90%'},  // Bottom-left
-        {x: '90%', y: '90%'},// Bottom-right
-        {x: '50%', y: '10%'},   // Top-center
-        {x: '10%', y: '50%'},   // Middle-left
-        {x: '90%', y: '50%'}, // Middle-right
-        {x: '50%', y: '90%'}, // Bottom-center
-        {x: '50%', y: '50%'}   // Center
-    ];
-
-    elements.recruitDropdown.addEventListener('change', updateDetails);
-    elements.recruitHireButton.addEventListener('click', handleSubmission);
-    elements.recruitModifierInput.addEventListener('keypress', handleModifierKeyPress);
-
-    function updateDetails() {
-        const selectedCharacter = elements.recruitDropdown.value;
-        elements.recruitIcon.innerHTML = selectedCharacter
-            ? `<img src="/graphics/default/icons/${selectedCharacter.toLowerCase()}0.png" alt="${selectedCharacter}">`
-            : '';
-        const info = characterInfo[selectedCharacter];
-        elements.recruitNameInput.value = info ? info.default_name : '';
-
-        // Clear modifiers and reset seal
-        modifiers = [];
-        clearModifiers();
-        resetSeal();
-    }
-
-    function clearModifiers() {
-        const modalContent = elements.recruitModal.querySelector('.modal-content');
-        modalContent.querySelectorAll('#recruit-modifier-overlay').forEach(el => el.remove());
-    }
-    
-    function resetSeal() {
-        elements.recruitHireButton.classList.remove('active');
-        elements.recruitHireButton.classList.add('inactive');
-    }
-
-    async function populateDropdown() {
-        try {
-            characterInfo = await fetchDefaultCharacterInfo();
-            const currentCharacters = Object.keys(getState().characters);
-
-            const availableCharacters = Object.keys(characterInfo).filter(char => 
-                !currentCharacters.includes(char)
-            );
-    
-            elements.recruitDropdown.innerHTML = availableCharacters.map(char => 
-                `<option value="${char}">${char}</option>`
-            ).join('');
-            
-            updateDetails();
-    
-        } catch (error) {
-            console.error('Error fetching character info:', error);
-        }
-    }
+    elementManager.get('recruitDropdown').addEventListener('change', updateDetails);
+    elementManager.get('recruitHireButton').addEventListener('click', handleSubmission);
+    elementManager.get('recruitModifierInput').addEventListener('keypress', handleModifierKeyPress);
 
     function handleModifierKeyPress(event) {
         if (event.key === "Enter") {
             event.preventDefault();
-            addModifier();
+            applyModifier();
         }
     }
+}
 
-    function addModifier() {
-        const modifier = elements.recruitModifierInput.value.trim();
-        if (modifier) {
-            modifiers.push(modifier);
-            elements.recruitModifierInput.value = '';
-            updateModifierOverlay();
-            elements.recruitHireButton.classList.remove('inactive');
-            elements.recruitHireButton.classList.add('active');
-        }
-    }
+export async function populateDropdown() {
+    try {
+        cachedCharacterInfo = await fetchDefaultCharacterInfo();
+        const currentCharacters = Object.keys(getState().characters);
 
-    function updateModifierOverlay() {
-        const modalContent = elements.recruitModal.querySelector('.modal-content');
-        const iconRect = elements.recruitIcon.getBoundingClientRect();
-        const modalRect = modalContent.getBoundingClientRect();
-    
-        const overlay = document.createElement('div');
-        overlay.id = 'recruit-modifier-overlay';
-        overlay.textContent = modifiers[modifiers.length - 1];
-    
-        const position = positions[(modifiers.length - 1) % positions.length];
+        const availableCharacters = Object.keys(cachedCharacterInfo).filter(char => 
+            !currentCharacters.includes(char)
+        );
+
+        elementManager.get('recruitDropdown').innerHTML = availableCharacters.map(char => 
+            `<option value="${char}">${char}</option>`
+        ).join('');
         
-        // Calculate position relative to the modal content
-        const left = iconRect.left - modalRect.left + (iconRect.width * parseFloat(position.x) / 100);
-        const top = iconRect.top - modalRect.top + (iconRect.height * parseFloat(position.y) / 100);
+        updateDetails();
+
+    } catch (error) {
+        console.error('Error fetching character info:', error);
+    }
+}
+
+async function updateDetails() {
+
+    const selectedCharacter = elementManager.get('recruitDropdown').value;
+    elementManager.get('recruitIcon').innerHTML = selectedCharacter
+        ? `<img src="/graphics/default/icons/${selectedCharacter.toLowerCase()}0.png" alt="${selectedCharacter}">`
+        : '';
+    const info = cachedCharacterInfo[selectedCharacter];
+
+    elementManager.get('recruitNameInput').value = info ? info.default_name : '';
+
+    // Clear modifiers and reset seal
+    clearModifiers();
+    clearModifierText();
+    resetSeal();
+}
+
+function clearModifierText() {
+    const modalContent = elementManager.get('recruitModal').querySelector('.modal-content');
+    modalContent.querySelectorAll('#recruit-modifier-overlay').forEach(el => el.remove());
+}
+
+function resetSeal() {
+    const recruitHireButton = elementManager.get('recruitHireButton');
+    recruitHireButton.classList.remove('active');
+    recruitHireButton.classList.add('inactive');
+}
+
+function applyModifier() {
+    const modifier = elementManager.get('recruitModifierInput').value.trim();
+    if (modifier) {
+        addModifier(modifier);
+        elementManager.get('recruitModifierInput').value = '';
+        updateModifierOverlay();
+        const recruitHireButton = elementManager.get('recruitHireButton');
+        recruitHireButton.classList.remove('inactive');
+        recruitHireButton.classList.add('active');
+    }
+}
+
+function updateModifierOverlay() {
+    const modalContent = elementManager.get('recruitModal').querySelector('.modal-content');
+    const iconRect = elementManager.get('recruitIcon').getBoundingClientRect();
+    const modalRect = modalContent.getBoundingClientRect();
+
+    const overlay = document.createElement('div');
+    overlay.id = 'recruit-modifier-overlay';
     
-        overlay.style.left = `${left}px`;
-        overlay.style.top = `${top}px`;
+    const modifiers = getModifiers();
+    overlay.textContent = modifiers[modifiers.length - 1];
+
+    const positions = [
+        {x: '10%', y: '10%'},   // Top-left
+        {x: '90%', y: '10%'},   // Top-right
+        {x: '10%', y: '90%'},   // Bottom-left
+        {x: '90%', y: '90%'},   // Bottom-right
+        {x: '50%', y: '10%'},   // Top-center
+        {x: '10%', y: '50%'},   // Middle-left
+        {x: '90%', y: '50%'},   // Middle-right
+        {x: '50%', y: '90%'},   // Bottom-center
+        {x: '50%', y: '50%'}    // Center
+    ];
+
+    const position = positions[(modifiers.length - 1) % positions.length];
     
-        // Center the text on the calculated position
-        overlay.style.transform = 'translate(-50%, -50%)';
-    
-        // Add random tilt
-        const tilt = Math.random() * 40 - 20; // Random angle between -20 and 20 degrees
-        overlay.style.transform += ` rotate(${tilt}deg)`;
-    
-        // Ensure the overlay is positioned absolutely within the modal content
-        overlay.style.position = 'absolute';
-    
-        // Append the overlay to the modal content
-        modalContent.appendChild(overlay);
+    // Calculate position relative to the modal content
+    const left = iconRect.left - modalRect.left + (iconRect.width * parseFloat(position.x) / 100);
+    const top = iconRect.top - modalRect.top + (iconRect.height * parseFloat(position.y) / 100);
+
+    overlay.style.left = `${left}px`;
+    overlay.style.top = `${top}px`;
+
+    // Center the text on the calculated position
+    overlay.style.transform = 'translate(-50%, -50%)';
+
+    // Add random tilt
+    const tilt = Math.random() * 40 - 20; // Random angle between -20 and 20 degrees
+    overlay.style.transform += ` rotate(${tilt}deg)`;
+
+    // Ensure the overlay is positioned absolutely within the modal content
+    overlay.style.position = 'absolute';
+
+    // Append the overlay to the modal content
+    modalContent.appendChild(overlay);
+}
+
+async function handleSubmission(event) {
+
+    const modifiers = getModifiers();
+
+    if (!modifiers.length) {
+        event.preventDefault();
+        return; // Do nothing if the seal is inactive
     }
 
-    async function handleSubmission(event) {
-        if (!modifiers.length) {
-            event.preventDefault();
-            return; // Do nothing if the seal is inactive
-        }
+    const characterTitle = elementManager.get('recruitDropdown').value;
+    const characterName = elementManager.get('recruitNameInput').value;
     
-        const characterTitle = elements.recruitDropdown.value;
-        const characterName = elements.recruitNameInput.value;
+    if (characterTitle) {  
+        showLoading();
+        elementManager.get('recruitModal').style.display = "none";
+        const result = await createEvent('town', 'Recruit', [characterTitle], modifiers, characterName);
+        console.log('Event created:', result);
+        hideLoading();
+        processEventResult(result);
         
-        if (characterTitle) {  
-            
-            showLoading();
-            document.getElementById("recruit-modal").style.display = "none";
-            const result = await createEvent('town', 'Recruit', [characterTitle], modifiers, characterName);
-            console.log('Event created:', result);
-            hideLoading();
-            processEventResult(result, globalStoryModal, globalElements);
-            
-            elements.recruitModal.style.display = "none";
-        } else {
-            alert('Please select a character.');
-        }
+        elementManager.get('recruitModal').style.display = "none";
+    } else {
+        alert('Please select a character.');
     }
-
-    return { populateDropdown };
 }

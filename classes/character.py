@@ -227,6 +227,11 @@ class Character:
             return f"-Equipment"
         return f"Didn't have equipment: {equipment}"
 
+    def gain_trinket(self, trinket):
+        self.trinkets.append(trinket)
+        return f"+Trinket"
+
+
     def lose_trinket(self, trinket):
         if trinket in self.trinkets:
             self.trinkets.remove(trinket)

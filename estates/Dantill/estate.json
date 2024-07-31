@@ -1074,8 +1074,7 @@
                 "Resilient",
                 "Fearless",
                 "Reckless",
-                "Enigmatic",
-                "Nudist"
+                "Enigmatic"
             ],
             "status": {
                 "physical": 5,
@@ -1106,7 +1105,7 @@
             },
             "clothing": {
                 "headwear": "Crown of thorns",
-                "top": "None",
+                "top": "Red dress with frills",
                 "pants": "None"
             },
             "combat": {

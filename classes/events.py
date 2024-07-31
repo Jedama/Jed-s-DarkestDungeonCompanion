@@ -126,8 +126,6 @@ class OutputEvent:
             event_story = event_story[bracket_index + 1:].lstrip('\n')
         else:
             event_title = "A darkest tale"
-
-        print(event_story)
         
 
         system_prompt, user_prompt, assistant_prompt = self.create_consequences_prompt(event_story)
