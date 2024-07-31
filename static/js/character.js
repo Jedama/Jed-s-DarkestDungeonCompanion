@@ -1,34 +1,40 @@
-import { getAllCharacters, getCharacter } from './state.js';
+import { getState, subscribeToState } from './state.js';
 
 export function renderCharacterList(elements) {
-    elements.characterGrid.innerHTML = '';
-    const characters = getAllCharacters();
+    const updateList = () => {
+        const state = getState();
+        elements.characterGrid.innerHTML = '';
     
-    Object.entries(characters).forEach(([title, character]) => {
-        const characterElement = document.createElement('div');
-        characterElement.classList.add('character-item');
-        
-        const portraitImg = document.createElement('img');
-        portraitImg.src = `/graphics/default/portraits/${title.toLowerCase()}0.png`;
-        portraitImg.alt = title;
-        portraitImg.classList.add('portrait');
-        
-        const frameImg = document.createElement('img');
-        const frameLevel = Math.min(character.level, 6);
-        frameImg.src = `/graphics/default/background/level${frameLevel}.png`;
-        frameImg.alt = 'frame';
-        frameImg.classList.add('frame');
-        
-        characterElement.appendChild(portraitImg);
-        characterElement.appendChild(frameImg);
-        characterElement.addEventListener('click', () => renderCharacterDetails(title));
-        
-        elements.characterGrid.appendChild(characterElement);
-    });
+        Object.entries(state.characters).forEach(([title, character]) => {
+            const characterElement = document.createElement('div');
+            characterElement.classList.add('character-item');
+            
+            const portraitImg = document.createElement('img');
+            portraitImg.src = `/graphics/default/portraits/${title.toLowerCase()}0.png`;
+            portraitImg.alt = title;
+            portraitImg.classList.add('portrait');
+            
+            const frameImg = document.createElement('img');
+            const frameLevel = Math.min(character.level, 6);
+            frameImg.src = `/graphics/default/background/level${frameLevel}.png`;
+            frameImg.alt = 'frame';
+            frameImg.classList.add('frame');
+            
+            characterElement.appendChild(portraitImg);
+            characterElement.appendChild(frameImg);
+            characterElement.addEventListener('click', () => renderCharacterDetails(title));
+            
+            elements.characterGrid.appendChild(characterElement);
+        });
+    };
+
+    updateList(); // Initial render
+    return subscribeToState(updateList);
 }
 
 export function renderCharacterDetails(title) {
-    const character = getCharacter(title);
+    const state = getState();
+    const character = state.characters[title];
     if (!character) {
         console.error(`Character ${title} not found in state`);
         document.querySelector('.character-info').innerHTML = `<p>Error loading character details</p>`;

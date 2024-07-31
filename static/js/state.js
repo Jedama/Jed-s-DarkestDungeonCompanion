@@ -1,77 +1,98 @@
 // state.js
 
-// Create an object to hold our shared state
-export const state = {
-    // Object to store character information
-    characters: {},
-
-    // Estate name
-    estateName: '',
-
-    // Current Event Type
-    currentEventType: null,
-
-    // For recruit events
-    recruitEvent: {
-        newCharacter: null,
-        interestingEncounters: [],
-        currentEncounterIndex: 0
+class StateManager {
+    constructor(initialState) {
+      this.state = initialState;
+      this.listeners = [];
     }
-};
-
-export function addCharacter(character) {
-    if (!character.title) {
-        throw new Error('Character must have a name');
+  
+    getState() {
+      return this.state;
     }
-    state.characters[character.title] = character;
-}
-
-export function removeCharacter(characterTitle) {
-    delete state.characters[characterTitle];
-}
-
-export function updateCharacter(characterName, updatedInfo) {
-    if (state.characters[characterName]) {
-        state.characters[characterName] = { ...state.characters[characterName], ...updatedInfo };
-    } else {
-        throw new Error(`Character "${characterName}" not found`);
+  
+    setState(newState) {
+      this.state = { ...this.state, ...newState };
+      this.notifyListeners();
     }
-}
-
-export function overwriteCharacter(character) {
-    if (!character.title) {
+  
+    subscribe(listener) {
+      this.listeners.push(listener);
+      return () => {
+        this.listeners = this.listeners.filter(l => l !== listener);
+      };
+    }
+  
+    notifyListeners() {
+      this.listeners.forEach(listener => listener(this.state));
+    }
+  
+    // Specific state update methods
+    setEstateName(name) {
+        console.log("Setting estate name:", name);
+        this.setState({ estateName: name });
+    }
+  
+    addCharacter(character) {
+      if (!character.title) {
         throw new Error('Character must have a title');
+      }
+      this.setState({
+        characters: {
+          ...this.state.characters,
+          [character.title]: character
+        }
+      });
     }
-    state.characters[character.title] = character;
-}
-
-export function getCharacter(characterName) {
-    return state.characters[characterName];
-}
-
-export function setEstateName(name) {
-    state.estateName = name;
-}
-
-// Helper function to get all characters
-export function getAllCharacters() {
-    return state.characters;
-}
-
-// Helper function to get character titles
-export function getCharacterTitles() {
-    return Object.keys(state.characters);
-}
-
-export function setEventType(eventType, title) {
-    state.currentEventType = eventType;
-
-    if (eventType === 'Recruit') {
-        // Reset recruit event state
-        state.recruitEvent = {
-            newCharacter: title,
-            interestingEncounters: [],
-            currentEncounterIndex: 0
-        };
+  
+    removeCharacter(characterTitle) {
+      const { [characterTitle]: removed, ...remainingCharacters } = this.state.characters;
+      this.setState({ characters: remainingCharacters });
     }
-}
+  
+    updateCharacter(characterTitle, updatedInfo) {
+      if (this.state.characters[characterTitle]) {
+        this.setState({
+          characters: {
+            ...this.state.characters,
+            [characterTitle]: { ...this.state.characters[characterTitle], ...updatedInfo }
+          }
+        });
+      } else {
+        throw new Error(`Character "${characterTitle}" not found`);
+      }
+    }
+  
+    setEventType(eventType, title) {
+      this.setState({
+        currentEventType: eventType,
+        recruitEvent: eventType === 'Recruit' ? {
+          newCharacter: title,
+          interestingEncounters: [],
+          currentEncounterIndex: 0
+        } : null
+      });
+    }
+  }
+  
+  // Initialize the state manager with the initial state
+  const initialState = {
+    characters: {},
+    estateName: '',
+    currentEventType: null,
+    recruitEvent: null
+  };
+  
+  const stateManager = new StateManager(initialState);
+  
+  // Export methods to interact with the state
+  export const getState = () => stateManager.getState();
+  export const setEstateName = (name) => stateManager.setEstateName(name);
+  export const addCharacter = (character) => stateManager.addCharacter(character);
+  export const removeCharacter = (characterTitle) => stateManager.removeCharacter(characterTitle);
+  export const updateCharacter = (characterTitle, updatedInfo) => stateManager.updateCharacter(characterTitle, updatedInfo);
+  export const setEventType = (eventType, title) => stateManager.setEventType(eventType, title);
+  export const subscribeToState = (listener) => stateManager.subscribe(listener);
+  
+  // Helper functions
+  export const getAllCharacters = () => getState().characters;
+  export const getCharacterTitles = () => Object.keys(getState().characters);

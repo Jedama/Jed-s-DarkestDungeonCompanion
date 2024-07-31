@@ -1,10 +1,10 @@
 // apiClient.js
-
-import { state } from './state.js';
+import { getState } from './state.js';
 
 const BASE_URL = '/api'; // Consider moving this to a config file
 
 function compileEstateData(additionalData = {}) {
+  const state = getState();
   return {
     "estateName": state.estateName,
     "characters": state.characters,

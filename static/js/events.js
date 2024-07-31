@@ -1,5 +1,5 @@
 // events.js
-import { overwriteCharacter } from "./state.js";
+import { getState, addCharacter, updateCharacter } from "./state.js";
 
 export function initializeEventHandler(elements) {
     const storyModal = initializeStoryModal(elements);
@@ -12,8 +12,16 @@ export function processEventResult(result, storyModal, elements) {
     updateCards(result.consequences, elements);
     storyModal.show();
 
+    const currentState = getState();
+
     for (const [title, characterData] of Object.entries(result.characters)) {
-        overwriteCharacter(characterData);
+        if (currentState.characters.hasOwnProperty(title)) {
+            // Character exists, update it
+            updateCharacter(title, characterData);
+        } else {
+            // Character doesn't exist, add it
+            addCharacter(characterData);
+        }
     }
 }
 

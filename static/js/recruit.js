@@ -1,5 +1,5 @@
 import { fetchDefaultCharacterInfo, createEvent } from './apiClient.js';
-import { getCharacterTitles, setEventType } from './state.js';
+import { getState } from './state.js';
 import { showLoading, hideLoading } from './loading.js'
 import { processEventResult } from './events.js';
 
@@ -60,7 +60,7 @@ export function initializeRecruit(globalElements, globalStoryModal) {
     async function populateDropdown() {
         try {
             characterInfo = await fetchDefaultCharacterInfo();
-            const currentCharacters = getCharacterTitles();
+            const currentCharacters = Object.keys(getState().characters);
 
             const availableCharacters = Object.keys(characterInfo).filter(char => 
                 !currentCharacters.includes(char)
@@ -132,8 +132,6 @@ export function initializeRecruit(globalElements, globalStoryModal) {
             event.preventDefault();
             return; // Do nothing if the seal is inactive
         }
-
-        console.log('handleSubmission called');
     
         const characterTitle = elements.recruitDropdown.value;
         const characterName = elements.recruitNameInput.value;
@@ -142,7 +140,6 @@ export function initializeRecruit(globalElements, globalStoryModal) {
             
             showLoading();
             document.getElementById("recruit-modal").style.display = "none";
-            setEventType('Recruit', characterTitle)
             const result = await createEvent('town', 'Recruit', [characterTitle], modifiers, characterName);
             console.log('Event created:', result);
             hideLoading();

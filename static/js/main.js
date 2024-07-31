@@ -1,5 +1,5 @@
 import { loadEstateData, createNewEstate, createEvent } from './apiClient.js';
-import { state, setEstateName, addCharacter } from './state.js';
+import { addCharacter, setEstateName, getState } from './state.js';
 import { renderCharacterList, renderCharacterDetails } from './character.js';
 import { initializeRecruit } from './recruit.js';
 import { initializeEventHandler, processEventResult } from './events.js';
@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (estateName) {
             console.log("Savefile name entered:", estateName);
             setEstateName(estateName);
+            console.log("Estate name after setting:", getState().estateName);
             elements.savefileModal.style.display = "none";
             loadGame(estateName);
         } else {

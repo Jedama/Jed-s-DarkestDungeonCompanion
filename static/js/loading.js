@@ -1,4 +1,4 @@
-import { getCharacterTitles } from './state.js';
+import { getState } from './state.js';
 
 const loadingOverlay = document.querySelector('.loading-overlay');
 const loadingCard = document.querySelector('.loading-card');
@@ -13,6 +13,10 @@ function shuffleArray(array) {
 }
 
 function createFaces() {
+    const state = getState();
+    characterTitles = Object.keys(state.characters);
+    shuffleArray(characterTitles);
+
     for (let i = 0; i < 2; i++) {
         const face = document.createElement('div');
         face.className = 'loading-face';
@@ -33,8 +37,6 @@ function changeImage() {
 
 export function showLoading() {
     // Get and shuffle character titles
-    characterTitles = getCharacterTitles();
-    shuffleArray(characterTitles);
     
     if (!loadingCard.querySelector('.loading-face')) {
         createFaces();

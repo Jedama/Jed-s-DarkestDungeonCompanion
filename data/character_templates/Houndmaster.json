@@ -3,11 +3,11 @@
     "name": "William & Fergus",
     "level": 0,
     "money": 0,
-    "summary": "The Houndmaster is a former lawman who now fights alongside his faithful Irish Wolfhound, Fergus. Together they form a formidable team, using their skills to track down enemies and protect their allies.",
+    "summary": "The Houndmaster is a former lawman who now fights alongside his faithful wolfhound, Fergus. Together they form a formidable team, using their skills to track down enemies and protect their allies.",
     "history": "Once a dedicated member of law enforcement, the Houndmaster uncovered corruption within his ranks. This discovery led him to leave his post and seek justice in his own way, with Fergus as his loyal companion.",
     "race": "Human",
     "gender": "Male",
-    "religion": "Unspecified",
+    "religion": "None",
     "traits": [
       "Vigilant",
       "Protective",
@@ -66,8 +66,8 @@
     },
     "magic": "None",
     "notes": [
-      "Carries dog treats to boost Fergus's abilities",
-      "Fergus can scouting and keep watch"
+      "Carries dog treats to boost his companion's abilities",
+      "His dog is adept at scouting and keeping watch"
     ],
     "relationships": {
     }
