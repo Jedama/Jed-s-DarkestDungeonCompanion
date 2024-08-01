@@ -23,24 +23,16 @@ def save_estate_endpoint():
     
     return jsonify({"message": "Estate saved successfully"}), 200
 
-@app.route('/api/estate/<estate_name>', methods=['GET'])
-def load_or_create_estate(estate_name):
-    if check_estate_exists(estate_name):
-        estate = Estate.load_estate(estate_name)
-        return jsonify({"message": f"Estate {estate_name} loaded", "status": "loaded"})
-    else:
-        estate = Estate(estate_name)
-        estate.start_campaign()
-        estate.save_estate()  # Make sure to save the new estate
-        return jsonify({"message": f"Campaign started for estate {estate_name}", "status": "started"})
-
 @app.route('/api/estates/<estate_name>/estate.json')
 def serve_estate_json(estate_name):
     estate_path = os.path.join('estates', estate_name, 'estate.json')
     if os.path.exists(estate_path):
         return send_from_directory('estates', f'{estate_name}/estate.json')
     else:
-        return jsonify({"error": "Estate not found"}), 404
+        estate = Estate(estate_name)
+        estate.start_campaign()
+        estate.save_estate()
+        return send_from_directory('estates', f'{estate_name}/estate.json')
 
 @app.route('/api/create-event', methods=['POST'])
 def create_event_endpoint():

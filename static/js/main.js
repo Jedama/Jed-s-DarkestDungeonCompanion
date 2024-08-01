@@ -1,4 +1,4 @@
-import { loadEstateData, createNewEstate } from './apiClient.js';
+import { loadEstateData, saveEstate } from './apiClient.js';
 import { addCharacter, setEstateName, getState } from './state.js';
 import { renderCharacterList, renderCharacterDetails } from './character.js';
 import { initializeRecruit, populateDropdown } from './recruit.js';
@@ -12,8 +12,8 @@ function initializeApp() {
 
     elementManager.initialize();
     renderCharacterList();
-    const { storyModal } = initializeEventHandler();
-    initializeRecruit(storyModal);
+    initializeEventHandler();
+    initializeRecruit();
 
     showSavefileModal();
     initializeEventListeners();
@@ -28,6 +28,7 @@ function initializeEventListeners() {
     elementManager.get('savefileNameInput').addEventListener("keyup", handleSavefileKeyUp);
     elementManager.get('recruitButton').addEventListener("click", handleRecruitButtonClick);
     elementManager.get('eventButton').addEventListener("click", handleEventButtonClick);
+    elementManager.get('saveButton').addEventListener("click", handleSaveButtonClick);
 }
 
 function handleSavefileSubmission() {
@@ -35,9 +36,8 @@ function handleSavefileSubmission() {
     if (estateName) {
         console.log("Savefile name entered:", estateName);
         setEstateName(estateName);
-        console.log("Estate name after setting:", getState().estateName);
         elementManager.get('savefileModal').style.display = "none";
-        loadGame(estateName);
+        loadOrNewGame(estateName);
     } else {
         alert("Please enter a savefile name.");
     }
@@ -50,16 +50,10 @@ function handleSavefileKeyUp(event, elements) {
     }
 }
 
-async function loadGame(savefileName, elements) {
+async function loadOrNewGame(savefileName, elements) {
     console.log("Loading game with savefile:", savefileName);
     try {
         let estateData = await loadEstateData(savefileName);
-        
-        if (!estateData) {
-            console.log("No existing estate data found. Creating new estate...");
-            estateData = await createNewEstate(savefileName);
-        }
-        
         handleEstateData(estateData, elements);
     } catch (error) {
         console.error('Error loading estate:', error);
@@ -89,4 +83,8 @@ function handleRecruitButtonClick() {
 
 function handleEventButtonClick() {
     createEvent('random', 'Argument4', [], [], '');
+}
+
+function handleSaveButtonClick() {
+    saveEstate();
 }

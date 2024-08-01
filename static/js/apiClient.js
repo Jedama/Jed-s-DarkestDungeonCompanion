@@ -39,10 +39,6 @@ export async function loadEstateData(savefileName) {
   return apiRequest(`/estates/${savefileName}/estate.json`);
 }
 
-export async function createNewEstate(savefileName) {
-  return apiRequest(`/create_estate/${savefileName}`, 'POST');
-}
-
 export async function saveEstate() {
   const estateData = compileEstateData();
   return apiRequest('/save-estate', 'POST', estateData);

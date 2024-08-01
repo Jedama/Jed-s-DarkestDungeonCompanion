@@ -8,6 +8,7 @@ class ElementManager {
         savefileModal: document.getElementById("savefile-modal"),
         savefileSubmit: document.getElementById("savefile-submit"),
         savefileNameInput: document.getElementById("savefile-name"),
+        saveButton: document.getElementById("save-button"),
         eventButton: document.getElementById("event-button"),
         recruitButton: document.getElementById("recruit-button"),
         characterGrid: document.getElementById("character-grid"),
