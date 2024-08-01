@@ -1,6 +1,7 @@
 from classes import Estate
 
 estate = Estate.load_estate('Dantill')
+estate.save_estate()
 
 title, story, consequences = estate.start_event()
 

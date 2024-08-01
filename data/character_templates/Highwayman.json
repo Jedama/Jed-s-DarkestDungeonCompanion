@@ -10,7 +10,6 @@
   "religion": "None",
   "traits": [
     "Rugged",
-    "Resourceful",
     "Desperate",
     "Fugitive",
     "Remorseful",
@@ -18,9 +17,9 @@
   ],
   "status": {
     "physical": 10,
-    "mental": 7,
-    "affliction": "",
-    "description": "In good health and in decent spirits",
+    "mental": 10,
+    "affliction": "None",
+    "description": "In good health and high spitits",
     "wounds": [],
     "diseases": []
   },

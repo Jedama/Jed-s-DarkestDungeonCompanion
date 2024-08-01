@@ -18,26 +18,27 @@ def system_prompts(event):
 
                 Begin with a title within brackets [].'''
         )
-    elif event.type == 'town':
-        if event.title == 'Recruit':
-            system_prompt += (
-                "Your role is to present the new character as they step off the stagecoach, focusing on their appearance, mannerisms, and overall vibe. "
-                "Highlight how their unique characteristics and personal quirks, listed in the modifiers section, influence their behavior and the townspeople's reactions. "
-                "Avoid explicitly mentioning the provided quirks and traits, and focus on presenting them through the story. Start your story with [Recruit: 'name']"
-            )
-        if event.title == 'First Encounter':
-            system_prompt += f"""
-                Narrate the first meeting between the new character and existing character(s) in {event.length * 100 + 300} words. Adhere to the {event.outcome} outcome and story modifiers.
+    elif event.type == 'recruit':
+        
+        system_prompt += (
+            "Your role is to present the new character as they step off the stagecoach, focusing on their appearance, mannerisms, and overall vibe. "
+            "Highlight how their unique characteristics and personal quirks, listed in the modifiers section, influence their behavior and the townspeople's reactions. "
+            "Avoid explicitly mentioning the provided quirks and traits, and focus on presenting them through the story. Start your story with [Recruit: 'name'] in square brackets."
+        )
+    elif event.type == 'first_encounter':
+        system_prompt += f"""
+            Narrate the first meeting between the new character and existing character(s) in {event.length * 100 + 300} words. Adhere to the {event.outcome} outcome and story modifiers.
 
-                - Focus on the new character's perspective and experiences.
-                - If it's a group, ensure each character interacts with the new character.
-                - Describe appearances, mannerisms, and behaviors, subtly showing unique traits.
-                - Remember: Characters don't know each other or all details in their character data yet.
-                - Capture initial impressions, atmosphere, and key moments that may shape future relationships.
-                - Adapt the narrative for one-on-one or group dynamics as appropriate.
+            - Focus on the new character's perspective and experiences.
+            - If it's a group, ensure each character interacts with the new character.
+            - Describe appearances, mannerisms, and behaviors, subtly showing unique traits.
+            - Remember: Characters don't know each other or all details in their character data yet.
+            - Capture initial impressions, atmosphere, and key moments that may shape future relationships.
+            - Adapt the narrative for one-on-one or group dynamics as appropriate.
+            - Start the story with a fitting title within square brackets.
 
-                This encounter sets the foundation for future interactions. Highlight how personalities and backgrounds influence this first meeting.
-            """
+            This encounter sets the foundation for future interactions. Highlight how personalities and backgrounds influence this first meeting.
+        """
 
     return system_prompt
 

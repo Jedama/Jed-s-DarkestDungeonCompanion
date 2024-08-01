@@ -1,29 +1,29 @@
 {
-    "title": "Crusader",
-    "name": "Reynauld",
-    "level": 0,
-    "money": 0,
-    "summary": "The Crusader, a stoic warrior, reluctantly left his family to join the holy war, finding unexpected solace and divine purpose in the midst of battle. Upon returning, he found a loving wife and child, but abandons them once more, choosing his life as a soldier over that of a father, a decision that still haunts him. As a way to atone for his past, he seeks and has found a new cause under the Heir and Heiress.",
-    "history": "From tilling the land to relishing the fervor of the Crusade, the Crusader's life is marked by the weight of martial glory and the stark absence of domestic warmth. Having once sought to prevent famine by his departure, he now recognizes the battlefield as his true home, forsaking the hearth for the harsh camaraderie of war. The memory of the family he abandoned haunts him, driving him to seek redemption through his new cause.",
-    "race": "Human",
-    "gender": "Male",
-    "religion": "The Light",
-    "traits": [
-      "Stoic",
-      "Reluctant",
-      "Devout",
-      "Reputable",
-      "Merciful",
-      "Kleptomaniac"
-    ],
-    "status": {
-      "physical": 10,
-      "mental": 9,
-      "affliction": "", 
-      "description": "In good health and high spirits",
-      "wounds": [],
-      "diseases": []
-    },
+  "title": "Crusader",
+  "name": "Reynauld",
+  "level": 0,
+  "money": 0,
+  "summary": "The Crusader, rose from a common conscript to a champion of over 100 holy wars. Transformed by the horrors of battle and church abuse, he abandoned his family, unable to face them. Now seeking redemption, he's drawn to the estate to combat unholy forces, haunted by memories of his past life.",
+  "history": "Once a common man conscripted into the holy war, the Crusader left behind a wife and young son. Rising through the ranks, he became a champion and army leader. The wars and church changed him profoundly, hollowing him out and turning him into a zealous warrior for the light. Unable to return to his family, he vowed to live his remaining days as a Crusader.",
+  "race": "Human",
+  "gender": "Male",
+  "religion": "The Light",
+  "traits": [
+    "Zealous",
+    "Stalwart",
+    "Inspiring",
+    "Kleptomanic",
+    "Conflicted",
+    "Devoted"
+  ],
+  "status": {
+    "physical": 10,
+    "mental": 10,
+    "affliction": "None",
+    "description": "In good health and high spitits",
+    "wounds": [],
+    "diseases": []
+  },
   "stats": {
     "strength": 8,
     "agility": 3,
@@ -32,10 +32,12 @@
     "sociability": 4
   },
   "equipment": [
-    "Broadsword"
+    "Holy Sword (family heirloom)",
+    "Crusader Armor",
+    "Holy Banners",
+    "Sacred Scrolls"
   ],
   "trinkets": [
-    "None"
   ],
   "appearance": {
     "height": "Tall",
@@ -51,17 +53,16 @@
     "pants": "Mail chausses"
   },
   "combat": {
-    "role": "Close combat",
+    "role": "Warrior",
     "strengths": [
-      "Discipline",
+      "Leadership",
       "Endurance",
       "Martial prowess"
     ],
     "weaknesses": [
       "Ranged combat",
       "Speed",
-      "Evation",
-      "Stealth"
+      "Evation"
     ]
   },
   "magic": "The light, a divine power that lets him smite foes and heal allies.",

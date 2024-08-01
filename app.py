@@ -15,8 +15,9 @@ def save_estate_endpoint():
     
     # Create an Estate instance with the data
     estate = Estate(data['estateName'])
-    estate.characters = data['characters']
-    # Set other properties as needed
+    for title, char_data in data['characters'].items():
+        character = Character.from_dict(char_data)
+        estate.add_character(character)
     
     # Call the save_estate method
     estate.save_estate()
@@ -46,26 +47,37 @@ def create_event_endpoint():
     
     # Call the start_event method with the additional data
     input_type = data['eventType']
-    input_title = data['eventTitle']
-    input_characters = data['eventCharacters']
+    input_event = data['eventTitle']
+    input_titles = data['eventCharacters']
     input_modifiers = data['eventModifiers']
     input_name = data['recruitName']
 
+    importance_list = []
+
     if input_type == 'recruit':
         event_title, event_text, consequence_dict, importance_list = estate.recruit(
-            input_characters[0],
+            input_titles[0],
             input_modifiers,
             input_name,
+        )
+    elif input_type == 'first_encounter':
+        
+        estate.add_relationship_placeholder(input_titles)
+
+        event_title, event_text, consequence_dict = estate.start_event(
+            event_type = input_type,
+            event_title = f'First Encounter {len(input_titles)}',
+            titles = input_titles, 
+            modifiers = input_modifiers
         )
     else:
         event_title, event_text, consequence_dict = estate.start_event(
             event_type = input_type,
-            event_title = input_title, 
-            titles = input_characters, 
+            event_title = input_event, 
+            titles = input_titles, 
             modifiers = input_modifiers
         )
-        importance_list = []
-
+        
     updated_characters = {title: estate.characters[title].to_dict() for title in consequence_dict.keys() if title in estate.characters}
     
     response_data = {
@@ -74,7 +86,7 @@ def create_event_endpoint():
         'title': event_title,  
         'storyText': event_text,
         'consequences': consequence_dict,
-        'interestList': importance_list
+        'recruitGroups': importance_list
     }
 
     return jsonify(response_data), 200

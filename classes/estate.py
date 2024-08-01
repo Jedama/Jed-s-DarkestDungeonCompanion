@@ -73,14 +73,6 @@ class Estate:
 
     def recruit(self, title, quirks=[], name = ''):
 
-        def ensure_relationship_placeholder(character, other_character):
-            if other_character.title not in character.relationships:
-                character.relationships[other_character.title] = {
-                    "affinity": 0,
-                    "dynamic": "Neutral",
-                    "description": ""
-                }
-
         character_data = read_json(os.path.join('data/character_templates', title))
         if character_data:
             character = Character.from_dict(character_data)
@@ -95,39 +87,7 @@ class Estate:
 
         ordered_characters = self.eventHandler.recruit_rank_characters(self.characters, self.leader, character)
 
-        # Loop through each group in ordered_characters
-        for group in ordered_characters:
-            group_encounter_results = []
-            
-            # Ensure relationships exist between the new character and each character in the group
-            for other_title in group:
-                if other_title != title:  # Skip if it's the new character
-                    ensure_relationship_placeholder(self.characters[title], self.characters[other_title])
-                    ensure_relationship_placeholder(self.characters[other_title], self.characters[title])
-
         return f'Recruit: {name}', recruit_story, recruit_consequences, ordered_characters
-
-        # Store the return values in a list of lists
-        encounter_results = []
-
-        # Loop through each group in ordered_characters
-        for group in ordered_characters:
-            group_encounter_results = []
-            
-            # Ensure relationships exist between the new character and each character in the group
-            for other_title in group:
-                if other_title != title:  # Skip if it's the new character
-                    ensure_relationship_placeholder(self.characters[title], self.characters[other_title])
-                    ensure_relationship_placeholder(self.characters[other_title], self.characters[title])
-            
-            # Create an encounter for the entire group
-            encounter_characters = [title] + group
-            result = self.eventHandler.craft_event(self.characters, 'town', f'First Encounter {len(encounter_characters)}', encounter_characters)
-            group_encounter_results.append(result)
-            
-            encounter_results.append(group_encounter_results)
-
-        return recruit_story, recruit_consequences, encounter_results
 
     def encounter(self, enemies = [], event_type = 'dungeon', event_title='Encounter Start', modifiers=[]):
 
@@ -145,3 +105,33 @@ class Estate:
                 #s elf.dungeon_region = 'The Old Road'
             else:
                 print(f'Character template not found: {character_title}')
+
+    def add_relationship_placeholder(self, titles):
+
+        def initialize_placeholder(character, other_character):
+            if other_character.title not in character.relationships:
+                character.relationships[other_character.title] = {
+                    "affinity": 0,
+                    "dynamic": "Neutral",
+                    "description": ""
+                }
+
+        if not titles or len(titles) < 2:
+            print("At least two character titles are required.")
+            return
+        
+        first_character = self.characters.get(titles[0])
+        if not first_character:
+            print(f"Character {titles[0]} not found in the estate.")
+            return
+
+        for other_title in titles[1:]:
+            other_character = self.characters.get(other_title)
+            if other_character:
+                initialize_placeholder(first_character, other_character)
+                initialize_placeholder(other_character, first_character)
+            else:
+                print(f"Character {other_title} not found in the estate.")
+            
+            
+        

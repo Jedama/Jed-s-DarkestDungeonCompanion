@@ -115,7 +115,7 @@ class OutputEvent:
         system_prompt, user_prompt, assistant_prompt = self.create_story_prompt()
 
         # Call the prompt_claude function
-        event_story = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 500 + 200 * self.length, temperature=1)
+        event_story = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 600 + 200 * self.length, temperature=1)
         event_story = clean_response_claude(event_story)
 
         print(event_story)

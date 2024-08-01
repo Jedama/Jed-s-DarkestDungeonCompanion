@@ -2,7 +2,7 @@
 import { startEvent } from './apiClient.js';
 import { EventHandlerFactory } from './eventHandler.js';
 import { renderCharacterList } from './character.js';
-import { getState, setEventType } from "./state.js";
+import { getState, setEventType, updateRecruitInfo } from "./state.js";
 import { elementManager } from './elementManager.js';
 import { showLoading, hideLoading } from './loading.js';
 import eventHandlers from './eventHandler.js';
@@ -19,7 +19,6 @@ export async function createEvent(eventType, eventName, eventCharacter, eventMod
         showLoading();
         const result = await startEvent(eventType, eventName, eventCharacter, eventModifiers, recruitName);
         hideLoading();
-        setEventType(eventType, recruitName);
         processEventResult(result);
     } catch (error) {
         console.error('Error creating event:', error);
@@ -32,16 +31,23 @@ export function processEventResult(result) {
     const eventHandler = EventHandlerFactory.createHandler(result.eventType, state);
     
     eventHandler.processEvent(result);
-    const consequences = eventHandler.getConsequences();
   
     updateStoryPanel(result.title, result.storyText);
-    updateCards(consequences);
+    updateCards(result.consequences);
 
     const storyModal = elementManager.get('storyModal');
     storyModal.style.display = 'block';
 
     // Update the current event type in the state
-    setEventType(result.eventType, Object.keys(consequences)[0]);
+    setEventType(result.eventType);
+
+    if (result.eventType == 'recruit') {
+        updateRecruitInfo({
+            recruitTitle: Object.keys(result.consequences)[0],
+            recruitGroups: result.recruitGroups,
+            recruitGroupsIndex: 0
+        });
+    }
 }
 
 function initializeStoryModal() {
