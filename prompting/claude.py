@@ -1,9 +1,9 @@
 import anthropic
 
 class TextBlock:
-    def __init__(self, text, type):
+    def __init__(self, text, category):
         self.text = text
-        self.type = type
+        self.category = category
 
 def prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens=350, temperature=0.75):
     client = anthropic.Anthropic(

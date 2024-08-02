@@ -1,6 +1,5 @@
 import { fetchDefaultCharacterInfo, startEvent } from './apiClient.js';
-import { getState, addModifier, clearModifiers, getModifiers, setEventType } from './state.js';
-import { showLoading, hideLoading } from './loading.js'
+import { getState, addModifier, clearModifiers, getModifiers, setEventCategory } from './state.js';
 import { createEvent } from './events.js';
 import { elementManager } from './elementManager.js';
 

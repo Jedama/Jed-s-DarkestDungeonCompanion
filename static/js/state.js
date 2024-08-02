@@ -79,9 +79,9 @@ class StateManager {
     }
   }
 
-  setEventType(eventType) {
+  setEventCategory(eventCategory) {
     this.setState({
-      currentEventType: eventType,
+      currentEventCategory: eventCategory,
       recruitTitle: this.state.recruitTitle,
       recruitGroups: this.state.recruitGroups || [],
       recruitGroupsIndex: this.state.recruitGroupsIndex || 0
@@ -102,7 +102,7 @@ const initialState = {
   characters: {},
   estateName: '',
   eventModifiers: [],
-  currentEventType: null,
+  currentEventCategory: null,
   recruitTitle: '',
   recruitGroups: [],
   recruitGroupsIndex: 0
@@ -119,7 +119,7 @@ export const addModifier = (modifier) => stateManager.addModifier(modifier);
 export const clearModifiers = () => stateManager.clearModifiers();
 export const getModifiers = () => stateManager.getModifiers();
 export const updateCharacter = (characterTitle, updatedInfo) => stateManager.updateCharacter(characterTitle, updatedInfo);
-export const setEventType = (eventType, title) => stateManager.setEventType(eventType, title);
+export const setEventCategory = (eventCategory, title) => stateManager.setEventCategory(eventCategory, title);
 export const updateRecruitInfo = (updatedInfo) => stateManager.updateRecruitInfo(updatedInfo);
 export const subscribeToState = (listener) => stateManager.subscribe(listener);
 

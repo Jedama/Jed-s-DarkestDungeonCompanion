@@ -41,7 +41,8 @@
       "build": "Sturdy",
       "skin_tone": "Pale",
       "hair_color": "Blonde",
-      "hairstyle": "Tied down"
+      "hairstyle": "Tied down",
+      "chest_size": "Large"
   },
   "clothing": {
     "headwear": "Hooded robe and wimple",

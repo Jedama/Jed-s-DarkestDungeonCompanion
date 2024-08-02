@@ -50,9 +50,9 @@ export async function fetchDefaultCharacterInfo() {
 }
 
 // Event-related API calls
-export async function startEvent(eventType, eventTitle, eventCharacters, eventModifiers, recruitName) {
+export async function startEvent(eventCategory, eventTitle, eventCharacters, eventModifiers, recruitName) {
   const estateData = compileEstateData({
-    eventType,
+    eventCategory,
     eventTitle,
     eventCharacters,
     eventModifiers,

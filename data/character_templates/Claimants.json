@@ -43,7 +43,8 @@
         "skin_tone": "Fair/Fair",
         "hair_color": "Dark with blue streaks/Dark",
         "hairstyle": "Single hair bun/Well groomed",
-        "facial_hair": "None/Full well-groomed beard"     
+        "facial_hair": "None/Full well-groomed beard",
+        "chest_size": "Medium"
     },
     "clothing": {
         "headwear": "Ornate earrings/None",

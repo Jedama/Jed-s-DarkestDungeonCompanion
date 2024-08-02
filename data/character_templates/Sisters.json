@@ -41,7 +41,8 @@
       "build": "Athletic",
       "skin_tone": "Fair",
       "hair_color": "Black",
-      "hairstyle": "Elaborate updo with two-flower headdress"
+      "hairstyle": "Elaborate updo with two-flower headdress",
+      "chest_size": "Small"
     },
     "clothing": {
       "headwear": "Two-flower headdress",

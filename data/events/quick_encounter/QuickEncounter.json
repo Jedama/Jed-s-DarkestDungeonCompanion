@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Quick Encounter 2",
+        "category": "quick_encounter",
+        "num_characters": 2
+    },
+    {
+        "title": "Quick Encounter 3",
+        "category": "quick_encounter",
+        "num_characters": 3
+    },
+    {
+        "title": "Quick Encounter 4",
+        "category": "quick_encounter",
+        "num_characters": 4
+    }
+]

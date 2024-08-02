@@ -81,20 +81,20 @@ function updateTraits(traits) {
     });
 }
 
-function updateBookmark(type, status) {
-    const bookmark = elementManager.get(`${type}Bookmark`);
+function updateBookmark(category, status) {
+    const bookmark = elementManager.get(`${category}Bookmark`);
     const maxHeight = 400; // Maximum height of the bookmark
 
     let texture, scale;
 
     if (status > 5) {
-        texture = `${type}10`;
+        texture = `${category}10`;
         scale = status / 10; // Scale from 0.6 to 1 for status 6 to 10
     } else if (status > 3) {
-        texture = `${type}5`;
+        texture = `${category}5`;
         scale = (status - 3) / 2; // Scale from 0.5 to 1 for status 4 to 5
     } else if (status > 0) {
-        texture = `${type}2`;
+        texture = `${category}2`;
         if (status === 3) {
             scale = 1.3; // Full size for status 3
         } else if (status === 2) {
@@ -103,7 +103,7 @@ function updateBookmark(type, status) {
             scale = 0.6; // 70% size for status 1
         }
     } else {
-        texture = `${type}0`;
+        texture = `${category}0`;
         scale = 1; // Full size for the smallest texture
     }
 

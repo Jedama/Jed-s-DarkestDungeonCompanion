@@ -5,7 +5,7 @@ def system_prompts(event):
         "You are the Ancestor, a malignant spectral presence haunting a once-grand estate. Describe the struggles of descendants and hired souls as they battle eldritch horrors and abominations in their attempts to reclaim and cleanse the estate. Focus on gruesome, gory details."
     )
 
-    if event.type in ['random', 'story', 'dungeon']:
+    if event.category in ['random', 'story', 'dungeon']:
         system_prompt += (
             f'''\nConstruct a self-contained narrative vignette of {event.length * 100 + 200} words that:
                 1. Fits the grim, eerie atmosphere
@@ -18,14 +18,14 @@ def system_prompts(event):
 
                 Begin with a title within brackets [].'''
         )
-    elif event.type == 'recruit':
+    elif event.category == 'recruit':
         
         system_prompt += (
             "Your role is to present the new character as they step off the stagecoach, focusing on their appearance, mannerisms, and overall vibe. "
             "Highlight how their unique characteristics and personal quirks, listed in the modifiers section, influence their behavior and the townspeople's reactions. "
             "Avoid explicitly mentioning the provided quirks and traits, and focus on presenting them through the story. Start your story with [Recruit: 'name'] in square brackets."
         )
-    elif event.type == 'first_encounter':
+    elif event.category == 'first_encounter':
         system_prompt += f"""
             Narrate the first meeting between the new character and existing character(s) in {event.length * 100 + 300} words. Adhere to the {event.outcome} outcome and story modifiers.
 
@@ -44,7 +44,7 @@ def system_prompts(event):
 
 def consequences_prompts(event):
     
-    if event.type in ['random', 'story', 'dungeon']:
+    if event.category in ['random', 'story', 'dungeon']:
         consequences_prompt = f'''Given the {event.outcome} outcome of the scenario, select appropriate consequences for each character. Base the number of consequences and their severity based on the outcome. Ensure that each consequence is justified based on the outcome and the character's actions or thoughts in the scene. List the consequences in a format ready for script execution.
 
             - Start with the character's title in single quotation marks followed by their name in parenthesis and a colon.
@@ -74,7 +74,7 @@ def consequences_prompts(event):
             update_relationship_description('Ancestor', 'The Miller is eternally hateful for the fate the Ancestor cast him into')
             End
             '''
-    elif event.type == 'recruit':
+    elif event.category == 'recruit':
         
         consequences_prompt = f'''Given the template and modifiers, update the template character sheet through outputting the functions below in a format ready for script execution.
 
@@ -98,16 +98,43 @@ def consequences_prompts(event):
         update_appearance('hair_color', 'Graying')
         End
         '''
-    if event.type == 'first_encounter':
+    elif event.category == 'first_encounter':
         consequences_prompt = f'''Initialize the character relationships between the new character and those present in the scene by outputting the functions below in a format ready for script execution:
 
             - Start with the character's title in single quotes, followed by their name in parentheses and a colon.
             - List each consequence command on a new line below the character's title.
             - Begin each command with the action, followed by the parameters in parentheses.
             - Always refer to characters by their title.
-            - Update affinity, dynamic, description, and history for both characters. Remember that relationships are often asymmetrical.
+            - Update affinity, dynamic and description for both characters. Remember that relationships are often asymmetrical.
             - Set affinity to a value between 1 and 8, where 4 represents a neutral interaction.
             - Ensure that the interactions are portrayed accurately.
+            
+
+            Format your output as follows for clarity and direct execution in the script. Example:
+
+            For 'Ancestor' (Pandora Dantill)
+            update_relationship_affinity('Miller', 2)
+            update_relationship_dynamic('Miller', 'Indifference')
+            update_relationship_description('Miller', 'The Ancestor sees the Miller as someone to manipulate for his own ends while being aware of the Miller’s seething resentment.')
+
+            For 'Miller' (Dalton)
+            update_relationship_affinity('Ancestor', 0)
+            update_relationship_dynamic('Ancestor', 'Deep Hatred')
+            update_relationship_description('Ancestor', 'The Miller is eternally hateful for the fate the Ancestor cast him into, harboring a burning desire for revenge against the Ancestor’s relentless cruelty.')
+            End
+
+        '''
+
+    elif event.category == 'quick_encounter':
+        consequences_prompt = f'''Initialize the character relationships between the new character (First in the list) and the other listed character(s) by outputting the functions below in a format ready for script execution:
+
+            - Start with the character's title in single quotes, followed by their name in parentheses and a colon.
+            - List each consequence command on a new line below the character's title.
+            - Begin each command with the action, followed by the parameters in parentheses.
+            - Always refer to characters by their title.
+            - Update affinity, dynamic and description for both characters. Remember that relationships are often asymmetrical.
+            - Set affinity to a value between 1 and 8, where 4 represents a neutral interaction.
+            - Ensure that the relationships are logical from the character perspectives.
             
 
             Format your output as follows for clarity and direct execution in the script. Example:

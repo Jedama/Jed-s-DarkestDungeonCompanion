@@ -40,10 +40,10 @@
     "appearance": {
       "height": "Tall",
       "build": "Athletic",
-      "skin_tone": "Sun-tanned",
+      "skin_tone": "Sun-tanned (hidden by full armor)",
       "hair_color": "Dark",
-      "hairstyle": "Ponytail",
-      "facial_hair": "None"
+      "hairstyle": "Ponytail (hidden by helmet)",
+      "chest_size": "Medium"
     },
     "clothing": {
       "headwear": "Plumed helmet",

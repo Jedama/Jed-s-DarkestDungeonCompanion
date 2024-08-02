@@ -1,6 +1,6 @@
 from .consequence import Consequences
 from .enemy import Enemy
-from .events import InputEvent, OutputEvent
+from .events import InputEvent, OutputEvent, QuickEvent
 from .faction import Faction
 from .location import Location
 from .npc import NPC
@@ -14,10 +14,10 @@ import random
 
 class EventHandler:
     def __init__(self):
-        self.events_by_type = {}                                # Dictionary to store events by type
-        self.consequences_by_type = {}                          # Dictionary to store consequences by type
-        self.npcs_by_type = {}                                  # Dictionary to store NPCs
-        self.enemies_by_type = {}                               # Dictionary to store enemies by faction
+        self.events_by_category = {}                                # Dictionary to store events by category
+        self.consequences_by_category = {}                          # Dictionary to store consequences by category
+        self.npcs_by_category = {}                                  # Dictionary to store NPCs
+        self.enemies_by_category = {}                               # Dictionary to store enemies by faction
         self.keywords = read_txt_all('data/keywords')  
         self.locations = load_json('data/locations', Location.from_dict)  
         self.factions =  load_json('data/factions', Faction.from_dict)  
@@ -29,33 +29,33 @@ class EventHandler:
 
     def load_all_events(self):
         directory = ('data/events')
-        for event_type in os.listdir(directory):
-            full_path = os.path.join(directory, event_type)
+        for event_category in os.listdir(directory):
+            full_path = os.path.join(directory, event_category)
             if os.path.isdir(full_path):
-                self.events_by_type[event_type] = load_json(full_path, InputEvent.from_dict)
+                self.events_by_category[event_category] = load_json(full_path, InputEvent.from_dict)
 
     def load_all_npcs(self):
         directory = ('data/npcs')
-        for npc_type in os.listdir(directory):
-            full_path = os.path.join(directory, npc_type)
+        for npc_category in os.listdir(directory):
+            full_path = os.path.join(directory, npc_category)
             if os.path.isdir(full_path):
-                self.npcs_by_type[npc_type] = load_json(full_path, NPC.from_dict)
+                self.npcs_by_category[npc_category] = load_json(full_path, NPC.from_dict)
 
     def load_all_enemies(self):
         directory = ('data/enemies')
-        for enemy_type in os.listdir(directory):
-            full_path = os.path.join(directory, enemy_type)
+        for enemy_category in os.listdir(directory):
+            full_path = os.path.join(directory, enemy_category)
             if os.path.isdir(full_path):
-                self.enemies_by_type[enemy_type] = load_json(full_path, Enemy.from_dict)
+                self.enemies_by_category[enemy_category] = load_json(full_path, Enemy.from_dict)
 
     def load_all_consequences(self):
         directory = ('data/consequences')
         for filename in os.listdir(directory):
             full_path = os.path.join(directory, filename)
-            consequence_type = filename[:-5]
-            self.consequences_by_type[consequence_type] =  Consequences.from_dict(read_json(full_path))
+            consequence_category = filename[:-5]
+            self.consequences_by_category[consequence_category] =  Consequences.from_dict(read_json(full_path))
 
-    def craft_event(self, characters, event_type='random', event_title='', titles=[], keywords=[], enemies=[], region=''):
+    def craft_event(self, characters, event_category='random', event_title='', titles=[], keywords=[], enemies=[], region=''):
         
         def craft_event_with_characters(event):
             # Ensure that the number of specified titles does not exceed the number of characters required by the event
@@ -66,7 +66,7 @@ class EventHandler:
             event_characters = self.process_characters(input_event, characters, titles)
             if event_characters:
                 # Create output event
-                output_event = OutputEvent(title = event.title, type = event.type, characters = event_characters, fields = event.fields, length = event.length)
+                output_event = OutputEvent(title = event.title, category = event.category, characters = event_characters, fields = event.fields, length = event.length)
 
                 self.process_summary(event, output_event, event_characters, enemies)
                 self.process_keywords(event, output_event, keywords)
@@ -82,9 +82,9 @@ class EventHandler:
                 print(f"No valid characters found for event '{event.title}'")
                 return None, None, None
         
-        events = self.events_by_type.get(event_type, {})
+        events = self.events_by_category.get(event_category, {})
         if not events:
-            print(f"No events available for type '{event_type}'")
+            print(f"No events available for category '{event_category}'")
             return None, None, None
         
         if event_title != '':
@@ -105,6 +105,21 @@ class EventHandler:
                     if event_story and event_consequences:
                         return event_title, event_story, event_consequences
                 print(f"No valid characters found for event '{input_event.title}' or event invalid for specified characters. Trying another event...")
+
+    def quick_event(self, characters, event_category, event_title='', titles=[]):
+        event_characters = [characters[title] for title in titles]
+
+        events = self.events_by_category.get(event_category, {})
+
+        event_instance = events.get(event_title)
+        input_event = copy.deepcopy(event_instance)
+
+        quick_event = QuickEvent(category=input_event.category, title=input_event.title, characters=event_characters)
+        
+        self.process_consequences(input_event, quick_event)
+
+        return quick_event.craft_event()
+
 
     def process_summary(self, input_event, output_event, characters, enemies):
         # In event summary, replace placeholders with character names
@@ -329,15 +344,15 @@ class EventHandler:
 
     def process_enemies(self, output_event, enemies=[]):
         
-        unique_enemies = list(set(enemies))  # Remove duplicates to get unique enemy types
+        unique_enemies = list(set(enemies))  # Remove duplicates to get unique enemy categorys
         processed_enemies = {}  # To store processed enemy data
         processed_factions = {} # To store processed factions
 
         # Get all enemies
         for enemy in unique_enemies:
         # Check if the enemy exists in the categorization and hasn't been processed yet
-            for category in self.enemies_by_type:
-                category_enemies = self.enemies_by_type[category]
+            for category in self.enemies_by_category:
+                category_enemies = self.enemies_by_category[category]
                 if enemy in category_enemies:
                     processed_enemies[enemy] = category_enemies[enemy]
 
@@ -363,10 +378,10 @@ class EventHandler:
         # Initialize an empty dictionary to store the NPCs found
         event_npcs = {}
 
-        # Loop through each category in the npcs_by_type dict
-        for category in self.npcs_by_type:
+        # Loop through each category in the npcs_by_category dict
+        for category in self.npcs_by_category:
             # Filter NPCs that are listed in the event_npc_titles and are present in the current category
-            category_npcs = self.npcs_by_type[category]
+            category_npcs = self.npcs_by_category[category]
             found_npcs = {title: category_npcs[title] for title in event_npc_titles if title in category_npcs}
 
             # Update the event_npcs dict with the NPCs found in this category
@@ -437,18 +452,18 @@ class EventHandler:
     def process_consequences(self, input_event, output_event):
         compiled_consequences = []
 
-        if input_event.type in ['random', 'story', 'dungeon']:
-            compiled_consequences = self.consequences_by_type['Default'].consequences
-            compiled_consequences += self.consequences_by_type['Event'].consequences
-        elif input_event.type == "recruit":
-            compiled_consequences = self.consequences_by_type['Default'].consequences
-            compiled_consequences += self.consequences_by_type['Recruit'].consequences
+        if input_event.category in ['random', 'story', 'dungeon']:
+            compiled_consequences = self.consequences_by_category['Default'].consequences
+            compiled_consequences += self.consequences_by_category['Event'].consequences
+        elif input_event.category == "recruit":
+            compiled_consequences = self.consequences_by_category['Default'].consequences
+            compiled_consequences += self.consequences_by_category['Recruit'].consequences
 
         if input_event.num_characters >= 2:
-            compiled_consequences += self.consequences_by_type['MultipleCharacters'].consequences
+            compiled_consequences += self.consequences_by_category['MultipleCharacters'].consequences
 
         if getattr(input_event, 'consequences', None):
-            compiled_special_consequences = self.consequences_by_type['Special'].consequences
+            compiled_special_consequences = self.consequences_by_category['Special'].consequences
 
             for consequence_command in input_event.consequences:
 

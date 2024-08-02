@@ -2,7 +2,7 @@
 import { startEvent } from './apiClient.js';
 import { EventHandlerFactory } from './eventHandler.js';
 import { renderCharacterList } from './character.js';
-import { getState, setEventType, updateRecruitInfo } from "./state.js";
+import { getState, setEventCategory, updateRecruitInfo } from "./state.js";
 import { elementManager } from './elementManager.js';
 import { showLoading, hideLoading } from './loading.js';
 import eventHandlers from './eventHandler.js';
@@ -14,10 +14,10 @@ export function initializeEventHandler() {
     return { storyModal };
 }
 
-export async function createEvent(eventType, eventName, eventCharacter, eventModifiers, recruitName) {
+export async function createEvent(eventCategory, eventName, eventCharacter, eventModifiers, recruitName) {
     try {
         showLoading();
-        const result = await startEvent(eventType, eventName, eventCharacter, eventModifiers, recruitName);
+        const result = await startEvent(eventCategory, eventName, eventCharacter, eventModifiers, recruitName);
         hideLoading();
         processEventResult(result);
     } catch (error) {
@@ -28,20 +28,22 @@ export async function createEvent(eventType, eventName, eventCharacter, eventMod
 
 export function processEventResult(result) {
     const state = getState();
-    const eventHandler = EventHandlerFactory.createHandler(result.eventType, state);
+    const eventHandler = EventHandlerFactory.createHandler(result.eventCategory, state);
     
     eventHandler.processEvent(result);
   
-    updateStoryPanel(result.title, result.storyText);
-    updateCards(result.consequences);
+    if (result.eventCategory != 'quick_encounter') {
+        updateStoryPanel(result.title, result.storyText);
+        updateCards(result.consequences);
 
-    const storyModal = elementManager.get('storyModal');
-    storyModal.style.display = 'block';
+        const storyModal = elementManager.get('storyModal');
+        storyModal.style.display = 'block';
+    }
+    
+    // Update the current event category in the state
+    setEventCategory(result.eventCategory);
 
-    // Update the current event type in the state
-    setEventType(result.eventType);
-
-    if (result.eventType == 'recruit') {
+    if (result.eventCategory == 'recruit') {
         updateRecruitInfo({
             recruitTitle: Object.keys(result.consequences)[0],
             recruitGroups: result.recruitGroups,
@@ -64,17 +66,17 @@ function initializeStoryModal() {
     };
 
     elementManager.get('returnButton').addEventListener("click", () => {
-        const currentEventType = getState().currentEventType;
-        if (eventHandlers[currentEventType] && eventHandlers[currentEventType].return) {
-            eventHandlers[currentEventType].return();
+        const currentEventCategory = getState().currentEventCategory;
+        if (eventHandlers[currentEventCategory] && eventHandlers[currentEventCategory].return) {
+            eventHandlers[currentEventCategory].return();
         }
         modal.hide();
     });
 
     elementManager.get('continueButton').addEventListener("click", () => {
-        const currentEventType = getState().currentEventType;
-        if (eventHandlers[currentEventType] && eventHandlers[currentEventType].continue) {
-            eventHandlers[currentEventType].continue();
+        const currentEventCategory = getState().currentEventCategory;
+        if (eventHandlers[currentEventCategory] && eventHandlers[currentEventCategory].continue) {
+            eventHandlers[currentEventCategory].continue();
         }
     });
 

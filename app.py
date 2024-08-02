@@ -46,33 +46,45 @@ def create_event_endpoint():
         estate.add_character(character)
     
     # Call the start_event method with the additional data
-    input_type = data['eventType']
+    input_category = data['eventCategory']
     input_event = data['eventTitle']
     input_titles = data['eventCharacters']
     input_modifiers = data['eventModifiers']
     input_name = data['recruitName']
 
+    story_title = ''
+    story_text = ''
     importance_list = []
 
-    if input_type == 'recruit':
-        event_title, event_text, consequence_dict, importance_list = estate.recruit(
+    if input_category == 'recruit':
+        story_title, story_text, consequence_dict, importance_list = estate.recruit(
             input_titles[0],
             input_modifiers,
             input_name,
         )
-    elif input_type == 'first_encounter':
+    elif input_category == 'first_encounter':
         
         estate.add_relationship_placeholder(input_titles)
 
-        event_title, event_text, consequence_dict = estate.start_event(
-            event_type = input_type,
+        story_title, story_text, consequence_dict = estate.start_event(
+            event_category = input_category,
             event_title = f'First Encounter {len(input_titles)}',
             titles = input_titles, 
             modifiers = input_modifiers
         )
+    elif input_category == 'quick_encounter':
+
+        estate.add_relationship_placeholder(input_titles)
+
+        consequence_dict = estate.quick_encounter(
+            event_category = input_category,
+            event_title = f'Quick Encounter {len(input_titles)}',
+            titles = input_titles
+        )
+
     else:
-        event_title, event_text, consequence_dict = estate.start_event(
-            event_type = input_type,
+        story_title, story_text, consequence_dict = estate.start_event(
+            event_category = input_category,
             event_title = input_event, 
             titles = input_titles, 
             modifiers = input_modifiers
@@ -82,9 +94,9 @@ def create_event_endpoint():
     
     response_data = {
         'characters': updated_characters,
-        'eventType': input_type,
-        'title': event_title,  
-        'storyText': event_text,
+        'eventCategory': input_category,
+        'title': story_title,  
+        'storyText': story_text,
         'consequences': consequence_dict,
         'recruitGroups': importance_list
     }

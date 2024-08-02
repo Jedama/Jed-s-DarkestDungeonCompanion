@@ -3,14 +3,14 @@
   "Town": {
     "Recruit": {
       "fields": [
-        {"type": "character-select", "id": "character-title", "label": "Select Character"},
-        {"type": "text", "id": "modifier", "label": "Enter Modifier"}
+        {"category": "character-select", "id": "character-title", "label": "Select Character"},
+        {"category": "text", "id": "modifier", "label": "Enter Modifier"}
       ],
       "portrait": true
     },
     "Meeting": {
       "fields": [
-        {"type": "text", "id": "topic", "label": "Meeting Topic"}
+        {"category": "text", "id": "topic", "label": "Meeting Topic"}
       ],
       "portrait": false
     }

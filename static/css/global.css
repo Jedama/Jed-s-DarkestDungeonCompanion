@@ -25,7 +25,7 @@ body {
 }
 
 /* Form and Input Styles */
-#search, #savefile-name, #event-type-select {
+#search, #savefile-name, #event-category-select {
     width: 100%;
     padding: 5px;
     margin: 10px 0;

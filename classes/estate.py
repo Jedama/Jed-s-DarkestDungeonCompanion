@@ -67,9 +67,9 @@ class Estate:
         else:
             print(f"Character {character_title} not found.")
 
-    def start_event(self, event_type='random', event_title=None, titles = [], modifiers = []):
+    def start_event(self, event_category='random', event_title=None, titles = [], modifiers = []):
         # Start an event by title
-        return self.eventHandler.craft_event(self.characters, event_type, event_title, titles, modifiers + self.keywords)
+        return self.eventHandler.craft_event(self.characters, event_category, event_title, titles, modifiers + self.keywords)
 
     def recruit(self, title, quirks=[], name = ''):
 
@@ -88,10 +88,14 @@ class Estate:
         ordered_characters = self.eventHandler.recruit_rank_characters(self.characters, self.leader, character)
 
         return f'Recruit: {name}', recruit_story, recruit_consequences, ordered_characters
+    
+    def quick_encounter(self, event_category='', event_title='', titles = []):
 
-    def encounter(self, enemies = [], event_type = 'dungeon', event_title='Encounter Start', modifiers=[]):
+        return self.eventHandler.quick_event(self.characters, event_category, event_title, titles)
 
-        self.eventHandler.craft_event(self.characters, event_type, event_title, self.dungeon_team, keywords=modifiers, enemies=enemies, region=self.dungeon_region)
+    def encounter(self, enemies = [], event_category = 'dungeon', event_title='Encounter Start', modifiers=[]):
+
+        self.eventHandler.craft_event(self.characters, event_category, event_title, self.dungeon_team, keywords=modifiers, enemies=enemies, region=self.dungeon_region)
 
     
     def start_campaign(self, starting_characters = ['Heiress', 'Heir', 'Crusader', 'Highwayman']):

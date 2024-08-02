@@ -1,9 +1,9 @@
 from prompting import prompt_claude, clean_response_claude, system_prompts, consequences_prompts
 
 class InputEvent:
-    def __init__(self, type, title, num_characters, summary, outcomes, keywords, keyword_range, fields, length, npcs, locations, conditions, consequences):
+    def __init__(self, category, title, num_characters, summary, outcomes, keywords, keyword_range, fields, length, npcs, locations, conditions, consequences):
         self.title = title
-        self.type = type
+        self.category = category
         self.num_characters = num_characters
         self.summary = summary
         self.outcomes = outcomes
@@ -22,7 +22,7 @@ class InputEvent:
     def from_dict(cls, data):
         return cls(
             title=data.get('title' , 'Event title'),
-            type=data.get('type', 'random'),
+            category=data.get('category', 'random'),
             num_characters=data.get('num_characters', 1),
             summary=data.get('summary', 'Event summary'),
             outcomes=data.get('outcomes', [0, 0, 1, 0, 0]),
@@ -39,7 +39,7 @@ class InputEvent:
     def to_dict(self):
         return {
             "title": self.title,
-            "type": self.type,
+            "category": self.category,
             "num_characters": self.num_characters,
             "summary": self.summary,
             "outcomes": self.outcomes,
@@ -55,9 +55,9 @@ class InputEvent:
     
 
 class OutputEvent:
-    def __init__(self, title, type, characters, summary = "", outcome = "Neutral", keywords = [], fields = [], length = 1, npcs = {}, factions = {}, enemies = {}, locations = {}, consequences = []):
+    def __init__(self, title, category, characters, summary = "", outcome = "Neutral", keywords = [], fields = [], length = 1, npcs = {}, factions = {}, enemies = {}, locations = {}, consequences = []):
         self.title = title
-        self.type = type
+        self.category = category
         self.characters = characters
         self.summary = summary
         self.outcome = outcome
@@ -76,7 +76,7 @@ class OutputEvent:
     def from_dict(cls, data):
         return cls(
             title=data.get('title'),
-            type=data.get('type'),
+            category=data.get('category'),
             characters=data.get('characters', {}),
             summary=data.get('summary', "Event summary"),
             outcome=data.get('outcome', 'Neutral'),
@@ -94,7 +94,7 @@ class OutputEvent:
     def to_dict(self):
         return {
             "title": self.title,
-            "type": self.type,
+            "category": self.category,
             "characters": self.characters,
             "summary": self.summary,
             "outcome": self.outcome,
@@ -340,6 +340,168 @@ class OutputEvent:
 
                 # Convert character names to titles if needed
                 target = self.name_to_title.get(target, target)
+
+                # Execute the command if the character object is found
+                method = getattr(current_character, command_name)
+                # Check if target is None, and call the method accordingly
+                if target is not None:
+                    result = method(target, value)  # Assuming the method requires two parameters: target and value
+                else:
+                    result = method(value)  # Assuming the method only requires value if target is None
+
+                consequences[current_character.title].append(result)
+
+            elif line.startswith('End'):
+                # Reset current character when block ends
+                current_character = None
+
+        return consequences
+
+    @staticmethod
+    def process_command(command):
+        # Find the first parenthesis to split the command name from the parameters
+        idx = command.find('(')
+        if idx == -1:
+            return None, None, None  # Invalid command format
+
+        command_name = command[:idx].strip()
+        parameter_str = command[idx+1:-1]  # Exclude the last parenthesis
+
+        # Split the parameters at the first comma and remove extra spaces
+        idx = parameter_str.find("',")
+        if idx == -1:
+            argument = None
+            value = parameter_str.strip()
+        else:
+            argument = parameter_str[:idx].strip()
+            value = parameter_str[idx+2:].strip()
+            argument = argument.strip("'")
+
+        # Remove quotes if present
+        value = value.strip("'")
+
+        # Remove any + sign from the value
+        value = value.replace('+', '')
+
+        # Remove potential trailing ) from value
+        value = value.strip(')')
+
+        # Try converting value to int
+        try:
+            value = int(value)
+        except ValueError:
+            pass
+
+        return command_name, argument, value
+    
+
+class QuickEvent:
+    def __init__(self, category, title, characters, consequences = []):
+        self.title = title
+        self.category = category
+        self.characters = characters
+        self.consequences = consequences
+    
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            title=data.get('title'),
+            category=data.get('category'),
+            characters=data.get('characters', {}),
+            consequences=data.get('consequences', [])
+        )
+    
+    def to_dict(self):
+        return {
+            "title": self.title,
+            "category": self.category,
+            "characters": self.characters,
+            "consequences": self.consequences
+        }
+    
+    def craft_event(self):
+
+        system_prompt, user_prompt, assistant_prompt = self.create_consequences_prompt()
+        event_consequences = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 450 + (100 * len(self.characters)), temperature=1)
+        event_consequences = "For" + clean_response_claude(event_consequences)
+
+        print(event_consequences)
+
+        consequence_dict = self.process_response(event_consequences)
+
+        return consequence_dict
+    
+    def create_consequences_prompt(self):
+
+        # Create system prompt
+        system_prompt = self.consequences_system_prompt()
+        # Create user prompt
+        user_prompt = self.consequences_user_prompt()
+        # Create assistant prompt
+        assistant_prompt = "Consequences:\nFor"
+
+        return system_prompt, user_prompt, assistant_prompt
+    
+    def consequences_system_prompt(self):
+
+        system_prompt = consequences_prompts(self)
+    
+        system_prompt += f'Possible consequences:\n'
+        for consequence in self.consequences:
+            system_prompt += f'{consequence}\n'
+
+        return system_prompt
+    
+    def consequences_user_prompt(self):
+
+        user_prompt = f'Characters:\n'
+        # Add characters to user prompt
+        for i in range(len(self.characters)):
+            character = self.characters[i]
+            user_prompt += f'Name: {character.name}\n'
+            user_prompt += f'Title: {character.title}\n'
+            user_prompt += f'Summary: {character.summary}\n'
+            user_prompt += f'History: {character.history}\n'
+            user_prompt += f'Traits: {character.traits}\n'
+            user_prompt += f'Status: {character.status}\n'
+            user_prompt += f'Stats: {character.stats}\n'
+            user_prompt += f'Appearance: {character.appearance}\n'
+            user_prompt += f'Clothing: {character.clothing}\n'
+            user_prompt += f'Trinkets: {character.trinkets}\n'
+            user_prompt += f'Other notes: {character.notes}\n'
+    
+        return user_prompt
+    
+    def process_response(self, event_consequences):
+        # Split the output into lines for processing
+        lines = event_consequences.split('\n')
+
+        # Remove empty lines
+        lines = [line for line in lines if line.strip()]
+
+        # Dictionary to store consequence text representations for each character
+        consequences = {}
+
+        # Variable to keep track of the current character being processed
+        current_character = None
+
+        # Iterate through each line in the output
+        for line in lines:
+            if line.startswith('For'):
+                # Extract the character's title from the line
+                # Assuming the format is "For 'Title' (Name)"
+                title_start = line.find("'") + 1
+                title_end = line.find("'", title_start)
+                character_title = line[title_start:title_end]
+        
+                # Find the character object based on the title
+                current_character = next((char for char in self.characters if char.title == character_title), None)
+
+                consequences[character_title] = []
+
+            elif line[0].islower():
+                command_name, target, value = self.process_command(line)
 
                 # Execute the command if the character object is found
                 method = getattr(current_character, command_name)

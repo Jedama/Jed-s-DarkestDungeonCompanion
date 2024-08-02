@@ -1,9 +1,9 @@
 [
     {
         "title": "Recruit_Disembark",
-        "type": "recruit",
+        "category": "recruit",
         "num_characters": 1,
-        "summary": "[Character 1] steps off the stagecoach and arrives in the hamlet.",
+        "summary": "[Character 1] steps off the stagecoach and arrives in the Hamlet.",
         "outcomes": [0, 0, 1, 0, 0],
         "length": 1,
         "locations": ["Stagecoach"],
@@ -11,13 +11,33 @@
     },
     {
         "title": "Recruit_Crier",
-        "type": "recruit",
+        "category": "recruit",
         "num_characters": 1,
-        "summary": "The town crier announces [Character 1]'s arrival to the hamlet.",
+        "summary": "The town crier announces [Character 1]'s arrival to the Hamlet.",
         "outcomes": [0, 0, 1, 0, 0],
         "length": 1,
         "npcs": ["Town Crier"],
         "locations": ["Town Square"],
+        "keyword_range": [0, 0]
+    },
+    {
+        "title": "Recruit_Boat",
+        "category": "recruit",
+        "num_characters": 1,
+        "summary": "[Character 1] arrives to the Hamlet by means of a small boat.",
+        "outcomes": [0, 0, 1, 0, 0],
+        "length": 1,
+        "locations": ["Docks"],
+        "keyword_range": [0, 0]
+    },
+    {
+        "title": "Recruit_Graveyard",
+        "category": "recruit",
+        "num_characters": 1,
+        "summary": "[Character 1] appears mysteriously in the Hamlet's graveyard, discovered by the Caretaker.",
+        "outcomes": [0, 0, 1, 0, 0],
+        "length": 1,
+        "locations": ["Graveyard"],
         "keyword_range": [0, 0]
     }
 ]
