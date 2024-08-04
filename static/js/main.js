@@ -1,9 +1,11 @@
-import { loadEstateData, saveEstate } from './apiClient.js';
-import { addCharacter, setEstateName, getState } from './state.js';
-import { renderCharacterList, renderCharacterDetails } from './character.js';
-import { initializeRecruit, populateDropdown } from './recruit.js';
-import { initializeEventHandler, createEvent } from './events.js';
 import { elementManager } from './elementManager.js';
+import { loadEstateData, saveEstate } from './apiClient.js';
+import { addCharacter, setEstateName } from './state.js';
+
+import { initializeDungeonView, switchToDungeonView } from './dungeon.js';
+import { initializeEventHandler, createEvent } from './events.js';
+import { initializeRecruit, populateDropdown } from './recruit.js';
+import { renderCharacterList, renderCharacterDetails } from './character.js';
 
 document.addEventListener("DOMContentLoaded", initializeApp);
 
@@ -14,6 +16,7 @@ function initializeApp() {
     renderCharacterList();
     initializeEventHandler();
     initializeRecruit();
+    initializeDungeonView();
 
     showSavefileModal();
     initializeEventListeners();
@@ -64,6 +67,7 @@ function handleEstateData(estateData) {
     if (estateData.characters && typeof estateData.characters === 'object') {
         Object.values(estateData.characters).forEach(addCharacter);
         renderCharacterList();
+        switchToDungeonView('oldRoad');
         const firstCharacterName = Object.keys(estateData.characters)[0];
         if (firstCharacterName) {
             renderCharacterDetails(firstCharacterName);

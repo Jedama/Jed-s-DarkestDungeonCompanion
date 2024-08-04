@@ -1,0 +1,117 @@
+:root {
+    --character-base-height: 768px; /* Adjustable base height */
+  }
+  
+  .dungeon-view {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: none;
+  }
+  
+  .dungeon-characters {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    cursor: none;
+  }
+  
+  .dungeon-character {
+    position: absolute;
+    bottom: 0;
+    height: var(--character-base-height);
+    width: calc(var(--character-base-height) * 832 / 1024); /* Maintain aspect ratio */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    pointer-events: auto;
+    transform-origin: bottom center;
+  }
+
+  /* Base transformations */
+  .dungeon-character[data-position="0"] {
+    z-index: 4;
+    transform: translateX(-15%) scale(0.9);
+  }
+
+  .dungeon-character[data-position="1"] {
+    z-index: 2;
+    transform: translateX(-45%) scale(0.8);
+  }
+
+  .dungeon-character[data-position="2"] {
+    z-index: 3;
+    transform: translateX(15%) scale(0.8);
+  }
+
+  .dungeon-character[data-position="3"] {
+    z-index: 1;
+    transform: translateX(45%) scale(0.7);
+  }
+
+  /* Hover effects */
+  .dungeon-character[data-position="0"]:hover {
+    transform: translateX(-15%) scale(0.945); /* 0.9 * 1.05 */
+  }
+
+  .dungeon-character[data-position="1"]:hover {
+    transform: translateX(-45%) scale(0.84); /* 0.8 * 1.05 */
+  }
+
+  .dungeon-character[data-position="2"]:hover {
+    transform: translateX(15%) scale(0.84); /* 0.8 * 1.05 */
+  }
+
+  .dungeon-character[data-position="3"]:hover {
+    transform: translateX(45%) scale(0.735); /* 0.7 * 1.05 */
+  }
+
+.character-name {
+    position: absolute;
+    font-family: 'dwarvenAxe';
+    bottom: 1vh;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 2vh;
+    white-space: nowrap;
+}
+
+.character-bars {
+    position: absolute;
+    bottom: 4vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+}
+
+.health-bar, .mental-bar {
+    height: 1vh;
+    margin-bottom: 0.5vh;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.health-bar::before, .mental-bar::before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 50%; /* Adjust based on actual health/mental values */
+}
+
+.health-bar::before {
+    background-color: #ff4444;
+}
+
+.mental-bar::before {
+    background-color: #44ff44;
+}

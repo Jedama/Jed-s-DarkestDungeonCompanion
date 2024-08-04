@@ -95,6 +95,10 @@ class StateManager {
       recruitGroupsIndex: updatedInfo.recruitGroupsIndex !== undefined ? updatedInfo.recruitGroupsIndex : this.state.recruitGroupsIndex
     });
   }
+
+  updateDungeonTeam(team) {
+    this.setState({ dungeonTeam: team });
+  }
 }
 
 // Initialize the state manager with the initial state
@@ -105,7 +109,8 @@ const initialState = {
   currentEventCategory: null,
   recruitTitle: '',
   recruitGroups: [],
-  recruitGroupsIndex: 0
+  recruitGroupsIndex: 0,
+  dungeonTeam: ['Crusader', 'Highwayman', 'Heiress', 'Heir']
 };
 
 const stateManager = new StateManager(initialState);
@@ -122,6 +127,7 @@ export const updateCharacter = (characterTitle, updatedInfo) => stateManager.upd
 export const setEventCategory = (eventCategory, title) => stateManager.setEventCategory(eventCategory, title);
 export const updateRecruitInfo = (updatedInfo) => stateManager.updateRecruitInfo(updatedInfo);
 export const subscribeToState = (listener) => stateManager.subscribe(listener);
+export const setDungeonTeam = (team) => stateManager.updateDungeonTeam(team);
 
 // Helper functions
 export const getAllCharacters = () => getState().characters;

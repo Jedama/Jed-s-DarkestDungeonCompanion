@@ -33,6 +33,8 @@ class ElementManager {
         recruitModifierInput: document.getElementById("recruit-modifier"),
         recruitModifierContainer: document.getElementById("recruit-modifier-container"),
         recruitHireButton: document.getElementById("recruit-hire"),
+        galleryView: document.getElementById('gallery-view'),
+        dungeonView: document.getElementById('dungeon-view')
       };
     }
   
