@@ -105,40 +105,13 @@
                 <div id="character-grid" class="character-grid"></div>
             </div>
             <div id="dungeon-view" class="dungeon-view" style="display: none;">
-                <div class="dungeon-characters">
-                    <div class="dungeon-character" data-position="0">
-                        <h3 class="character-name"></h3>
-                        <img class="character-portrait" src="" alt="Character Portrait">
-                        <div class="character-bars">
-                            <div class="health-bar"></div>
-                            <div class="mental-bar"></div>
-                        </div>
-                    </div>
-                    <div class="dungeon-character" data-position="1">
-                        <h3 class="character-name"></h3>
-                        <img class="character-portrait" src="" alt="Character Portrait">
-                        <div class="character-bars">
-                            <div class="health-bar"></div>
-                            <div class="mental-bar"></div>
-                        </div>
-                    </div>
-                    <div class="dungeon-character" data-position="2">
-                        <h3 class="character-name"></h3>
-                        <img class="character-portrait" src="" alt="Character Portrait">
-                        <div class="character-bars">
-                            <div class="health-bar"></div>
-                            <div class="mental-bar"></div>
-                        </div>
-                    </div>
-                    <div class="dungeon-character" data-position="3">
-                        <h3 class="character-name"></h3>
-                        <img class="character-portrait" src="" alt="Character Portrait">
-                        <div class="character-bars">
-                            <div class="health-bar"></div>
-                            <div class="mental-bar"></div>
-                        </div>
-                    </div>
+                <div id="dungeon-characters-container" class="dungeon-characters-container">
+                    <img class="character dungeon-character" id="char0" data-position="0" src="" alt="Character 0">
+                    <img class="character dungeon-character" id="char1" data-position="1" src="" alt="Character 1">
+                    <img class="character dungeon-character" id="char2" data-position="2" src="" alt="Character 2">
+                    <img class="character dungeon-character" id="char3" data-position="3" src="" alt="Character 3">
                 </div>
+                <canvas id="dungeon-canvas" style="display:none;"></canvas>
             </div>
         </div>
         <div class="right-panel">
