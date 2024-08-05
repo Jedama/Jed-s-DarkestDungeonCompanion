@@ -5,13 +5,7 @@
     padding-top: 45px;
     padding-right: 45px;
     overflow-y: auto;
-    box-sizing: border-box;
-    background-image: url('/graphics/default/background/book.png');
-    background-size: calc(100% + 150px) 100%;
-    background-position: -128px center;
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 1;
+    background: url('/graphics/default/background/book.png') no-repeat -128px center / calc(100% + 150px) 100%;
 }
 
 .middle-panel {
@@ -20,8 +14,6 @@
     flex-direction: column;
     padding: 0;
     overflow-x: hidden;
-    z-index: 0;
-    height: 100%;
 }
 
 .right-panel {
@@ -29,7 +21,5 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    box-sizing: border-box;
 }

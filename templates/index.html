@@ -106,10 +106,22 @@
             </div>
             <div id="dungeon-view" class="dungeon-view" style="display: none;">
                 <div id="dungeon-characters-container" class="dungeon-characters-container">
-                    <img class="character dungeon-character" id="char0" data-position="0" src="" alt="Character 0">
-                    <img class="character dungeon-character" id="char1" data-position="1" src="" alt="Character 1">
-                    <img class="character dungeon-character" id="char2" data-position="2" src="" alt="Character 2">
-                    <img class="character dungeon-character" id="char3" data-position="3" src="" alt="Character 3">
+                    <div class="character-wrapper" data-position="0">
+                        <img class="stress-meter" src="" alt="Stress Meter">
+                        <img class="character dungeon-character" id="char0" src="" alt="Character 0">
+                    </div>
+                    <div class="character-wrapper" data-position="1">
+                        <img class="stress-meter" src="" alt="Stress Meter">
+                        <img class="character dungeon-character" id="char1" src="" alt="Character 1">
+                    </div>
+                    <div class="character-wrapper" data-position="2">
+                        <img class="stress-meter" src="" alt="Stress Meter">
+                        <img class="character dungeon-character" id="char2" src="" alt="Character 2">
+                    </div>
+                    <div class="character-wrapper" data-position="3">
+                        <img class="stress-meter" src="" alt="Stress Meter">
+                        <img class="character dungeon-character" id="char3" src="" alt="Character 3">
+                    </div>
                 </div>
                 <canvas id="dungeon-canvas" style="display:none;"></canvas>
             </div>

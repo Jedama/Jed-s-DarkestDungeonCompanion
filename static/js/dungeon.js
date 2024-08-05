@@ -8,7 +8,6 @@ export function initializeDungeonView() {
     const canvas = document.getElementById('dungeon-canvas');
     const ctx = canvas.getContext('2d');
 
-
     const characters = dungeonCharactersContainer.querySelectorAll('.dungeon-character');
     characters.forEach(char => {
         char.onload = function() {
@@ -22,29 +21,28 @@ export function initializeDungeonView() {
         }
     });
 
-    // Set up event listeners for the container
     dungeonCharactersContainer.addEventListener('mousemove', handleInteraction);
     dungeonCharactersContainer.addEventListener('click', handleInteraction);
 
-    // Subscribe to state changes
     subscribeToState(updateDungeonView);
 }
 
 export function updateDungeonView() {
     const state = getState();
     const dungeonTeam = state.dungeonTeam || [];
-    const dungeonCharacters = elementManager.get('dungeonView').querySelectorAll('.dungeon-character');
+    const characterWrappers = elementManager.get('dungeonView').querySelectorAll('.character-wrapper');
 
     const reversedTeam = [...dungeonTeam].reverse();
 
-    dungeonCharacters.forEach((char, index) => {
+    characterWrappers.forEach((wrapper, index) => {
         const characterTitle = reversedTeam[index];
         const character = state.characters[characterTitle];
+        const charImg = wrapper.querySelector('.dungeon-character');
         if (character) {
-            char.src = `/graphics/default/dungeon/${character.title.toLowerCase()}0.png`;
-            char.alt = character.name;
-            char.setAttribute('data-title', character.title);
-            
+            charImg.src = `/graphics/default/dungeon/${character.title.toLowerCase()}0.png`;
+            charImg.alt = character.name;
+            wrapper.setAttribute('data-title', character.title);
+            updateStressMeter(index, 6);
         } 
     });
 }
@@ -54,40 +52,40 @@ function handleInteraction(e) {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    let topChar = null;
-    const characters = Array.from(e.currentTarget.querySelectorAll('.dungeon-character'));
-    characters.forEach(char => {
-        const charRect = char.getBoundingClientRect();
+    let topWrapper = null;
+    const wrappers = Array.from(e.currentTarget.querySelectorAll('.character-wrapper'));
+    wrappers.forEach(wrapper => {
+        const charImg = wrapper.querySelector('.dungeon-character');
+        const charRect = charImg.getBoundingClientRect();
         const charX = x - (charRect.left - rect.left);
         const charY = y - (charRect.top - rect.top);
 
-        if (charX >= 0 && charX < char.width && charY >= 0 && charY < char.height) {
-            const index = (Math.floor(charY) * char.width + Math.floor(charX)) * 4;
-            if (char.imageData && char.imageData.data[index + 3] > 0) {
-                topChar = char;
+        if (charX >= 0 && charX < charImg.width && charY >= 0 && charY < charImg.height) {
+            const index = (Math.floor(charY) * charImg.width + Math.floor(charX)) * 4;
+            if (charImg.imageData && charImg.imageData.data[index + 3] > 0) {
+                topWrapper = wrapper;
             }
         }
     });
 
-    if (topChar) {
+    if (topWrapper) {
         if (e.type === 'mousemove') {
-            const index = Array.from(topChar.parentNode.children).indexOf(topChar);
+            const index = Array.from(topWrapper.parentNode.children).indexOf(topWrapper);
             const baseScale = getBaseScale(index);
             const hoverScale = baseScale * 1.05;
-            topChar.style.transform = topChar.style.transform.replace(/scale\([^)]*\)/, `scale(${hoverScale})`);
+            topWrapper.style.transform = topWrapper.style.transform.replace(/scale\([^)]*\)/, `scale(${hoverScale})`);
         } else if (e.type === 'click') {
-            const characterTitle = topChar.getAttribute('data-title');
+            const characterTitle = topWrapper.getAttribute('data-title');
             if (characterTitle) {
                 renderCharacterDetails(characterTitle);
             }
         }
     }
 
-    // Reset scale for characters not being hovered
-    characters.forEach((char, index) => {
-        if (char !== topChar) {
+    wrappers.forEach((wrapper, index) => {
+        if (wrapper !== topWrapper) {
             const baseTransform = getBaseTransform(index);
-            char.style.transform = baseTransform;
+            wrapper.style.transform = baseTransform;
         }
     });
 }
@@ -103,12 +101,36 @@ export function switchToDungeonView(region) {
 
     updateDungeonView();
 
-    // Reset character positions and scales
-    const characters = dungeonView.querySelectorAll('.dungeon-character');
-    characters.forEach((char, index) => {
+    const wrappers = dungeonView.querySelectorAll('.character-wrapper');
+    wrappers.forEach((wrapper, index) => {
         const baseTransform = getBaseTransform(index);
-        char.style.transform = baseTransform;
+        wrapper.style.transform = baseTransform;
     });
+}
+
+export function updateStressMeter(characterIndex, level) {
+    if (level < 0 || level > 6) {
+        console.error('Stress level must be between 0 and 6');
+        return;
+    }
+
+    const dungeonView = elementManager.get('dungeonView');
+    const characterWrappers = dungeonView.querySelectorAll('.character-wrapper');
+    
+    if (characterIndex < 0 || characterIndex >= characterWrappers.length) {
+        console.error('Invalid character index');
+        return;
+    }
+
+    const wrapper = characterWrappers[characterIndex];
+    const stressMeter = wrapper.querySelector('.stress-meter');
+    
+    if (level === 0) {
+        stressMeter.style.display = 'none';
+    } else {
+        stressMeter.style.display = 'block';
+        stressMeter.src = `/graphics/default/background/stresscrown${level}.png`;
+    }
 }
 
 function getBaseScale(index) {
