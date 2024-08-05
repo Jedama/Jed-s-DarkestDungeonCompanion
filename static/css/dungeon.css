@@ -1,6 +1,7 @@
 /* Dungeon styles */
 :root {
   --character-base-height: 740px; /* Adjustable base height */
+  --character-aspect-ratio: calc(832 / 1024);
 }
 
 .dungeon-view {
@@ -12,11 +13,9 @@
 }
 
 .dungeon-characters-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -25,15 +24,17 @@
 
 .character-wrapper {
   position: absolute;
-  bottom: 0;
   height: var(--character-base-height);
-  width: calc(var(--character-base-height) * 832 / 1024); /* Maintain aspect ratio */
+  width: calc(var(--character-base-height) * var(--character-aspect-ratio));
   transition: all 0.3s ease;
   cursor: pointer;
+  pointer-events: auto;
   transform-origin: bottom center;
+  
 }
 
 .dungeon-character {
+  z-index: 2;
   width: 100%;
   height: 100%;
   background-size: contain;
@@ -43,12 +44,10 @@
 
 .stress-meter {
   position: absolute;
-  top: -25%; /* Adjust this value to move the stress meter up or down */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%; /* Adjust the size as needed */
+  width: 110%; /* Adjust the size as needed */
   height: auto;
-  z-index: 0; /* Ensure it's behind the character image */
+  transform: translate(-50%, -50%); /* Center the stress meter on its position */
+  z-index: 1;
 }
 
 #dungeon-canvas {

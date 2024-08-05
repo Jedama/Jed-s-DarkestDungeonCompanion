@@ -1,11 +1,11 @@
 /* Panel Styles */
 .left-panel {
     flex: 0 0 35%;
-    padding: 10px;
-    padding-top: 45px;
-    padding-right: 45px;
+    padding: 45px 45px 10px 10px;
     overflow-y: auto;
-    background: url('/graphics/default/background/book.png') no-repeat -128px center / calc(100% + 150px) 100%;
+    background: url('/graphics/default/background/book.png') no-repeat;
+    background-position: -128px center;
+    background-size: calc(100% + 150px) 100%;
 }
 
 .middle-panel {

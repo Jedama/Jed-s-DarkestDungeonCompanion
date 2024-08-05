@@ -1,6 +1,7 @@
 import { getState, subscribeToState, setDungeonTeam } from './state.js';
 import { renderCharacterDetails } from './character.js';
 import { elementManager } from './elementManager.js';
+import characterInfo from './characterInfo.js';
 
 export function initializeDungeonView() {
     const dungeonView = elementManager.get('dungeonView');
@@ -25,26 +26,6 @@ export function initializeDungeonView() {
     dungeonCharactersContainer.addEventListener('click', handleInteraction);
 
     subscribeToState(updateDungeonView);
-}
-
-export function updateDungeonView() {
-    const state = getState();
-    const dungeonTeam = state.dungeonTeam || [];
-    const characterWrappers = elementManager.get('dungeonView').querySelectorAll('.character-wrapper');
-
-    const reversedTeam = [...dungeonTeam].reverse();
-
-    characterWrappers.forEach((wrapper, index) => {
-        const characterTitle = reversedTeam[index];
-        const character = state.characters[characterTitle];
-        const charImg = wrapper.querySelector('.dungeon-character');
-        if (character) {
-            charImg.src = `/graphics/default/dungeon/${character.title.toLowerCase()}0.png`;
-            charImg.alt = character.name;
-            wrapper.setAttribute('data-title', character.title);
-            updateStressMeter(index, 6);
-        } 
-    });
 }
 
 function handleInteraction(e) {
@@ -108,6 +89,26 @@ export function switchToDungeonView(region) {
     });
 }
 
+export function updateDungeonView() {
+    const state = getState();
+    const dungeonTeam = state.dungeonTeam || [];
+    const characterWrappers = elementManager.get('dungeonView').querySelectorAll('.character-wrapper');
+
+    const reversedTeam = [...dungeonTeam].reverse();
+
+    characterWrappers.forEach((wrapper, index) => {
+        const characterTitle = reversedTeam[index];
+        const character = state.characters[characterTitle];
+        const charImg = wrapper.querySelector('.dungeon-character');
+        if (character) {
+            charImg.src = `/graphics/default/dungeon/${character.title.toLowerCase()}0.png`;
+            charImg.alt = character.name;
+            wrapper.setAttribute('data-title', character.title);
+            updateStressMeter(index, 6);
+        } 
+    });
+}
+
 export function updateStressMeter(characterIndex, level) {
     if (level < 0 || level > 6) {
         console.error('Stress level must be between 0 and 6');
@@ -124,12 +125,24 @@ export function updateStressMeter(characterIndex, level) {
 
     const wrapper = characterWrappers[characterIndex];
     const stressMeter = wrapper.querySelector('.stress-meter');
+    const characterTitle = wrapper.getAttribute('data-title');
+    const characterData = characterInfo[characterTitle];
     
     if (level === 0) {
         stressMeter.style.display = 'none';
     } else {
         stressMeter.style.display = 'block';
         stressMeter.src = `/graphics/default/background/stresscrown${level}.png`;
+
+        if (characterData && characterData.headPosition) {
+            const { x, y } = characterData.headPosition;
+            const xPercentage = (x / 832) * 100;
+            const yPercentage = (y / 1024) * 100;
+
+            stressMeter.style.left = `${xPercentage}%`;
+            stressMeter.style.top = `${yPercentage}%`;
+            stressMeter.style.transform = 'translate(-50%, -50%)';
+        }
     }
 }
 
