@@ -18,7 +18,7 @@ export function renderCharacterList() {
             
             const frameImg = document.createElement('img');
             const frameLevel = Math.min(character.level, 6);
-            frameImg.src = `/graphics/default/background/level${frameLevel}.png`;
+            frameImg.src = `/graphics/default/assets/stat/level${frameLevel}.png`;
             frameImg.alt = 'frame';
             frameImg.classList.add('frame');
             
@@ -47,7 +47,7 @@ export function renderCharacterDetails(title) {
 
     // Update character portrait
     const characterPortrait = characterInfo.querySelector('#character-portrait');
-    characterPortrait.src = `/graphics/default/portraits/${character.title.toLowerCase()}0.png`;
+    characterPortrait.src = `/graphics/default/characters/portrait/${character.title.toLowerCase()}0.png`;
     characterPortrait.alt = character.name;
 
     // Update character name
@@ -108,7 +108,7 @@ function updateBookmark(category, status) {
     }
 
     // Update the background image
-    bookmark.style.backgroundImage = `url('/graphics/default/background/${texture}.png')`;
+    bookmark.style.backgroundImage = `url('/graphics/default/assets/stat/${texture}.png')`;
 
     // Calculate and set the new height
     const newHeight = maxHeight * scale;

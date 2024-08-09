@@ -3,7 +3,7 @@
     flex: 0 0 35%;
     padding: 45px 45px 10px 10px;
     overflow-y: auto;
-    background: url('/graphics/default/background/book.png') no-repeat;
+    background: url('/graphics/default/assets/modal/book.png') no-repeat;
     background-position: -128px center;
     background-size: calc(100% + 150px) 100%;
 }

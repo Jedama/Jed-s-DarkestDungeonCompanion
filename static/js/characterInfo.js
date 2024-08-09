@@ -1,12 +1,15 @@
 const characterInfo = {
     "Heiress": {
-      headPosition: { x: 400, y: 200 },
+      headPosition: { x: 375, y: 165 },
     },
     "Heir": {
-      headPosition: { x: 180, y: 120 },
+      headPosition: { x: 400, y: 185 },
+    },
+    "Crusader": {
+      headPosition: { x: 385, y: 130 },
     },
     "Highwayman": {
-      headPosition: { x: 410, y: 150 },
+      headPosition: { x: 395, y: 115 },
     },
   };
 

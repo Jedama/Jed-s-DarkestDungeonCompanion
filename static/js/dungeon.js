@@ -78,7 +78,7 @@ export function switchToDungeonView(region) {
     galleryView.style.display = 'none';
     dungeonView.style.display = 'block';
 
-    document.body.style.backgroundImage = `url('/graphics/default/background/${encodeURIComponent(region)}.png')`;
+    document.body.style.backgroundImage = `url('/graphics/default/assets/background/${encodeURIComponent(region)}.png')`;
 
     updateDungeonView();
 
@@ -101,7 +101,7 @@ export function updateDungeonView() {
         const character = state.characters[characterTitle];
         const charImg = wrapper.querySelector('.dungeon-character');
         if (character) {
-            charImg.src = `/graphics/default/dungeon/${character.title.toLowerCase()}0.png`;
+            charImg.src = `/graphics/default/characters/dungeon/${character.title.toLowerCase()}0.png`;
             charImg.alt = character.name;
             wrapper.setAttribute('data-title', character.title);
             updateStressMeter(index, 6);
@@ -132,7 +132,7 @@ export function updateStressMeter(characterIndex, level) {
         stressMeter.style.display = 'none';
     } else {
         stressMeter.style.display = 'block';
-        stressMeter.src = `/graphics/default/background/stresscrown${level}.png`;
+        stressMeter.src = `/graphics/default/assets/stat/stresscrown${level}.png`;
 
         if (characterData && characterData.headPosition) {
             const { x, y } = characterData.headPosition;
@@ -149,8 +149,9 @@ export function updateStressMeter(characterIndex, level) {
 function getBaseScale(index) {
     switch(index) {
         case 0:
-        case 1:
             return 0.9;
+        case 1:
+            return 0.925;
         case 2:
             return 0.95;
         case 3:
