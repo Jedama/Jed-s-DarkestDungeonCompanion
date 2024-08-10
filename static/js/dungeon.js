@@ -104,7 +104,7 @@ export function updateDungeonView() {
             charImg.src = `/graphics/default/characters/dungeon/${character.title.toLowerCase()}0.png`;
             charImg.alt = character.name;
             wrapper.setAttribute('data-title', character.title);
-            updateStressMeter(index, 6);
+            updateStressMeter(index, index + 3);
         } 
     });
 }

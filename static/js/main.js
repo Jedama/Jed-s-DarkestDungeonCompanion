@@ -67,7 +67,7 @@ function handleEstateData(estateData) {
     if (estateData.characters && typeof estateData.characters === 'object') {
         Object.values(estateData.characters).forEach(addCharacter);
         renderCharacterList();
-        switchToDungeonView('oldRoad');
+        // switchToDungeonView('oldRoad');
         const firstCharacterName = Object.keys(estateData.characters)[0];
         if (firstCharacterName) {
             renderCharacterDetails(firstCharacterName);

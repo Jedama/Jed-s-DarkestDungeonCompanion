@@ -43,7 +43,7 @@ async function updateDetails() {
 
     const selectedCharacter = elementManager.get('recruitDropdown').value;
     elementManager.get('recruitIcon').innerHTML = selectedCharacter
-        ? `<img src="/graphics/default/icons/${selectedCharacter.toLowerCase()}0.png" alt="${selectedCharacter}">`
+        ? `<img src="/graphics/default/characters/recruit/${selectedCharacter.toLowerCase()}0.png" alt="${selectedCharacter}">`
         : '';
     const info = cachedCharacterInfo[selectedCharacter];
 

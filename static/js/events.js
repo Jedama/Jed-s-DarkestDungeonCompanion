@@ -191,7 +191,7 @@ function updateCards(consequences) {
                     <div class="card-glow"></div>
                     <div class="card-frame"></div>
                     <div class="card-content">
-                        <div class="card-image" style="background-image: url('/graphics/default/cards/${character.toLowerCase()}0.png')"></div>
+                        <div class="card-image" style="background-image: url('/graphics/default/characters/card/${character.toLowerCase()}0.png')"></div>
                         <ul class="consequence-text">
                             ${data.consequences.map(consequence => `
                                 <li style="color: ${getConsequenceColor(consequence)};">${consequence}</li>

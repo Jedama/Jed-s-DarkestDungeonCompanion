@@ -12,7 +12,7 @@ export function renderCharacterList() {
             characterElement.classList.add('character-item');
             
             const portraitImg = document.createElement('img');
-            portraitImg.src = `/graphics/default/portraits/${title.toLowerCase()}0.png`;
+            portraitImg.src = `/graphics/default/characters/portrait/${title.toLowerCase()}0.png`;
             portraitImg.alt = title;
             portraitImg.classList.add('portrait');
             

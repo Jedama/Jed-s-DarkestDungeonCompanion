@@ -1,0 +1,25 @@
+[package]
+name = "wasm-ddsaveedit"
+version = "0.1.0"
+authors = ["robojumper <robojumper@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+#default = ["console_error_panic_hook"]
+
+[dependencies]
+wasm-bindgen = "0.2.73"
+
+# The `console_error_panic_hook` crate provides better debugging of panics by
+# logging them with `console.error`. This is great for development, but requires
+# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# code size when deploying.
+console_error_panic_hook = { version = "0.1.1", optional = true }
+
+ddsavelib = { path = "../ddsavelib" }
+
+[dev-dependencies]
+wasm-bindgen-test = "0.2"

@@ -26,8 +26,8 @@ function createFaces() {
 
 function updateImages() {
     const faces = loadingCard.querySelectorAll('.loading-face');
-    faces[0].style.backgroundImage = `url('/graphics/default/chibis/${characterTitles[currentTitleIndex].toLowerCase()}0.png')`;
-    faces[1].style.backgroundImage = `url('/graphics/default/chibis/${characterTitles[(currentTitleIndex + 1) % characterTitles.length].toLowerCase()}0.png')`;
+    faces[0].style.backgroundImage = `url('/graphics/default/characters/loading/${characterTitles[currentTitleIndex].toLowerCase()}0.png')`;
+    faces[1].style.backgroundImage = `url('/graphics/default/characters/loading/${characterTitles[(currentTitleIndex + 1) % characterTitles.length].toLowerCase()}0.png')`;
 }
 
 function changeImage() {

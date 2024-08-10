@@ -1,0 +1,84 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.gmazzo.buildconfig' version '3.0.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+dependencies {
+    testImplementation 'org.testng:testng:7.4.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.api-client:google-api-client:1.31.2'
+    implementation 'com.google.oauth-client:google-oauth-client-jetty:1.31.2'
+    implementation 'com.google.apis:google-api-services-sheets:v4-rev612-1.25.0'
+    implementation 'com.fifesoft:rsyntaxtextarea:3.1.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.12.3'
+}
+
+buildConfig {
+    packageName("de.robojumper.ddsavereader")
+    buildConfigField('String', 'NAME', "\"${project.name}\"")
+    buildConfigField('String', 'VERSION', "\"${project.version}\"")
+
+    buildConfigField('String', 'DISPLAY_NAME', "\"$displayname\"")
+    buildConfigField('String', 'GITHUB_URL', "\"$githuburl\"")
+    buildConfigField('String', 'UPDATE_URL', "\"$releasesurl\"")
+    buildConfigField('String', 'JAR_NAME', "\"${jarname}.jar\"")
+    buildConfigField('String', 'DATA_DIR', "\"$datadir\"")
+}
+
+test {
+    useTestNG()
+}
+
+jar {
+    if (!project.hasProperty("includeSecret")) {
+        exclude 'client_secret.json'
+    }
+    archiveBaseName = "$jarname"
+}
+
+mainClassName = "de.robojumper.ddsavereader.Main"
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+                'Main-Class': mainClassName
+    }
+    setDuplicatesStrategy(DuplicatesStrategy.INCLUDE)
+    archiveBaseName = "$jarname"
+    archiveFileName = "${jarname}.jar"
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+
+task dist(type: Zip, dependsOn: fatJar) {
+    from("${buildDir}/libs") {
+        include "${jarname}.jar"
+    }
+    from("${projectDir}") {
+        include 'LICENSE'
+        include 'README.md'
+    }
+    from ("${projectDir}/Licenses") {
+        include "**/*"
+        into "Licenses"
+    }
+    from ("${projectDir}/docs") {
+        include "**/*"
+        into "docs"
+    }
+
+    destinationDirectory = file("${buildDir}/dist")
+    archiveBaseName = "${jarname}"
+}

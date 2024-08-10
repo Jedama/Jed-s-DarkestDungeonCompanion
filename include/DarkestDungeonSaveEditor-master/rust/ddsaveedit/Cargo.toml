@@ -1,0 +1,12 @@
+[workspace]
+
+members = [
+    "ddsavelib",
+    "ddsaveedit",
+    "wasm-ddsaveedit",
+]
+
+[profile.release]
+lto = true
+#opt-level = "s"
+#panic = "abort"

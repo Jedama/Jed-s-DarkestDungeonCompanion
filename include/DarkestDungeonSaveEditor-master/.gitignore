@@ -1,0 +1,16 @@
+# Eclipse bin folder
+bin/
+
+# Eclipse settings
+.settings/
+.project
+.classpath
+test-output/
+
+# Gradle Build
+bin/
+build/
+.gradle/
+
+# Client Secret
+src/main/resources/client_secret.json
