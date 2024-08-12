@@ -1,17 +1,14 @@
 from classes import Estate
-from storage import SaveEditor
+from storage import SaveEditor, ConfigManager
 
-def wsl_path(windows_path):
-    """Convert a Windows path to a WSL-accessible path."""
-    return '/mnt/c' + windows_path[2:].replace('\\', '/')
+config_manager = ConfigManager("config.json")
+editor = SaveEditor(config_manager)
 
-editor = SaveEditor(wsl_path(r"C:\repos\DarkestDungeon\JedsDDCompanion\include\DarkestDungeonSaveEditor-master\build\libs\DDSaveEditor.jar"))
+estate = Estate.load_estate('Devanald')
 
-save_data = editor.decode_save(wsl_path(r"C:\Program Files (x86)\Steam\userdata\86795628\262060\remote\profile_3\persist.roster.json"), output_file=wsl_path(r"C:\repos\DarkestDungeon\JedsDDCompanion\savereader\town.json"))
+save_data = editor.decode_save(estate)
+
 print(save_data)
-
-
-estate = Estate.load_estate('Dantill')
 
 title, story, consequences = estate.start_event(event_title='Argument4')
 

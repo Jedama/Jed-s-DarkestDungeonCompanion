@@ -1,0 +1,18 @@
+{
+  "Heiress": {
+    "officialTitle": "heiress",
+    "headPosition": { "x": 375, "y": 165 }
+  },
+  "Heir": {
+    "officialTitle": "kheir",
+    "headPosition": { "x": 400, "y": 185 }
+  },
+  "Crusader": {
+    "officialTitle": "crusader",
+    "headPosition": { "x": 385, "y": 130 }
+  },
+  "Highwayman": {
+    "officialTitle": "highwayman",
+    "headPosition": { "x": 395, "y": 115 }
+  }
+}

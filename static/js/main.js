@@ -1,8 +1,8 @@
 import { elementManager } from './elementManager.js';
 import { loadEstateData, saveEstate } from './apiClient.js';
-import { addCharacter, setEstateName } from './state.js';
+import { addCharacter, setDungeonTeam, setEstateName } from './state.js';
 
-import { initializeDungeonView, switchToDungeonView } from './dungeon.js';
+import { initializeDungeonView, updateDungeonView } from './dungeon.js';
 import { initializeEventHandler, createEvent } from './events.js';
 import { initializeRecruit, populateDropdown } from './recruit.js';
 import { renderCharacterList, renderCharacterDetails } from './character.js';
@@ -46,18 +46,18 @@ function handleSavefileSubmission() {
     }
 }
 
-function handleSavefileKeyUp(event, elements) {
+function handleSavefileKeyUp(event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        handleSavefileSubmission(elements);
+        handleSavefileSubmission();
     }
 }
 
-async function loadOrNewGame(savefileName, elements) {
+async function loadOrNewGame(savefileName) {
     console.log("Loading game with savefile:", savefileName);
     try {
         let estateData = await loadEstateData(savefileName);
-        handleEstateData(estateData, elements);
+        handleEstateData(estateData);
     } catch (error) {
         console.error('Error loading estate:', error);
     }
@@ -67,7 +67,10 @@ function handleEstateData(estateData) {
     if (estateData.characters && typeof estateData.characters === 'object') {
         Object.values(estateData.characters).forEach(addCharacter);
         renderCharacterList();
-        // switchToDungeonView('oldRoad');
+
+        setDungeonTeam(estateData.dungeon_team)
+        switchToView(estateData.dungeon_region);
+
         const firstCharacterName = Object.keys(estateData.characters)[0];
         if (firstCharacterName) {
             renderCharacterDetails(firstCharacterName);
@@ -75,6 +78,23 @@ function handleEstateData(estateData) {
     } else {
         console.error("Estate characters not found or not an object");
     }
+}
+
+export function switchToView(region) {
+    const galleryView = elementManager.get('galleryView');
+    const dungeonView = elementManager.get('dungeonView');
+    
+    document.body.style.backgroundImage = `url('/graphics/default/assets/background/${encodeURIComponent(region)}.png')`;
+
+    if (region == 'manor') {
+        galleryView.style.display = 'block';
+        dungeonView.style.display = 'none';
+    } else {
+        galleryView.style.display = 'none';
+        dungeonView.style.display = 'block';
+        updateDungeonView();
+    }
+
 }
 
 function handleRecruitButtonClick() {

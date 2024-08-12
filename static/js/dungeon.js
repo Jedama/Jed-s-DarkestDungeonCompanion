@@ -1,13 +1,12 @@
 import { getState, subscribeToState, setDungeonTeam } from './state.js';
 import { renderCharacterDetails } from './character.js';
 import { elementManager } from './elementManager.js';
-import characterInfo from './characterInfo.js';
 
 export function initializeDungeonView() {
     const dungeonView = elementManager.get('dungeonView');
     const dungeonCharactersContainer = dungeonView.querySelector('.dungeon-characters-container');
     const canvas = document.getElementById('dungeon-canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
     const characters = dungeonCharactersContainer.querySelectorAll('.dungeon-character');
     characters.forEach(char => {
@@ -22,6 +21,13 @@ export function initializeDungeonView() {
         }
     });
 
+
+    const wrappers = dungeonView.querySelectorAll('.character-wrapper');
+    wrappers.forEach((wrapper, index) => {
+        const baseTransform = getBaseTransform(index);
+        wrapper.style.transform = baseTransform;
+    });
+    
     dungeonCharactersContainer.addEventListener('mousemove', handleInteraction);
     dungeonCharactersContainer.addEventListener('click', handleInteraction);
 
@@ -71,24 +77,6 @@ function handleInteraction(e) {
     });
 }
 
-export function switchToDungeonView(region) {
-    const galleryView = elementManager.get('galleryView');
-    const dungeonView = elementManager.get('dungeonView');
-    
-    galleryView.style.display = 'none';
-    dungeonView.style.display = 'block';
-
-    document.body.style.backgroundImage = `url('/graphics/default/assets/background/${encodeURIComponent(region)}.png')`;
-
-    updateDungeonView();
-
-    const wrappers = dungeonView.querySelectorAll('.character-wrapper');
-    wrappers.forEach((wrapper, index) => {
-        const baseTransform = getBaseTransform(index);
-        wrapper.style.transform = baseTransform;
-    });
-}
-
 export function updateDungeonView() {
     const state = getState();
     const dungeonTeam = state.dungeonTeam || [];
@@ -109,7 +97,7 @@ export function updateDungeonView() {
     });
 }
 
-export function updateStressMeter(characterIndex, level) {
+export async function updateStressMeter(characterIndex, level) {
     if (level < 0 || level > 6) {
         console.error('Stress level must be between 0 and 6');
         return;
@@ -123,10 +111,20 @@ export function updateStressMeter(characterIndex, level) {
         return;
     }
 
+    let characterConstants;
+    try {
+        const response = await fetch('/json/character_constants.json');
+        characterConstants = await response.json();
+    } catch (error) {
+        console.error('Error loading character constants:', error);
+        return;
+    }
+
     const wrapper = characterWrappers[characterIndex];
     const stressMeter = wrapper.querySelector('.stress-meter');
     const characterTitle = wrapper.getAttribute('data-title');
-    const characterData = characterInfo[characterTitle];
+    
+    const characterData = characterConstants[characterTitle];
     
     if (level === 0) {
         stressMeter.style.display = 'none';

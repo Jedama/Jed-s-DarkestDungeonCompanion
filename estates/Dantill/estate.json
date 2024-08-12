@@ -1,5 +1,6 @@
 {
     "title": "Dantill",
+    "profile_id": 4,
     "characters": {
         "Heiress": {
             "title": "Heiress",
@@ -537,8 +538,7 @@
                 "Compassionate",
                 "Vindictive",
                 "Temperamental",
-                "Salacious",
-                "Horny"
+                "Salacious"
             ],
             "status": {
                 "physical": 0,
@@ -956,8 +956,8 @@
                 "strength": 6,
                 "agility": 9,
                 "intelligence": 7,
-                "stealth": 8,
-                "accuracy": 10
+                "authority": 5,
+                "sociability": 8
             },
             "equipment": [
                 "Throwing daggers",

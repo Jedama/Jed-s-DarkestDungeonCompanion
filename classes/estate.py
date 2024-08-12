@@ -8,17 +8,22 @@ import os
 class Estate:
     def __init__(self, title):
         self.title = title
+        self.profile_id = 0
         self.money = 0
         self.leader = 'Heiress'
         self.characters = {}
-        self.eventHandler = EventHandler()
         self.dungeon_team = []
-        self.dungeon_region = []
-        self.keywords = []
+        self.dungeon_region = ''
+        self.keywords = [] #TODO: This overwrites instead of appends the generated keywords
+        self.eventHandler = EventHandler()
 
     def to_dict(self):
         return {
             'title': self.title,
+            'profile_id': self.profile_id,
+            'money': self.money,
+            'dungeon_region': self.dungeon_region,
+            'dungeon_team': self.dungeon_team,
             'characters': {title: character.to_dict() for title, character in self.characters.items()}
         }
 
@@ -36,6 +41,10 @@ class Estate:
     @classmethod
     def from_dict(cls, data):
         estate = cls(data['title'])
+        estate.profile_id = data['profile_id']
+        estate.money = data['money']
+        estate.dungeon_region = data['dungeon_region']
+        estate.dungeon_team = data['dungeon_team']
         estate.characters = {title: Character.from_dict(char_data) for title, char_data in data['characters'].items()}
         return estate
 
@@ -98,15 +107,15 @@ class Estate:
         self.eventHandler.craft_event(self.characters, event_category, event_title, self.dungeon_team, keywords=modifiers, enemies=enemies, region=self.dungeon_region)
 
     
-    def start_campaign(self, starting_characters = ['Heiress', 'Heir', 'Crusader', 'Highwayman']):
+    def start_campaign(self, starting_characters = ['Crusader', 'Highwayman', 'Heiress', 'Heir']):
 
         for character_title in starting_characters:
             character_data = read_json(os.path.join('data/character_templates', character_title))
             if character_data:
                 character = Character.from_dict(character_data)
                 self.add_character(character)
-                #s elf.dungeon_team = starting_characters
-                #s elf.dungeon_region = 'The Old Road'
+                self.dungeon_team = starting_characters
+                self.dungeon_region = 'oldroad'
             else:
                 print(f'Character template not found: {character_title}')
 
