@@ -107,14 +107,14 @@ class Estate:
         self.eventHandler.craft_event(self.characters, event_category, event_title, self.dungeon_team, keywords=modifiers, enemies=enemies, region=self.dungeon_region)
 
     
-    def start_campaign(self, starting_characters = ['Crusader', 'Highwayman', 'Heiress', 'Heir']):
+    def start_campaign(self, starting_characters = ['Heiress', 'Heir', 'Crusader', 'Highwayman']):
 
         for character_title in starting_characters:
             character_data = read_json(os.path.join('data/character_templates', character_title))
             if character_data:
                 character = Character.from_dict(character_data)
                 self.add_character(character)
-                self.dungeon_team = starting_characters
+                self.dungeon_team = ['Crusader', 'Highwayman', 'Heiress', 'Heir']
                 self.dungeon_region = 'oldroad'
             else:
                 print(f'Character template not found: {character_title}')

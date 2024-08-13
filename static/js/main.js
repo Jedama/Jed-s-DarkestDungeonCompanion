@@ -1,6 +1,6 @@
 import { elementManager } from './elementManager.js';
 import { loadEstateData, saveEstate } from './apiClient.js';
-import { addCharacter, setDungeonTeam, setEstateName } from './state.js';
+import { updateFromSave, setEstateName, setEstateID, addCharacter, setDungeonTeam } from './state.js';
 
 import { initializeDungeonView, updateDungeonView } from './dungeon.js';
 import { initializeEventHandler, createEvent } from './events.js';
@@ -68,7 +68,8 @@ function handleEstateData(estateData) {
         Object.values(estateData.characters).forEach(addCharacter);
         renderCharacterList();
 
-        setDungeonTeam(estateData.dungeon_team)
+        setEstateID(estateData.profile_id);
+        setDungeonTeam(estateData.dungeon_team);
         switchToView(estateData.dungeon_region);
 
         const firstCharacterName = Object.keys(estateData.characters)[0];
@@ -80,11 +81,13 @@ function handleEstateData(estateData) {
     }
 }
 
-export function switchToView(region) {
+export async function switchToView(region) {
     const galleryView = elementManager.get('galleryView');
     const dungeonView = elementManager.get('dungeonView');
     
     document.body.style.backgroundImage = `url('/graphics/default/assets/background/${encodeURIComponent(region)}.png')`;
+
+    await updateFromSave();
 
     if (region == 'manor') {
         galleryView.style.display = 'block';

@@ -17,8 +17,8 @@
       "Salacious"
   ],
   "status": {
-      "physical": 10,
-      "mental": 8,
+      "physical": 100,
+      "mental": 100,
       "affliction": "",
       "description": "In good health and decent spirits",
       "wounds": [],

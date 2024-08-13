@@ -15,8 +15,8 @@
       "Isolated"
   ],
   "status": {
-      "physical": 10,
-      "mental": 9,
+      "physical": 100,
+      "mental": 100,
       "description": "In good health and decent spirits",
       "wounds": [],
       "diseases": []

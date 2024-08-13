@@ -17,8 +17,8 @@
         "Vengeful"
     ],
     "status": {
-        "physical": 8,
-        "mental": 7,
+        "physical": 100,
+        "mental": 100,
         "affliction": "",
         "description": "In good health and high spirits",
         "wounds": [],

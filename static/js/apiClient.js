@@ -7,6 +7,7 @@ function compileEstateData(additionalData = {}) {
   const state = getState();
   return {
     "estateName": state.estateName,
+    "estateID": state.estateID,
     "characters": state.characters,
     ...additionalData
   };
@@ -59,6 +60,14 @@ export async function startEvent(eventCategory, eventTitle, eventCharacters, eve
     recruitName
   });
   return apiRequest('/create-event', 'POST', estateData);
+}
+
+// Event-related API calls
+export async function readSaveData(dungeonTeam) {
+  const estateData = compileEstateData({
+    dungeonTeam
+  });
+  return apiRequest('/update-dungeon-team', 'POST', estateData);
 }
 
 // Add any other API calls here...

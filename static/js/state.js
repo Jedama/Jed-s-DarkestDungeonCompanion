@@ -1,4 +1,5 @@
 // state.js
+import { readSaveData } from './apiClient.js';
 
 class StateManager {
   constructor(initialState) {
@@ -30,6 +31,11 @@ class StateManager {
   setEstateName(name) {
     console.log("Setting estate name:", name);
     this.setState({ estateName: name });
+  }
+
+  setEstateID(id) {
+    console.log("Setting estate ID:", id);
+    this.setState({ estateID: id });
   }
 
   addCharacter(character) {
@@ -99,12 +105,22 @@ class StateManager {
   updateDungeonTeam(team) {
     this.setState({ dungeonTeam: team });
   }
+
+  async updateFromSave() {
+    const state = this.getState();
+    const result = await readSaveData(state.dungeonTeam);
+
+    Object.entries(result.characters).forEach(([title, characterData]) => {
+        this.updateCharacter(title, characterData);
+    });
+  }
 }
 
 // Initialize the state manager with the initial state
 const initialState = {
-  characters: {},
   estateName: '',
+  estateID: 0,
+  characters: {},
   eventModifiers: [],
   currentEventCategory: null,
   recruitTitle: '',
@@ -118,6 +134,7 @@ const stateManager = new StateManager(initialState);
 // Export methods to interact with the state
 export const getState = () => stateManager.getState();
 export const setEstateName = (name) => stateManager.setEstateName(name);
+export const setEstateID = (id) => stateManager.setEstateID(id);
 export const addCharacter = (character) => stateManager.addCharacter(character);
 export const removeCharacter = (characterTitle) => stateManager.removeCharacter(characterTitle);
 export const addModifier = (modifier) => stateManager.addModifier(modifier);
@@ -128,6 +145,7 @@ export const setEventCategory = (eventCategory, title) => stateManager.setEventC
 export const updateRecruitInfo = (updatedInfo) => stateManager.updateRecruitInfo(updatedInfo);
 export const subscribeToState = (listener) => stateManager.subscribe(listener);
 export const setDungeonTeam = (team) => stateManager.updateDungeonTeam(team);
+export const updateFromSave = () => stateManager.updateFromSave();
 
 // Helper functions
 export const getAllCharacters = () => getState().characters;

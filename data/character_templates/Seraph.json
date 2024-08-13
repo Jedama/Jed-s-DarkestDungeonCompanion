@@ -17,8 +17,8 @@
         "Haunted"
     ],
     "status": {
-        "physical": 10,
-        "mental": 10,
+        "physical": 100,
+        "mental": 100,
         "affliction": "",
         "description": "In good health and high spirits",
         "wounds": ["Severe burn scars"],
@@ -60,7 +60,6 @@
         ],
         "weaknesses": [
             "Fragile body beneath armor",
-            "Mental instability",
             "Unsettling presence"
         ]
     },

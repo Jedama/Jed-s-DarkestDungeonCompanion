@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template, send_from_directory
 from classes import Estate, Character
+from storage import SaveEditor, ConfigManager
 import json
 import os
 
@@ -102,6 +103,41 @@ def create_event_endpoint():
     }
 
     return jsonify(response_data), 200
+
+@app.route('/api/update-dungeon-team', methods=['POST'])
+def update_dungeon_team():
+    data = request.json
+    estate_name = data.get('estateName')
+
+    try:
+        # Load the estate
+        estate = Estate(estate_name)
+
+        # Add characters
+        for unused_title, char_data in data['characters'].items():
+            character = Character.from_dict(char_data)
+            estate.add_character(character)
+
+        estate.profile_id = data['estateID']
+        estate.dungeon_team = data['dungeonTeam']
+
+        # Initialize ConfigManager and SaveEditor
+        config_manager = ConfigManager("config.json")
+        save_editor = SaveEditor(config_manager)
+
+        # Get the save data
+        save_data = save_editor.decode_save(estate)
+
+        updated_characters = save_editor.update_characters(estate, save_data)
+
+        response_data = {
+            'characters': updated_characters,
+        }
+
+        return jsonify(response_data), 200
+
+    except Exception as e:
+        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
 
 @app.route('/api/default_character_info', methods=['GET'])
 def get_default_character_info():

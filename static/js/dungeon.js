@@ -1,8 +1,8 @@
-import { getState, subscribeToState, setDungeonTeam } from './state.js';
+import { getState, subscribeToState, updateFromSave } from './state.js';
 import { renderCharacterDetails } from './character.js';
 import { elementManager } from './elementManager.js';
 
-export function initializeDungeonView() {
+export async function initializeDungeonView() {
     const dungeonView = elementManager.get('dungeonView');
     const dungeonCharactersContainer = dungeonView.querySelector('.dungeon-characters-container');
     const canvas = document.getElementById('dungeon-canvas');
@@ -21,7 +21,6 @@ export function initializeDungeonView() {
         }
     });
 
-
     const wrappers = dungeonView.querySelectorAll('.character-wrapper');
     wrappers.forEach((wrapper, index) => {
         const baseTransform = getBaseTransform(index);
@@ -31,7 +30,7 @@ export function initializeDungeonView() {
     dungeonCharactersContainer.addEventListener('mousemove', handleInteraction);
     dungeonCharactersContainer.addEventListener('click', handleInteraction);
 
-    subscribeToState(updateDungeonView);
+    // subscribeToState(updateDungeonView);
 }
 
 function handleInteraction(e) {
@@ -78,12 +77,11 @@ function handleInteraction(e) {
 }
 
 export function updateDungeonView() {
-    const state = getState();
+    let state = getState();
     const dungeonTeam = state.dungeonTeam || [];
     const characterWrappers = elementManager.get('dungeonView').querySelectorAll('.character-wrapper');
 
     const reversedTeam = [...dungeonTeam].reverse();
-
     characterWrappers.forEach((wrapper, index) => {
         const characterTitle = reversedTeam[index];
         const character = state.characters[characterTitle];
@@ -92,15 +90,20 @@ export function updateDungeonView() {
             charImg.src = `/graphics/default/characters/dungeon/${character.title.toLowerCase()}0.png`;
             charImg.alt = character.name;
             wrapper.setAttribute('data-title', character.title);
-            updateStressMeter(index, index + 3);
+            updateStressMeter(index, 100 - character.status['mental']);
         } 
     });
 }
 
-export async function updateStressMeter(characterIndex, level) {
-    if (level < 0 || level > 6) {
-        console.error('Stress level must be between 0 and 6');
-        return;
+export async function updateStressMeter(characterIndex, mental) {
+
+    let level = 0;
+    if (mental <= 29) {
+        level = 0;
+    } else if (mental === 100) {
+        level = 6;
+    } else {
+        level = Math.min(5, 1 + Math.floor((mental - 30) / 14));
     }
 
     const dungeonView = elementManager.get('dungeonView');

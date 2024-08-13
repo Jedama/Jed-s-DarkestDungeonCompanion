@@ -133,7 +133,7 @@ class Character:
             description += f" {conjunction} {condition_descriptions[condition]}"
         
         self.status['physical'] = physical_state
-        self.status['mental'] = 10 - mental_state
+        self.status['mental'] = 10 - (mental_state / 10)
         self.status['affliction'] = condition
         self.status['description'] = description
     

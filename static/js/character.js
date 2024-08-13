@@ -66,6 +66,7 @@ export function renderCharacterDetails(title) {
 
     // Update mental bookmark
     updateBookmark('mental', character.status.mental);
+    console.log(character)
 
     updateCharacterStats(character);
 }
@@ -85,27 +86,23 @@ function updateBookmark(category, status) {
     const bookmark = elementManager.get(`${category}Bookmark`);
     const maxHeight = 400; // Maximum height of the bookmark
 
-    let texture, scale;
+    // Normalize status to 0-1 range
+    const normalizedStatus = status / 100;
 
-    if (status > 5) {
+    // Determine texture based on status ranges
+    let texture;
+    if (normalizedStatus > 0.5) {
         texture = `${category}10`;
-        scale = status / 10; // Scale from 0.6 to 1 for status 6 to 10
-    } else if (status > 3) {
+    } else if (normalizedStatus > 0.3) {
         texture = `${category}5`;
-        scale = (status - 3) / 2; // Scale from 0.5 to 1 for status 4 to 5
-    } else if (status > 0) {
+    } else if (normalizedStatus > 0) {
         texture = `${category}2`;
-        if (status === 3) {
-            scale = 1.3; // Full size for status 3
-        } else if (status === 2) {
-            scale = 1; // 85% size for status 2
-        } else { // status === 1
-            scale = 0.6; // 70% size for status 1
-        }
     } else {
         texture = `${category}0`;
-        scale = 1; // Full size for the smallest texture
     }
+
+    // Calculate scale (0.5 to 1.3 range)
+    const scale = 0.5 + (normalizedStatus * 0.5);
 
     // Update the background image
     bookmark.style.backgroundImage = `url('/graphics/default/assets/stat/${texture}.png')`;

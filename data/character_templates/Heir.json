@@ -17,8 +17,8 @@
     "Possessive"
   ],
   "status": {
-    "physical": 10,
-    "mental": 10,
+    "physical": 100,
+    "mental": 100,
     "affliction": "None",
     "description": "In good health and high spitits",
     "wounds": [],
