@@ -163,6 +163,30 @@ def get_default_character_info():
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
     
+@app.route('/api/dungeon_events', methods=['GET'])
+def get_dungeon_event_titles():
+    event_titles = []
+    events_dir = 'data/events/dungeon'
+    try:
+        for filename in os.listdir(events_dir):
+            if filename.endswith('.json'):
+                with open(os.path.join(events_dir, filename), 'r') as file:
+                    events_data = json.load(file)
+                    for event in events_data:
+                        if event.get('category') == 'dungeon':
+                            title = event.get('title')
+                            if title:
+                                event_titles.append(title)
+        return jsonify(event_titles)
+    except FileNotFoundError:
+        return jsonify({"error": "Dungeon events directory not found"}), 404
+    except PermissionError:
+        return jsonify({"error": "Permission denied when accessing dungeon events"}), 403
+    except json.JSONDecodeError as e:
+        return jsonify({"error": f"Invalid JSON in file {filename}: {str(e)}"}), 500
+    except Exception as e:
+        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
+
 # Helper function to check if an estate exists
 def check_estate_exists(estate_name):
     return os.path.exists(f'estates/{estate_name}/estate.json')

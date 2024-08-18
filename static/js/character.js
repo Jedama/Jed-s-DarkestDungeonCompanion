@@ -6,26 +6,26 @@ export function renderCharacterList() {
         const state = getState();
         const characterGrid = elementManager.get('characterGrid');
         characterGrid.innerHTML = '';
-    
+
         Object.entries(state.characters).forEach(([title, character]) => {
             const characterElement = document.createElement('div');
             characterElement.classList.add('character-item');
-            
+
             const portraitImg = document.createElement('img');
             portraitImg.src = `/graphics/default/characters/portrait/${title.toLowerCase()}0.png`;
             portraitImg.alt = title;
             portraitImg.classList.add('portrait');
-            
+
             const frameImg = document.createElement('img');
             const frameLevel = Math.min(character.level, 6);
             frameImg.src = `/graphics/default/assets/stat/level${frameLevel}.png`;
             frameImg.alt = 'frame';
             frameImg.classList.add('frame');
-            
+
             characterElement.appendChild(portraitImg);
             characterElement.appendChild(frameImg);
             characterElement.addEventListener('click', () => renderCharacterDetails(title));
-            
+
             characterGrid.appendChild(characterElement);
         });
     };
@@ -59,14 +59,13 @@ export function renderCharacterDetails(title) {
     characterTitle.textContent = `the ${character.title}`;
 
     // Update trait list
-    updateTraits(character.traits);     
+    updateTraits(character.traits);
 
     // Update health bookmark
     updateBookmark('health', character.status.physical);
 
     // Update mental bookmark
     updateBookmark('mental', character.status.mental);
-    console.log(character)
 
     updateCharacterStats(character);
 }
@@ -74,7 +73,7 @@ export function renderCharacterDetails(title) {
 function updateTraits(traits) {
     const traitList = elementManager.get('characterTraits');
     traitList.innerHTML = ''; // Clear existing traits
-    
+
     traits.forEach(trait => {
         const li = document.createElement('li');
         li.textContent = trait;
@@ -117,7 +116,7 @@ function updateCharacterStats(character) {
     stats.forEach(stat => {
         const statValue = character.stats[stat] || 0;
         const statItem = elementManager.get(`${stat}Stat`);
-        
+
         if (statItem) {
             const romanNumeralElement = statItem.querySelector('.stat-number');
             if (romanNumeralElement) {

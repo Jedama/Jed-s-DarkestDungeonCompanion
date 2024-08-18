@@ -235,7 +235,6 @@
 
 .consequence-text li,
 .consequence-text ol {
-    list-style-category: none;
     padding-left: 0;
     margin-left: 0;
 }

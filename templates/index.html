@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <link rel="shortcut icon" href="#">
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <div id="savefile-modal" class="modal">
         <div class="modal-content">
@@ -30,22 +32,30 @@
         </div>
     </div>
 
+    <div id="dungeonevent-modal" class="modal">
+        <div class="modal-content">
+            <select id="dungeonevent-dropdown"></select>
+            <div id="faction-buttons-wrapper"></div>
+            <!-- Add more content here -->
+        </div>
+    </div>
+
     <div id="story-modal" class="modal">
         <div class="modal-content">
-          <div class="story-panel">
-            <!-- Content will be dynamically inserted here -->
-          </div>
-          <div class="story-cards">
-            <!-- Cards will be dynamically inserted here -->
-          </div>
-          <div class="story-buttons">
-            <button id="continue-btn" class="story-btn">
-                <img src="/graphics/default/assets/button/continue.png" alt="Continue">
-            </button>
-            <button id="return-btn" class="story-btn">
-                <img src="/graphics/default/assets/button/return.png" alt="Return">
-            </button>
-          </div>
+            <div class="story-panel">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+            <div class="story-cards">
+                <!-- Cards will be dynamically inserted here -->
+            </div>
+            <div class="story-buttons">
+                <button id="continue-btn" class="story-btn">
+                    <img src="/graphics/default/assets/button/continue.png" alt="Continue">
+                </button>
+                <button id="return-btn" class="story-btn">
+                    <img src="/graphics/default/assets/button/return.png" alt="Return">
+                </button>
+            </div>
         </div>
     </div>
 
@@ -101,7 +111,7 @@
             </div>
         </div>
         <div class="middle-panel">
-            <div id="gallery-view" class="gallery" >
+            <div id="gallery-view" class="gallery">
                 <div id="character-grid" class="character-grid"></div>
             </div>
             <div id="dungeon-view" class="dungeon-view" style="display: none;">
@@ -135,4 +145,5 @@
 
     <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
+
 </html>

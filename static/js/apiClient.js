@@ -51,6 +51,11 @@ export async function fetchDefaultCharacterInfo() {
 }
 
 // Event-related API calls
+export async function fetchDungeonEvents() {
+  return apiRequest('/dungeon_events');
+}
+
+// Event-related API calls
 export async function startEvent(eventCategory, eventTitle, eventCharacters, eventModifiers, recruitName) {
   const estateData = compileEstateData({
     eventCategory,

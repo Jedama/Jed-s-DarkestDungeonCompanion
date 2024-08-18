@@ -9,6 +9,7 @@ class Estate:
     def __init__(self, title):
         self.title = title
         self.profile_id = 0
+        self.month = -1
         self.money = 0
         self.leader = 'Heiress'
         self.characters = {}
@@ -21,6 +22,7 @@ class Estate:
         return {
             'title': self.title,
             'profile_id': self.profile_id,
+            'month': self.month,
             'money': self.money,
             'dungeon_region': self.dungeon_region,
             'dungeon_team': self.dungeon_team,
@@ -42,6 +44,7 @@ class Estate:
     def from_dict(cls, data):
         estate = cls(data['title'])
         estate.profile_id = data['profile_id']
+        estate.month = data['month']
         estate.money = data['money']
         estate.dungeon_region = data['dungeon_region']
         estate.dungeon_team = data['dungeon_team']

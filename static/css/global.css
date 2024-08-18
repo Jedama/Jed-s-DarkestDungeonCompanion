@@ -63,11 +63,9 @@ button:focus {
 .modal-content {
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
     width: 300px;
     text-align: center;
     background-color: #fefefe;
-    border-radius: 5px;
 }
 
 /* Modal Open State */

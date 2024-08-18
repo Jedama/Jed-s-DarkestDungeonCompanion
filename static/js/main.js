@@ -1,11 +1,12 @@
 import { elementManager } from './elementManager.js';
 import { loadEstateData, saveEstate } from './apiClient.js';
-import { updateFromSave, setEstateName, setEstateID, addCharacter, setDungeonTeam } from './state.js';
+import { updateFromSave, setEstateName, setEstateID, addCharacter, setDungeonTeam, getState } from './state.js';
 
 import { initializeDungeonView, updateDungeonView } from './dungeon.js';
 import { initializeEventHandler, createEvent } from './events.js';
 import { initializeRecruit, populateDropdown } from './recruit.js';
 import { renderCharacterList, renderCharacterDetails } from './character.js';
+import { initializeDungeonEventModal } from './dungeonEvent.js';
 
 document.addEventListener("DOMContentLoaded", initializeApp);
 
@@ -17,6 +18,7 @@ function initializeApp() {
     initializeEventHandler();
     initializeRecruit();
     initializeDungeonView();
+    initializeDungeonEventModal();
 
     showSavefileModal();
     initializeEventListeners();
@@ -84,7 +86,7 @@ function handleEstateData(estateData) {
 export async function switchToView(region) {
     const galleryView = elementManager.get('galleryView');
     const dungeonView = elementManager.get('dungeonView');
-    
+
     document.body.style.backgroundImage = `url('/graphics/default/assets/background/${encodeURIComponent(region)}.png')`;
 
     await updateFromSave();
@@ -102,14 +104,21 @@ export async function switchToView(region) {
 
 function handleRecruitButtonClick() {
     // Show the recruit modal
-    document.getElementById("recruit-modal").style.display = "block";
-    
+    elementManager.get('recruitModal').style.display = "block";
+
     // Populate the dropdown
     populateDropdown();
 }
 
 function handleEventButtonClick() {
-    createEvent('random', 'Argument4', [], [], '');
+    const state = getState();
+    if (state.region == 'manor') {
+        createEvent('random', 'Argument4', [], [], '');
+    } else {
+        elementManager.get('dungeonEventModal').style.display = "block";
+    }
+
+
 }
 
 function handleSaveButtonClick() {

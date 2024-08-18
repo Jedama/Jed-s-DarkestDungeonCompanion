@@ -1,11 +1,11 @@
-import { fetchDefaultCharacterInfo, startEvent } from './apiClient.js';
-import { getState, addModifier, clearModifiers, getModifiers, setEventCategory } from './state.js';
+import { fetchDefaultCharacterInfo } from './apiClient.js';
+import { getState, addModifier, clearModifiers, getModifiers } from './state.js';
 import { createEvent } from './events.js';
 import { elementManager } from './elementManager.js';
 
 let cachedCharacterInfo = null;
 
-export function initializeRecruit() {    
+export function initializeRecruit() {
 
     elementManager.get('recruitDropdown').addEventListener('change', updateDetails);
     elementManager.get('recruitHireButton').addEventListener('click', handleSubmission);
@@ -24,15 +24,17 @@ export async function populateDropdown() {
         cachedCharacterInfo = await fetchDefaultCharacterInfo();
         const currentCharacters = Object.keys(getState().characters);
 
-        const availableCharacters = Object.keys(cachedCharacterInfo).filter(char => 
+        const availableCharacters = Object.keys(cachedCharacterInfo).filter(char =>
             !currentCharacters.includes(char)
         );
 
-        elementManager.get('recruitDropdown').innerHTML = availableCharacters.map(char => 
+        elementManager.get('recruitDropdown').innerHTML = availableCharacters.map(char =>
             `<option value="${char}">${char}</option>`
         ).join('');
-        
+
         updateDetails();
+
+        elementManager.get('recruitDropdown').focus();
 
     } catch (error) {
         console.error('Error fetching character info:', error);
@@ -85,24 +87,24 @@ function updateModifierOverlay() {
 
     const overlay = document.createElement('div');
     overlay.id = 'recruit-modifier-overlay';
-    
+
     const modifiers = getModifiers();
     overlay.textContent = modifiers[modifiers.length - 1];
 
     const positions = [
-        {x: '10%', y: '10%'},   // Top-left
-        {x: '90%', y: '10%'},   // Top-right
-        {x: '10%', y: '90%'},   // Bottom-left
-        {x: '90%', y: '90%'},   // Bottom-right
-        {x: '50%', y: '10%'},   // Top-center
-        {x: '10%', y: '50%'},   // Middle-left
-        {x: '90%', y: '50%'},   // Middle-right
-        {x: '50%', y: '90%'},   // Bottom-center
-        {x: '50%', y: '50%'}    // Center
+        { x: '10%', y: '10%' },   // Top-left
+        { x: '90%', y: '10%' },   // Top-right
+        { x: '10%', y: '90%' },   // Bottom-left
+        { x: '90%', y: '90%' },   // Bottom-right
+        { x: '50%', y: '10%' },   // Top-center
+        { x: '10%', y: '50%' },   // Middle-left
+        { x: '90%', y: '50%' },   // Middle-right
+        { x: '50%', y: '90%' },   // Bottom-center
+        { x: '50%', y: '50%' }    // Center
     ];
 
     const position = positions[(modifiers.length - 1) % positions.length];
-    
+
     // Calculate position relative to the modal content
     const left = iconRect.left - modalRect.left + (iconRect.width * parseFloat(position.x) / 100);
     const top = iconRect.top - modalRect.top + (iconRect.height * parseFloat(position.y) / 100);
@@ -135,9 +137,9 @@ async function handleSubmission(event) {
 
     const characterTitle = elementManager.get('recruitDropdown').value;
     const characterName = elementManager.get('recruitNameInput').value;
-    
-    if (characterTitle) { 
-        elementManager.get('recruitModal').style.display = "none"; 
+
+    if (characterTitle) {
+        elementManager.get('recruitModal').style.display = "none";
         createEvent('recruit', '', [characterTitle], modifiers, characterName);
     } else {
         alert('Please select a character.');

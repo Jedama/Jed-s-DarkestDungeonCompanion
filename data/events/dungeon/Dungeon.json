@@ -1,0 +1,63 @@
+[
+    {
+        "title": "Explore",
+        "category": "dungeon",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] venture deeper into the dungeon.",
+        "outcomes": [0, 0, 0, 0, 0],
+        "length": 2
+    },
+    {
+        "title": "Confront",
+        "category": "dungeon",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] encounter [Enemies] and prepare for battle. The characters react to the foe(s), discuss strategy, steel themselves, or cower in fear.",
+        "outcomes": [0, 0, 0, 0, 0],
+        "fields": ["combat"],
+        "length": 2
+    },
+    {
+        "title": "Ambushed",
+        "category": "dungeon",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] are suddenly attacked by [Enemies], scrambling to their feet and grabbing their weapons.",
+        "outcomes": [0, 0, 0, 0, 0],
+        "fields": ["combat"],
+        "length": 2
+    },
+    {
+        "title": "Outmaneuver",
+        "category": "dungeon",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] set up a clever ambush against [Enemies]. They execute their plan, hoping to gain the upper hand in the ensuing battle.",
+        "outcomes": [0, 0, 0, 0, 0],
+        "fields": ["combat"],
+        "length": 2
+    },
+    {
+        "title": "Struggle",
+        "category": "dungeon",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] are locked in fierce combat with [Enemies]. The battle rages on as both sides fight for supremacy, with the outcome hanging in the balance.",
+        "outcomes": [0, 0, 0, 0, 0],
+        "fields": ["combat"],
+        "length": 2
+    },
+    {
+        "title": "Vanquish",
+        "category": "dungeon",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] have defeated [Enemies]. They catch their breath, tend to their wounds, and search for spoils of victory while reflecting on the hard-fought battle.",
+        "outcomes": [0, 0, 0, 0, 0],
+        "fields": ["combat"],
+        "length": 2
+    },
+    {
+        "title": "Respite",
+        "category": "dungeon",
+        "num_characters": 4,
+        "summary": "[Character 1], [Character 2], [Character 3], and [Character 4] set up camp in a relatively safe area of the dungeon. They rest, recover, and prepare for the challenges that lie ahead.",
+        "outcomes": [0, 0, 0, 0, 0],
+        "length": 2
+    }
+]
