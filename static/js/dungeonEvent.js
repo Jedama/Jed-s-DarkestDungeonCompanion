@@ -15,17 +15,17 @@ function createFactionButtons() {
     const factions = ['brigand', 'husk', 'unholy'];
 
     factions.forEach(faction => {
-        const button = document.createElement('img');
-        button.className = 'faction-button';
-        button.id = `faction-${faction}`;
+        const factionButton = document.createElement('img');
+        factionButton.classList.add('faction-button');
+        factionButton.id = `faction-${faction}`;
 
         // Set background image
-        button.style.backgroundImage = `url('/graphics/default/assets/button/${faction}.png')`;
+        factionButton.src = `/graphics/default/assets/button/${faction}.png`;
         
         // Add click event listener
-        button.addEventListener('click', () => handleFactionButtonClick(faction));
+        factionButton.addEventListener('click', () => handleFactionButtonClick(faction));
         
-        buttonWrapper.appendChild(button);
+        buttonWrapper.appendChild(factionButton);
     });
 }
 

@@ -51,7 +51,7 @@ button:focus {
 .modal {
     display: none;
     position: fixed;
-    z-index: 5;
+    z-index: 250;
     left: 0;
     top: 0;
     width: 100%;
