@@ -187,6 +187,36 @@ def get_dungeon_event_titles():
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
 
+@app.route('/api/enemy-names', methods=['GET'])
+def get_enemy_names():
+    enemy_names = {}
+    enemies_dir = 'Data/Enemies'
+
+    try:
+        for faction in os.listdir(enemies_dir):
+            faction_dir = os.path.join(enemies_dir, faction)
+            if os.path.isdir(faction_dir):
+                enemy_names[faction] = []
+                for filename in os.listdir(faction_dir):
+                    if filename.endswith('.json'):
+                        file_path = os.path.join(faction_dir, filename)
+                        with open(file_path, 'r') as file:
+                            enemies_data = json.load(file)
+                            for enemy in enemies_data:
+                                enemy_name = enemy.get('name')
+                                if enemy_name:
+                                    enemy_names[faction].append(enemy_name)
+
+        return jsonify(enemy_names)
+    except FileNotFoundError:
+        return jsonify({"error": "Enemies directory not found"}), 404
+    except PermissionError:
+        return jsonify({"error": "Permission denied when accessing enemy files"}), 403
+    except json.JSONDecodeError as e:
+        return jsonify({"error": f"Invalid JSON in file: {str(e)}"}), 500
+    except Exception as e:
+        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
+
 # Helper function to check if an estate exists
 def check_estate_exists(estate_name):
     return os.path.exists(f'estates/{estate_name}/estate.json')

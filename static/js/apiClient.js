@@ -55,6 +55,10 @@ export async function fetchDungeonEvents() {
   return apiRequest('/dungeon_events');
 }
 
+export async function fetchEnemyNames() {
+  return apiRequest('/enemy-names');
+}
+
 // Event-related API calls
 export async function startEvent(eventCategory, eventTitle, eventCharacters, eventModifiers, recruitName) {
   const estateData = compileEstateData({

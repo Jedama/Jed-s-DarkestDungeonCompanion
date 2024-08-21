@@ -4,7 +4,7 @@
         "summary": "The Bone Soldier is an undead warrior, wielding a sword with deadly precision. Its skeletal form retains the combat skills it possessed in life.",
         "race": "Undead",
         "gender": "None",
-        "faction": "Skeleton",
+        "faction": "Unholy",
         "stats": {
             "strength": 6,
             "agility": 7,
@@ -42,7 +42,7 @@
         "summary": "The Bone Rabble is a basic skeletal warrior, wielding a crude club. It's a common, weak undead enemy often found in groups.",
         "race": "Undead",
         "gender": "None",
-        "faction": "Skeleton",
+        "faction": "Unholy",
         "stats": {
             "strength": 2,
             "agility": 2,

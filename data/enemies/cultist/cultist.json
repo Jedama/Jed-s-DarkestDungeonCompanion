@@ -21,18 +21,16 @@
         "clothing": {
             "headwear": "Skull mask with a spiked crown",
             "top": "Bare torso",
-            "pants": "Dark pants with red symbols"
+            "pants": "Dark tattered robe with prominent girdle"
         },
         "combat": {
             "role": "Close combat",
             "strengths": [
                 "Precision",
-                "Intimidation",
-                "Exsanguination"
+                "Devotion"
             ],
             "weaknesses": [
-                "Inflexible",
-                "Unarmored",
+                "Unversatile",
                 "Short range"
             ]
         }
@@ -64,14 +62,13 @@
         "combat": {
           "role": "Spellcaster",
           "strengths": [
-            "Removing light",
-            "Stress damage",
+            "Conjuring darkness",
+            "Mental attacks",
             "Position manipulation"
           ],
           "weaknesses": [
             "Physical fragility",
-            "Close combat",
-            "Low health"
+            "Close combat"
           ]
         }
       }

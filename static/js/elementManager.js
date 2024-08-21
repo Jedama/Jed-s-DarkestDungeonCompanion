@@ -35,6 +35,7 @@ class ElementManager {
       recruitHireButton: document.getElementById("recruit-hire"),
       dungeonEventModal: document.getElementById("dungeonevent-modal"),
       dungeonEventDropdown: document.getElementById("dungeonevent-dropdown"),
+      dungeonEventBounty: document.getElementById('bounty-list'),
       factionButtonsWrapper: document.getElementById('faction-buttons-wrapper'),
       galleryView: document.getElementById('gallery-view'),
       dungeonView: document.getElementById('dungeon-view')
