@@ -2,13 +2,21 @@ import { fetchDungeonEvents, fetchEnemyNames } from './apiClient.js';
 import { elementManager } from './elementManager.js';
 
 let activeFaction = null;
-let selectedFactions = [];
-let selectedEnemies = [];
+let selections = []; // Array to hold both faction and enemy selections
+let enemyData = {}; // To store the mapping of factions to their enemies
 
 const factionGlowColors = {
-    'Brigand': '#ffff00', // Yellow
-    'Cultist': '#8b0000', // Dark red
-    'Undead': '#ffffff'   // White
+    'Brigand': '#ffff00',     // Yellow
+    'Cultist': '#8b0000',     // Dark red
+    'Beast': '#8b4513',       // Brown
+    'Undead': '#ffffff',      // White
+    'Swinefolk': '#f5deb3',   // Beige
+    'Seafolk': '#ffc0cb',     // Pink
+    'Fungoid': '#9b8b45',     // Muted yellow-brown
+    'Bloodsucker': '#ff0000', // Red
+    'Husk': '#add8e6',        // Light blue
+    'Coven': '#00008b',       // Dark blue
+    'Ratfolk': '#808080'      // Gray
 };
 
 export function initializeDungeonEventModal() {
@@ -20,7 +28,7 @@ export function initializeDungeonEventModal() {
 async function createFactionButtons() {
     const buttonWrapper = elementManager.get('factionButtonsWrapper');
     
-    const enemyData = await fetchEnemyNames();
+    enemyData = await fetchEnemyNames();
 
     const factions = Object.keys(enemyData);
 
@@ -29,14 +37,10 @@ async function createFactionButtons() {
         factionButton.classList.add('faction-button');
         factionButton.id = `faction-${faction}`;
 
-        // Set background image
         factionButton.src = `/graphics/default/assets/button/${faction}.png`;
+        factionButton.dataset.glowColor = factionGlowColors[faction] || '#ffff00';
 
-        // Add data attribute for glow color
-        factionButton.dataset.glowColor = factionGlowColors[faction] || '#ffff00'; // Default to yellow if not specified
-
-        // Add click event listener
-        factionButton.addEventListener('click', () => handleFactionButtonClick(faction, enemyData[faction]));
+        factionButton.addEventListener('click', () => handleFactionButtonClick(faction));
         buttonWrapper.appendChild(factionButton);
     });
 }
@@ -47,19 +51,18 @@ function updateFactionButtonStyles() {
         const faction = button.id.replace('faction-', '');
         button.classList.remove('selected', 'active', 'inactive');
         
-        if (selectedFactions.includes(faction)) {
+        if (selections.includes(faction) || enemyData[faction].some(enemy => selections.includes(enemy))) {
             button.classList.add('selected');
             button.style.setProperty('--glow-color', button.dataset.glowColor);
         }
         
         if (faction === activeFaction) {
             button.classList.add('active');
-        } else if (activeFaction !== null && !selectedFactions.includes(faction)) {
+        } else if (activeFaction !== null && !selections.includes(faction)) {
             button.classList.add('inactive');
         }
     });
 }
-
 
 function addGlowStyles() {
     const style = document.createElement('style');
@@ -71,20 +74,22 @@ function addGlowStyles() {
     document.head.appendChild(style);
 }
 
-function handleFactionButtonClick(faction, enemies) {
+function handleFactionButtonClick(faction) {
     if (activeFaction === faction) {
         // Toggle faction selection
-        if (selectedFactions.includes(faction)) {
-            // Deselect the faction and its enemies
-            selectedFactions = selectedFactions.filter(f => f !== faction);
-            selectedEnemies = selectedEnemies.filter(e => !enemies.includes(e));
+        if (selections.includes(faction)) {
+            // Deselect the faction
+            selections = selections.filter(item => item !== faction);
         } else {
-            // Select only the faction, not its enemies
-            if (selectedFactions.length < 4) {
-                selectedFactions.push(faction);
+            // Remove any individual enemies from this faction
+            selections = selections.filter(item => !enemyData[faction].includes(item));
+            
+            // Select the faction if there's room
+            if (selections.length < 4) {
+                selections.push(faction);
             } else {
-                console.log("Cannot select more than 4 factions in total.");
-                // Optionally, you could add a visual feedback here
+                console.log("Cannot select more than 4 items in total.");
+                // Future: Add visual feedback here
             }
         }
         activeFaction = null; // Close the list
@@ -92,36 +97,33 @@ function handleFactionButtonClick(faction, enemies) {
     } else {
         // Set as active faction and show enemy list
         activeFaction = faction;
-        populateBountyList(enemies);
+        populateBountyList(enemyData[faction]);
     }
     updateFactionButtonStyles();
     updateEnemyStyles();
 }
 
 function handleEnemySelection(enemy) {
-    if (selectedEnemies.includes(enemy)) {
+    const faction = Object.keys(enemyData).find(faction => enemyData[faction].includes(enemy));
+    
+    if (selections.includes(enemy)) {
         // Deselect the enemy
-        selectedEnemies = selectedEnemies.filter(e => e !== enemy);
-        
-        // Check if this was the last enemy from its faction
-        const factionEnemies = document.querySelectorAll('.bounty-item');
-        const anySelected = Array.from(factionEnemies).some(item => selectedEnemies.includes(item.textContent));
-        
-        if (!anySelected) {
-            // If no enemies from this faction are selected, deselect the faction
-            selectedFactions = selectedFactions.filter(f => f !== activeFaction);
-        }
-    } else if (selectedEnemies.length < 4) {
-        // Select the enemy
-        selectedEnemies.push(enemy);
-        
-        // Ensure the faction is selected
-        if (!selectedFactions.includes(activeFaction)) {
-            selectedFactions.push(activeFaction);
-        }
+        selections = selections.filter(item => item !== enemy);
     } else {
-        console.log("Cannot select more than 4 enemies in total.");
-        // Optionally, you could add a visual feedback here
+        // If the faction placeholder is selected, remove it
+        if (selections.includes(faction)) {
+            selections = selections.filter(item => item !== faction);
+        }
+        
+        // If we're at the max selections, don't add the new enemy
+        if (selections.length >= 4) {
+            console.log("Cannot select more than 4 items in total.");
+            // Future: Add visual feedback here
+            return;
+        }
+        
+        // Select the enemy
+        selections.push(enemy);
     }
     
     updateEnemyStyles();
@@ -131,7 +133,7 @@ function handleEnemySelection(enemy) {
 function updateEnemyStyles() {
     const bountyItems = document.querySelectorAll('.bounty-item');
     bountyItems.forEach(item => {
-        if (selectedEnemies.includes(item.textContent)) {
+        if (selections.includes(item.textContent)) {
             item.classList.add('selected');
         } else {
             item.classList.remove('selected');
@@ -141,12 +143,12 @@ function updateEnemyStyles() {
 
 function populateBountyList(enemies) {
     const bountyList = elementManager.get('dungeonEventBounty');
-    bountyList.innerHTML = ''; // Clear existing content
+    bountyList.innerHTML = '';
 
     enemies.forEach(enemy => {
         const bountyItem = document.createElement('div');
         bountyItem.classList.add('bounty-item');
-        if (selectedEnemies.includes(enemy)) {
+        if (selections.includes(enemy)) {
             bountyItem.classList.add('selected');
         }
         bountyItem.textContent = enemy;

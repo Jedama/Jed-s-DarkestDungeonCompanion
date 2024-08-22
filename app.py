@@ -193,28 +193,25 @@ def get_enemy_names():
     enemies_dir = 'Data/Enemies'
 
     try:
-        for faction_folder in os.listdir(enemies_dir):
-            faction_dir = os.path.join(enemies_dir, faction_folder)
-            if os.path.isdir(faction_dir):
-                for filename in os.listdir(faction_dir):
-                    if filename.endswith('.json'):
-                        file_path = os.path.join(faction_dir, filename)
-                        with open(file_path, 'r') as file:
-                            enemies_data = json.load(file)
-                            for enemy in enemies_data:
-                                enemy_title = enemy.get('title')
-                                enemy_factions = enemy.get('faction')
-                                
-                                if enemy_title:
-                                    if isinstance(enemy_factions, str):
-                                        enemy_factions = [enemy_factions]
-                                    elif not isinstance(enemy_factions, list):
-                                        continue  # Skip if faction is neither a string nor a list
-                                    
-                                    for faction in enemy_factions:
-                                        if faction not in enemy_names:
-                                            enemy_names[faction] = []
-                                        enemy_names[faction].append(enemy_title)
+        for filename in os.listdir(enemies_dir):
+            if filename.endswith('.json'):
+                file_path = os.path.join(enemies_dir, filename)
+                with open(file_path, 'r') as file:
+                    enemies_data = json.load(file)
+                    for enemy in enemies_data:
+                        enemy_title = enemy.get('title')
+                        enemy_factions = enemy.get('faction')
+                        
+                        if enemy_title:
+                            if isinstance(enemy_factions, str):
+                                enemy_factions = [enemy_factions]
+                            elif not isinstance(enemy_factions, list):
+                                continue  # Skip if faction is neither a string nor a list
+                            
+                            for faction in enemy_factions:
+                                if faction not in enemy_names:
+                                    enemy_names[faction] = []
+                                enemy_names[faction].append(enemy_title)
 
         return jsonify(enemy_names)
     except FileNotFoundError:

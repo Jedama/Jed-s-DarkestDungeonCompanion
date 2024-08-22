@@ -1,0 +1,58 @@
+[
+    {
+      "title": "Supplicant",
+      "summary": "The Supplicant is a grotesque, parasitic creature that appears as a massive, engorged tick latched onto a desiccated human corpse.",
+      "race": "Parasite",
+      "faction": "Bloodsucker",
+      "stats": {
+        "strength": 4,
+        "agility": 3,
+        "intelligence": 1
+      },
+      "appearance": {
+        "height": "Medium",
+        "build": "Bulbous and asymmetrical",
+        "skin_tone": "Dark red and black"
+      },
+      "clothing": {
+        "headwear": "Massive tick",
+        "top": "Elegant but tattered dark robe",
+        "pants": "Ragged pants"
+      },
+      "combat": {
+        "role": "Disruptor",
+        "strengths": [
+          "Inflicting Crimson curse",
+          "Poison"
+        ],
+        "weaknesses": [
+          "Mobility",
+          "Weak"
+        ]
+      }
+    },
+    {
+        "title": "Sycophant",
+        "summary": "The Sycophant is a swift, insect-like Bloodsucker enemy. While not particularly tough or damaging, it excels in speed and evasion, capable of inflicting significant Stress and the Crimson Curse on its targets.",
+        "race": "Insectoid",
+        "faction": "Bloodsucker",
+        "stats": {
+          "strength": 2,
+          "agility": 8,
+          "intelligence": 3
+        },
+        "appearance": "A large, black insect-like creature with a red underbelly, sharp claws, and translucent wings. Its body is segmented and ends in a pointed tail. The head features multiple eyes and mandibles.",
+        "combat": {
+          "role": "Harasser",
+          "strengths": [
+            "Evasive",
+            "Stress inducing",
+            "Inflicting Crimson curse"
+          ],
+          "weaknesses": [
+            "Durability",
+            "Weak"
+          ]
+        }
+      }
+  ]
