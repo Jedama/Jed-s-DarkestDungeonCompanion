@@ -78,23 +78,29 @@
 }
 
 #faction-buttons-wrapper .faction-button {
-    width: 140px; /* Reduced size */
-    height: 140px; /* Reduced size */
+    width: 140px; 
+    height: 140px; 
     margin: 0;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: transparent;
     transition: transform 0.2s ease-in-out;
 }
 
 #faction-buttons-wrapper .faction-button:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
+
+#faction-buttons-wrapper .faction-button.selected {
+    filter: drop-shadow(0 0 10px var(--glow-color, #ffff00));
+}
+
 
 /* Bounty List Styles */
 #bounty-list {
     position: absolute;
+    top: 0px;
+    right: 0px;
     width: 500px;
     height: calc(100% - 40px);
     background-image: url('/graphics/default/assets/modal/bounty.png');
@@ -103,34 +109,41 @@
     background-position: center;
     overflow-y: auto;
     padding: 20px;
+    padding-top: 15%;
     box-sizing: border-box;
     font-family: 'DwarvenAxe', sans-serif;
     color: #000000;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-#bounty-list::-webkit-scrollbar {
-    width: 10px;
-}
-
-#bounty-list::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
-
-#bounty-list::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-}
-
-#bounty-list::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.5);
-}
-
 .bounty-item {
-    margin-bottom: 15px;
+    margin-bottom: -5px;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 32px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.bounty-item:hover {
+    transform: scale(1.03);
+}
+
+.bounty-item.selected {
+    text-decoration: line-through;
+}
+
+/* Button Styles */
+#proceed-button {
+    position: absolute;
+    bottom: 55px;
+    left: 60%;
+    width: 150px;
+    height: 150px;
+    content: url('/graphics/default/assets/button/compass.png');
+    transition: transform 0.3s ease;
+}
+
+#proceed-button:hover {
+    transform: scale(1.1);  /* Grow to 110% of original size on hover */
 }

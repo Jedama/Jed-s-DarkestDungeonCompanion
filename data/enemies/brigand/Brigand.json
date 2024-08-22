@@ -4,7 +4,7 @@
     "summary": "The Brigand Cutthroat is a deadly, close-combat specialist armed with twin daggers, known for his precision and dexterity. His muscular build and dark skin are partially obscured by a green hood, making him a fearsome and ruthless adversary in battle.",
     "race": "Human",
     "gender": "Male",
-    "faction": "Brigands",
+    "faction": "Brigand",
     "stats": {
       "strength": 8,
       "agility": 5,
@@ -44,7 +44,7 @@
     "summary": "The Brigand Fusilier is armed with a blunderbuss which he uses to suppress the bandits' foes with sprays of lead.",
     "race": "Human",
     "gender": "Male",
-    "faction": "Brigands",
+    "faction": "Brigand",
     "stats": {
       "strength": 4,
       "agility": 6,
@@ -83,7 +83,7 @@
     "summary": "The Brigand Bloodletter is a hulking, battle-scarred brute. Armed with a vicious cat o' nine tails whip and a deadly flintlock pistol, he is ready to give his enemies deep and bloody scars to match his.",
     "race": "Human",
     "gender": "Male",
-    "faction": "Brigands",
+    "faction": "Brigand",
     "stats": {
       "strength": 9,
       "agility": 2,
