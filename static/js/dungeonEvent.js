@@ -45,20 +45,21 @@ function updateFactionButtonStyles() {
     const factionButtons = document.querySelectorAll('.faction-button');
     factionButtons.forEach(button => {
         const faction = button.id.replace('faction-', '');
+        button.classList.remove('selected', 'active', 'inactive');
+        
         if (selectedFactions.includes(faction)) {
             button.classList.add('selected');
             button.style.setProperty('--glow-color', button.dataset.glowColor);
-        } else {
-            button.classList.remove('selected');
         }
         
         if (faction === activeFaction) {
             button.classList.add('active');
-        } else {
-            button.classList.remove('active');
+        } else if (activeFaction !== null && !selectedFactions.includes(faction)) {
+            button.classList.add('inactive');
         }
     });
 }
+
 
 function addGlowStyles() {
     const style = document.createElement('style');

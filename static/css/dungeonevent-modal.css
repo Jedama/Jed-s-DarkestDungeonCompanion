@@ -84,7 +84,7 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
 }
 
 #faction-buttons-wrapper .faction-button:hover {
@@ -92,9 +92,15 @@
 }
 
 #faction-buttons-wrapper .faction-button.selected {
-    filter: drop-shadow(0 0 10px var(--glow-color, #ffff00));
+    filter: drop-shadow(0 0 10px var(--glow-color, #ffff00)) 
+            drop-shadow(0 0 20px var(--glow-color, #ffff00)) 
+            drop-shadow(0 0 30px var(--glow-color, #ffff00))
+            drop-shadow(0 0 40px var(--glow-color, #ffff00));
 }
 
+#faction-buttons-wrapper .faction-button.inactive:not(.selected) {
+    filter: grayscale(100%);
+}
 
 /* Bounty List Styles */
 #bounty-list {
