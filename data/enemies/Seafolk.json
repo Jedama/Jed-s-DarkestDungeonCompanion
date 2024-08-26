@@ -1,0 +1,75 @@
+[
+    {
+      "title": "Pelagic Grouper",
+      "summary": "A fish-humanoid hybrid wielding spears. Dangerous aquatic enemy capable of both melee and ranged attacks.",
+      "race": "Seafolk",
+      "gender": "Unknown",
+      "faction": "Seafolk",
+      "stats": {
+        "strength": 6,
+        "agility": 7,
+        "intelligence": 4
+      },
+      "equipment": [
+        "Cutlass",
+        "Harpoon"
+      ],
+      "appearance": {
+        "height": "Average",
+        "build": "Muscular",
+        "skin_tone": "Green"
+      },
+      "clothing": {
+        "headwear": "None",
+        "top": "None",
+        "pants": "None"
+      },
+      "combat": {
+        "role": "Fighter",
+        "strengths": [
+          "Amphibious",
+          "Versatility"
+        ],
+        "weaknesses": [
+          "Debuff prone"
+        ]
+      }
+    },
+    {
+        "title": "Pelagic Shaman",
+        "summary": "A fish-humanoid spellcaster wielding a magical staff and dagger. Specializes in stress attacks and supporting allies with buffs and healing.",
+        "race": "Seafolk",
+        "gender": "Unknown",
+        "faction": "Seafolk",
+        "stats": {
+          "strength": 3,
+          "agility": 4,
+          "intelligence": 8
+        },
+        "equipment": [
+          "Magical staff",
+          "Ritual dagger"
+        ],
+        "appearance": {
+          "height": "Average",
+          "build": "Lean",
+          "skin_tone": "Purple"
+        },
+        "clothing": {
+          "headwear": "Golden crest",
+          "top": "None",
+          "pants": "Tattered loincloth"
+        },
+        "combat": {
+          "role": "Spellcaster",
+          "strengths": [
+            "Stress-inducing",
+            "Support"
+          ],
+          "weaknesses": [
+            "Physical frailty",
+            "Weak in close-combat"
+          ]
+        }
+      }
+  ]

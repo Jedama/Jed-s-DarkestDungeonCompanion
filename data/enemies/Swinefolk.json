@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Swine Chopper",
+    "summary": "A brutish pig-man hybrid wielding a cleaver and spiked flail. Heavily armored and dangerous in close combat.",
+    "race": "Swinefolk",
+    "gender": "Male",
+    "faction": "Swinefolk",
+    "stats": {
+      "strength": 8,
+      "agility": 4,
+      "intelligence": 2
+    },
+    "equipment": [
+      "Serrated cleaver",
+      "Ball and chain"
+    ],
+    "appearance": {
+      "height": "Tall",
+      "build": "Muscular",
+      "skin_tone": "Brown"
+    },
+    "clothing": {
+      "headwear": "None",
+      "top": "Leather straps",
+      "pants": "Tattered loincloth"
+    },
+    "combat": {
+      "role": "Heavy melee",
+      "strengths": [
+        "Durability",
+        "Strength"
+      ],
+      "weaknesses": [
+        "Speed",
+        "Intelligence"
+      ]
+    }
+  },
+  {
+    "title": "Swine Slasher",
+    "summary": "A fast, agile pig-human hybrid wielding a large hook. Dangerous attacker with high mobility and critical hit potential.",
+    "race": "Swinefolk",
+    "gender": "Male",
+    "faction": "Swinefolk",
+    "stats": {
+      "strength": 5,
+      "agility": 8,
+      "intelligence": 3
+    },
+    "equipment": [
+      "Large hook",
+      "Round shield"
+    ],
+    "appearance": {
+      "height": "Average",
+      "build": "Lean",
+      "skin_tone": "Pink"
+    },
+    "clothing": {
+      "headwear": "Spiked metal helmet",
+      "top": "Leather straps",
+      "pants": "Tattered loincloth"
+    },
+    "combat": {
+      "role": "Assassin",
+      "strengths": [
+        "Agility",
+        "Precision"
+      ],
+      "weaknesses": [
+        "Durability",
+        "Versatility"
+      ]
+    }
+  },
+  {
+    "title": "Swine Wretch",
+    "summary": "A grotesque, disease-ridden hybrid of man and pig. Due to its tiny, unusable pig legs it walks around on its human-like arms. The outline of a human skull is visible through the skin of its stomach.",
+    "race": "Swinefolk",
+    "gender": "Unknown",
+    "faction": "Swinefolk",
+    "stats": {
+      "strength": 3,
+      "agility": 2,
+      "intelligence": 1
+    },
+    "equipment": [
+      "None"
+    ],
+    "appearance": {
+      "height": "Short",
+      "build": "Emaciated",
+      "skin_tone": "Sickly beige"
+    },
+    "clothing": {
+      "headwear": "None",
+      "top": "None",
+      "pants": "None"
+    },
+    "combat": {
+      "role": "Biological hazard",
+      "strengths": [
+        "Disease-spreading spit",
+        "Stress inducing"
+      ],
+      "weaknesses": [
+        "Physical frailty",
+        "Slow"
+      ]
+    }
+  }
+]

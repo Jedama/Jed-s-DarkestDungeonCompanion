@@ -1,0 +1,71 @@
+
+[
+  {
+    "title": "Ectomorph - Tall Man",
+    "summary": "A gangly fiend that can fade into the shadows as a prelude for unleashing devastating terror.",
+    "race": "Ectomorph",
+    "gender": "Male",
+    "faction": "Ectomorph",
+    "stats": {
+      "strength": 6,
+      "agility": 8,
+      "intelligence": 7
+    },
+    "appearance": {
+      "height": "Tall",
+      "build": "Skeletal",
+      "skin_tone": "Turquoise"
+    },
+    "clothing": {
+      "headwear": "None",
+      "top": "None",
+      "pants": "None"
+    },
+    "combat": {
+      "role": "Assassin",
+      "strengths": [
+        "Stealth",
+        "Agility",
+        "Terror"
+      ],
+      "weaknesses": [
+        "Light",
+        "Physical"
+      ]
+    }
+  },
+  {
+    "title": "Bloated Specter",
+    "summary": "A levitating grotesque, amorphous entity with multiple eyes and a gaping maw, capable of unleashing terrifying psychic attacks.",
+    "race": "Ectomorph",
+    "gender": "Unknown",
+    "faction": "Ectomorph",
+    "stats": {
+      "strength": 5,
+      "agility": 4,
+      "intelligence": 8
+    },
+    "appearance": {
+      "height": "Short",
+      "build": "Bloated",
+      "skin_tone": "Turquoise"
+    },
+    "clothing": {
+      "headwear": "None",
+      "top": "None",
+      "pants": "None"
+    },
+    "combat": {
+      "role": "Caster",
+      "strengths": [
+        "Psychic",
+        "Terror",
+        "Adaptability"
+      ],
+      "weaknesses": [
+        "Physical",
+        "Speed"
+      ]
+    }
+  }
+]

@@ -14,9 +14,10 @@ const factionGlowColors = {
     'Seafolk': '#ffc0cb',     // Pink
     'Fungoid': '#9b8b45',     // Muted yellow-brown
     'Bloodsucker': '#ff0000', // Red
-    'Husk': '#add8e6',        // Light blue
-    'Coven': '#00008b',       // Dark blue
-    'Ratfolk': '#808080'      // Gray
+    'Husk': '#00008b',        // Dark blue
+    'Coven': '#000080',       // Navy blue
+    'Ratfolk': '#808080',     // Gray
+    'Ectomorph': '#e0ffff'    // Light cyan
 };
 
 export function initializeDungeonEventModal() {
@@ -169,8 +170,6 @@ async function populateDropdown() {
         elementManager.get('dungeonEventDropdown').innerHTML = dungeonEvents.map(char =>
             `<option value="${char}">${char}</option>`
         ).join('');
-
-        elementManager.get('dungeonEventDropdown').focus();
 
     } catch (error) {
         console.error('Error fetching character info:', error);
