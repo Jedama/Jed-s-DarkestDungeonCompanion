@@ -1,5 +1,6 @@
 import { fetchDungeonEvents, fetchEnemyNames } from './apiClient.js';
 import { elementManager } from './elementManager.js';
+import { createEvent } from './events.js';
 
 let activeFaction = null;
 let selections = []; // Array to hold both faction and enemy selections
@@ -23,7 +24,43 @@ const factionGlowColors = {
 export function initializeDungeonEventModal() {
     createFactionButtons();
     populateDropdown();
+    setupProceedButton();
     addGlowStyles();
+}
+
+function setupProceedButton() {
+    const proceedButton = elementManager.get('dungeonEventProceed');
+    proceedButton.addEventListener('click', handleProceedButtonClick);
+}
+
+function handleProceedButtonClick() {
+    const dungeonEventDropdown = elementManager.get('dungeonEventDropdown');
+    const storyInput = elementManager.get('dungeonEventStory');
+
+    const selectedEvent = dungeonEventDropdown.value;
+    const storyDescription = storyInput.value;
+
+    // Create the event using the selections and input data
+    createEvent(
+        'dungeon',
+        selectedEvent,
+        selections, // This contains both faction and enemy selections
+        storyDescription,
+        ''
+    );
+
+    // Close the modal or perform any other necessary actions
+    closeDungeonEventModal();
+}
+
+function closeDungeonEventModal() {
+    const modal = elementManager.get('dungeonEventModal');
+    modal.style.display = 'none';
+    // Reset selections and other state as needed
+    selections = [];
+    activeFaction = null;
+    updateFactionButtonStyles();
+    clearBountyList();
 }
 
 async function createFactionButtons() {

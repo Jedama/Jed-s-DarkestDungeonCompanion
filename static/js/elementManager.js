@@ -36,6 +36,7 @@ class ElementManager {
       dungeonEventModal: document.getElementById("dungeonevent-modal"),
       dungeonEventDropdown: document.getElementById("dungeonevent-dropdown"),
       dungeonEventBounty: document.getElementById('bounty-list'),
+      dungeonEventStory: document.getElementById('story-input'),
       dungeonEventProceed: document.getElementById('proceed-button'),
       factionButtonsWrapper: document.getElementById('faction-buttons-wrapper'),
       galleryView: document.getElementById('gallery-view'),

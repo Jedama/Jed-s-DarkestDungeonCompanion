@@ -20,13 +20,15 @@ export class EventHandlerFactory {
     static createHandler(eventCategory, state) {
         switch (eventCategory) {
         case 'random':
-            return new RandomEventHandler(state);
+          return new RandomEventHandler(state);
+        case 'dungeon':
+          return new DungeonEventHandler(state);
         case 'recruit':
-            return new RecruitEventHandler(state);
+          return new RecruitEventHandler(state);
         case 'first_encounter':
-            return new FirstEncounterEventHandler(state);  
+          return new FirstEncounterEventHandler(state);  
         case 'quick_encounter':
-            return new QuickEncounterEventHandler(state);  
+          return new QuickEncounterEventHandler(state);  
         default:
             throw new Error(`Unsupported event category: ${eventCategory}`);
         }
@@ -76,6 +78,18 @@ class QuickEncounterEventHandler extends EventHandler {
       // Process the recruit event data
       Object.entries(eventData.characters).forEach(([title, characterData]) => {
         updateCharacter(title, characterData);
+      });
+  }
+}
+
+class DungeonEventHandler extends EventHandler {
+  processEvent(eventData) {
+      this.eventData = eventData;
+
+      // Process the dungeon event data
+      // Update characters, inventory, or other state as needed
+      Object.entries(eventData.characters || {}).forEach(([title, characterData]) => {
+          updateCharacter(title, characterData);
       });
   }
 }
