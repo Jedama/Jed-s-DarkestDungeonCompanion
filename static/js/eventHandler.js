@@ -98,7 +98,7 @@ const eventHandlers = {
     random: {
       continue: () => {
         // Create a new random event
-        createEvent('random', '', [], [], '');
+        createEvent('random', '', [], [], [], '');
       },
       return: () => {
         // Do nothing but close the modal
@@ -134,6 +134,7 @@ const eventHandlers = {
         '',
         [recruitTitle, ...encounterGroup],  // Spread the encounterGroup array
         [],
+        [],
         ''
       );
   
@@ -141,7 +142,7 @@ const eventHandlers = {
       setEventCategory('first_encounter', recruitTitle);
     } else {
       // Handle the case when all interesting characters have been encountered
-      createEvent('random', '', [], [], '');
+      createEvent('random', '', [], [], [], '');
       
       setEventCategory('random', recruitTitle);
       // Reset recruit info
@@ -167,6 +168,7 @@ const eventHandlers = {
         'quick_encounter',
         '',
         [recruitTitle, ...encounterGroup],  // Spread the encounterGroup array
+        [],
         [],
         ''
       );

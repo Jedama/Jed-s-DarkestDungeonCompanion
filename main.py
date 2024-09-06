@@ -4,19 +4,9 @@ from storage import SaveEditor, ConfigManager
 config_manager = ConfigManager("config.json")
 editor = SaveEditor(config_manager)
 
-estate = Estate.load_estate('Devanald')
+estate = Estate('Debug')
+estate.start_campaign()
 
-save_data = editor.decode_save(estate)
-
-print(save_data)
-
-title, story, consequences = estate.start_event(event_title='Argument4')
-
-estate.recruit('Offering', ['Slow', 'Pallid'])
-
-estate.save_estate()
-
-character_titles = [char.title for char in estate.characters.values()]
 
 # estate.start_event('story', 'The Old Road')
 # estate.start_event('story', 'Crash')
@@ -28,4 +18,7 @@ estate.characters['Highwayman'].fast_status_description(3, 8, 'Irrational')
 estate.characters['Heir'].fast_status_description(2, 10, 'Selfish')
 estate.characters['Heiress'].fast_status_description(4, 10, 'Paranoid')
 estate.characters['Crusader'].fast_status_description(5, 5, 'Hopeless')
-estate.encounter(event_category = 'story', event_title='Vanquished', enemies=['Brigand Cutthroat', 'Brigand Bloodletter', 'Brigand Fusilier', 'Brigand Fusilier'])
+title, story, none = estate.encounter(event_category = 'story', event_title='Vanquished', enemies=['Brigand Cutthroat', 'Brigand Bloodletter', 'Brigand Fusilier', 'Brigand Fusilier'])
+
+print(title)
+print(story)

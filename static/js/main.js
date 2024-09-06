@@ -113,7 +113,7 @@ function handleRecruitButtonClick() {
 function handleEventButtonClick() {
     const state = getState();
     if (state.region == 'manor') {
-        createEvent('random', 'Argument4', [], [], '');
+        createEvent('random', 'Argument4', [], [], [], '');
     } else {
         elementManager.get('dungeonEventModal').style.display = "block";
     }

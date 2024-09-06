@@ -14,10 +14,10 @@ export function initializeEventHandler() {
     return { storyModal };
 }
 
-export async function createEvent(eventCategory, eventName, eventCharacter, eventModifiers, recruitName) {
+export async function createEvent(eventCategory, eventName, eventCharacter, eventModifiers, dungeonEnemies, recruitName) {
     try {
         showLoading();
-        const result = await startEvent(eventCategory, eventName, eventCharacter, eventModifiers, recruitName);
+        const result = await startEvent(eventCategory, eventName, eventCharacter, eventModifiers, dungeonEnemies, recruitName);
         hideLoading();
         processEventResult(result);
     } catch (error) {

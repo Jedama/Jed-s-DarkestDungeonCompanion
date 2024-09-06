@@ -1,6 +1,7 @@
 import { fetchDungeonEvents, fetchEnemyNames } from './apiClient.js';
 import { elementManager } from './elementManager.js';
 import { createEvent } from './events.js';
+import { getState } from './state.js';
 
 let activeFaction = null;
 let selections = []; // Array to hold both faction and enemy selections
@@ -37,6 +38,8 @@ function handleProceedButtonClick() {
     const dungeonEventDropdown = elementManager.get('dungeonEventDropdown');
     const storyInput = elementManager.get('dungeonEventStory');
 
+    const state = getState()
+
     const selectedEvent = dungeonEventDropdown.value;
     const storyDescription = storyInput.value;
 
@@ -44,8 +47,9 @@ function handleProceedButtonClick() {
     createEvent(
         'dungeon',
         selectedEvent,
-        selections, // This contains both faction and enemy selections
+        state.dungeonTeam,
         storyDescription,
+        selections,  // This contains both faction and enemy selections
         ''
     );
 

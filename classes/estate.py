@@ -107,7 +107,7 @@ class Estate:
 
     def encounter(self, enemies = [], event_category = 'dungeon', event_title='Encounter Start', modifiers=[]):
 
-        self.eventHandler.craft_event(self.characters, event_category, event_title, self.dungeon_team, keywords=modifiers, enemies=enemies, region=self.dungeon_region)
+        return self.eventHandler.craft_event(self.characters, event_category, event_title, self.dungeon_team, keywords=modifiers, enemies=enemies, region=self.dungeon_region)
 
     
     def start_campaign(self, starting_characters = ['Heiress', 'Heir', 'Crusader', 'Highwayman']):

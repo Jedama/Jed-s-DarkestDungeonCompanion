@@ -60,12 +60,13 @@ export async function fetchEnemyNames() {
 }
 
 // Event-related API calls
-export async function startEvent(eventCategory, eventTitle, eventCharacters, eventModifiers, recruitName) {
+export async function startEvent(eventCategory, eventTitle, eventCharacters, eventModifiers, dungeonEnemies, recruitName) {
   const estateData = compileEstateData({
     eventCategory,
     eventTitle,
     eventCharacters,
     eventModifiers,
+    dungeonEnemies,
     recruitName
   });
   return apiRequest('/create-event', 'POST', estateData);

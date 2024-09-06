@@ -140,7 +140,7 @@ async function handleSubmission(event) {
 
     if (characterTitle) {
         elementManager.get('recruitModal').style.display = "none";
-        createEvent('recruit', '', [characterTitle], modifiers, characterName);
+        createEvent('recruit', '', [characterTitle], modifiers, [], characterName);
     } else {
         alert('Please select a character.');
     }

@@ -36,73 +36,91 @@ def serve_estate_json(estate_name):
         estate.save_estate()
         return send_from_directory('estates', f'{estate_name}/estate.json')
 
+from flask import jsonify, request
+from werkzeug.exceptions import BadRequest
+
 @app.route('/api/create-event', methods=['POST'])
 def create_event_endpoint():
-    data = request.json
-    
-    # Create an Estate instance with the data
-    estate = Estate(data['estateName'])
-    for title, char_data in data['characters'].items():
-        character = Character.from_dict(char_data)
-        estate.add_character(character)
-    
-    # Call the start_event method with the additional data
-    input_category = data['eventCategory']
-    input_event = data['eventTitle']
-    input_titles = data['eventCharacters']
-    input_modifiers = data['eventModifiers']
-    input_name = data['recruitName']
+    try:
+        data = request.json
+        if not data:
+            raise BadRequest("No JSON data provided")
 
-    story_title = ''
-    story_text = ''
-    importance_list = []
+        required_fields = ['estateName', 'characters', 'eventCategory', 'eventTitle', 'eventCharacters', 'eventModifiers', 'dungeonEnemies', 'recruitName']
+        for field in required_fields:
+            if field not in data:
+                raise BadRequest(f"Missing required field: {field}")
 
-    if input_category == 'recruit':
-        story_title, story_text, consequence_dict, importance_list = estate.recruit(
-            input_titles[0],
-            input_modifiers,
-            input_name,
-        )
-    elif input_category == 'first_encounter':
+        # Create an Estate instance with the data
+        estate = Estate(data['estateName'])
+        for title, char_data in data['characters'].items():
+            character = Character.from_dict(char_data)
+            estate.add_character(character)
+
+        # Call the start_event method with the additional data
+        input_category = data['eventCategory']
+        input_event = data['eventTitle']
+        input_titles = data['eventCharacters']
+        input_modifiers = data['eventModifiers'].split(';')
+        input_enemies = data['dungeonEnemies']
+        input_name = data['recruitName']
+
+        story_title = ''
+        story_text = ''
+        importance_list = []
+        consequence_dict = {}
+
+        if input_category == 'recruit':
+            story_title, story_text, consequence_dict, importance_list = estate.recruit(
+                input_titles[0],
+                input_modifiers,
+                input_name,
+            )
+        elif input_category == 'first_encounter':
+            estate.add_relationship_placeholder(input_titles)
+            story_title, story_text, consequence_dict = estate.start_event(
+                event_category=input_category,
+                event_title=f'First Encounter {len(input_titles)}',
+                titles=input_titles, 
+                modifiers=input_modifiers
+            )
+        elif input_category == 'quick_encounter':
+            estate.add_relationship_placeholder(input_titles)
+            consequence_dict = estate.quick_encounter(
+                event_category=input_category,
+                event_title=f'Quick Encounter {len(input_titles)}',
+                titles=input_titles
+            )
+        else:
+            story_title, story_text, consequence_dict = estate.start_event(
+                event_category=input_category,
+                event_title=input_event, 
+                titles=input_titles, 
+                modifiers=input_modifiers
+            )
         
-        estate.add_relationship_placeholder(input_titles)
-
-        story_title, story_text, consequence_dict = estate.start_event(
-            event_category = input_category,
-            event_title = f'First Encounter {len(input_titles)}',
-            titles = input_titles, 
-            modifiers = input_modifiers
-        )
-    elif input_category == 'quick_encounter':
-
-        estate.add_relationship_placeholder(input_titles)
-
-        consequence_dict = estate.quick_encounter(
-            event_category = input_category,
-            event_title = f'Quick Encounter {len(input_titles)}',
-            titles = input_titles
-        )
-
-    else:
-        story_title, story_text, consequence_dict = estate.start_event(
-            event_category = input_category,
-            event_title = input_event, 
-            titles = input_titles, 
-            modifiers = input_modifiers
-        )
+        updated_characters = {title: estate.characters[title].to_dict() for title in consequence_dict.keys() if title in estate.characters}
         
-    updated_characters = {title: estate.characters[title].to_dict() for title in consequence_dict.keys() if title in estate.characters}
-    
-    response_data = {
-        'characters': updated_characters,
-        'eventCategory': input_category,
-        'title': story_title,  
-        'storyText': story_text,
-        'consequences': consequence_dict,
-        'recruitGroups': importance_list
-    }
+        response_data = {
+            'characters': updated_characters,
+            'eventCategory': input_category,
+            'title': story_title,  
+            'storyText': story_text,
+            'consequences': consequence_dict,
+            'recruitGroups': importance_list
+        }
 
-    return jsonify(response_data), 200
+        return jsonify(response_data), 200
+
+    except BadRequest as e:
+        return jsonify({'error': str(e)}), 400
+    except KeyError as e:
+        return jsonify({'error': f"Missing key in data: {str(e)}"}), 400
+    except AttributeError as e:
+        return jsonify({'error': f"Attribute error: {str(e)}"}), 400
+    except Exception as e:
+        app.logger.error(f"Unexpected error in create_event_endpoint: {str(e)}")
+        return jsonify({'error': "An unexpected error occurred"}), 500
 
 @app.route('/api/update-dungeon-team', methods=['POST'])
 def update_dungeon_team():
