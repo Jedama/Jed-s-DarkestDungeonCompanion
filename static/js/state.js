@@ -121,6 +121,8 @@ const initialState = {
   estateName: '',
   estateID: 0,
   characters: {},
+  storyLog: [],
+  dungeonLog: [],
   eventModifiers: [],
   currentEventCategory: null,
   recruitTitle: '',

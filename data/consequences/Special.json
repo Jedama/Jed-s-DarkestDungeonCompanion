@@ -1,7 +1,9 @@
 {   
     "title": "Special",
     "consequences": [
+        {"command": "gain_money", "params": {"change": "±x"}, "text": "Gain specified amount of money form the town."},
         {"command": "move_money", "params": {"title": "target title", "change": "±x"}, "text": "Move specified amount of money to target."},
+        {"command": "gain_trinket", "params": {"change": "±x"}, "text": "Gain a new trinket."},
         {"command": "gain_disease", "params": {"disease": "new disease"}, "text": "Add new disease to the character."},
         {"command": "lose_disease", "params": {"disease": "specific disease"}, "text": "Remove an existing disease from the character."},
         {"command": "update_religion", "params": {"religion": "new religion"}, "text": "Set the character's religion to a new religion."}

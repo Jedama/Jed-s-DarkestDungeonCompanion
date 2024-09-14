@@ -134,9 +134,9 @@ class OutputEvent:
 
         print(event_consequences)
 
-        consequence_dict = self.process_response(event_consequences)
+        consequence_dict, logs = self.process_response(event_consequences)
 
-        return event_title, event_story, consequence_dict
+        return event_title, event_story, consequence_dict, logs
     
     def create_story_prompt(self):
 
@@ -317,6 +317,7 @@ class OutputEvent:
 
         # Dictionary to store consequence text representations for each character
         consequences = {}
+        logs = []
 
         # Variable to keep track of the current character being processed
         current_character = None
@@ -335,6 +336,11 @@ class OutputEvent:
 
                 consequences[character_title] = []
 
+            elif line.startswith('Log'):
+                # Extract the log message
+                log_message = line[line.find('-') + 1:].strip()
+                logs.append(log_message)
+            
             elif line[0].islower():
                 command_name, target, value = self.process_command(line)
 
@@ -355,7 +361,7 @@ class OutputEvent:
                 # Reset current character when block ends
                 current_character = None
 
-        return consequences
+        return consequences, logs
 
     @staticmethod
     def process_command(command):
@@ -420,9 +426,9 @@ class QuickEvent:
             "consequences": self.consequences
         }
     
-    def craft_event(self):
+    def craft_event(self, log, loot_money = 0, loot_trinkets = []):
 
-        system_prompt, user_prompt, assistant_prompt = self.create_consequences_prompt()
+        system_prompt, user_prompt, assistant_prompt = self.create_consequences_prompt(log, loot_money, loot_trinkets)
         event_consequences = prompt_claude(user_prompt, system_prompt, assistant_prompt, max_tokens= 450 + (100 * len(self.characters)), temperature=1)
         event_consequences = "For" + clean_response_claude(event_consequences)
 
@@ -432,12 +438,12 @@ class QuickEvent:
 
         return consequence_dict
     
-    def create_consequences_prompt(self):
+    def create_consequences_prompt(self, log, loot_money, loot_trinkets):
 
         # Create system prompt
         system_prompt = self.consequences_system_prompt()
         # Create user prompt
-        user_prompt = self.consequences_user_prompt()
+        user_prompt = self.consequences_user_prompt(log, loot_money, loot_trinkets)
         # Create assistant prompt
         assistant_prompt = "Consequences:\nFor"
 
@@ -453,7 +459,7 @@ class QuickEvent:
 
         return system_prompt
     
-    def consequences_user_prompt(self):
+    def consequences_user_prompt(self, log, loot_money, loot_trinkets):
 
         user_prompt = f'Characters:\n'
         # Add characters to user prompt
@@ -470,6 +476,18 @@ class QuickEvent:
             user_prompt += f'Clothing: {character.clothing}\n'
             user_prompt += f'Trinkets: {character.trinkets}\n'
             user_prompt += f'Other notes: {character.notes}\n'
+
+        if log:
+            user_prompt += f'Dungeon Log:\n'
+            for i in range(len(log)):
+                user_prompt += f'Entry {i}: {loot_trinkets}\n'
+
+        if loot_money > 0:
+            user_prompt += f'Looted money: {loot_money}\n'
+
+        if loot_trinkets:
+            for i in range(len(loot_trinkets)):
+                user_prompt += f'Looted trinket: {loot_trinkets}\n'
     
         return user_prompt
     

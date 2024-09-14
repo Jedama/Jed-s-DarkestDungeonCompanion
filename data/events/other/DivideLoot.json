@@ -1,0 +1,8 @@
+[
+    {
+        "title": "Divide loot",
+        "category": "other",
+        "num_characters": 4,
+        "consequences": ["quote", "gain_money", "gain_trinket"]
+    }
+]

@@ -1,5 +1,5 @@
 // eventHandler.js
-import { addCharacter, getState, updateCharacter, setEventCategory, updateRecruitInfo } from './state.js';
+import { addCharacter, getState, updateCharacter, setEventCategory, updateRecruitInfo, addLog } from './state.js';
 import { createEvent } from './events.js';
 
 export class EventHandler {
@@ -8,11 +8,25 @@ export class EventHandler {
     }
   
     processEvent(eventData) {
-      throw new Error("processEvent method must be implemented");
+      this.eventData = eventData;
+      this.processCharacters();
+      this.processLogs();
+    }
+
+    processCharacters() {
+      Object.entries(this.eventData.characters || {}).forEach(([title, characterData]) => {
+        updateCharacter(title, characterData);
+      });
+    }
+
+    processLogs() {
+      (this.eventData.logs || []).forEach(log => {
+        addLog('story', log);
+      });
     }
   
     getConsequences() {
-      throw new Error("getConsequences method must be implemented");
+      return this.eventData.consequences;
     }
 }
 
@@ -36,61 +50,35 @@ export class EventHandlerFactory {
 }
   
 class RandomEventHandler extends EventHandler {
-    processEvent(eventData) {
-      this.eventData = eventData;
-      // Process the random event data
-      Object.entries(eventData.characters).forEach(([title, characterData]) => {
-        updateCharacter(title, characterData);
-      });
-    }
-  
-    getConsequences() {
-      return this.eventData.consequences;
-    }
+    // No need to override processEvent as it uses the base implementation
 }
   
 class RecruitEventHandler extends EventHandler {
     processEvent(eventData) {
-        this.eventData = eventData;
-
-        // Process the recruit event data
-        Object.entries(eventData.characters).forEach(([title, characterData]) => {
+        super.processEvent(eventData);
+        // Additional recruit-specific logic
+        Object.entries(this.eventData.characters).forEach(([title, characterData]) => {
             addCharacter(characterData);
         });
     }
+
+    // Override processLogs to do nothing for recruit events
+    processLogs() {}
 }
 
 class FirstEncounterEventHandler extends EventHandler {
-  processEvent(eventData) {
-      this.eventData = eventData;
-
-      // Process the recruit event data
-      Object.entries(eventData.characters).forEach(([title, characterData]) => {
-        updateCharacter(title, characterData);
-      });
-  }
+    // No need to override processEvent as it uses the base implementation
 }
 
 class QuickEncounterEventHandler extends EventHandler {
-  processEvent(eventData) {
-      this.eventData = eventData;
-
-      // Process the recruit event data
-      Object.entries(eventData.characters).forEach(([title, characterData]) => {
-        updateCharacter(title, characterData);
-      });
-  }
+    // No need to override processEvent as it uses the base implementation
 }
 
 class DungeonEventHandler extends EventHandler {
-  processEvent(eventData) {
-      this.eventData = eventData;
-
-      // Process the dungeon event data
-      // Update characters, inventory, or other state as needed
-      Object.entries(eventData.characters || {}).forEach(([title, characterData]) => {
-          updateCharacter(title, characterData);
-      });
+  processLogs() {
+    (this.eventData.logs || []).forEach(log => {
+      addLog('dungeon', log);
+    });
   }
 }
 

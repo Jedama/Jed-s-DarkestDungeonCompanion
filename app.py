@@ -78,7 +78,7 @@ def create_event_endpoint():
             )
         elif input_category == 'first_encounter':
             estate.add_relationship_placeholder(input_titles)
-            story_title, story_text, consequence_dict = estate.start_event(
+            story_title, story_text, consequence_dict, logs = estate.start_event(
                 event_category=input_category,
                 event_title=f'First Encounter {len(input_titles)}',
                 titles=input_titles, 
@@ -92,7 +92,7 @@ def create_event_endpoint():
                 titles=input_titles
             )
         else:
-            story_title, story_text, consequence_dict = estate.start_event(
+            story_title, story_text, consequence_dict, logs = estate.start_event(
                 event_category=input_category,
                 event_title=input_event, 
                 titles=input_titles, 
@@ -107,6 +107,7 @@ def create_event_endpoint():
             'title': story_title,  
             'storyText': story_text,
             'consequences': consequence_dict,
+            'logs': logs,
             'recruitGroups': importance_list
         }
 

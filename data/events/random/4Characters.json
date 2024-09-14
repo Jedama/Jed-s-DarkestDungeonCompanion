@@ -41,6 +41,6 @@
         "outcomes": [2, 5, 0, 3, 1],
         "fields": ["combat"],
         "length": 3,
-        "special_consequences": ["gain_wound"]
+        "consequences": ["gain_wound"]
     }
 ]

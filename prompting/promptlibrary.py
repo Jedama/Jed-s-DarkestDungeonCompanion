@@ -58,6 +58,7 @@ def consequences_prompts(event):
             - Avoid mentioning things that occured during the vignette, instead focus on how the characters in general have changed as a consequence of it.
             - If the outcome is "Contextual", infer it from the story.
             - Completely ignore the NPCs, and don't create any relationship consequences if there is only one chracter in the scene.
+            - Add an entry to the log, with a focus on individual character actions. If the event held great permanent importance, multiple logs can be added in subsequent lines.
             
             Format your output as follows for clarity and direct execution in the script: (This example had a 'horrible' outcome)
 
@@ -72,6 +73,9 @@ def consequences_prompts(event):
             update_status_physical(-4)
             gain_note('Corrupted by cosmic fractures')
             update_relationship_description('Ancestor', 'The Miller is eternally hateful for the fate the Ancestor cast him into')
+
+            Log - The Ancestor and the Miller's long-standing rivalry culminated in a battle
+            Log - The Miller was forcefully turned into a husk, forced to mindlessly tend the mill for all eternity
             End
             '''
     elif event.category == 'recruit':
@@ -151,6 +155,50 @@ def consequences_prompts(event):
             End
 
         '''
+
+    elif event.category == 'other':
+        
+        if event.title == 'Divide loot':
+            consequences_prompt = f'''Divide the acquired loot among the town and four heroes by outputting the functions below in a format ready for script execution:
+
+                - Start with the character's title in single quotes, followed by their name in parentheses and a colon.
+                - List each consequence command on a new line below the character's title.
+                - Begin each command with the action, followed by the parameters in parentheses.
+                - Always refer to characters by their title.
+                - Create a quote for each character, summarising their thoughts and arguing for loot, heavily influenced by their status and afflictions.
+                - Divide the specified money and trinkets between the collective town and the individual four heroes, depending on their personality, contribution from the dugeon log, and quote.            
+                - Ensure all the money and trinkets are divided. Give as much as is reasonable to the town, without upsetting the heroes.
+                - Stressed, greedy heroes will be more desperate for individual gain, but those mentally sound will be better at bargaining and manipulation.
+                - Give trinkets to the town unless a character specifically wants it for a reason
+                
+                Format your output as follows for clarity and direct execution in the script. Example:
+
+                For 'Town' (Hamlet)
+                gain_money(3200)
+                gain_trinket(Brignad banner)
+                gain_trinket('Lucky charm')
+
+                For 'Ancestor' (Pandora Dantill)
+                add_quote('My enormous power is the only thing that led us to safety. If I am not the reciever of at least 60%, that power is directed at you next.')
+                gain_money('4250')
+                gain_trinket('Verdant charm')
+                gain_trinket('Seering stone')
+
+                For 'Miller' (Dalton)
+                quote('The Ancestor is a haughty fool who will doom us all, we should cut him before it is too late. Don't give him anything.')
+                gain_money('1100')
+                
+
+                For 'Mildred' (Cindry)
+                quote('My husband Dalton ensured the safety of the rest of us from both foe and Pandora. Give him what he deserves.')
+                gain_money('850')
+
+                For 'Helga' (Hag)
+                quote('You should have seen Pandora, the destruction left in his wake. The rest of us didn't do anything, didn't need to do anything. That's just how amazing he is.')
+                gain_money('650')
+                End
+
+            '''
             
 
     return consequences_prompt

@@ -73,38 +73,35 @@ class Character:
         }
     
     def fast_status_description(self, physical_state, mental_state, condition=None):
-
         if condition is not None:
             condition = condition.lower()
 
         physical_descriptions = {
-            0: "on the brink of death due to severe injuries",
-            1: "gravely injured",
-            2: "critically injured",
-            3: "severely injured",
-            4: "very injured",
-            5: "injured",
-            6: "moderately injured",
-            7: "slightly injured",
-            8: "with minor injuries",
-            9: "almost fully recovered",
-            10: "in perfect physical condition"
+            range(0, 11): "on the brink of death due to severe injuries",
+            range(11, 21): "gravely injured",
+            range(21, 31): "critically injured",
+            range(31, 41): "severely injured",
+            range(41, 51): "very injured",
+            range(51, 61): "injured",
+            range(61, 71): "moderately injured",
+            range(71, 81): "slightly injured",
+            range(81, 91): "with minor injuries",
+            range(91, 101): "in perfect physical condition"
         }
-    
+
         mental_descriptions = {
-            0: "feeling fine and mentally resolved",
-            1: "feeling good and mentally stable",
-            2: "maintaining a positive outlook",
-            3: "generally composed",
-            4: "mentally stable",
-            5: "occasionally stressed but coping",
-            6: "struggling with some stress",
-            7: "experiencing frequent stress",
-            8: "highly anxious and troubled",
-            9: "emotionally distressed",
-            10: "overwhelmed by severe stress"
+            range(0, 11): "feeling fine and mentally resolved",
+            range(11, 21): "feeling good and mentally stable",
+            range(21, 31): "maintaining a positive outlook",
+            range(31, 41): "generally composed",
+            range(41, 51): "mentally stable",
+            range(51, 61): "occasionally stressed but coping",
+            range(61, 71): "struggling with some stress",
+            range(71, 81): "experiencing frequent stress",
+            range(81, 91): "highly anxious and troubled",
+            range(91, 101): "overwhelmed by severe stress"
         }
-        
+
         condition_descriptions = {
             # Afflictions
             "fearful": "paralyzed by overwhelming fear and unable to think or act logically.",
@@ -125,15 +122,24 @@ class Character:
             "powerful": "radiating a commanding presence.",
             "vigorous": "brimming with energy and vitality."
         }
-        
-        description = f"Physically {physical_descriptions[physical_state]}, {mental_descriptions[mental_state]}"
-        
+
+        def get_description(state, descriptions):
+            for range_key, description in descriptions.items():
+                if state in range_key:
+                    return description
+            return "in an unknown state"
+
+        physical_description = get_description(physical_state, physical_descriptions)
+        mental_description = get_description(mental_state, mental_descriptions)
+
+        description = f"Physically {physical_description}, {mental_description}"
+
         if condition and condition in condition_descriptions:
-            conjunction = "and" # if mental_state <= 5 else "but"
+            conjunction = "and"
             description += f" {conjunction} {condition_descriptions[condition]}"
-        
+
         self.status['physical'] = physical_state
-        self.status['mental'] = 10 - (mental_state / 10)
+        self.status['mental'] = 100 - mental_state
         self.status['affliction'] = condition
         self.status['description'] = description
     

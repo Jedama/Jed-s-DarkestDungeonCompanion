@@ -11,6 +11,8 @@ class Estate:
         self.profile_id = 0
         self.month = -1
         self.money = 0
+        self.log_story = []
+        self.log_dungeon = []
         self.leader = 'Heiress'
         self.characters = {}
         self.dungeon_team = []
@@ -24,6 +26,8 @@ class Estate:
             'profile_id': self.profile_id,
             'month': self.month,
             'money': self.money,
+            'log_story': self.log_story,
+            'log_dungeon': self.log_dungeon,
             'dungeon_region': self.dungeon_region,
             'dungeon_team': self.dungeon_team,
             'characters': {title: character.to_dict() for title, character in self.characters.items()}
@@ -46,6 +50,7 @@ class Estate:
         estate.profile_id = data['profile_id']
         estate.month = data['month']
         estate.money = data['money']
+        estate.log = data.get('log', [])
         estate.dungeon_region = data['dungeon_region']
         estate.dungeon_team = data['dungeon_team']
         estate.characters = {title: Character.from_dict(char_data) for title, char_data in data['characters'].items()}
@@ -79,6 +84,10 @@ class Estate:
         else:
             print(f"Character {character_title} not found.")
 
+    def add_to_log(self, log_entry):
+        # Add a new log entry to the estate's log
+        self.log.append(log_entry)
+
     def start_event(self, event_category='random', event_title=None, titles = [], modifiers = []):
         # Start an event by title
         return self.eventHandler.craft_event(self.characters, event_category, event_title, titles, modifiers + self.keywords)
@@ -95,7 +104,7 @@ class Estate:
         else:
             print(f'Character template not found: {title}')
 
-        recruit_title, recruit_story, recruit_consequences = self.eventHandler.craft_event(self.characters, 'recruit', '', [title], quirks)
+        recruit_title, recruit_story, recruit_consequences, logs = self.eventHandler.craft_event(self.characters, 'recruit', '', [title], quirks)
 
         ordered_characters = self.eventHandler.recruit_rank_characters(self.characters, self.leader, character)
 
@@ -109,7 +118,11 @@ class Estate:
 
         return self.eventHandler.craft_event(self.characters, event_category, event_title, self.dungeon_team, keywords=modifiers, enemies=enemies, region=self.dungeon_region)
 
-    
+    def divide_loot(self, loot = 0, trinkets = []):
+
+        return self.eventHandler.quick_event(self.characters, 'other', 'Divide loot', self.dungeon_team, self.log_dungeon, loot, trinkets)
+
+
     def start_campaign(self, starting_characters = ['Heiress', 'Heir', 'Crusader', 'Highwayman']):
 
         for character_title in starting_characters:

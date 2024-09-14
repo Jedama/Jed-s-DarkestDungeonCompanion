@@ -61,7 +61,7 @@ class EventHandler:
             # Ensure that the number of specified titles does not exceed the number of characters required by the event
             if len(titles) > event.num_characters:
                 print(f"Too many titles specified for event '{event.title}'. Expected {event.num_characters} or fewer.")
-                return None, None, None
+                return None, None, None, None
             
             event_characters = self.process_characters(input_event, characters, titles)
             if event_characters:
@@ -80,23 +80,22 @@ class EventHandler:
                 # self.process_enemies()
             else:
                 print(f"No valid characters found for event '{event.title}'")
-                return None, None, None
+                return None, None, None, None
         
         events = self.events_by_category.get(event_category, {})
         if not events:
             print(f"No events available for category '{event_category}'")
-            return None, None, None
+            return None, None, None, None
         
         if event_title != '':
             event_instance = events.get(event_title)
             input_event = copy.deepcopy(event_instance)
             if not input_event:
                 print(f"No event found with title '{event_title}'")
-                return None, None, None
+                return None, None, None, None
 
-            event_title, event_story, event_consequences = craft_event_with_characters(input_event)
-            if event_story and event_consequences:
-                return event_title, event_story, event_consequences
+            return craft_event_with_characters(input_event)
+
         else:
             while True:
                 input_event = random.choice(list(events.values()))
@@ -106,7 +105,7 @@ class EventHandler:
                         return event_title, event_story, event_consequences
                 print(f"No valid characters found for event '{input_event.title}' or event invalid for specified characters. Trying another event...")
 
-    def quick_event(self, characters, event_category, event_title='', titles=[]):
+    def quick_event(self, characters, event_category, event_title='', titles=[], log=[], loot_money=0, loot_trinkets=[]):
         event_characters = [characters[title] for title in titles]
 
         events = self.events_by_category.get(event_category, {})
@@ -118,7 +117,7 @@ class EventHandler:
         
         self.process_consequences(input_event, quick_event)
 
-        return quick_event.craft_event()
+        return quick_event.craft_event(log, loot_money, loot_trinkets)
 
 
     def process_summary(self, input_event, output_event, characters, enemies):
